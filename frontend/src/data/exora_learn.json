@@ -1,0 +1,84 @@
+{
+  "title": "Exora Astrophysics Academy",
+  "subtitle": "Comprehensive Guide to Exoplanetary Detection, Habitability Modeling, and Astrobiology",
+  "lastUpdated": "2026",
+  "sections": [
+    {
+      "id": "fundamentals",
+      "title": "Exoplanet Fundamentals",
+      "tag": "Fundamentals",
+      "icon": "Compass",
+      "description": "Understanding how astronomers discover and classify alien worlds beyond our solar system.",
+      "accordions": [
+        {
+          "question": "Tired of Earth? Here's your exit list.",
+          "tag": "Fundamentals",
+          "points": [
+            "-> Exoplanets are planets orbiting stars outside our Solar System.",
+            "-> Over 5,600 exoplanets have been confirmed by NASA missions like Kepler, TESS, and Spitzer.",
+            "-> Detection techniques include Transit Photometry (brightness dips) and Radial Velocity (stellar wobble)."
+          ],
+          "summary": "Understanding the exoplanetary catalog begins by observing how planets periodically occlude stellar light and induce gravitational perturbations on their host star."
+        },
+        {
+          "question": "How do we measure exoplanet size and mass?",
+          "tag": "Physics",
+          "points": [
+            "-> Transit depth (ΔF/F) directly measures the planet-to-star area ratio (R_p / R_*)^2.",
+            "-> Radial velocity amplitude measures gravitational wobble to derive minimum planetary mass (m sin i).",
+            "-> Combining radius and mass gives bulk density, confirming whether a world is rocky like Earth or gas-dominated like Neptune."
+          ],
+          "summary": "Mass and radius together reveal bulk density, distinguishing rocky terrestrial worlds from Hycean ocean worlds and mini-Neptunes."
+        }
+      ]
+    },
+    {
+      "id": "habitability",
+      "title": "Circumstellar Habitable Zone (HZ)",
+      "tag": "Habitability",
+      "icon": "Sun",
+      "description": "The thermal orbital boundary where liquid water can persist on a terrestrial planet surface.",
+      "accordions": [
+        {
+          "question": "Goldilocks Zone — unlocked.",
+          "tag": "Habitability",
+          "points": [
+            "-> The Circumstellar Habitable Zone (HZ) is the orbital distance where surface liquid water can exist.",
+            "-> Hotter G/F-type stars push the HZ outward (1.0 - 2.5 AU); cooler M-dwarfs pull the HZ close (0.01 - 0.2 AU).",
+            "-> Being in the HZ is a prerequisite, but atmosphere and magnetic fields are required for liquid surface oceans."
+          ],
+          "summary": "Liquid surface water requires a precise thermodynamic balance between stellar irradiance flux and atmospheric greenhouse trapping."
+        },
+        {
+          "question": "What is the Earth Similarity Index (ESI)?",
+          "tag": "Mathematics",
+          "points": [
+            "-> ESI is a normalized scale from 0.0 (no similarity) to 1.00 (identical to Earth).",
+            "-> Evaluated using Schulze-Makuch (2011) geometric weighted mean across radius, density, and temperature.",
+            "-> Planets with ESI > 0.80 are prime candidates for terrestrial surface environments."
+          ],
+          "summary": "ESI allows planetary scientists to algorithmically screen thousands of cataloged worlds for Earth-like physical parameters."
+        }
+      ]
+    },
+    {
+      "id": "astrobiology",
+      "title": "Astrobiology & Atmospheric Biosignatures",
+      "tag": "Reality Check",
+      "icon": "Sparkles",
+      "description": "How spectroscopy detects chemical atmospheric disequilibrium and potential biological signatures.",
+      "accordions": [
+        {
+          "question": "Okay but can we ACTUALLY know if a planet supports life?",
+          "tag": "Reality Check",
+          "points": [
+            "-> Transmission spectroscopy analyzes starlight filtered through a planet's atmospheric limb during transit.",
+            "-> Biosignatures include atmospheric disequilibrium—such as simultaneous oxygen (O2/O3) and methane (CH4).",
+            "-> JWST is actively characterizing atmospheric absorption lines on targets like TRAPPIST-1e and K2-18b."
+          ],
+          "summary": "Direct spectrographic identification of gas disequilibrium provides our most concrete pathway to detecting extraterrestrial biospheres."
+        }
+      ]
+    }
+  ]
+}

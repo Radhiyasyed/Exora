@@ -1,0 +1,7 @@
+column_name,description,unit,datatype
+pl_bmasse,Planet Mass or Mass*sin(i),Earth Mass,double
+pl_eqt,Equilibrium Temperature,K,double
+pl_name,Planet Name,,char
+pl_orbsmax,Orbit Semi-Major Axis [au]),,double
+pl_rade,Planet Radius,Earth Radius,double
+st_teff,Stellar Effective Temperature,K,double

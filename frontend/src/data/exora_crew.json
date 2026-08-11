@@ -1,0 +1,58 @@
+{
+  "pageHeader": "Meet the Crew",
+  "pageSubtitle": "The people behind Exora — bringing together space science, data, technology, and a shared curiosity about worlds beyond our own.",
+  "coreTeam": [
+    {
+      "id": "syeda-radhiya-aamir",
+      "name": "Syeda Radhiya Aamir",
+      "title": "Project Lead & Frontend Developer",
+      "bio": "Radhiya is a BS Space Science student at the Institute of Space Technology, Islamabad, with a strong interest in astronomy and astrophysics. She initiated and pitched the idea for Exora with a goal of making astronomy and astrophysics more accessible and engaging in Pakistan. She led the frontend development, integrated the backend with the application, and oversaw its deployment, bringing the project from concept to a working platform.",
+      "specialty": "Product Development • Frontend • Astronomy & Astrophysics",
+      "missionImpact": "Making space science more accessible through technology and open data."
+    },
+    {
+      "id": "syeda-amna-mehdi",
+      "name": "Syeda Amna Mehdi",
+      "title": "Backend & Data Engineering Lead",
+      "bio": "Amna is a BS Space Science student at the Institute of Space Technology, Islamabad, with an interest in working with astronomical data and space science applications. She developed and refined the backend data pipeline behind Exora, helping clean, organize, and prepare the astronomical datasets that power the platform.",
+      "specialty": "Data Engineering • Backend Development • Astronomical Data",
+      "missionImpact": "Turning raw astronomical data into structured, usable information for exploration."
+    },
+    {
+      "id": "saani-e-zehra",
+      "name": "Saani e Zehra",
+      "title": "Science Content Specialist",
+      "bio": "Saani is a BS Space Science student at the Institute of Space Technology, Islamabad, passionate about communicating space science in ways that are clear, engaging, and accessible. For Exora, she curated and developed the educational content throughout the platform, helping transform complex astronomical concepts into material that users can explore and understand.",
+      "specialty": "Science Communication • Educational Content • Space Science",
+      "missionImpact": "Making the science behind distant worlds easier to understand and explore."
+    },
+    {
+      "id": "yumna-akhtar",
+      "name": "Yumna Akhtar",
+      "title": "Documentation & Presentation Lead",
+      "bio": "Yumna is a Physics student at Fatima Jinnah Women University, Rawalpindi, with an interest in science communication and research-oriented projects. She contributed to Exora's project documentation and presentation development, helping organize the team's work and communicate the project's goals, methodology, and progress clearly.",
+      "specialty": "Documentation • Presentation • Science Communication",
+      "missionImpact": "Helping translate the team's technical work into a clear and coherent project story."
+    }
+  ],
+  "supervisors": [
+    {
+      "id": "yawar-abbas",
+      "name": "Yawar Abbas",
+      "title": "Scientific Supervisor",
+      "role": "Astronomy & Space Science Researcher",
+      "bio": "Yawar Abbas is an astronomy and space science researcher and serves as a Research Associate at the Space Education Research Lab at the Institute of Space Technology. He is also the Observatory In-Charge at IST, bringing practical experience in observational astronomy and space science research. His guidance helped connect Exora's scientific objectives with the broader context of astronomical observation and research.",
+      "specialty": "Astronomy • Space Science Research • Observational Astronomy",
+      "roleText": "Scientific Guidance & Observatory Mentorship"
+    },
+    {
+      "id": "muhammad-junaid",
+      "name": "Muhammad Junaid",
+      "title": "Research Supervisor",
+      "role": "Space & Astrophysics Researcher",
+      "bio": "Muhammad Junaid is a Graduate Research Assistant at the Space and Astrophysics Research Lab at the Institute of Space Technology. His research experience in space science and astrophysics provided valuable scientific perspective during the development of Exora, helping strengthen the project's research direction and astronomical foundations.",
+      "specialty": "Astrophysics • Space Science • Research",
+      "roleText": "Research Guidance & Scientific Mentorship"
+    }
+  ]
+}
