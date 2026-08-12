@@ -8,6 +8,7 @@ export default function EarthSimilarityIndex() {
   const [flux, setFlux] = useState(1.10); // Solar irradiance relative to Earth
 
   const [isFormulaExpanded, setIsFormulaExpanded] = useState(false);
+  const [isHIFormulaExpanded, setIsHIFormulaExpanded] = useState(false);
 
   // Compute live ESI scores and complementary habitability metrics
   const calculateESI = (r, d, f) => {
@@ -226,33 +227,71 @@ export default function EarthSimilarityIndex() {
 
       </div>
 
-      {/* Expandable Mathematical Formula Breakdown */}
-      <div className="glass-panel rounded-2xl border border-slate-800 overflow-hidden">
-        <button
-          onClick={() => setIsFormulaExpanded(!isFormulaExpanded)}
-          className="w-full p-5 text-left flex justify-between items-center hover:bg-slate-900/50 transition-colors"
-        >
-          <div className="flex items-center space-x-2 text-white font-bold text-sm">
-            <Info className="w-4 h-4 text-cyan-400" />
-            <span>Mathematical Formula Breakdown (Schulze-Makuch ESI)</span>
-          </div>
-          {isFormulaExpanded ? (
-            <ChevronUp className="w-5 h-5 text-slate-400" />
-          ) : (
-            <ChevronDown className="w-5 h-5 text-slate-400" />
-          )}
-        </button>
-
-        {isFormulaExpanded && (
-          <div className="p-6 border-t border-slate-800/80 bg-slate-950/60 space-y-4 text-xs font-mono-data text-slate-300">
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-cyan-300 text-center font-bold text-sm">
-              ESI = ∏ [ 1 - | (x_i - x_i0) / (x_i + x_i0) | ]^(w_i)
+      {/* Formula Breakdowns */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Expandable Mathematical Formula Breakdown (ESI) */}
+        <div className="glass-panel rounded-2xl border border-slate-800 overflow-hidden h-fit">
+          <button
+            onClick={() => setIsFormulaExpanded(!isFormulaExpanded)}
+            className="w-full p-5 text-left flex justify-between items-center hover:bg-slate-900/50 transition-colors"
+          >
+            <div className="flex items-center space-x-2 text-white font-bold text-sm">
+              <Info className="w-4 h-4 text-cyan-400" />
+              <span>Mathematical Formula Breakdown (Schulze-Makuch ESI)</span>
             </div>
-            <p className="leading-relaxed">
-              Where $x_i$ represents the planetary parameter value (radius, density, flux), $x_i0$ is Earth's baseline reference value (1.0), and $w_i$ is the empirical weighting exponent calibrated for physical property sensitivity.
-            </p>
-          </div>
-        )}
+            {isFormulaExpanded ? (
+              <ChevronUp className="w-5 h-5 text-slate-400" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-slate-400" />
+            )}
+          </button>
+
+          {isFormulaExpanded && (
+            <div className="p-6 border-t border-slate-800/80 bg-slate-950/60 space-y-4 text-xs font-mono-data text-slate-300">
+              <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-cyan-300 text-center font-bold text-sm">
+                ESI = ∏ [ 1 - | (x_i - x_i0) / (x_i + x_i0) | ]^(w_i)
+              </div>
+              <p className="leading-relaxed">
+                Where $x_i$ represents the planetary parameter value (radius, density, flux), $x_i0$ is Earth's baseline reference value (1.0), and $w_i$ is the empirical weighting exponent calibrated for physical property sensitivity.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Expandable Mathematical Formula Breakdown (HI) */}
+        <div className="glass-panel rounded-2xl border border-slate-800 overflow-hidden h-fit">
+          <button
+            onClick={() => setIsHIFormulaExpanded(!isHIFormulaExpanded)}
+            className="w-full p-5 text-left flex justify-between items-center hover:bg-slate-900/50 transition-colors"
+          >
+            <div className="flex items-center space-x-2 text-white font-bold text-sm">
+              <Info className="w-4 h-4 text-emerald-400" />
+              <span>Mathematical Formula Breakdown (Habitability Index)</span>
+            </div>
+            {isHIFormulaExpanded ? (
+              <ChevronUp className="w-5 h-5 text-slate-400" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-slate-400" />
+            )}
+          </button>
+
+          {isHIFormulaExpanded && (
+            <div className="p-6 border-t border-slate-800/80 bg-slate-950/60 space-y-4 text-xs font-mono-data text-slate-300">
+              <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-emerald-300 text-center font-bold text-sm">
+                HI = √(interior_ESI × surface_ESI)
+              </div>
+              <p className="leading-relaxed">
+                Where interior_ESI reflects physical structure similarity (radius, density) and surface_ESI reflects thermal similarity (equilibrium temperature), combined as a geometric mean to estimate overall Earth-likeness.
+              </p>
+              <div className="pt-3 border-t border-slate-800/80 flex justify-between items-center">
+                <span className="text-slate-400">API Field Equivalent:</span>
+                <span className="px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded text-emerald-400 font-bold">
+                  habitabilityIndex: {computedHI.toFixed(2)}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Comprehensive Scientific Context Panel */}

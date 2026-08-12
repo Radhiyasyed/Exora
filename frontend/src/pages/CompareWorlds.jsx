@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Scale, Trash2, Sparkles, AlertTriangle, Bookmark, X
 } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ScatterChart, Scatter, ZAxis, Cell, LabelList } from 'recharts';
 import { EXOPLANETS } from '../data/exoplanetsData';
 
 function getMetric(planet, camelKey, snakeKey, fallback = null) {
@@ -206,38 +206,83 @@ function CompareWorlds() {
             Observatory Perspective: Scaled Matrix View from 1,000,000 Miles in Deep Space.
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {selectedPlanets.map((planet) => {
-            const sizeScale = Math.min(120, 30 + planet.radiusEarth * 18);
-            const hueClass = planet.habitabilityIndex >= 0.8 ? 'from-emerald-400 to-cyan-300' : planet.habitabilityIndex >= 0.6 ? 'from-cyan-400 to-indigo-400' : 'from-rose-400 to-orange-400';
-            return (
-              <div key={planet.id} className="space-y-3 rounded-2xl bg-slate-950/90 border border-slate-800 p-4">
-                <div className="flex justify-between items-center text-xs text-slate-300 font-semibold">
-                  <span>{planet.name}</span>
-                  <button
-                    type="button"
-                    onClick={() => removePlanet(planet.id)}
-                    className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[12px] bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/30 transition-all"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                    Close
-                  </button>
-                </div>
-                <div className="flex items-center justify-center">
-                  <div className={`relative rounded-full bg-gradient-to-br ${hueClass} shadow-[0_0_20px_rgba(34,211,238,0.15)]`} style={{ width: sizeScale, height: sizeScale }}>
-                    <div className="absolute inset-0 rounded-full bg-slate-950/40 border border-slate-800" />
-                    <div className="absolute inset-0 rounded-full flex flex-col items-center justify-center text-[12px] text-slate-100 font-semibold leading-tight">
-                      <span>{planet.radiusEarth} R⊕</span>
-                      <span className="text-[12px] text-slate-200">ESI {getMetric(planet, 'esiScore', 'esi_score', planet.habitabilityIndex)}</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-center text-[12px] text-slate-400">
-                  Circle size corresponds to radius, color corresponds to habitability score.
-                </div>
-              </div>
-            );
-          })}
+
+        {/* Active Selection Chips */}
+        <div className="flex flex-wrap gap-3 py-2">
+          {selectedPlanets.map((planet) => (
+            <div key={planet.id} className="inline-flex items-center gap-2 rounded-full bg-slate-950 border border-slate-800 px-3 py-1.5 text-xs font-mono-data text-slate-300 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+              <span className="font-semibold">{planet.name}</span>
+              {selectedIds.length > 2 && (
+                <button
+                  type="button"
+                  onClick={() => removePlanet(planet.id)}
+                  className="text-slate-500 hover:text-cyan-400 transition-colors ml-1"
+                  title={`Remove ${planet.name}`}
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Unified Bubble Chart */}
+        <div className="w-full h-80 bg-slate-950/50 rounded-2xl border border-slate-800 p-4">
+          <ResponsiveContainer width="100%" height="100%">
+            <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+              <XAxis 
+                type="number" 
+                dataKey="radiusEarth" 
+                name="Radius" 
+                unit=" R⊕" 
+                stroke="#94a3b8"
+                tick={{ fontSize: 11 }}
+              />
+              <YAxis 
+                type="number" 
+                dataKey="esi" 
+                name="ESI Score" 
+                stroke="#94a3b8" 
+                domain={[0, 1]}
+                tick={{ fontSize: 11 }}
+              />
+              <ZAxis 
+                type="number" 
+                dataKey="radiusEarth" 
+                range={[200, 2500]} 
+                name="Radius" 
+              />
+              <Tooltip 
+                cursor={{ strokeDasharray: '3 3' }}
+                contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px', color: '#f8fafc' }}
+                itemStyle={{ color: '#22d3ee' }}
+                formatter={(value, name) => [value, name === 'esi' ? 'ESI Score' : 'Radius']}
+              />
+              <Scatter 
+                name="Planets" 
+                data={selectedPlanets.map(p => ({
+                  ...p,
+                  esi: getMetric(p, 'esiScore', 'esi_score', p.habitabilityIndex)
+                }))}
+              >
+                {selectedPlanets.map((p, index) => {
+                  const esi = getMetric(p, 'esiScore', 'esi_score', p.habitabilityIndex);
+                  const color = esi >= 0.8 ? '#2dd4bf' : esi >= 0.5 ? '#0ea5e9' : '#3b82f6';
+                  return (
+                    <Cell 
+                      key={`cell-${index}`} 
+                      fill={color} 
+                      fillOpacity={0.6} 
+                      stroke={color} 
+                      strokeWidth={2} 
+                    />
+                  );
+                })}
+                <LabelList dataKey="name" position="top" fill="#cbd5e1" fontSize={11} fontWeight="bold" />
+              </Scatter>
+            </ScatterChart>
+          </ResponsiveContainer>
         </div>
       </div>
 

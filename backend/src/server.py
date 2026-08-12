@@ -19,10 +19,15 @@ DATA_JSON_PATH = PROJECT_ROOT / "data" / "dashboard" / "planets.json"
 
 sys.path.append(str(PROJECT_ROOT / "src"))
 
-app = Flask(__name__)
+from asgiref.wsgi import WsgiToAsgi
+
+flask_app = Flask(__name__)
 
 # Enable CORS for all routes and origins
-CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
+CORS(flask_app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
+
+# Expose the ASGI-compatible app for Uvicorn
+app = WsgiToAsgi(flask_app)
 
 # Helper function to generate slug from planet name
 def slugify(name: str) -> str:
@@ -270,6 +275,7 @@ def load_dataset():
             "is_in_habitable_zone": in_hz,
             "starLuminosity": star_luminosity,
             "star_luminosity": star_luminosity,
+            "starRadius": p.get("starRadius"),
             "discoveryMethod": meta.get("discoveryMethod", "Transit"),
             "discoveryYear": meta.get("discoveryYear", 2015),
             "atmosphere": meta.get("atmosphere", ["N2", "CO2 candidate"]),
@@ -291,7 +297,7 @@ def load_dataset():
         enriched.append(planet_obj)
     return enriched
 
-@app.route("/api/health", methods=["GET"])
+@flask_app.route("/api/health", methods=["GET"])
 def health_check():
     return jsonify({
         "status": "online",
@@ -299,7 +305,7 @@ def health_check():
         "version": "1.0.0"
     })
 
-@app.route("/api/planets", methods=["GET"])
+@flask_app.route("/api/planets", methods=["GET"])
 def get_planets():
     planets = load_dataset()
     
@@ -369,7 +375,7 @@ def get_planets():
         "planets": filtered
     })
 
-@app.route("/api/planets/<planet_id>", methods=["GET"])
+@flask_app.route("/api/planets/<planet_id>", methods=["GET"])
 def get_planet_by_id(planet_id):
     planets = load_dataset()
     planet_id_lower = planet_id.lower()
@@ -380,7 +386,7 @@ def get_planet_by_id(planet_id):
             
     return jsonify({"error": "Planet not found", "id": planet_id}), 404
 
-@app.route("/api/stats", methods=["GET"])
+@flask_app.route("/api/stats", methods=["GET"])
 def get_stats():
     planets = load_dataset()
     hz_count = sum(1 for p in planets if p.get("inHabitableZone"))
@@ -402,4 +408,4 @@ def get_stats():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     print(f"Exora Backend API running on http://127.0.0.1:{port}")
-    app.run(host="127.0.0.1", port=port, debug=False)
+    flask_app.run(host="127.0.0.1", port=port, debug=False)

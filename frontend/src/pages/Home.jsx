@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, ArrowRight, Sparkles } from 'lucide-react';
 import { EXOPLANETS } from '../data/exoplanetsData';
@@ -8,6 +8,16 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
   const [isWelcomeOpen, setIsWelcomeOpen] = useState(true);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isWelcomeOpen) {
+        setIsWelcomeOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isWelcomeOpen]);
 
   // Filters catalog recommendations based on query safely
   const filteredSuggestions = EXOPLANETS ? EXOPLANETS.filter(p =>
@@ -20,18 +30,25 @@ export default function Home() {
       
       {/* 3. Welcome Popup Modal Redesign */}
       {isWelcomeOpen && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+        <div 
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setIsWelcomeOpen(false)}
+        >
+          <div 
+            className="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl relative animate-in fade-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Top-Right 'X' Close Button */}
             <button 
               onClick={() => setIsWelcomeOpen(false)} 
-              className="absolute top-4 right-4 text-slate-400 hover:text-white text-base font-bold z-10 p-1 transition-colors"
+              className="absolute top-4 right-4 text-white bg-slate-800 hover:bg-slate-700 hover:text-cyan-300 border border-slate-600 hover:border-cyan-500 text-lg font-black z-20 w-10 h-10 flex items-center justify-center rounded-full shadow-[0_0_15px_rgba(0,0,0,0.5)] transition-all"
               aria-label="Close modal"
             >
               ✕
             </button>
 
-            {/* Top Section */}
+            <div className="overflow-y-auto min-h-0 flex-1">
+              {/* Top Section */}
             <div className="relative overflow-hidden p-6 border-b border-slate-800 bg-slate-900/50">
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)]"></div>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 relative z-10">
@@ -94,12 +111,13 @@ export default function Home() {
             <div className="p-6 bg-slate-900 border-t border-slate-800 text-center space-y-3">
               <p className="text-sm font-semibold text-slate-300">Ready to begin your cosmic mission?</p>
               <button 
-                onClick={() => { setIsWelcomeOpen(false); navigate('/search'); }} 
+                onClick={() => setIsWelcomeOpen(false)} 
                 className="w-full md:w-auto bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs py-3 px-8 rounded-xl shadow-lg transition transform active:scale-95 duration-150"
               >
                 Initialize Digital Observatory 🚀 →
               </button>
               <p className="text-[12px] text-slate-500">Let's explore the universe—one planet at a time. 🪐</p>
+            </div>
             </div>
           </div>
         </div>
@@ -173,11 +191,43 @@ export default function Home() {
             <div className="absolute w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl -z-10" />
             <div className="absolute w-60 h-60 rounded-full bg-indigo-500/10 blur-3xl -z-10" />
             <div className="relative w-80 h-80 flex items-center justify-center">
-              <svg className="absolute w-full h-full opacity-40" viewBox="0 0 400 400">
+              {/* Orbital Rings */}
+              <svg className="absolute w-full h-full opacity-40 animate-[spin_40s_linear_infinite]" viewBox="0 0 400 400">
                 <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(34,211,238,0.2)" strokeWidth="1.5" strokeDasharray="6 6" />
-                <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(129,140,248,0.2)" strokeWidth="1" />
+                <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(129,140,248,0.3)" strokeWidth="1" />
               </svg>
-              <div className="w-36 h-36 rounded-full bg-gradient-to-tr from-cyan-600 to-indigo-900 border border-cyan-400/40 shadow-[0_0_50px_rgba(6,182,212,0.25)]" />
+              
+              {/* Refined Planet Sphere */}
+              <div className="relative w-36 h-36 rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_40px_rgba(34,211,238,0.2)] z-10 border border-slate-700/50">
+                {/* Base planet gradient */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-600 to-indigo-900" />
+                
+                {/* Crisp texture bands */}
+                <div className="absolute top-[25%] -left-4 w-48 h-4 bg-cyan-400/20 rotate-[-15deg]" />
+                <div className="absolute top-[50%] -left-4 w-48 h-6 bg-indigo-400/20 rotate-[-15deg]" />
+                <div className="absolute bottom-[25%] -left-4 w-48 h-3 bg-cyan-300/10 rotate-[-15deg]" />
+
+                {/* Subtle inner shadow for 3D depth */}
+                <div className="absolute inset-0 rounded-full shadow-[inset_-8px_-8px_16px_rgba(0,0,0,0.5)]" />
+              </div>
+
+              {/* Orbiting Moon Dots */}
+              <div className="absolute top-[15%] left-[25%] w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] animate-pulse" />
+              <div className="absolute bottom-[20%] right-[15%] w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_#818cf8]" />
+
+              {/* Stat Boxes */}
+              <div className="absolute -top-4 -right-8 sm:-right-12 bg-slate-900/60 backdrop-blur-md border border-slate-700/80 p-2.5 rounded-xl shadow-xl z-10 flex flex-col items-center">
+                <span className="text-[12px] text-slate-400 font-bold uppercase tracking-widest">Radius</span>
+                <span className="text-sm font-black text-cyan-400">1.04 R⊕</span>
+              </div>
+              <div className="absolute bottom-10 -left-6 sm:-left-12 bg-slate-900/60 backdrop-blur-md border border-slate-700/80 p-2.5 rounded-xl shadow-xl z-10 flex flex-col items-center">
+                <span className="text-[12px] text-slate-400 font-bold uppercase tracking-widest">Temp</span>
+                <span className="text-sm font-black text-indigo-400">288 K</span>
+              </div>
+              <div className="absolute -bottom-4 right-2 sm:right-0 bg-slate-900/60 backdrop-blur-md border border-slate-700/80 p-2.5 rounded-xl shadow-xl z-10 flex flex-col items-center">
+                <span className="text-[12px] text-slate-400 font-bold uppercase tracking-widest">HI Score</span>
+                <span className="text-sm font-black text-green-400">0.92</span>
+              </div>
             </div>
           </div>
 

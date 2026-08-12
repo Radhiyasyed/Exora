@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "katex": "^0.18.4",
     "lucide-react": "^1.27.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-katex": "^3.1.0",
     "react-router-dom": "^7.18.1",
     "recharts": "^3.10.1",
     "tailwindcss": "^4.3.3",

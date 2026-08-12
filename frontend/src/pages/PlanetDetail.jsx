@@ -93,9 +93,9 @@ export default function PlanetDetail() {
   const comparisonData = [
     { metric: "Radius (R⊕)", Planet: planet.radiusEarth ?? 0, Earth: 1.0 },
     { metric: "Mass (M⊕)", Planet: planet.massEarth ?? 0, Earth: 1.0 },
-    { metric: "Temp (K)", Planet: (planet.equilibriumTempK ?? 0) / 100, Earth: 2.55 },
+    { metric: "Temp (K)", Planet: planet.equilibriumTempK ? Number((planet.equilibriumTempK / 255).toFixed(2)) : 0, Earth: 1.0 },
     { metric: "Gravity (g)", Planet: planet.surfaceGravityG ?? 0, Earth: 1.0 },
-    { metric: "Habitability (ESI)", Planet: Number(displayedESI), Earth: 1.0 },
+    { metric: "Earth Similarity (ESI)", Planet: Number(displayedESI), Earth: 1.0 },
   ];
 
   return (
@@ -308,6 +308,7 @@ export default function PlanetDetail() {
                 <YAxis stroke="#94a3b8" tick={{ fontSize: 11, fontFamily: 'JetBrains Mono' }} />
                 <Tooltip
                   contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  formatter={(value, name) => [typeof value === 'number' ? value.toFixed(2) : value, name]}
                 />
                 <Bar dataKey="Planet" fill="#22d3ee" radius={[6, 6, 0, 0]} name={planet.name || 'Planet'} />
                 <Bar dataKey="Earth" fill="#818cf8" radius={[6, 6, 0, 0]} name="Earth" />

@@ -9,6 +9,7 @@
     "eqTempK",
     "orbitAU",
     "starTempK",
+    "starRadius",
     "habitabilityIndex"
   ],
   "planets": [
@@ -20,6 +21,7 @@
       "eqTempK": 242.03,
       "orbitAU": 0.054,
       "starTempK": 2953.0,
+      "starRadius": 0.156,
       "habitabilityIndex": 0.9103
     },
     {
@@ -30,6 +32,7 @@
       "eqTempK": 230.9,
       "orbitAU": 0.0457,
       "starTempK": 3024.0,
+      "starRadius": 0.137,
       "habitabilityIndex": 0.8646
     },
     {
@@ -40,6 +43,7 @@
       "eqTempK": 249.0,
       "orbitAU": 0.06191,
       "starTempK": 3099.0,
+      "starRadius": 0.222,
       "habitabilityIndex": 0.8398
     },
     {
@@ -50,6 +54,7 @@
       "eqTempK": 269.0,
       "orbitAU": 0.54465,
       "starTempK": 4886.0,
+      "starRadius": 0.74,
       "habitabilityIndex": 0.8357
     },
     {
@@ -60,6 +65,7 @@
       "eqTempK": 282.0,
       "orbitAU": 0.02881,
       "starTempK": 2900.0,
+      "starRadius": 0.141,
       "habitabilityIndex": 0.8131
     },
     {
@@ -70,6 +76,7 @@
       "eqTempK": 290.06,
       "orbitAU": 0.03282,
       "starTempK": 3159.0,
+      "starRadius": 0.119,
       "habitabilityIndex": 0.8087
     },
     {
@@ -80,6 +87,7 @@
       "eqTempK": 292.47,
       "orbitAU": 0.091101,
       "starTempK": 3382.0,
+      "starRadius": 0.293,
       "habitabilityIndex": 0.7753
     },
     {
@@ -90,6 +98,7 @@
       "eqTempK": 273.0,
       "orbitAU": 0.24861,
       "starTempK": 4017.0,
+      "starRadius": 0.62,
       "habitabilityIndex": 0.7714
     },
     {
@@ -100,6 +109,7 @@
       "eqTempK": 281.93,
       "orbitAU": 0.08,
       "starTempK": 3028.0,
+      "starRadius": 0.298255,
       "habitabilityIndex": 0.7622
     },
     {
@@ -110,6 +120,7 @@
       "eqTempK": 253.8,
       "orbitAU": 2.027,
       "starTempK": 5746.0,
+      "starRadius": 1.697,
       "habitabilityIndex": 0.7342
     },
     {
@@ -120,6 +131,7 @@
       "eqTempK": 259.78,
       "orbitAU": 2.12,
       "starTempK": 5981.0,
+      "starRadius": 1.72,
       "habitabilityIndex": 0.7286
     },
     {
@@ -130,6 +142,7 @@
       "eqTempK": 293.86,
       "orbitAU": 0.05366,
       "starTempK": 3071.0,
+      "starRadius": 0.2113,
       "habitabilityIndex": 0.7281
     },
     {
@@ -140,6 +153,7 @@
       "eqTempK": 267.0,
       "orbitAU": 0.7097,
       "starTempK": 5404.0,
+      "starRadius": 0.862346,
       "habitabilityIndex": 0.7265
     },
     {
@@ -150,6 +164,7 @@
       "eqTempK": 239.0,
       "orbitAU": 0.3679,
       "starTempK": 4644.0,
+      "starRadius": 0.69,
       "habitabilityIndex": 0.7156
     },
     {
@@ -160,6 +175,7 @@
       "eqTempK": 253.57,
       "orbitAU": 7.46,
       "starTempK": 4909.0,
+      "starRadius": 8.56,
       "habitabilityIndex": 0.7134
     },
     {
@@ -170,6 +186,7 @@
       "eqTempK": 300.0,
       "orbitAU": 0.38249,
       "starTempK": 5078.0,
+      "starRadius": 0.74,
       "habitabilityIndex": 0.7129
     },
     {
@@ -180,6 +197,7 @@
       "eqTempK": 322.3,
       "orbitAU": 0.02971,
       "starTempK": 2907.0,
+      "starRadius": 0.153162,
       "habitabilityIndex": 0.6999
     },
     {
@@ -190,6 +208,7 @@
       "eqTempK": 261.0,
       "orbitAU": 1.552,
       "starTempK": 5966.0,
+      "starRadius": 1.27,
       "habitabilityIndex": 0.6988
     },
     {
@@ -200,6 +219,7 @@
       "eqTempK": 308.0,
       "orbitAU": 0.2401,
       "starTempK": 4524.0,
+      "starRadius": 0.68,
       "habitabilityIndex": 0.6922
     },
     {
@@ -210,6 +230,7 @@
       "eqTempK": 241.03,
       "orbitAU": 3.075,
       "starTempK": 6300.0,
+      "starRadius": 1.935709,
       "habitabilityIndex": 0.6834
     },
     {
@@ -220,6 +241,7 @@
       "eqTempK": 273.57,
       "orbitAU": 2.03,
       "starTempK": 6255.0,
+      "starRadius": 1.67,
       "habitabilityIndex": 0.6632
     },
     {
@@ -230,6 +252,7 @@
       "eqTempK": 310.0,
       "orbitAU": 0.35647,
       "starTempK": 5051.0,
+      "starRadius": 0.706,
       "habitabilityIndex": 0.6568
     },
     {
@@ -240,6 +263,7 @@
       "eqTempK": 301.0,
       "orbitAU": 0.154,
       "starTempK": 4258.0,
+      "starRadius": 0.555,
       "habitabilityIndex": 0.6559
     },
     {
@@ -250,6 +274,7 @@
       "eqTempK": 253.38,
       "orbitAU": 1.349,
       "starTempK": 5900.0,
+      "starRadius": 1.07,
       "habitabilityIndex": 0.6488
     },
     {
@@ -260,6 +285,7 @@
       "eqTempK": 243.69,
       "orbitAU": 4.725,
       "starTempK": 4898.0,
+      "starRadius": 5.03,
       "habitabilityIndex": 0.6315
     },
     {
@@ -270,6 +296,7 @@
       "eqTempK": 332.0,
       "orbitAU": 0.097,
       "starTempK": 3568.0,
+      "starRadius": 0.482,
       "habitabilityIndex": 0.6314
     },
     {
@@ -280,6 +307,7 @@
       "eqTempK": 229.0,
       "orbitAU": 1.882,
       "starTempK": 5959.0,
+      "starRadius": 1.199,
       "habitabilityIndex": 0.631
     },
     {
@@ -290,6 +318,7 @@
       "eqTempK": 335.59,
       "orbitAU": 0.078361,
       "starTempK": 3499.0,
+      "starRadius": 0.31,
       "habitabilityIndex": 0.6296
     },
     {
@@ -300,6 +329,7 @@
       "eqTempK": 234.0,
       "orbitAU": 0.6477,
       "starTempK": 5053.0,
+      "starRadius": 0.77,
       "habitabilityIndex": 0.6252
     },
     {
@@ -310,6 +340,7 @@
       "eqTempK": 237.07,
       "orbitAU": 3.34,
       "starTempK": 5509.0,
+      "starRadius": 2.66,
       "habitabilityIndex": 0.6224
     },
     {
@@ -320,6 +351,7 @@
       "eqTempK": 340.0,
       "orbitAU": 0.0381,
       "starTempK": 3195.0,
+      "starRadius": 0.185,
       "habitabilityIndex": 0.6019
     },
     {
@@ -330,6 +362,7 @@
       "eqTempK": 321.22,
       "orbitAU": 0.121,
       "starTempK": 3654.47,
+      "starRadius": 0.402049,
       "habitabilityIndex": 0.6017
     },
     {
@@ -340,6 +373,7 @@
       "eqTempK": 303.12,
       "orbitAU": null,
       "starTempK": 3326.0,
+      "starRadius": 0.404,
       "habitabilityIndex": 0.5973
     },
     {
@@ -350,6 +384,7 @@
       "eqTempK": 239.9,
       "orbitAU": 1.13,
       "starTempK": 5426.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.5971
     },
     {
@@ -360,6 +395,7 @@
       "eqTempK": 321.0,
       "orbitAU": 0.3771,
       "starTempK": 5069.0,
+      "starRadius": 0.74,
       "habitabilityIndex": 0.5943
     },
     {
@@ -370,6 +406,7 @@
       "eqTempK": 330.0,
       "orbitAU": 0.048,
       "starTempK": 3129.0,
+      "starRadius": 0.274,
       "habitabilityIndex": 0.5933
     },
     {
@@ -380,6 +417,7 @@
       "eqTempK": 314.0,
       "orbitAU": 0.1445,
       "starTempK": 3931.0,
+      "starRadius": 0.53,
       "habitabilityIndex": 0.5872
     },
     {
@@ -390,6 +428,7 @@
       "eqTempK": 316.0,
       "orbitAU": 0.28,
       "starTempK": 4684.0,
+      "starRadius": 0.673,
       "habitabilityIndex": 0.5745
     },
     {
@@ -400,6 +439,7 @@
       "eqTempK": 305.12,
       "orbitAU": 3.729,
       "starTempK": 4672.0,
+      "starRadius": 6.84,
       "habitabilityIndex": 0.5693
     },
     {
@@ -410,6 +450,7 @@
       "eqTempK": 334.96,
       "orbitAU": 0.3553,
       "starTempK": 4700.0,
+      "starRadius": 0.7761,
       "habitabilityIndex": 0.5627
     },
     {
@@ -420,6 +461,7 @@
       "eqTempK": 207.52,
       "orbitAU": 2.65,
       "starTempK": 5879.0,
+      "starRadius": 1.42,
       "habitabilityIndex": 0.5319
     },
     {
@@ -430,6 +472,7 @@
       "eqTempK": 212.28,
       "orbitAU": 2.45,
       "starTempK": 5664.0,
+      "starRadius": 1.48,
       "habitabilityIndex": 0.5291
     },
     {
@@ -440,6 +483,7 @@
       "eqTempK": 224.21,
       "orbitAU": 2.37,
       "starTempK": 6254.0,
+      "starRadius": 1.31,
       "habitabilityIndex": 0.5291
     },
     {
@@ -450,6 +494,7 @@
       "eqTempK": 295.3,
       "orbitAU": 1.28,
       "starTempK": 6124.0,
+      "starRadius": 1.28,
       "habitabilityIndex": 0.5286
     },
     {
@@ -460,6 +505,7 @@
       "eqTempK": 318.0,
       "orbitAU": 0.5594,
       "starTempK": 5943.0,
+      "starRadius": 1.13,
       "habitabilityIndex": 0.5281
     },
     {
@@ -470,6 +516,7 @@
       "eqTempK": 326.0,
       "orbitAU": 0.47726,
       "starTempK": 5533.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.5257
     },
     {
@@ -480,6 +527,7 @@
       "eqTempK": 324.75,
       "orbitAU": 2.16,
       "starTempK": 4819.44,
+      "starRadius": 4.21799,
       "habitabilityIndex": 0.5193
     },
     {
@@ -490,6 +538,7 @@
       "eqTempK": 359.0,
       "orbitAU": 0.38,
       "starTempK": 5588.0,
+      "starRadius": 0.817,
       "habitabilityIndex": 0.515
     },
     {
@@ -500,6 +549,7 @@
       "eqTempK": 338.0,
       "orbitAU": 0.1649,
       "starTempK": 4035.0,
+      "starRadius": 0.59,
       "habitabilityIndex": 0.5124
     },
     {
@@ -510,6 +560,7 @@
       "eqTempK": 371.8,
       "orbitAU": 0.1357,
       "starTempK": 3844.0,
+      "starRadius": 0.546,
       "habitabilityIndex": 0.5123
     },
     {
@@ -520,6 +571,7 @@
       "eqTempK": 348.0,
       "orbitAU": 0.25483,
       "starTempK": 4838.0,
+      "starRadius": 0.74,
       "habitabilityIndex": 0.5112
     },
     {
@@ -530,6 +582,7 @@
       "eqTempK": 346.13,
       "orbitAU": 0.0718,
       "starTempK": 3500.0,
+      "starRadius": 0.302,
       "habitabilityIndex": 0.5108
     },
     {
@@ -540,6 +593,7 @@
       "eqTempK": 266.14,
       "orbitAU": 1.543,
       "starTempK": 5836.0,
+      "starRadius": 1.38,
       "habitabilityIndex": 0.5092
     },
     {
@@ -550,6 +604,7 @@
       "eqTempK": 345.0,
       "orbitAU": 0.48418,
       "starTempK": 5731.0,
+      "starRadius": 0.906,
       "habitabilityIndex": 0.5086
     },
     {
@@ -560,6 +615,7 @@
       "eqTempK": 182.0,
       "orbitAU": 1.1218,
       "starTempK": 4736.0,
+      "starRadius": 0.63,
       "habitabilityIndex": 0.5072
     },
     {
@@ -570,6 +626,7 @@
       "eqTempK": 374.0,
       "orbitAU": 0.41251,
       "starTempK": 5798.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.5063
     },
     {
@@ -580,6 +637,7 @@
       "eqTempK": 264.28,
       "orbitAU": 1.06,
       "starTempK": 5533.0,
+      "starRadius": 1.04,
       "habitabilityIndex": 0.5012
     },
     {
@@ -590,6 +648,7 @@
       "eqTempK": 351.55,
       "orbitAU": 0.181,
       "starTempK": 3734.0,
+      "starRadius": 0.69,
       "habitabilityIndex": 0.5003
     },
     {
@@ -600,6 +659,7 @@
       "eqTempK": 187.94,
       "orbitAU": 0.309,
       "starTempK": 3371.0,
+      "starRadius": 0.413049,
       "habitabilityIndex": 0.5001
     },
     {
@@ -610,6 +670,7 @@
       "eqTempK": 355.0,
       "orbitAU": 0.2597,
       "starTempK": 4806.0,
+      "starRadius": 0.729,
       "habitabilityIndex": 0.4981
     },
     {
@@ -620,6 +681,7 @@
       "eqTempK": 228.76,
       "orbitAU": 1.66,
       "starTempK": 5750.0,
+      "starRadius": 1.13,
       "habitabilityIndex": 0.4961
     },
     {
@@ -630,6 +692,7 @@
       "eqTempK": 399.0,
       "orbitAU": 0.0685,
       "starTempK": 3420.0,
+      "starRadius": 0.36,
       "habitabilityIndex": 0.4942
     },
     {
@@ -640,6 +703,7 @@
       "eqTempK": 207.3,
       "orbitAU": 2.446,
       "starTempK": 5966.0,
+      "starRadius": 1.27,
       "habitabilityIndex": 0.4901
     },
     {
@@ -650,6 +714,7 @@
       "eqTempK": 346.0,
       "orbitAU": 0.6095,
       "starTempK": 5837.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.4898
     },
     {
@@ -660,6 +725,7 @@
       "eqTempK": 188.1,
       "orbitAU": 0.384,
       "starTempK": 3564.0,
+      "starRadius": 0.46,
       "habitabilityIndex": 0.4872
     },
     {
@@ -670,6 +736,7 @@
       "eqTempK": 347.0,
       "orbitAU": 0.2253,
       "starTempK": 4706.54,
+      "starRadius": 0.666755,
       "habitabilityIndex": 0.4844
     },
     {
@@ -680,6 +747,7 @@
       "eqTempK": 320.21,
       "orbitAU": 0.3,
       "starTempK": 4550.0,
+      "starRadius": 0.639,
       "habitabilityIndex": 0.4831
     },
     {
@@ -690,6 +758,7 @@
       "eqTempK": 261.91,
       "orbitAU": 0.435,
       "starTempK": 4324.0,
+      "starRadius": 0.686355,
       "habitabilityIndex": 0.4775
     },
     {
@@ -700,6 +769,7 @@
       "eqTempK": 343.0,
       "orbitAU": 0.56201,
       "starTempK": 5829.0,
+      "starRadius": 1.04,
       "habitabilityIndex": 0.475
     },
     {
@@ -710,6 +780,7 @@
       "eqTempK": 410.3,
       "orbitAU": 0.02156,
       "starTempK": 3151.0,
+      "starRadius": 0.157,
       "habitabilityIndex": 0.4737
     },
     {
@@ -720,6 +791,7 @@
       "eqTempK": 400.0,
       "orbitAU": 0.0274,
       "starTempK": 3195.0,
+      "starRadius": 0.185,
       "habitabilityIndex": 0.4727
     },
     {
@@ -730,6 +802,7 @@
       "eqTempK": 348.0,
       "orbitAU": 0.3729,
       "starTempK": 5515.0,
+      "starRadius": 0.87,
       "habitabilityIndex": 0.4722
     },
     {
@@ -740,6 +813,7 @@
       "eqTempK": 318.0,
       "orbitAU": 0.768,
       "starTempK": 6096.0,
+      "starRadius": 1.152,
       "habitabilityIndex": 0.4672
     },
     {
@@ -750,6 +824,7 @@
       "eqTempK": 366.0,
       "orbitAU": 0.268,
       "starTempK": 4914.0,
+      "starRadius": 0.763,
       "habitabilityIndex": 0.4658
     },
     {
@@ -760,6 +835,7 @@
       "eqTempK": 223.4,
       "orbitAU": 2.37,
       "starTempK": 5843.0,
+      "starRadius": 1.49,
       "habitabilityIndex": 0.4631
     },
     {
@@ -770,6 +846,7 @@
       "eqTempK": 217.81,
       "orbitAU": 1.92,
       "starTempK": 5566.0,
+      "starRadius": 1.26442,
       "habitabilityIndex": 0.4618
     },
     {
@@ -780,6 +857,7 @@
       "eqTempK": 340.0,
       "orbitAU": 0.4276,
       "starTempK": 5403.0,
+      "starRadius": 0.868,
       "habitabilityIndex": 0.4598
     },
     {
@@ -790,6 +868,7 @@
       "eqTempK": 295.0,
       "orbitAU": 0.48,
       "starTempK": 5307.0,
+      "starRadius": 0.767,
       "habitabilityIndex": 0.459
     },
     {
@@ -800,6 +879,7 @@
       "eqTempK": 418.0,
       "orbitAU": 0.128,
       "starTempK": 4500.0,
+      "starRadius": 0.595,
       "habitabilityIndex": 0.4498
     },
     {
@@ -810,6 +890,7 @@
       "eqTempK": 400.0,
       "orbitAU": 0.3679,
       "starTempK": 5655.0,
+      "starRadius": 0.9,
       "habitabilityIndex": 0.4491
     },
     {
@@ -820,6 +901,7 @@
       "eqTempK": 358.19,
       "orbitAU": 1.039,
       "starTempK": 6245.0,
+      "starRadius": 1.47,
       "habitabilityIndex": 0.4486
     },
     {
@@ -830,6 +912,7 @@
       "eqTempK": 407.0,
       "orbitAU": 0.4823,
       "starTempK": 5767.0,
+      "starRadius": 0.99,
       "habitabilityIndex": 0.4475
     },
     {
@@ -840,6 +923,7 @@
       "eqTempK": 384.0,
       "orbitAU": 0.2881,
       "starTempK": 5298.0,
+      "starRadius": 0.83,
       "habitabilityIndex": 0.4398
     },
     {
@@ -850,6 +934,7 @@
       "eqTempK": 354.69,
       "orbitAU": 0.85,
       "starTempK": 6165.0,
+      "starRadius": 1.21,
       "habitabilityIndex": 0.4368
     },
     {
@@ -860,6 +945,7 @@
       "eqTempK": 402.0,
       "orbitAU": 0.113,
       "starTempK": 4257.0,
+      "starRadius": 0.523,
       "habitabilityIndex": 0.4337
     },
     {
@@ -870,6 +956,7 @@
       "eqTempK": 253.08,
       "orbitAU": 0.1482,
       "starTempK": 6310.0,
+      "starRadius": 1.43,
       "habitabilityIndex": 0.4329
     },
     {
@@ -880,6 +967,7 @@
       "eqTempK": 369.24,
       "orbitAU": 4.21,
       "starTempK": 4879.0,
+      "starRadius": 10.37,
       "habitabilityIndex": 0.4321
     },
     {
@@ -890,6 +978,7 @@
       "eqTempK": 420.0,
       "orbitAU": 0.1538,
       "starTempK": 4500.0,
+      "starRadius": 0.677,
       "habitabilityIndex": 0.4265
     },
     {
@@ -900,6 +989,7 @@
       "eqTempK": 294.42,
       "orbitAU": 1.0896,
       "starTempK": 5913.0,
+      "starRadius": 1.1618,
       "habitabilityIndex": 0.4229
     },
     {
@@ -910,6 +1000,7 @@
       "eqTempK": 178.13,
       "orbitAU": 2.655,
       "starTempK": 5874.0,
+      "starRadius": 1.05,
       "habitabilityIndex": 0.4105
     },
     {
@@ -920,6 +1011,7 @@
       "eqTempK": 338.12,
       "orbitAU": 3.3,
       "starTempK": 32780.0,
+      "starRadius": 0.151,
       "habitabilityIndex": 0.4061
     },
     {
@@ -930,6 +1022,7 @@
       "eqTempK": 423.0,
       "orbitAU": 0.0582,
       "starTempK": 3436.0,
+      "starRadius": 0.379,
       "habitabilityIndex": 0.4039
     },
     {
@@ -940,6 +1033,7 @@
       "eqTempK": 397.0,
       "orbitAU": 0.189,
       "starTempK": 4699.0,
+      "starRadius": 0.668,
       "habitabilityIndex": 0.4033
     },
     {
@@ -950,6 +1044,7 @@
       "eqTempK": 422.0,
       "orbitAU": 0.1915,
       "starTempK": 4640.0,
+      "starRadius": 0.695,
       "habitabilityIndex": 0.4028
     },
     {
@@ -960,6 +1055,7 @@
       "eqTempK": 445.0,
       "orbitAU": 0.025,
       "starTempK": 3300.0,
+      "starRadius": 0.235,
       "habitabilityIndex": 0.4022
     },
     {
@@ -970,6 +1066,7 @@
       "eqTempK": 438.0,
       "orbitAU": 0.0229,
       "starTempK": 3195.0,
+      "starRadius": 0.185,
       "habitabilityIndex": 0.4017
     },
     {
@@ -980,6 +1077,7 @@
       "eqTempK": 426.0,
       "orbitAU": 0.0683,
       "starTempK": 3688.0,
+      "starRadius": 0.468,
       "habitabilityIndex": 0.401
     },
     {
@@ -990,6 +1088,7 @@
       "eqTempK": 451.0,
       "orbitAU": 0.146,
       "starTempK": 4648.0,
+      "starRadius": 0.674,
       "habitabilityIndex": 0.3927
     },
     {
@@ -1000,6 +1099,7 @@
       "eqTempK": 408.0,
       "orbitAU": 0.18836,
       "starTempK": 4894.0,
+      "starRadius": 0.684,
       "habitabilityIndex": 0.3927
     },
     {
@@ -1010,6 +1110,7 @@
       "eqTempK": 210.79,
       "orbitAU": 1.16,
       "starTempK": 5135.0,
+      "starRadius": 0.840622,
       "habitabilityIndex": 0.3888
     },
     {
@@ -1020,6 +1121,7 @@
       "eqTempK": 203.08,
       "orbitAU": 0.71,
       "starTempK": 4159.0,
+      "starRadius": 0.728,
       "habitabilityIndex": 0.384
     },
     {
@@ -1030,6 +1132,7 @@
       "eqTempK": 443.0,
       "orbitAU": 0.313,
       "starTempK": 5666.0,
+      "starRadius": 0.992,
       "habitabilityIndex": 0.3755
     },
     {
@@ -1040,6 +1143,7 @@
       "eqTempK": 232.94,
       "orbitAU": 0.166,
       "starTempK": 3287.0,
+      "starRadius": 0.358519,
       "habitabilityIndex": 0.3721
     },
     {
@@ -1050,6 +1154,7 @@
       "eqTempK": 433.0,
       "orbitAU": 0.2323,
       "starTempK": 5295.0,
+      "starRadius": 0.8,
       "habitabilityIndex": 0.372
     },
     {
@@ -1060,6 +1165,7 @@
       "eqTempK": 375.0,
       "orbitAU": 0.3259,
       "starTempK": 5029.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.366
     },
     {
@@ -1070,6 +1176,7 @@
       "eqTempK": 179.53,
       "orbitAU": 1.864,
       "starTempK": 5271.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.3644
     },
     {
@@ -1080,6 +1187,7 @@
       "eqTempK": 171.0,
       "orbitAU": 18.0,
       "starTempK": 5794.0,
+      "starRadius": 1.53,
       "habitabilityIndex": 0.3637
     },
     {
@@ -1090,6 +1198,7 @@
       "eqTempK": 282.81,
       "orbitAU": 0.882,
       "starTempK": 5508.0,
+      "starRadius": 1.0,
       "habitabilityIndex": 0.3628
     },
     {
@@ -1100,6 +1209,7 @@
       "eqTempK": 235.69,
       "orbitAU": 1.487,
       "starTempK": 5790.0,
+      "starRadius": 1.05971,
       "habitabilityIndex": 0.3609
     },
     {
@@ -1110,6 +1220,7 @@
       "eqTempK": 411.0,
       "orbitAU": 0.53,
       "starTempK": 5784.0,
+      "starRadius": 1.147,
       "habitabilityIndex": 0.359
     },
     {
@@ -1120,6 +1231,7 @@
       "eqTempK": 163.2,
       "orbitAU": 2.294,
       "starTempK": 5560.0,
+      "starRadius": 0.85,
       "habitabilityIndex": 0.3575
     },
     {
@@ -1130,6 +1242,7 @@
       "eqTempK": 458.0,
       "orbitAU": 0.4757,
       "starTempK": 5884.0,
+      "starRadius": 1.485,
       "habitabilityIndex": 0.3556
     },
     {
@@ -1140,6 +1253,7 @@
       "eqTempK": 159.03,
       "orbitAU": 4.713,
       "starTempK": 6314.0,
+      "starRadius": 1.28588,
       "habitabilityIndex": 0.3548
     },
     {
@@ -1150,6 +1264,7 @@
       "eqTempK": 346.88,
       "orbitAU": 1.83,
       "starTempK": 4806.0,
+      "starRadius": 4.1,
       "habitabilityIndex": 0.3547
     },
     {
@@ -1160,6 +1275,7 @@
       "eqTempK": 304.95,
       "orbitAU": 1.88,
       "starTempK": 5900.0,
+      "starRadius": 2.16,
       "habitabilityIndex": 0.3529
     },
     {
@@ -1170,6 +1286,7 @@
       "eqTempK": 469.0,
       "orbitAU": 0.065,
       "starTempK": 3750.0,
+      "starRadius": 0.51,
       "habitabilityIndex": 0.3517
     },
     {
@@ -1180,6 +1297,7 @@
       "eqTempK": 391.0,
       "orbitAU": 0.3815,
       "starTempK": 5661.0,
+      "starRadius": 0.934,
       "habitabilityIndex": 0.3491
     },
     {
@@ -1190,6 +1308,7 @@
       "eqTempK": 449.0,
       "orbitAU": 0.02267,
       "starTempK": 3100.0,
+      "starRadius": 0.204,
       "habitabilityIndex": 0.349
     },
     {
@@ -1200,6 +1319,7 @@
       "eqTempK": 411.0,
       "orbitAU": 0.2388,
       "starTempK": 5332.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.3471
     },
     {
@@ -1210,6 +1330,7 @@
       "eqTempK": 391.0,
       "orbitAU": 0.3907,
       "starTempK": 5840.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.3466
     },
     {
@@ -1220,6 +1341,7 @@
       "eqTempK": 182.63,
       "orbitAU": 1.67,
       "starTempK": 5405.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.342
     },
     {
@@ -1230,6 +1352,7 @@
       "eqTempK": 475.0,
       "orbitAU": 0.19924,
       "starTempK": 5233.0,
+      "starRadius": 0.835,
       "habitabilityIndex": 0.3416
     },
     {
@@ -1240,6 +1363,7 @@
       "eqTempK": 438.0,
       "orbitAU": 0.3192,
       "starTempK": 5421.0,
+      "starRadius": 0.897,
       "habitabilityIndex": 0.3379
     },
     {
@@ -1250,6 +1374,7 @@
       "eqTempK": 420.0,
       "orbitAU": 0.316,
       "starTempK": 5644.0,
+      "starRadius": 0.967,
       "habitabilityIndex": 0.3361
     },
     {
@@ -1260,6 +1385,7 @@
       "eqTempK": 442.0,
       "orbitAU": 0.32,
       "starTempK": 5756.4,
+      "starRadius": 0.759,
       "habitabilityIndex": 0.3355
     },
     {
@@ -1270,6 +1396,7 @@
       "eqTempK": 465.0,
       "orbitAU": null,
       "starTempK": 3804.0,
+      "starRadius": 0.46,
       "habitabilityIndex": 0.3313
     },
     {
@@ -1280,6 +1407,7 @@
       "eqTempK": 171.49,
       "orbitAU": 1.898274748,
       "starTempK": 5194.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.3277
     },
     {
@@ -1290,6 +1418,7 @@
       "eqTempK": 423.0,
       "orbitAU": 0.16704,
       "starTempK": 4758.0,
+      "starRadius": 0.72,
       "habitabilityIndex": 0.3275
     },
     {
@@ -1300,6 +1429,7 @@
       "eqTempK": 340.67,
       "orbitAU": 1.93,
       "starTempK": 4871.0,
+      "starRadius": 4.06,
       "habitabilityIndex": 0.3275
     },
     {
@@ -1310,6 +1440,7 @@
       "eqTempK": 383.0,
       "orbitAU": 0.297,
       "starTempK": 5043.0,
+      "starRadius": 0.881,
       "habitabilityIndex": 0.3214
     },
     {
@@ -1320,6 +1451,7 @@
       "eqTempK": 369.62,
       "orbitAU": 1.271,
       "starTempK": 4846.0,
+      "starRadius": 3.18,
       "habitabilityIndex": 0.3198
     },
     {
@@ -1330,6 +1462,7 @@
       "eqTempK": 169.58,
       "orbitAU": 4.37,
       "starTempK": 6423.0,
+      "starRadius": 1.31,
       "habitabilityIndex": 0.3191
     },
     {
@@ -1340,6 +1473,7 @@
       "eqTempK": 149.31,
       "orbitAU": 8.4,
       "starTempK": 4867.0,
+      "starRadius": 3.4,
       "habitabilityIndex": 0.3191
     },
     {
@@ -1350,6 +1484,7 @@
       "eqTempK": 495.0,
       "orbitAU": 0.079,
       "starTempK": 3740.0,
+      "starRadius": 0.48,
       "habitabilityIndex": 0.3164
     },
     {
@@ -1360,6 +1495,7 @@
       "eqTempK": 443.0,
       "orbitAU": 0.1177,
       "starTempK": 4065.0,
+      "starRadius": 0.597,
       "habitabilityIndex": 0.3149
     },
     {
@@ -1370,6 +1506,7 @@
       "eqTempK": 147.48,
       "orbitAU": 3.982,
       "starTempK": 5900.0,
+      "starRadius": 1.07,
       "habitabilityIndex": 0.3147
     },
     {
@@ -1380,6 +1517,7 @@
       "eqTempK": 487.0,
       "orbitAU": 0.2478,
       "starTempK": 5545.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.3135
     },
     {
@@ -1390,6 +1528,7 @@
       "eqTempK": 399.0,
       "orbitAU": 0.33939,
       "starTempK": 5653.0,
+      "starRadius": 0.91,
       "habitabilityIndex": 0.3131
     },
     {
@@ -1400,6 +1539,7 @@
       "eqTempK": 338.35,
       "orbitAU": 0.9,
       "starTempK": 5661.0,
+      "starRadius": 1.38268,
       "habitabilityIndex": 0.3126
     },
     {
@@ -1410,6 +1550,7 @@
       "eqTempK": 486.0,
       "orbitAU": 0.261,
       "starTempK": 5502.0,
+      "starRadius": 0.68,
       "habitabilityIndex": 0.3121
     },
     {
@@ -1420,6 +1561,7 @@
       "eqTempK": 198.47,
       "orbitAU": 1.837,
       "starTempK": 5638.0,
+      "starRadius": 0.979,
       "habitabilityIndex": 0.3116
     },
     {
@@ -1430,6 +1572,7 @@
       "eqTempK": 492.0,
       "orbitAU": 0.287,
       "starTempK": 4965.0,
+      "starRadius": 2.861,
       "habitabilityIndex": 0.3095
     },
     {
@@ -1440,6 +1583,7 @@
       "eqTempK": 431.0,
       "orbitAU": 0.08551,
       "starTempK": 3914.0,
+      "starRadius": 0.512,
       "habitabilityIndex": 0.3094
     },
     {
@@ -1450,6 +1594,7 @@
       "eqTempK": 515.0,
       "orbitAU": 0.016,
       "starTempK": 3226.0,
+      "starRadius": 0.2056,
       "habitabilityIndex": 0.309
     },
     {
@@ -1460,6 +1605,7 @@
       "eqTempK": 209.54,
       "orbitAU": 2.249,
       "starTempK": 5568.0,
+      "starRadius": 1.369794,
       "habitabilityIndex": 0.3081
     },
     {
@@ -1470,6 +1616,7 @@
       "eqTempK": 480.0,
       "orbitAU": 0.1803,
       "starTempK": 5337.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.3069
     },
     {
@@ -1480,6 +1627,7 @@
       "eqTempK": 457.53,
       "orbitAU": 0.079,
       "starTempK": 3910.0,
+      "starRadius": 0.465216,
       "habitabilityIndex": 0.3058
     },
     {
@@ -1490,6 +1638,7 @@
       "eqTempK": 489.0,
       "orbitAU": 0.24666,
       "starTempK": 5693.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.3049
     },
     {
@@ -1500,6 +1649,7 @@
       "eqTempK": 487.0,
       "orbitAU": 0.23236,
       "starTempK": 5360.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.3034
     },
     {
@@ -1510,6 +1660,7 @@
       "eqTempK": 484.0,
       "orbitAU": 0.06,
       "starTempK": 4258.0,
+      "starRadius": 0.555,
       "habitabilityIndex": 0.3028
     },
     {
@@ -1520,6 +1671,7 @@
       "eqTempK": 490.1,
       "orbitAU": 0.1249,
       "starTempK": 4285.0,
+      "starRadius": 0.703,
       "habitabilityIndex": 0.3019
     },
     {
@@ -1530,6 +1682,7 @@
       "eqTempK": 408.0,
       "orbitAU": 0.0781,
       "starTempK": 4094.0,
+      "starRadius": 0.53,
       "habitabilityIndex": 0.3002
     },
     {
@@ -1540,6 +1693,7 @@
       "eqTempK": 346.0,
       "orbitAU": 0.56971,
       "starTempK": 5491.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.2998
     },
     {
@@ -1550,6 +1704,7 @@
       "eqTempK": 376.79,
       "orbitAU": 0.4737,
       "starTempK": 5325.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.2996
     },
     {
@@ -1560,6 +1715,7 @@
       "eqTempK": 164.93,
       "orbitAU": 5.14,
       "starTempK": 5701.0,
+      "starRadius": 1.85,
       "habitabilityIndex": 0.2991
     },
     {
@@ -1570,6 +1726,7 @@
       "eqTempK": 488.0,
       "orbitAU": 0.082,
       "starTempK": 4351.0,
+      "starRadius": 0.566,
       "habitabilityIndex": 0.2983
     },
     {
@@ -1580,6 +1737,7 @@
       "eqTempK": 150.46,
       "orbitAU": 0.3343,
       "starTempK": 3293.74,
+      "starRadius": 0.3,
       "habitabilityIndex": 0.2977
     },
     {
@@ -1590,6 +1748,7 @@
       "eqTempK": 144.9,
       "orbitAU": 5.0,
       "starTempK": 5957.0,
+      "starRadius": 1.213,
       "habitabilityIndex": 0.297
     },
     {
@@ -1600,6 +1759,7 @@
       "eqTempK": 397.45,
       "orbitAU": 0.239,
       "starTempK": 4635.0,
+      "starRadius": 0.7558,
       "habitabilityIndex": 0.2966
     },
     {
@@ -1610,6 +1770,7 @@
       "eqTempK": 510.9,
       "orbitAU": 0.0327,
       "starTempK": 3490.0,
+      "starRadius": 0.329,
       "habitabilityIndex": 0.296
     },
     {
@@ -1620,6 +1781,7 @@
       "eqTempK": 531.0,
       "orbitAU": 0.236,
       "starTempK": 5577.0,
+      "starRadius": 0.882,
       "habitabilityIndex": 0.2946
     },
     {
@@ -1630,6 +1792,7 @@
       "eqTempK": 501.0,
       "orbitAU": 0.165,
       "starTempK": 5044.0,
+      "starRadius": 0.77,
       "habitabilityIndex": 0.2932
     },
     {
@@ -1640,6 +1803,7 @@
       "eqTempK": 536.0,
       "orbitAU": 0.087,
       "starTempK": 4493.0,
+      "starRadius": 0.613,
       "habitabilityIndex": 0.2929
     },
     {
@@ -1650,6 +1814,7 @@
       "eqTempK": 513.0,
       "orbitAU": 0.30045,
       "starTempK": 5840.0,
+      "starRadius": 1.1,
       "habitabilityIndex": 0.2925
     },
     {
@@ -1660,6 +1825,7 @@
       "eqTempK": 476.0,
       "orbitAU": 0.319,
       "starTempK": 5835.0,
+      "starRadius": 1.103,
       "habitabilityIndex": 0.2923
     },
     {
@@ -1670,6 +1836,7 @@
       "eqTempK": 308.0,
       "orbitAU": 0.5,
       "starTempK": 5498.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.292
     },
     {
@@ -1680,6 +1847,7 @@
       "eqTempK": 484.0,
       "orbitAU": 0.2495,
       "starTempK": 5797.0,
+      "starRadius": 0.99,
       "habitabilityIndex": 0.2919
     },
     {
@@ -1690,6 +1858,7 @@
       "eqTempK": 143.81,
       "orbitAU": 4.92,
       "starTempK": 5802.0,
+      "starRadius": 1.3,
       "habitabilityIndex": 0.2919
     },
     {
@@ -1700,6 +1869,7 @@
       "eqTempK": 352.89,
       "orbitAU": 0.60347,
       "starTempK": 5606.0,
+      "starRadius": 1.0284,
       "habitabilityIndex": 0.2906
     },
     {
@@ -1710,6 +1880,7 @@
       "eqTempK": 362.48,
       "orbitAU": 1.492,
       "starTempK": 4915.0,
+      "starRadius": 3.49,
       "habitabilityIndex": 0.2879
     },
     {
@@ -1720,6 +1891,7 @@
       "eqTempK": 465.0,
       "orbitAU": 0.32185,
       "starTempK": 5853.19,
+      "starRadius": 1.12865,
       "habitabilityIndex": 0.285
     },
     {
@@ -1730,6 +1902,7 @@
       "eqTempK": 491.0,
       "orbitAU": 0.1679,
       "starTempK": 5235.0,
+      "starRadius": 0.8,
       "habitabilityIndex": 0.2847
     },
     {
@@ -1740,6 +1913,7 @@
       "eqTempK": 491.7,
       "orbitAU": 0.275,
       "starTempK": 5424.0,
+      "starRadius": 0.978,
       "habitabilityIndex": 0.2822
     },
     {
@@ -1750,6 +1924,7 @@
       "eqTempK": 433.0,
       "orbitAU": 0.10379,
       "starTempK": 4075.0,
+      "starRadius": 0.52,
       "habitabilityIndex": 0.2821
     },
     {
@@ -1760,6 +1935,7 @@
       "eqTempK": 459.21,
       "orbitAU": 0.3886,
       "starTempK": 5560.0,
+      "starRadius": 1.14,
       "habitabilityIndex": 0.2798
     },
     {
@@ -1770,6 +1946,7 @@
       "eqTempK": 138.11,
       "orbitAU": 5.219,
       "starTempK": 6096.0,
+      "starRadius": 1.152,
       "habitabilityIndex": 0.2785
     },
     {
@@ -1780,6 +1957,7 @@
       "eqTempK": 520.62,
       "orbitAU": 0.0632,
       "starTempK": 3710.0,
+      "starRadius": 0.535,
       "habitabilityIndex": 0.2779
     },
     {
@@ -1790,6 +1968,7 @@
       "eqTempK": 510.0,
       "orbitAU": 0.12,
       "starTempK": 4925.0,
+      "starRadius": 0.64,
       "habitabilityIndex": 0.2766
     },
     {
@@ -1800,6 +1979,7 @@
       "eqTempK": 463.2,
       "orbitAU": 0.099,
       "starTempK": 4021.0,
+      "starRadius": 0.564998,
       "habitabilityIndex": 0.2728
     },
     {
@@ -1810,6 +1990,7 @@
       "eqTempK": 508.0,
       "orbitAU": 0.23678,
       "starTempK": 5871.0,
+      "starRadius": 0.983,
       "habitabilityIndex": 0.2715
     },
     {
@@ -1820,6 +2001,7 @@
       "eqTempK": 523.0,
       "orbitAU": 0.16545,
       "starTempK": 5471.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.2706
     },
     {
@@ -1830,6 +2012,7 @@
       "eqTempK": 412.37,
       "orbitAU": 1.4,
       "starTempK": 4961.0,
+      "starRadius": 4.16,
       "habitabilityIndex": 0.2705
     },
     {
@@ -1840,6 +2023,7 @@
       "eqTempK": 474.0,
       "orbitAU": 0.0525,
       "starTempK": 3566.0,
+      "starRadius": 0.4,
       "habitabilityIndex": 0.2697
     },
     {
@@ -1850,6 +2034,7 @@
       "eqTempK": 427.54,
       "orbitAU": 0.4929,
       "starTempK": 5911.0,
+      "starRadius": 1.109,
       "habitabilityIndex": 0.2696
     },
     {
@@ -1860,6 +2045,7 @@
       "eqTempK": 179.84,
       "orbitAU": 2.112,
       "starTempK": 5710.0,
+      "starRadius": 0.901,
       "habitabilityIndex": 0.2689
     },
     {
@@ -1870,6 +2056,7 @@
       "eqTempK": 554.0,
       "orbitAU": 0.0848,
       "starTempK": 4611.0,
+      "starRadius": 0.69,
       "habitabilityIndex": 0.2682
     },
     {
@@ -1880,6 +2067,7 @@
       "eqTempK": 466.0,
       "orbitAU": 0.286,
       "starTempK": 5804.0,
+      "starRadius": 0.957,
       "habitabilityIndex": 0.2626
     },
     {
@@ -1890,6 +2078,7 @@
       "eqTempK": 135.2,
       "orbitAU": 7.39,
       "starTempK": 6122.0,
+      "starRadius": 1.55,
       "habitabilityIndex": 0.262
     },
     {
@@ -1900,6 +2089,7 @@
       "eqTempK": 531.0,
       "orbitAU": 0.24006,
       "starTempK": 5858.0,
+      "starRadius": 1.04,
       "habitabilityIndex": 0.2596
     },
     {
@@ -1910,6 +2100,7 @@
       "eqTempK": 486.0,
       "orbitAU": 0.3059,
       "starTempK": 5769.0,
+      "starRadius": 0.96,
       "habitabilityIndex": 0.2564
     },
     {
@@ -1920,6 +2111,7 @@
       "eqTempK": 568.0,
       "orbitAU": 0.0536,
       "starTempK": 4002.0,
+      "starRadius": 0.57,
       "habitabilityIndex": 0.2562
     },
     {
@@ -1930,6 +2122,7 @@
       "eqTempK": 574.0,
       "orbitAU": 0.116,
       "starTempK": 4961.0,
+      "starRadius": 0.76,
       "habitabilityIndex": 0.2561
     },
     {
@@ -1940,6 +2133,7 @@
       "eqTempK": 478.5,
       "orbitAU": 0.2366,
       "starTempK": 5327.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.2549
     },
     {
@@ -1950,6 +2144,7 @@
       "eqTempK": 524.0,
       "orbitAU": 0.2739,
       "starTempK": 5806.0,
+      "starRadius": 1.01,
       "habitabilityIndex": 0.2545
     },
     {
@@ -1960,6 +2155,7 @@
       "eqTempK": 414.0,
       "orbitAU": 0.347,
       "starTempK": 5730.0,
+      "starRadius": 1.006,
       "habitabilityIndex": 0.2544
     },
     {
@@ -1970,6 +2166,7 @@
       "eqTempK": 551.0,
       "orbitAU": 0.25861,
       "starTempK": 6026.0,
+      "starRadius": 1.12,
       "habitabilityIndex": 0.254
     },
     {
@@ -1980,6 +2177,7 @@
       "eqTempK": 183.59,
       "orbitAU": 1.01,
       "starTempK": 4640.0,
+      "starRadius": 0.68,
       "habitabilityIndex": 0.2531
     },
     {
@@ -1990,6 +2188,7 @@
       "eqTempK": 425.95,
       "orbitAU": 1.565,
       "starTempK": 4982.0,
+      "starRadius": 4.92,
       "habitabilityIndex": 0.2527
     },
     {
@@ -2000,6 +2199,7 @@
       "eqTempK": 528.0,
       "orbitAU": 0.191,
       "starTempK": 5526.0,
+      "starRadius": 0.903,
       "habitabilityIndex": 0.2516
     },
     {
@@ -2010,6 +2210,7 @@
       "eqTempK": 551.0,
       "orbitAU": 0.041,
       "starTempK": 3572.0,
+      "starRadius": 0.419,
       "habitabilityIndex": 0.2513
     },
     {
@@ -2020,6 +2221,7 @@
       "eqTempK": 577.0,
       "orbitAU": 0.058,
       "starTempK": 4204.0,
+      "starRadius": 0.52,
       "habitabilityIndex": 0.2506
     },
     {
@@ -2030,6 +2232,7 @@
       "eqTempK": 530.0,
       "orbitAU": 0.326,
       "starTempK": 6054.0,
+      "starRadius": 1.306,
       "habitabilityIndex": 0.2498
     },
     {
@@ -2040,6 +2243,7 @@
       "eqTempK": 383.37,
       "orbitAU": 1.032,
       "starTempK": 5534.0,
+      "starRadius": 2.13,
       "habitabilityIndex": 0.2471
     },
     {
@@ -2050,6 +2254,7 @@
       "eqTempK": 183.18,
       "orbitAU": 2.395,
       "starTempK": 5657.0,
+      "starRadius": 1.08,
       "habitabilityIndex": 0.2461
     },
     {
@@ -2060,6 +2265,7 @@
       "eqTempK": 546.0,
       "orbitAU": 0.2958,
       "starTempK": 6169.0,
+      "starRadius": 1.117,
       "habitabilityIndex": 0.2458
     },
     {
@@ -2070,6 +2276,7 @@
       "eqTempK": 529.0,
       "orbitAU": 0.1338,
       "starTempK": 4983.0,
+      "starRadius": 0.76,
       "habitabilityIndex": 0.2441
     },
     {
@@ -2080,6 +2287,7 @@
       "eqTempK": 538.0,
       "orbitAU": 0.2846,
       "starTempK": 5965.0,
+      "starRadius": 1.12,
       "habitabilityIndex": 0.2418
     },
     {
@@ -2090,6 +2298,7 @@
       "eqTempK": 494.0,
       "orbitAU": 0.2244,
       "starTempK": 5664.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.2417
     },
     {
@@ -2100,6 +2309,7 @@
       "eqTempK": 370.18,
       "orbitAU": 0.46,
       "starTempK": 5399.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.2417
     },
     {
@@ -2110,6 +2320,7 @@
       "eqTempK": 412.0,
       "orbitAU": 0.52661,
       "starTempK": 5922.0,
+      "starRadius": 1.143,
       "habitabilityIndex": 0.24
     },
     {
@@ -2120,6 +2331,7 @@
       "eqTempK": 460.0,
       "orbitAU": 0.07295,
       "starTempK": 4082.0,
+      "starRadius": 0.61,
       "habitabilityIndex": 0.2396
     },
     {
@@ -2130,6 +2342,7 @@
       "eqTempK": 535.0,
       "orbitAU": 0.12,
       "starTempK": 4954.0,
+      "starRadius": 0.719,
       "habitabilityIndex": 0.2392
     },
     {
@@ -2140,6 +2353,7 @@
       "eqTempK": 587.0,
       "orbitAU": 0.02279,
       "starTempK": 3326.0,
+      "starRadius": 0.305,
       "habitabilityIndex": 0.2384
     },
     {
@@ -2150,6 +2364,7 @@
       "eqTempK": 154.06,
       "orbitAU": 3.23579639,
       "starTempK": 5622.0,
+      "starRadius": 1.045,
       "habitabilityIndex": 0.2372
     },
     {
@@ -2160,6 +2375,7 @@
       "eqTempK": 539.0,
       "orbitAU": 0.144,
       "starTempK": 5307.0,
+      "starRadius": 0.767,
       "habitabilityIndex": 0.2363
     },
     {
@@ -2170,6 +2386,7 @@
       "eqTempK": 510.0,
       "orbitAU": 43.5,
       "starTempK": 6234.0,
+      "starRadius": 1.26,
       "habitabilityIndex": 0.2352
     },
     {
@@ -2180,6 +2397,7 @@
       "eqTempK": 135.42,
       "orbitAU": 4.89,
       "starTempK": 5790.0,
+      "starRadius": 1.15043,
       "habitabilityIndex": 0.2344
     },
     {
@@ -2190,6 +2408,7 @@
       "eqTempK": 452.0,
       "orbitAU": 0.3577,
       "starTempK": 5692.0,
+      "starRadius": 0.96,
       "habitabilityIndex": 0.2309
     },
     {
@@ -2200,6 +2419,7 @@
       "eqTempK": 536.0,
       "orbitAU": 0.182,
       "starTempK": 5526.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.2291
     },
     {
@@ -2210,6 +2430,7 @@
       "eqTempK": 434.0,
       "orbitAU": 0.39249,
       "starTempK": 5820.0,
+      "starRadius": 1.09,
       "habitabilityIndex": 0.2253
     },
     {
@@ -2220,6 +2441,7 @@
       "eqTempK": 408.17,
       "orbitAU": 0.362,
       "starTempK": 5605.0,
+      "starRadius": 0.825605,
       "habitabilityIndex": 0.2251
     },
     {
@@ -2230,6 +2452,7 @@
       "eqTempK": 546.0,
       "orbitAU": 0.2731,
       "starTempK": 5724.0,
+      "starRadius": 0.94,
       "habitabilityIndex": 0.2244
     },
     {
@@ -2240,6 +2463,7 @@
       "eqTempK": 436.91,
       "orbitAU": 1.32,
       "starTempK": 4891.0,
+      "starRadius": 4.53,
       "habitabilityIndex": 0.2242
     },
     {
@@ -2250,6 +2474,7 @@
       "eqTempK": 523.0,
       "orbitAU": 0.2101,
       "starTempK": 5782.0,
+      "starRadius": 0.99,
       "habitabilityIndex": 0.2238
     },
     {
@@ -2260,6 +2485,7 @@
       "eqTempK": 553.0,
       "orbitAU": 0.1192,
       "starTempK": 5212.0,
+      "starRadius": 0.79,
       "habitabilityIndex": 0.2214
     },
     {
@@ -2270,6 +2496,7 @@
       "eqTempK": 563.0,
       "orbitAU": 0.141,
       "starTempK": 5299.0,
+      "starRadius": 0.826,
       "habitabilityIndex": 0.2208
     },
     {
@@ -2280,6 +2507,7 @@
       "eqTempK": 561.17,
       "orbitAU": null,
       "starTempK": 4570.0,
+      "starRadius": 0.7007,
       "habitabilityIndex": 0.2189
     },
     {
@@ -2290,6 +2518,7 @@
       "eqTempK": 558.0,
       "orbitAU": 0.0683,
       "starTempK": 4298.0,
+      "starRadius": 0.64,
       "habitabilityIndex": 0.2179
     },
     {
@@ -2300,6 +2529,7 @@
       "eqTempK": 554.0,
       "orbitAU": 0.21,
       "starTempK": 5908.0,
+      "starRadius": 0.954,
       "habitabilityIndex": 0.2165
     },
     {
@@ -2310,6 +2540,7 @@
       "eqTempK": 566.37,
       "orbitAU": 0.1354,
       "starTempK": 5055.0,
+      "starRadius": 0.731,
       "habitabilityIndex": 0.2164
     },
     {
@@ -2320,6 +2551,7 @@
       "eqTempK": 621.0,
       "orbitAU": 0.0305,
       "starTempK": 3658.0,
+      "starRadius": 0.34,
       "habitabilityIndex": 0.2158
     },
     {
@@ -2330,6 +2562,7 @@
       "eqTempK": 597.0,
       "orbitAU": 0.1084,
       "starTempK": 5081.0,
+      "starRadius": 0.77,
       "habitabilityIndex": 0.2139
     },
     {
@@ -2340,6 +2573,7 @@
       "eqTempK": 450.0,
       "orbitAU": 0.2626,
       "starTempK": 5401.0,
+      "starRadius": 0.898,
       "habitabilityIndex": 0.2131
     },
     {
@@ -2350,6 +2584,7 @@
       "eqTempK": 581.0,
       "orbitAU": 0.20906,
       "starTempK": 5810.0,
+      "starRadius": 1.05,
       "habitabilityIndex": 0.213
     },
     {
@@ -2360,6 +2595,7 @@
       "eqTempK": 582.0,
       "orbitAU": 0.242,
       "starTempK": 5790.0,
+      "starRadius": 1.269,
       "habitabilityIndex": 0.213
     },
     {
@@ -2370,6 +2606,7 @@
       "eqTempK": 590.88,
       "orbitAU": null,
       "starTempK": 4756.0,
+      "starRadius": 0.6909,
       "habitabilityIndex": 0.2123
     },
     {
@@ -2380,6 +2617,7 @@
       "eqTempK": 522.0,
       "orbitAU": 0.40814,
       "starTempK": 6394.0,
+      "starRadius": 1.44,
       "habitabilityIndex": 0.2112
     },
     {
@@ -2390,6 +2628,7 @@
       "eqTempK": 543.73,
       "orbitAU": 0.2292,
       "starTempK": 5393.43,
+      "starRadius": 1.001813,
       "habitabilityIndex": 0.2108
     },
     {
@@ -2400,6 +2639,7 @@
       "eqTempK": 630.0,
       "orbitAU": 0.2008,
       "starTempK": 4681.53,
+      "starRadius": 0.772344,
       "habitabilityIndex": 0.2094
     },
     {
@@ -2410,6 +2650,7 @@
       "eqTempK": 458.34,
       "orbitAU": 1.36,
       "starTempK": 4918.0,
+      "starRadius": 5.08,
       "habitabilityIndex": 0.2078
     },
     {
@@ -2420,6 +2661,7 @@
       "eqTempK": 519.69,
       "orbitAU": 1.7,
       "starTempK": 29300.0,
+      "starRadius": 0.23,
       "habitabilityIndex": 0.2078
     },
     {
@@ -2430,6 +2672,7 @@
       "eqTempK": 637.0,
       "orbitAU": 0.1169,
       "starTempK": 5383.0,
+      "starRadius": 0.842,
       "habitabilityIndex": 0.2064
     },
     {
@@ -2440,6 +2683,7 @@
       "eqTempK": 601.0,
       "orbitAU": 0.0656,
       "starTempK": 4339.0,
+      "starRadius": 0.65,
       "habitabilityIndex": 0.206
     },
     {
@@ -2450,6 +2694,7 @@
       "eqTempK": 630.0,
       "orbitAU": 0.155,
       "starTempK": 5502.0,
+      "starRadius": 0.68,
       "habitabilityIndex": 0.206
     },
     {
@@ -2460,6 +2705,7 @@
       "eqTempK": 518.01,
       "orbitAU": 0.25,
       "starTempK": 5599.0,
+      "starRadius": 0.920286,
       "habitabilityIndex": 0.2041
     },
     {
@@ -2470,6 +2716,7 @@
       "eqTempK": 518.51,
       "orbitAU": 0.246,
       "starTempK": 5676.0,
+      "starRadius": 0.882858,
       "habitabilityIndex": 0.204
     },
     {
@@ -2480,6 +2727,7 @@
       "eqTempK": 526.92,
       "orbitAU": 2.104,
       "starTempK": 4734.0,
+      "starRadius": 11.21,
       "habitabilityIndex": 0.2037
     },
     {
@@ -2490,6 +2738,7 @@
       "eqTempK": 126.51,
       "orbitAU": 6.7,
       "starTempK": 6148.0,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.202
     },
     {
@@ -2500,6 +2749,7 @@
       "eqTempK": 580.0,
       "orbitAU": 0.16,
       "starTempK": 5745.0,
+      "starRadius": 0.837,
       "habitabilityIndex": 0.2019
     },
     {
@@ -2510,6 +2760,7 @@
       "eqTempK": 621.48,
       "orbitAU": 0.1517,
       "starTempK": 5413.0,
+      "starRadius": 0.86,
       "habitabilityIndex": 0.2013
     },
     {
@@ -2520,6 +2771,7 @@
       "eqTempK": 576.0,
       "orbitAU": 0.2101,
       "starTempK": 5816.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.1996
     },
     {
@@ -2530,6 +2782,7 @@
       "eqTempK": 652.0,
       "orbitAU": 0.039,
       "starTempK": 4486.0,
+      "starRadius": 0.571,
       "habitabilityIndex": 0.1993
     },
     {
@@ -2540,6 +2793,7 @@
       "eqTempK": 630.0,
       "orbitAU": 0.141,
       "starTempK": 5788.0,
+      "starRadius": 0.873,
       "habitabilityIndex": 0.1992
     },
     {
@@ -2550,6 +2804,7 @@
       "eqTempK": 609.59,
       "orbitAU": 0.1758,
       "starTempK": 5660.0,
+      "starRadius": 0.877,
       "habitabilityIndex": 0.1988
     },
     {
@@ -2560,6 +2815,7 @@
       "eqTempK": 432.84,
       "orbitAU": 0.295,
       "starTempK": 5221.0,
+      "starRadius": 0.871954,
       "habitabilityIndex": 0.1976
     },
     {
@@ -2570,6 +2826,7 @@
       "eqTempK": 613.0,
       "orbitAU": 0.109,
       "starTempK": 5020.0,
+      "starRadius": 0.85,
       "habitabilityIndex": 0.1973
     },
     {
@@ -2580,6 +2837,7 @@
       "eqTempK": 605.0,
       "orbitAU": 0.181,
       "starTempK": 5680.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.1972
     },
     {
@@ -2590,6 +2848,7 @@
       "eqTempK": 486.0,
       "orbitAU": 0.2881,
       "starTempK": 5887.0,
+      "starRadius": 1.07,
       "habitabilityIndex": 0.1967
     },
     {
@@ -2600,6 +2859,7 @@
       "eqTempK": 622.0,
       "orbitAU": 0.182,
       "starTempK": 6012.0,
+      "starRadius": 1.024,
       "habitabilityIndex": 0.1963
     },
     {
@@ -2610,6 +2870,7 @@
       "eqTempK": 590.0,
       "orbitAU": 0.0608,
       "starTempK": 3867.0,
+      "starRadius": 0.61,
       "habitabilityIndex": 0.1957
     },
     {
@@ -2620,6 +2881,7 @@
       "eqTempK": 595.0,
       "orbitAU": 0.1589,
       "starTempK": 5844.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.1956
     },
     {
@@ -2630,6 +2892,7 @@
       "eqTempK": 467.0,
       "orbitAU": 0.512,
       "starTempK": 5890.0,
+      "starRadius": 1.385,
       "habitabilityIndex": 0.1944
     },
     {
@@ -2640,6 +2903,7 @@
       "eqTempK": 590.0,
       "orbitAU": 0.28,
       "starTempK": 6106.0,
+      "starRadius": 1.359,
       "habitabilityIndex": 0.1938
     },
     {
@@ -2650,6 +2914,7 @@
       "eqTempK": 161.19,
       "orbitAU": 3.053,
       "starTempK": 5569.0,
+      "starRadius": 1.1,
       "habitabilityIndex": 0.1921
     },
     {
@@ -2660,6 +2925,7 @@
       "eqTempK": 543.0,
       "orbitAU": 0.28575,
       "starTempK": 5917.0,
+      "starRadius": 0.949,
       "habitabilityIndex": 0.1909
     },
     {
@@ -2670,6 +2936,7 @@
       "eqTempK": 638.0,
       "orbitAU": 0.1418,
       "starTempK": 5677.0,
+      "starRadius": 0.92,
       "habitabilityIndex": 0.1898
     },
     {
@@ -2680,6 +2947,7 @@
       "eqTempK": 116.56,
       "orbitAU": 9.811,
       "starTempK": 6245.0,
+      "starRadius": 1.47,
       "habitabilityIndex": 0.1895
     },
     {
@@ -2690,6 +2958,7 @@
       "eqTempK": 585.0,
       "orbitAU": 0.1954,
       "starTempK": 5982.0,
+      "starRadius": 0.96,
       "habitabilityIndex": 0.1895
     },
     {
@@ -2700,6 +2969,7 @@
       "eqTempK": 665.0,
       "orbitAU": 0.111,
       "starTempK": 5797.0,
+      "starRadius": 0.876,
       "habitabilityIndex": 0.1885
     },
     {
@@ -2710,6 +2980,7 @@
       "eqTempK": 595.0,
       "orbitAU": 0.286,
       "starTempK": 6335.0,
+      "starRadius": 1.147,
       "habitabilityIndex": 0.1879
     },
     {
@@ -2720,6 +2991,7 @@
       "eqTempK": 598.0,
       "orbitAU": 0.164086,
       "starTempK": 6179.0,
+      "starRadius": 1.14,
       "habitabilityIndex": 0.1877
     },
     {
@@ -2730,6 +3002,7 @@
       "eqTempK": 598.0,
       "orbitAU": 0.1879,
       "starTempK": 6036.0,
+      "starRadius": 0.949,
       "habitabilityIndex": 0.186
     },
     {
@@ -2740,6 +3013,7 @@
       "eqTempK": 616.0,
       "orbitAU": 0.095,
       "starTempK": 4914.0,
+      "starRadius": 0.763,
       "habitabilityIndex": 0.1859
     },
     {
@@ -2750,6 +3024,7 @@
       "eqTempK": 560.0,
       "orbitAU": 0.2234,
       "starTempK": 6020.0,
+      "starRadius": 1.13,
       "habitabilityIndex": 0.1845
     },
     {
@@ -2760,6 +3035,7 @@
       "eqTempK": 457.04,
       "orbitAU": 0.316,
       "starTempK": 5460.0,
+      "starRadius": 0.952252,
       "habitabilityIndex": 0.1843
     },
     {
@@ -2770,6 +3046,7 @@
       "eqTempK": 657.0,
       "orbitAU": 0.23611,
       "starTempK": 5998.0,
+      "starRadius": 1.15,
       "habitabilityIndex": 0.1827
     },
     {
@@ -2780,6 +3057,7 @@
       "eqTempK": 592.0,
       "orbitAU": 0.356,
       "starTempK": 5877.0,
+      "starRadius": 1.854,
       "habitabilityIndex": 0.1823
     },
     {
@@ -2790,6 +3068,7 @@
       "eqTempK": 594.0,
       "orbitAU": null,
       "starTempK": 4678.46,
+      "starRadius": 0.755833,
       "habitabilityIndex": 0.1814
     },
     {
@@ -2800,6 +3079,7 @@
       "eqTempK": 678.0,
       "orbitAU": 0.088,
       "starTempK": 5235.0,
+      "starRadius": 0.75,
       "habitabilityIndex": 0.1808
     },
     {
@@ -2810,6 +3090,7 @@
       "eqTempK": 571.07,
       "orbitAU": 0.2663,
       "starTempK": 5898.0,
+      "starRadius": 1.073694,
       "habitabilityIndex": 0.1794
     },
     {
@@ -2820,6 +3101,7 @@
       "eqTempK": 602.0,
       "orbitAU": 0.1171,
       "starTempK": 5331.0,
+      "starRadius": 0.778,
       "habitabilityIndex": 0.1793
     },
     {
@@ -2830,6 +3112,7 @@
       "eqTempK": 639.0,
       "orbitAU": 0.0519,
       "starTempK": 3866.0,
+      "starRadius": 0.598,
       "habitabilityIndex": 0.1787
     },
     {
@@ -2840,6 +3123,7 @@
       "eqTempK": 116.69,
       "orbitAU": 9.02,
       "starTempK": 6099.0,
+      "starRadius": 1.42,
       "habitabilityIndex": 0.1782
     },
     {
@@ -2850,6 +3134,7 @@
       "eqTempK": 601.0,
       "orbitAU": 0.1467,
       "starTempK": 5530.0,
+      "starRadius": 0.892,
       "habitabilityIndex": 0.178
     },
     {
@@ -2860,6 +3145,7 @@
       "eqTempK": 125.05,
       "orbitAU": 5.05,
       "starTempK": 5748.0,
+      "starRadius": 1.02786,
       "habitabilityIndex": 0.1779
     },
     {
@@ -2870,6 +3156,7 @@
       "eqTempK": 500.75,
       "orbitAU": 1.11,
       "starTempK": 5020.0,
+      "starRadius": 4.75,
       "habitabilityIndex": 0.1772
     },
     {
@@ -2880,6 +3167,7 @@
       "eqTempK": 616.0,
       "orbitAU": 0.1194,
       "starTempK": 5177.0,
+      "starRadius": 0.806,
       "habitabilityIndex": 0.1769
     },
     {
@@ -2890,6 +3178,7 @@
       "eqTempK": 151.45,
       "orbitAU": 2.69,
       "starTempK": 5400.0,
+      "starRadius": 0.91,
       "habitabilityIndex": 0.1766
     },
     {
@@ -2900,6 +3189,7 @@
       "eqTempK": 542.98,
       "orbitAU": 0.843,
       "starTempK": 5131.0,
+      "starRadius": 4.06,
       "habitabilityIndex": 0.1758
     },
     {
@@ -2910,6 +3200,7 @@
       "eqTempK": 634.0,
       "orbitAU": 0.1034,
       "starTempK": 5431.0,
+      "starRadius": 0.86,
       "habitabilityIndex": 0.1756
     },
     {
@@ -2920,6 +3211,7 @@
       "eqTempK": 625.0,
       "orbitAU": 0.1485,
       "starTempK": 5484.0,
+      "starRadius": 0.835451,
       "habitabilityIndex": 0.1745
     },
     {
@@ -2930,6 +3222,7 @@
       "eqTempK": 649.0,
       "orbitAU": 0.0911,
       "starTempK": 5240.0,
+      "starRadius": 0.79,
       "habitabilityIndex": 0.1742
     },
     {
@@ -2940,6 +3233,7 @@
       "eqTempK": 600.0,
       "orbitAU": 0.1055,
       "starTempK": 5075.0,
+      "starRadius": 0.79,
       "habitabilityIndex": 0.1735
     },
     {
@@ -2950,6 +3244,7 @@
       "eqTempK": 638.0,
       "orbitAU": 0.1027,
       "starTempK": 5178.0,
+      "starRadius": 0.8,
       "habitabilityIndex": 0.1729
     },
     {
@@ -2960,6 +3255,7 @@
       "eqTempK": 110.98,
       "orbitAU": 5.46,
       "starTempK": 5325.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.1706
     },
     {
@@ -2970,6 +3266,7 @@
       "eqTempK": 641.0,
       "orbitAU": 0.1754,
       "starTempK": 5901.0,
+      "starRadius": 1.06,
       "habitabilityIndex": 0.1693
     },
     {
@@ -2980,6 +3277,7 @@
       "eqTempK": 625.0,
       "orbitAU": 0.096,
       "starTempK": 4967.0,
+      "starRadius": 0.76,
       "habitabilityIndex": 0.1693
     },
     {
@@ -2990,6 +3288,7 @@
       "eqTempK": 635.0,
       "orbitAU": 0.2053,
       "starTempK": 6246.0,
+      "starRadius": 1.092,
       "habitabilityIndex": 0.1681
     },
     {
@@ -3000,6 +3299,7 @@
       "eqTempK": 538.94,
       "orbitAU": 1.7,
       "starTempK": 4534.0,
+      "starRadius": 10.33,
       "habitabilityIndex": 0.1669
     },
     {
@@ -3010,6 +3310,7 @@
       "eqTempK": 671.0,
       "orbitAU": 0.09588,
       "starTempK": 5187.9,
+      "starRadius": 0.826,
       "habitabilityIndex": 0.1661
     },
     {
@@ -3020,6 +3321,7 @@
       "eqTempK": 600.0,
       "orbitAU": 0.1752,
       "starTempK": 5348.0,
+      "starRadius": 0.94,
       "habitabilityIndex": 0.1659
     },
     {
@@ -3030,6 +3332,7 @@
       "eqTempK": 683.0,
       "orbitAU": 0.173,
       "starTempK": 5812.0,
+      "starRadius": 1.238,
       "habitabilityIndex": 0.1644
     },
     {
@@ -3040,6 +3343,7 @@
       "eqTempK": 603.0,
       "orbitAU": 0.1254,
       "starTempK": 5564.0,
+      "starRadius": 0.91,
       "habitabilityIndex": 0.1642
     },
     {
@@ -3050,6 +3354,7 @@
       "eqTempK": 661.0,
       "orbitAU": 0.123,
       "starTempK": 5213.0,
+      "starRadius": 0.85,
       "habitabilityIndex": 0.1634
     },
     {
@@ -3060,6 +3365,7 @@
       "eqTempK": 641.0,
       "orbitAU": 0.1516,
       "starTempK": 5440.0,
+      "starRadius": 0.898,
       "habitabilityIndex": 0.1614
     },
     {
@@ -3070,6 +3376,7 @@
       "eqTempK": 117.8,
       "orbitAU": 2.827,
       "starTempK": 4981.0,
+      "starRadius": 0.68,
       "habitabilityIndex": 0.1611
     },
     {
@@ -3080,6 +3387,7 @@
       "eqTempK": 613.8,
       "orbitAU": 0.1439,
       "starTempK": 5327.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.1604
     },
     {
@@ -3090,6 +3398,7 @@
       "eqTempK": 677.0,
       "orbitAU": 0.182,
       "starTempK": 5949.0,
+      "starRadius": 1.224,
       "habitabilityIndex": 0.1602
     },
     {
@@ -3100,6 +3409,7 @@
       "eqTempK": 668.0,
       "orbitAU": 0.09,
       "starTempK": 4757.0,
+      "starRadius": 0.762,
       "habitabilityIndex": 0.1602
     },
     {
@@ -3110,6 +3420,7 @@
       "eqTempK": 668.0,
       "orbitAU": 0.122,
       "starTempK": 5513.0,
+      "starRadius": 0.935,
       "habitabilityIndex": 0.1597
     },
     {
@@ -3120,6 +3431,7 @@
       "eqTempK": 615.0,
       "orbitAU": 0.037,
       "starTempK": 4258.0,
+      "starRadius": 0.555,
       "habitabilityIndex": 0.1595
     },
     {
@@ -3130,6 +3442,7 @@
       "eqTempK": 722.0,
       "orbitAU": 0.087,
       "starTempK": 5282.0,
+      "starRadius": 0.789,
       "habitabilityIndex": 0.159
     },
     {
@@ -3140,6 +3453,7 @@
       "eqTempK": 649.0,
       "orbitAU": 0.137,
       "starTempK": 5533.0,
+      "starRadius": 0.956,
       "habitabilityIndex": 0.1587
     },
     {
@@ -3150,6 +3464,7 @@
       "eqTempK": 636.0,
       "orbitAU": 0.1367,
       "starTempK": 5660.0,
+      "starRadius": 0.877,
       "habitabilityIndex": 0.1581
     },
     {
@@ -3160,6 +3475,7 @@
       "eqTempK": 725.0,
       "orbitAU": 0.1724,
       "starTempK": 5973.0,
+      "starRadius": 1.305,
       "habitabilityIndex": 0.1572
     },
     {
@@ -3170,6 +3486,7 @@
       "eqTempK": 623.0,
       "orbitAU": 0.24831,
       "starTempK": 6183.0,
+      "starRadius": 1.3,
       "habitabilityIndex": 0.157
     },
     {
@@ -3180,6 +3497,7 @@
       "eqTempK": 655.0,
       "orbitAU": null,
       "starTempK": 5077.0,
+      "starRadius": 0.85,
       "habitabilityIndex": 0.157
     },
     {
@@ -3190,6 +3508,7 @@
       "eqTempK": 639.0,
       "orbitAU": 0.1495,
       "starTempK": 5440.0,
+      "starRadius": 0.86,
       "habitabilityIndex": 0.1561
     },
     {
@@ -3200,6 +3519,7 @@
       "eqTempK": 728.0,
       "orbitAU": 0.09915,
       "starTempK": 5581.0,
+      "starRadius": 0.9,
       "habitabilityIndex": 0.1554
     },
     {
@@ -3210,6 +3530,7 @@
       "eqTempK": 705.0,
       "orbitAU": 0.183,
       "starTempK": 6088.0,
+      "starRadius": 1.005,
       "habitabilityIndex": 0.1551
     },
     {
@@ -3220,6 +3541,7 @@
       "eqTempK": 711.0,
       "orbitAU": 0.14628,
       "starTempK": 6112.0,
+      "starRadius": 1.09,
       "habitabilityIndex": 0.1548
     },
     {
@@ -3230,6 +3552,7 @@
       "eqTempK": 733.87,
       "orbitAU": 0.0454,
       "starTempK": 4079.0,
+      "starRadius": 0.632,
       "habitabilityIndex": 0.1541
     },
     {
@@ -3240,6 +3563,7 @@
       "eqTempK": 677.0,
       "orbitAU": 0.1603,
       "starTempK": 6217.0,
+      "starRadius": 1.28,
       "habitabilityIndex": 0.153
     },
     {
@@ -3250,6 +3574,7 @@
       "eqTempK": 736.0,
       "orbitAU": 0.17707,
       "starTempK": 6167.0,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.1529
     },
     {
@@ -3260,6 +3585,7 @@
       "eqTempK": 733.5,
       "orbitAU": 0.03,
       "starTempK": 3726.0,
+      "starRadius": 0.5,
       "habitabilityIndex": 0.1524
     },
     {
@@ -3270,6 +3596,7 @@
       "eqTempK": 738.4,
       "orbitAU": 0.0824,
       "starTempK": 5026.0,
+      "starRadius": 0.765,
       "habitabilityIndex": 0.1518
     },
     {
@@ -3280,6 +3607,7 @@
       "eqTempK": 747.0,
       "orbitAU": 0.0573,
       "starTempK": 4675.0,
+      "starRadius": 0.63,
       "habitabilityIndex": 0.1511
     },
     {
@@ -3290,6 +3618,7 @@
       "eqTempK": 703.0,
       "orbitAU": 0.0983,
       "starTempK": 5569.0,
+      "starRadius": 0.9,
       "habitabilityIndex": 0.1505
     },
     {
@@ -3300,6 +3629,7 @@
       "eqTempK": 741.0,
       "orbitAU": 0.099,
       "starTempK": 5603.0,
+      "starRadius": 0.898,
       "habitabilityIndex": 0.1504
     },
     {
@@ -3310,6 +3640,7 @@
       "eqTempK": 728.0,
       "orbitAU": 0.048,
       "starTempK": 4503.0,
+      "starRadius": 0.619,
       "habitabilityIndex": 0.1503
     },
     {
@@ -3320,6 +3651,7 @@
       "eqTempK": 679.0,
       "orbitAU": 0.1263,
       "starTempK": 5387.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.1502
     },
     {
@@ -3330,6 +3662,7 @@
       "eqTempK": 721.0,
       "orbitAU": 0.1525,
       "starTempK": 5156.0,
+      "starRadius": 0.81,
       "habitabilityIndex": 0.1502
     },
     {
@@ -3340,6 +3673,7 @@
       "eqTempK": 738.0,
       "orbitAU": 0.067,
       "starTempK": 4910.0,
+      "starRadius": 0.787,
       "habitabilityIndex": 0.15
     },
     {
@@ -3350,6 +3684,7 @@
       "eqTempK": 663.0,
       "orbitAU": 0.204,
       "starTempK": 5736.0,
+      "starRadius": 1.425,
       "habitabilityIndex": 0.1499
     },
     {
@@ -3360,6 +3695,7 @@
       "eqTempK": 744.0,
       "orbitAU": 0.0719,
       "starTempK": 5241.0,
+      "starRadius": 0.81,
       "habitabilityIndex": 0.1497
     },
     {
@@ -3370,6 +3706,7 @@
       "eqTempK": 654.0,
       "orbitAU": 0.168,
       "starTempK": 6033.0,
+      "starRadius": 1.021,
       "habitabilityIndex": 0.1497
     },
     {
@@ -3380,6 +3717,7 @@
       "eqTempK": 362.8,
       "orbitAU": 0.863,
       "starTempK": 6294.0,
+      "starRadius": 1.474,
       "habitabilityIndex": 0.1493
     },
     {
@@ -3390,6 +3728,7 @@
       "eqTempK": 108.81,
       "orbitAU": 6.7,
       "starTempK": 5961.0,
+      "starRadius": 0.96,
       "habitabilityIndex": 0.1492
     },
     {
@@ -3400,6 +3739,7 @@
       "eqTempK": 702.0,
       "orbitAU": 0.0726,
       "starTempK": 4965.0,
+      "starRadius": 0.71,
       "habitabilityIndex": 0.1484
     },
     {
@@ -3410,6 +3750,7 @@
       "eqTempK": 538.95,
       "orbitAU": 0.5137,
       "starTempK": 4949.0,
+      "starRadius": 2.62,
       "habitabilityIndex": 0.1483
     },
     {
@@ -3420,6 +3761,7 @@
       "eqTempK": 750.0,
       "orbitAU": 0.0219,
       "starTempK": 3712.0,
+      "starRadius": 0.48,
       "habitabilityIndex": 0.1475
     },
     {
@@ -3430,6 +3772,7 @@
       "eqTempK": 676.0,
       "orbitAU": 0.0914,
       "starTempK": 5251.0,
+      "starRadius": 0.778,
       "habitabilityIndex": 0.1473
     },
     {
@@ -3440,6 +3783,7 @@
       "eqTempK": 614.0,
       "orbitAU": 0.1185,
       "starTempK": 5203.0,
+      "starRadius": 0.8,
       "habitabilityIndex": 0.147
     },
     {
@@ -3450,6 +3794,7 @@
       "eqTempK": 693.0,
       "orbitAU": 0.26412,
       "starTempK": 6449.0,
+      "starRadius": 1.55,
       "habitabilityIndex": 0.1461
     },
     {
@@ -3460,6 +3805,7 @@
       "eqTempK": 744.0,
       "orbitAU": 0.0696,
       "starTempK": 5008.0,
+      "starRadius": 0.788,
       "habitabilityIndex": 0.1451
     },
     {
@@ -3470,6 +3816,7 @@
       "eqTempK": 730.0,
       "orbitAU": 0.0222,
       "starTempK": 3827.0,
+      "starRadius": 0.53,
       "habitabilityIndex": 0.1449
     },
     {
@@ -3480,6 +3827,7 @@
       "eqTempK": 756.0,
       "orbitAU": null,
       "starTempK": 6004.0,
+      "starRadius": 0.98,
       "habitabilityIndex": 0.1444
     },
     {
@@ -3490,6 +3838,7 @@
       "eqTempK": 697.84,
       "orbitAU": 0.05024,
       "starTempK": 4336.0,
+      "starRadius": 0.669,
       "habitabilityIndex": 0.1439
     },
     {
@@ -3500,6 +3849,7 @@
       "eqTempK": 697.0,
       "orbitAU": 0.0267,
       "starTempK": 4094.0,
+      "starRadius": 0.53,
       "habitabilityIndex": 0.1436
     },
     {
@@ -3510,6 +3860,7 @@
       "eqTempK": 484.0,
       "orbitAU": 0.4,
       "starTempK": 6340.0,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.1428
     },
     {
@@ -3520,6 +3871,7 @@
       "eqTempK": 716.0,
       "orbitAU": 0.0679,
       "starTempK": 4836.0,
+      "starRadius": 0.73,
       "habitabilityIndex": 0.1425
     },
     {
@@ -3530,6 +3882,7 @@
       "eqTempK": 729.0,
       "orbitAU": 0.118,
       "starTempK": 5617.0,
+      "starRadius": 1.032,
       "habitabilityIndex": 0.1422
     },
     {
@@ -3540,6 +3893,7 @@
       "eqTempK": 752.0,
       "orbitAU": 0.0871,
       "starTempK": 5455.0,
+      "starRadius": 0.852,
       "habitabilityIndex": 0.1412
     },
     {
@@ -3550,6 +3904,7 @@
       "eqTempK": 621.0,
       "orbitAU": null,
       "starTempK": 4417.3,
+      "starRadius": 0.743344,
       "habitabilityIndex": 0.14
     },
     {
@@ -3560,6 +3915,7 @@
       "eqTempK": 481.0,
       "orbitAU": 0.191,
       "starTempK": 5400.0,
+      "starRadius": 0.59,
       "habitabilityIndex": 0.1398
     },
     {
@@ -3570,6 +3926,7 @@
       "eqTempK": 757.0,
       "orbitAU": 0.032,
       "starTempK": 4321.0,
+      "starRadius": 0.546,
       "habitabilityIndex": 0.1396
     },
     {
@@ -3580,6 +3937,7 @@
       "eqTempK": 642.0,
       "orbitAU": 0.103,
       "starTempK": 4942.0,
+      "starRadius": 0.915,
       "habitabilityIndex": 0.1396
     },
     {
@@ -3590,6 +3948,7 @@
       "eqTempK": 764.0,
       "orbitAU": 0.0226,
       "starTempK": 3499.0,
+      "starRadius": 0.46,
       "habitabilityIndex": 0.1395
     },
     {
@@ -3600,6 +3959,7 @@
       "eqTempK": 661.12,
       "orbitAU": 0.11,
       "starTempK": 5182.0,
+      "starRadius": 0.77,
       "habitabilityIndex": 0.139
     },
     {
@@ -3610,6 +3970,7 @@
       "eqTempK": 701.0,
       "orbitAU": 0.1144,
       "starTempK": 5403.0,
+      "starRadius": 0.81,
       "habitabilityIndex": 0.1388
     },
     {
@@ -3620,6 +3981,7 @@
       "eqTempK": 637.76,
       "orbitAU": 0.2687,
       "starTempK": 5836.0,
+      "starRadius": 1.38,
       "habitabilityIndex": 0.1387
     },
     {
@@ -3630,6 +3992,7 @@
       "eqTempK": 730.0,
       "orbitAU": 0.0854,
       "starTempK": 5636.0,
+      "starRadius": 0.96,
       "habitabilityIndex": 0.1386
     },
     {
@@ -3640,6 +4003,7 @@
       "eqTempK": 771.0,
       "orbitAU": 0.07642,
       "starTempK": 5021.0,
+      "starRadius": 0.723259,
       "habitabilityIndex": 0.1382
     },
     {
@@ -3650,6 +4014,7 @@
       "eqTempK": 708.0,
       "orbitAU": 0.018288,
       "starTempK": 3325.0,
+      "starRadius": 0.383,
       "habitabilityIndex": 0.1373
     },
     {
@@ -3660,6 +4025,7 @@
       "eqTempK": 736.0,
       "orbitAU": 0.08633,
       "starTempK": 5194.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.1373
     },
     {
@@ -3670,6 +4036,7 @@
       "eqTempK": 783.0,
       "orbitAU": null,
       "starTempK": 4558.0,
+      "starRadius": 0.63,
       "habitabilityIndex": 0.1372
     },
     {
@@ -3680,6 +4047,7 @@
       "eqTempK": 579.16,
       "orbitAU": 0.242,
       "starTempK": 5920.58,
+      "starRadius": 0.995896,
       "habitabilityIndex": 0.1369
     },
     {
@@ -3690,6 +4058,7 @@
       "eqTempK": 682.0,
       "orbitAU": 0.20989,
       "starTempK": 5866.0,
+      "starRadius": 1.367,
       "habitabilityIndex": 0.1362
     },
     {
@@ -3700,6 +4069,7 @@
       "eqTempK": 728.0,
       "orbitAU": 0.1322,
       "starTempK": 5635.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.1354
     },
     {
@@ -3710,6 +4080,7 @@
       "eqTempK": 733.0,
       "orbitAU": 0.33571,
       "starTempK": 6228.0,
+      "starRadius": 2.15,
       "habitabilityIndex": 0.1351
     },
     {
@@ -3720,6 +4091,7 @@
       "eqTempK": 714.86,
       "orbitAU": 0.060694,
       "starTempK": 4599.0,
+      "starRadius": 0.721,
       "habitabilityIndex": 0.1349
     },
     {
@@ -3730,6 +4102,7 @@
       "eqTempK": 783.0,
       "orbitAU": 0.11606,
       "starTempK": 6046.0,
+      "starRadius": 1.09,
       "habitabilityIndex": 0.1346
     },
     {
@@ -3740,6 +4113,7 @@
       "eqTempK": 667.0,
       "orbitAU": null,
       "starTempK": 4201.57,
+      "starRadius": 0.639344,
       "habitabilityIndex": 0.1339
     },
     {
@@ -3750,6 +4124,7 @@
       "eqTempK": 621.73,
       "orbitAU": 0.312391586,
       "starTempK": 5884.0,
+      "starRadius": 1.5,
       "habitabilityIndex": 0.1338
     },
     {
@@ -3760,6 +4135,7 @@
       "eqTempK": 688.63,
       "orbitAU": 1.05,
       "starTempK": 4990.0,
+      "starRadius": 8.6,
       "habitabilityIndex": 0.1337
     },
     {
@@ -3770,6 +4146,7 @@
       "eqTempK": 683.0,
       "orbitAU": 0.17,
       "starTempK": 6161.0,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.1335
     },
     {
@@ -3780,6 +4157,7 @@
       "eqTempK": 731.0,
       "orbitAU": 0.037,
       "starTempK": 4255.0,
+      "starRadius": 0.554,
       "habitabilityIndex": 0.1334
     },
     {
@@ -3790,6 +4168,7 @@
       "eqTempK": 787.0,
       "orbitAU": 0.09704,
       "starTempK": 5778.0,
+      "starRadius": 1.0,
       "habitabilityIndex": 0.1334
     },
     {
@@ -3800,6 +4179,7 @@
       "eqTempK": 784.0,
       "orbitAU": 0.0692,
       "starTempK": 5159.0,
+      "starRadius": 0.821,
       "habitabilityIndex": 0.132
     },
     {
@@ -3810,6 +4190,7 @@
       "eqTempK": 94.51,
       "orbitAU": 13.38,
       "starTempK": 5905.64,
+      "starRadius": 1.47368,
       "habitabilityIndex": 0.1319
     },
     {
@@ -3820,6 +4201,7 @@
       "eqTempK": 721.0,
       "orbitAU": 0.105,
       "starTempK": 5752.0,
+      "starRadius": 1.003,
       "habitabilityIndex": 0.1314
     },
     {
@@ -3830,6 +4212,7 @@
       "eqTempK": 754.0,
       "orbitAU": 0.185,
       "starTempK": 6175.0,
+      "starRadius": 1.472,
       "habitabilityIndex": 0.1304
     },
     {
@@ -3840,6 +4223,7 @@
       "eqTempK": 615.0,
       "orbitAU": 0.17391,
       "starTempK": 5685.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.1299
     },
     {
@@ -3850,6 +4234,7 @@
       "eqTempK": 649.0,
       "orbitAU": 0.16063,
       "starTempK": 5858.0,
+      "starRadius": 1.04,
       "habitabilityIndex": 0.1296
     },
     {
@@ -3860,6 +4245,7 @@
       "eqTempK": 96.4,
       "orbitAU": 2.52,
       "starTempK": 4435.0,
+      "starRadius": 0.671,
       "habitabilityIndex": 0.1295
     },
     {
@@ -3870,6 +4256,7 @@
       "eqTempK": 743.0,
       "orbitAU": 0.198,
       "starTempK": 5960.0,
+      "starRadius": 1.149,
       "habitabilityIndex": 0.1294
     },
     {
@@ -3880,6 +4267,7 @@
       "eqTempK": 782.0,
       "orbitAU": 0.0653,
       "starTempK": 4699.0,
+      "starRadius": 0.778,
       "habitabilityIndex": 0.1293
     },
     {
@@ -3890,6 +4278,7 @@
       "eqTempK": 706.0,
       "orbitAU": 0.10363,
       "starTempK": 5505.2,
+      "starRadius": 0.875,
       "habitabilityIndex": 0.1291
     },
     {
@@ -3900,6 +4289,7 @@
       "eqTempK": 512.97,
       "orbitAU": 0.1511,
       "starTempK": 5096.0,
+      "starRadius": 0.785,
       "habitabilityIndex": 0.1291
     },
     {
@@ -3910,6 +4300,7 @@
       "eqTempK": 747.0,
       "orbitAU": 0.155,
       "starTempK": 6050.0,
+      "starRadius": 1.216,
       "habitabilityIndex": 0.1282
     },
     {
@@ -3920,6 +4311,7 @@
       "eqTempK": 766.35,
       "orbitAU": null,
       "starTempK": 5502.7,
+      "starRadius": 0.83,
       "habitabilityIndex": 0.1281
     },
     {
@@ -3930,6 +4322,7 @@
       "eqTempK": 762.62,
       "orbitAU": 0.0552,
       "starTempK": 4343.0,
+      "starRadius": 0.732,
       "habitabilityIndex": 0.128
     },
     {
@@ -3940,6 +4333,7 @@
       "eqTempK": 100.32,
       "orbitAU": 1.138,
       "starTempK": 3496.0,
+      "starRadius": 0.403,
       "habitabilityIndex": 0.1278
     },
     {
@@ -3950,6 +4344,7 @@
       "eqTempK": 718.0,
       "orbitAU": 0.122,
       "starTempK": 5678.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.1264
     },
     {
@@ -3960,6 +4355,7 @@
       "eqTempK": 743.0,
       "orbitAU": 0.10916,
       "starTempK": 5683.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.1264
     },
     {
@@ -3970,6 +4366,7 @@
       "eqTempK": 806.0,
       "orbitAU": 0.0223,
       "starTempK": 3964.0,
+      "starRadius": 0.53,
       "habitabilityIndex": 0.1263
     },
     {
@@ -3980,6 +4377,7 @@
       "eqTempK": 807.0,
       "orbitAU": 0.1011,
       "starTempK": 5432.34,
+      "starRadius": 0.878295,
       "habitabilityIndex": 0.1262
     },
     {
@@ -3990,6 +4388,7 @@
       "eqTempK": 747.0,
       "orbitAU": 0.0747,
       "starTempK": 5293.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.1259
     },
     {
@@ -4000,6 +4399,7 @@
       "eqTempK": 811.0,
       "orbitAU": 0.0617,
       "starTempK": 5071.0,
+      "starRadius": 0.811,
       "habitabilityIndex": 0.1257
     },
     {
@@ -4010,6 +4410,7 @@
       "eqTempK": 817.0,
       "orbitAU": 0.082,
       "starTempK": 5602.0,
+      "starRadius": 0.904,
       "habitabilityIndex": 0.1254
     },
     {
@@ -4020,6 +4421,7 @@
       "eqTempK": 803.1,
       "orbitAU": 0.056,
       "starTempK": 4469.51,
+      "starRadius": 0.777569,
       "habitabilityIndex": 0.1254
     },
     {
@@ -4030,6 +4432,7 @@
       "eqTempK": 667.0,
       "orbitAU": 0.145,
       "starTempK": 5806.0,
+      "starRadius": 1.032,
       "habitabilityIndex": 0.1249
     },
     {
@@ -4040,6 +4443,7 @@
       "eqTempK": 778.0,
       "orbitAU": 0.1348,
       "starTempK": 5683.0,
+      "starRadius": 0.94,
       "habitabilityIndex": 0.1245
     },
     {
@@ -4050,6 +4454,7 @@
       "eqTempK": 759.0,
       "orbitAU": 0.085,
       "starTempK": 5457.0,
+      "starRadius": 0.8426,
       "habitabilityIndex": 0.1235
     },
     {
@@ -4060,6 +4465,7 @@
       "eqTempK": 742.0,
       "orbitAU": 0.075,
       "starTempK": 5020.0,
+      "starRadius": 0.85,
       "habitabilityIndex": 0.1226
     },
     {
@@ -4070,6 +4476,7 @@
       "eqTempK": 751.0,
       "orbitAU": 0.077,
       "starTempK": 5360.0,
+      "starRadius": 0.758,
       "habitabilityIndex": 0.1226
     },
     {
@@ -4080,6 +4487,7 @@
       "eqTempK": 794.23,
       "orbitAU": 0.14,
       "starTempK": 6008.0,
+      "starRadius": 1.17,
       "habitabilityIndex": 0.1221
     },
     {
@@ -4090,6 +4498,7 @@
       "eqTempK": 787.68,
       "orbitAU": 0.103,
       "starTempK": 5390.0,
+      "starRadius": 0.946,
       "habitabilityIndex": 0.1215
     },
     {
@@ -4100,6 +4509,7 @@
       "eqTempK": 744.0,
       "orbitAU": 0.0571,
       "starTempK": 4769.0,
+      "starRadius": 0.714,
       "habitabilityIndex": 0.1211
     },
     {
@@ -4110,6 +4520,7 @@
       "eqTempK": 766.0,
       "orbitAU": 0.09833,
       "starTempK": 5740.0,
+      "starRadius": 0.98,
       "habitabilityIndex": 0.1209
     },
     {
@@ -4120,6 +4531,7 @@
       "eqTempK": 775.0,
       "orbitAU": 0.135,
       "starTempK": 5913.0,
+      "starRadius": 1.06,
       "habitabilityIndex": 0.1209
     },
     {
@@ -4130,6 +4542,7 @@
       "eqTempK": 775.0,
       "orbitAU": 0.05123,
       "starTempK": 4725.0,
+      "starRadius": 0.69,
       "habitabilityIndex": 0.1208
     },
     {
@@ -4140,6 +4553,7 @@
       "eqTempK": 706.0,
       "orbitAU": 0.1277,
       "starTempK": 5630.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.1206
     },
     {
@@ -4150,6 +4564,7 @@
       "eqTempK": 726.89,
       "orbitAU": 0.109,
       "starTempK": 5497.0,
+      "starRadius": 0.9785,
       "habitabilityIndex": 0.1204
     },
     {
@@ -4160,6 +4575,7 @@
       "eqTempK": 786.0,
       "orbitAU": 0.06961,
       "starTempK": 5119.0,
+      "starRadius": 0.834,
       "habitabilityIndex": 0.1199
     },
     {
@@ -4170,6 +4586,7 @@
       "eqTempK": 792.0,
       "orbitAU": 0.138,
       "starTempK": 5897.0,
+      "starRadius": 1.289,
       "habitabilityIndex": 0.1194
     },
     {
@@ -4180,6 +4597,7 @@
       "eqTempK": 823.0,
       "orbitAU": 0.05,
       "starTempK": 4861.0,
+      "starRadius": 0.725,
       "habitabilityIndex": 0.1192
     },
     {
@@ -4190,6 +4608,7 @@
       "eqTempK": 798.0,
       "orbitAU": 0.0242,
       "starTempK": 3712.0,
+      "starRadius": 0.48,
       "habitabilityIndex": 0.119
     },
     {
@@ -4200,6 +4619,7 @@
       "eqTempK": 737.0,
       "orbitAU": 0.16481,
       "starTempK": 5831.0,
+      "starRadius": 1.0,
       "habitabilityIndex": 0.1189
     },
     {
@@ -4210,6 +4630,7 @@
       "eqTempK": 773.0,
       "orbitAU": 0.05825,
       "starTempK": 4931.0,
+      "starRadius": 0.734,
       "habitabilityIndex": 0.1188
     },
     {
@@ -4220,6 +4641,7 @@
       "eqTempK": 764.0,
       "orbitAU": 0.0886,
       "starTempK": 5620.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.1186
     },
     {
@@ -4230,6 +4652,7 @@
       "eqTempK": 497.0,
       "orbitAU": 0.25655,
       "starTempK": 5732.0,
+      "starRadius": 1.324,
       "habitabilityIndex": 0.1166
     },
     {
@@ -4240,6 +4663,7 @@
       "eqTempK": 768.0,
       "orbitAU": 0.1369,
       "starTempK": 5884.0,
+      "starRadius": 1.08,
       "habitabilityIndex": 0.1163
     },
     {
@@ -4250,6 +4674,7 @@
       "eqTempK": 791.0,
       "orbitAU": 0.087,
       "starTempK": 5554.0,
+      "starRadius": 0.803,
       "habitabilityIndex": 0.1163
     },
     {
@@ -4260,6 +4685,7 @@
       "eqTempK": 797.0,
       "orbitAU": 0.0829,
       "starTempK": 5608.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.1161
     },
     {
@@ -4270,6 +4696,7 @@
       "eqTempK": 789.0,
       "orbitAU": 0.08,
       "starTempK": 6312.0,
+      "starRadius": 1.259,
       "habitabilityIndex": 0.1159
     },
     {
@@ -4280,6 +4707,7 @@
       "eqTempK": 91.27,
       "orbitAU": 10.5,
       "starTempK": 5744.0,
+      "starRadius": 1.14,
       "habitabilityIndex": 0.1152
     },
     {
@@ -4290,6 +4718,7 @@
       "eqTempK": 729.0,
       "orbitAU": 0.157,
       "starTempK": 6250.0,
+      "starRadius": 1.146,
       "habitabilityIndex": 0.115
     },
     {
@@ -4300,6 +4729,7 @@
       "eqTempK": 91.76,
       "orbitAU": 13.0,
       "starTempK": 5729.54,
+      "starRadius": 1.433902,
       "habitabilityIndex": 0.1149
     },
     {
@@ -4310,6 +4740,7 @@
       "eqTempK": 774.0,
       "orbitAU": 0.2236,
       "starTempK": 6689.45,
+      "starRadius": 1.07,
       "habitabilityIndex": 0.1144
     },
     {
@@ -4320,6 +4751,7 @@
       "eqTempK": 822.0,
       "orbitAU": 0.028,
       "starTempK": 4192.0,
+      "starRadius": 0.57,
       "habitabilityIndex": 0.1137
     },
     {
@@ -4330,6 +4762,7 @@
       "eqTempK": 705.0,
       "orbitAU": 0.033,
       "starTempK": 3530.0,
+      "starRadius": 0.567,
       "habitabilityIndex": 0.1133
     },
     {
@@ -4340,6 +4773,7 @@
       "eqTempK": 727.0,
       "orbitAU": 0.1255,
       "starTempK": 5612.0,
+      "starRadius": 0.91,
       "habitabilityIndex": 0.1127
     },
     {
@@ -4350,6 +4784,7 @@
       "eqTempK": 853.0,
       "orbitAU": 0.11959,
       "starTempK": 5825.0,
+      "starRadius": 1.291,
       "habitabilityIndex": 0.1125
     },
     {
@@ -4360,6 +4795,7 @@
       "eqTempK": 669.65,
       "orbitAU": 0.92,
       "starTempK": 29564.0,
+      "starRadius": 0.203,
       "habitabilityIndex": 0.1124
     },
     {
@@ -4370,6 +4806,7 @@
       "eqTempK": 659.0,
       "orbitAU": 0.363,
       "starTempK": 6160.0,
+      "starRadius": 1.667,
       "habitabilityIndex": 0.1119
     },
     {
@@ -4380,6 +4817,7 @@
       "eqTempK": 830.07,
       "orbitAU": 0.01462,
       "starTempK": 3691.0,
+      "starRadius": 0.318,
       "habitabilityIndex": 0.1119
     },
     {
@@ -4390,6 +4828,7 @@
       "eqTempK": 810.0,
       "orbitAU": 0.064,
       "starTempK": 5302.0,
+      "starRadius": 0.759,
       "habitabilityIndex": 0.1115
     },
     {
@@ -4400,6 +4839,7 @@
       "eqTempK": 599.0,
       "orbitAU": 0.402,
       "starTempK": 6400.0,
+      "starRadius": 1.517,
       "habitabilityIndex": 0.1114
     },
     {
@@ -4410,6 +4850,7 @@
       "eqTempK": 822.0,
       "orbitAU": 0.0633,
       "starTempK": 5383.0,
+      "starRadius": 0.759,
       "habitabilityIndex": 0.1109
     },
     {
@@ -4420,6 +4861,7 @@
       "eqTempK": 851.0,
       "orbitAU": 0.101,
       "starTempK": 5826.0,
+      "starRadius": 0.837,
       "habitabilityIndex": 0.1102
     },
     {
@@ -4430,6 +4872,7 @@
       "eqTempK": 777.0,
       "orbitAU": 0.1266,
       "starTempK": 5770.0,
+      "starRadius": 0.96,
       "habitabilityIndex": 0.1096
     },
     {
@@ -4440,6 +4883,7 @@
       "eqTempK": 767.0,
       "orbitAU": 0.2065,
       "starTempK": 6152.0,
+      "starRadius": 1.19,
       "habitabilityIndex": 0.1096
     },
     {
@@ -4450,6 +4894,7 @@
       "eqTempK": 813.0,
       "orbitAU": 0.0892,
       "starTempK": 5501.0,
+      "starRadius": 0.873196,
       "habitabilityIndex": 0.1094
     },
     {
@@ -4460,6 +4905,7 @@
       "eqTempK": 805.0,
       "orbitAU": 0.0734,
       "starTempK": 5074.0,
+      "starRadius": 0.78,
       "habitabilityIndex": 0.1094
     },
     {
@@ -4470,6 +4916,7 @@
       "eqTempK": 114.69,
       "orbitAU": 1.22,
       "starTempK": 3734.0,
+      "starRadius": 0.495,
       "habitabilityIndex": 0.1092
     },
     {
@@ -4480,6 +4927,7 @@
       "eqTempK": 831.0,
       "orbitAU": 0.11151,
       "starTempK": 5885.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.109
     },
     {
@@ -4490,6 +4938,7 @@
       "eqTempK": 752.0,
       "orbitAU": 0.127,
       "starTempK": 5594.0,
+      "starRadius": 1.3,
       "habitabilityIndex": 0.1087
     },
     {
@@ -4500,6 +4949,7 @@
       "eqTempK": 808.0,
       "orbitAU": 0.068,
       "starTempK": 5299.0,
+      "starRadius": 0.826,
       "habitabilityIndex": 0.1082
     },
     {
@@ -4510,6 +4960,7 @@
       "eqTempK": 704.0,
       "orbitAU": 0.2804,
       "starTempK": 6150.0,
+      "starRadius": 1.606,
       "habitabilityIndex": 0.1074
     },
     {
@@ -4520,6 +4971,7 @@
       "eqTempK": 799.0,
       "orbitAU": 0.0694,
       "starTempK": 4850.0,
+      "starRadius": 0.81,
       "habitabilityIndex": 0.1071
     },
     {
@@ -4530,6 +4982,7 @@
       "eqTempK": 683.0,
       "orbitAU": 0.384,
       "starTempK": 6000.0,
+      "starRadius": 2.13,
       "habitabilityIndex": 0.1068
     },
     {
@@ -4540,6 +4993,7 @@
       "eqTempK": 830.49,
       "orbitAU": 0.077,
       "starTempK": 5482.0,
+      "starRadius": 0.76,
       "habitabilityIndex": 0.1064
     },
     {
@@ -4550,6 +5004,7 @@
       "eqTempK": 790.0,
       "orbitAU": 0.0768,
       "starTempK": 5352.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.1063
     },
     {
@@ -4560,6 +5015,7 @@
       "eqTempK": 809.0,
       "orbitAU": 0.076,
       "starTempK": 5544.0,
+      "starRadius": 0.841,
       "habitabilityIndex": 0.1059
     },
     {
@@ -4570,6 +5026,7 @@
       "eqTempK": 776.0,
       "orbitAU": 0.1137,
       "starTempK": 5735.81,
+      "starRadius": 1.072,
       "habitabilityIndex": 0.1058
     },
     {
@@ -4580,6 +5037,7 @@
       "eqTempK": 679.63,
       "orbitAU": 0.28,
       "starTempK": 6068.0,
+      "starRadius": 1.510576,
       "habitabilityIndex": 0.1055
     },
     {
@@ -4590,6 +5048,7 @@
       "eqTempK": 841.0,
       "orbitAU": 0.0749,
       "starTempK": 5679.0,
+      "starRadius": 0.94,
       "habitabilityIndex": 0.1054
     },
     {
@@ -4600,6 +5059,7 @@
       "eqTempK": 805.0,
       "orbitAU": 0.08911,
       "starTempK": 5298.0,
+      "starRadius": 0.858,
       "habitabilityIndex": 0.1053
     },
     {
@@ -4610,6 +5070,7 @@
       "eqTempK": 780.0,
       "orbitAU": 0.2014,
       "starTempK": 6200.0,
+      "starRadius": 1.64,
       "habitabilityIndex": 0.1052
     },
     {
@@ -4620,6 +5081,7 @@
       "eqTempK": 749.0,
       "orbitAU": 0.1542,
       "starTempK": 6163.0,
+      "starRadius": 1.27,
       "habitabilityIndex": 0.1051
     },
     {
@@ -4630,6 +5092,7 @@
       "eqTempK": 777.0,
       "orbitAU": 0.08482,
       "starTempK": 5378.0,
+      "starRadius": 0.732,
       "habitabilityIndex": 0.105
     },
     {
@@ -4640,6 +5103,7 @@
       "eqTempK": 866.29,
       "orbitAU": null,
       "starTempK": 5156.16,
+      "starRadius": 0.854084,
       "habitabilityIndex": 0.1042
     },
     {
@@ -4650,6 +5114,7 @@
       "eqTempK": 676.0,
       "orbitAU": 0.305,
       "starTempK": 6302.0,
+      "starRadius": 1.511,
       "habitabilityIndex": 0.1037
     },
     {
@@ -4660,6 +5125,7 @@
       "eqTempK": 759.92,
       "orbitAU": 0.1059,
       "starTempK": 5358.0,
+      "starRadius": 0.916136,
       "habitabilityIndex": 0.1035
     },
     {
@@ -4670,6 +5136,7 @@
       "eqTempK": 766.0,
       "orbitAU": 0.165,
       "starTempK": 5786.0,
+      "starRadius": 1.491,
       "habitabilityIndex": 0.1021
     },
     {
@@ -4680,6 +5147,7 @@
       "eqTempK": 675.0,
       "orbitAU": 0.0238,
       "starTempK": 3638.0,
+      "starRadius": 0.42,
       "habitabilityIndex": 0.1017
     },
     {
@@ -4690,6 +5158,7 @@
       "eqTempK": 892.0,
       "orbitAU": 0.092,
       "starTempK": 5983.0,
+      "starRadius": 1.176,
       "habitabilityIndex": 0.1015
     },
     {
@@ -4700,6 +5169,7 @@
       "eqTempK": 847.0,
       "orbitAU": 0.133,
       "starTempK": 6165.0,
+      "starRadius": 1.355,
       "habitabilityIndex": 0.1015
     },
     {
@@ -4710,6 +5180,7 @@
       "eqTempK": 758.0,
       "orbitAU": 0.09586,
       "starTempK": 5466.0,
+      "starRadius": 0.897,
       "habitabilityIndex": 0.1015
     },
     {
@@ -4720,6 +5191,7 @@
       "eqTempK": 817.0,
       "orbitAU": 0.135,
       "starTempK": 6089.0,
+      "starRadius": 1.264,
       "habitabilityIndex": 0.101
     },
     {
@@ -4730,6 +5202,7 @@
       "eqTempK": 901.0,
       "orbitAU": 0.093,
       "starTempK": 5938.0,
+      "starRadius": 1.129,
       "habitabilityIndex": 0.1009
     },
     {
@@ -4740,6 +5213,7 @@
       "eqTempK": 852.0,
       "orbitAU": 0.0988,
       "starTempK": 5971.0,
+      "starRadius": 1.12,
       "habitabilityIndex": 0.1007
     },
     {
@@ -4750,6 +5224,7 @@
       "eqTempK": 716.68,
       "orbitAU": 0.196,
       "starTempK": 5783.0,
+      "starRadius": 1.294595,
       "habitabilityIndex": 0.1004
     },
     {
@@ -4760,6 +5235,7 @@
       "eqTempK": 891.0,
       "orbitAU": 0.0751,
       "starTempK": 5771.0,
+      "starRadius": 1.0,
       "habitabilityIndex": 0.1003
     },
     {
@@ -4770,6 +5246,7 @@
       "eqTempK": 875.0,
       "orbitAU": 0.0724,
       "starTempK": 5557.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.1003
     },
     {
@@ -4780,6 +5257,7 @@
       "eqTempK": 851.0,
       "orbitAU": 0.0846,
       "starTempK": 5541.0,
+      "starRadius": 0.859,
       "habitabilityIndex": 0.0989
     },
     {
@@ -4790,6 +5268,7 @@
       "eqTempK": 903.0,
       "orbitAU": 0.04741,
       "starTempK": 5476.0,
+      "starRadius": 0.87,
       "habitabilityIndex": 0.0987
     },
     {
@@ -4800,6 +5279,7 @@
       "eqTempK": 828.0,
       "orbitAU": 0.117,
       "starTempK": 5812.0,
+      "starRadius": 1.238,
       "habitabilityIndex": 0.0984
     },
     {
@@ -4810,6 +5290,7 @@
       "eqTempK": 842.42,
       "orbitAU": null,
       "starTempK": 5951.32,
+      "starRadius": 0.878735,
       "habitabilityIndex": 0.0984
     },
     {
@@ -4820,6 +5301,7 @@
       "eqTempK": 839.8,
       "orbitAU": null,
       "starTempK": 5681.95,
+      "starRadius": 0.968149,
       "habitabilityIndex": 0.0978
     },
     {
@@ -4830,6 +5312,7 @@
       "eqTempK": 852.0,
       "orbitAU": 0.094,
       "starTempK": 5711.0,
+      "starRadius": 1.349,
       "habitabilityIndex": 0.0977
     },
     {
@@ -4840,6 +5323,7 @@
       "eqTempK": 910.0,
       "orbitAU": 0.0112,
       "starTempK": 3383.0,
+      "starRadius": 0.35,
       "habitabilityIndex": 0.0976
     },
     {
@@ -4850,6 +5334,7 @@
       "eqTempK": 904.0,
       "orbitAU": 0.05963,
       "starTempK": 5403.0,
+      "starRadius": 0.81,
       "habitabilityIndex": 0.0974
     },
     {
@@ -4860,6 +5345,7 @@
       "eqTempK": 839.0,
       "orbitAU": 0.06534,
       "starTempK": 5352.0,
+      "starRadius": 0.809,
       "habitabilityIndex": 0.0973
     },
     {
@@ -4870,6 +5356,7 @@
       "eqTempK": 865.0,
       "orbitAU": 0.073,
       "starTempK": 5626.0,
+      "starRadius": 0.815,
       "habitabilityIndex": 0.0972
     },
     {
@@ -4880,6 +5367,7 @@
       "eqTempK": 776.0,
       "orbitAU": 0.1016,
       "starTempK": 5982.0,
+      "starRadius": 0.879,
       "habitabilityIndex": 0.0962
     },
     {
@@ -4890,6 +5378,7 @@
       "eqTempK": 662.0,
       "orbitAU": 0.164,
       "starTempK": 5038.0,
+      "starRadius": 2.879,
       "habitabilityIndex": 0.0958
     },
     {
@@ -4900,6 +5389,7 @@
       "eqTempK": 712.6,
       "orbitAU": 0.1067,
       "starTempK": 5327.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.0958
     },
     {
@@ -4910,6 +5400,7 @@
       "eqTempK": 814.0,
       "orbitAU": 0.136,
       "starTempK": 6091.0,
+      "starRadius": 1.26,
       "habitabilityIndex": 0.0956
     },
     {
@@ -4920,6 +5411,7 @@
       "eqTempK": 871.0,
       "orbitAU": 0.0367,
       "starTempK": 4227.0,
+      "starRadius": 0.672,
       "habitabilityIndex": 0.0945
     },
     {
@@ -4930,6 +5422,7 @@
       "eqTempK": 752.0,
       "orbitAU": 0.22,
       "starTempK": 5430.0,
+      "starRadius": 1.71,
       "habitabilityIndex": 0.0942
     },
     {
@@ -4940,6 +5433,7 @@
       "eqTempK": 812.0,
       "orbitAU": 0.301,
       "starTempK": 4995.0,
+      "starRadius": 4.06,
       "habitabilityIndex": 0.094
     },
     {
@@ -4950,6 +5444,7 @@
       "eqTempK": 927.0,
       "orbitAU": 0.0422,
       "starTempK": 4985.0,
+      "starRadius": 0.75,
       "habitabilityIndex": 0.0937
     },
     {
@@ -4960,6 +5455,7 @@
       "eqTempK": 890.0,
       "orbitAU": 0.07195,
       "starTempK": 5536.0,
+      "starRadius": 0.946,
       "habitabilityIndex": 0.0936
     },
     {
@@ -4970,6 +5466,7 @@
       "eqTempK": 900.0,
       "orbitAU": 0.14185,
       "starTempK": 6477.0,
+      "starRadius": 1.459,
       "habitabilityIndex": 0.0931
     },
     {
@@ -4980,6 +5477,7 @@
       "eqTempK": 761.79,
       "orbitAU": 0.238,
       "starTempK": 6093.0,
+      "starRadius": 1.6,
       "habitabilityIndex": 0.0927
     },
     {
@@ -4990,6 +5488,7 @@
       "eqTempK": 845.0,
       "orbitAU": 0.09993,
       "starTempK": 5935.0,
+      "starRadius": 1.06,
       "habitabilityIndex": 0.0925
     },
     {
@@ -5000,6 +5499,7 @@
       "eqTempK": 811.06,
       "orbitAU": 0.091,
       "starTempK": 5257.46,
+      "starRadius": 0.931389,
       "habitabilityIndex": 0.0923
     },
     {
@@ -5010,6 +5510,7 @@
       "eqTempK": 869.0,
       "orbitAU": 0.0981,
       "starTempK": 6113.0,
+      "starRadius": 1.21,
       "habitabilityIndex": 0.0923
     },
     {
@@ -5020,6 +5521,7 @@
       "eqTempK": 913.0,
       "orbitAU": 0.1017,
       "starTempK": 5109.0,
+      "starRadius": 1.671,
       "habitabilityIndex": 0.0922
     },
     {
@@ -5030,6 +5532,7 @@
       "eqTempK": 867.0,
       "orbitAU": 0.054,
       "starTempK": 5094.0,
+      "starRadius": 0.807,
       "habitabilityIndex": 0.0921
     },
     {
@@ -5040,6 +5543,7 @@
       "eqTempK": 933.0,
       "orbitAU": 0.0761,
       "starTempK": 5936.0,
+      "starRadius": 0.965,
       "habitabilityIndex": 0.0919
     },
     {
@@ -5050,6 +5554,7 @@
       "eqTempK": 719.0,
       "orbitAU": 0.2263,
       "starTempK": 6146.0,
+      "starRadius": 1.264,
       "habitabilityIndex": 0.0913
     },
     {
@@ -5060,6 +5565,7 @@
       "eqTempK": 859.0,
       "orbitAU": 0.1546,
       "starTempK": 5950.0,
+      "starRadius": 1.387,
       "habitabilityIndex": 0.091
     },
     {
@@ -5070,6 +5576,7 @@
       "eqTempK": 753.0,
       "orbitAU": 0.071,
       "starTempK": 5100.0,
+      "starRadius": 0.795,
       "habitabilityIndex": 0.0903
     },
     {
@@ -5080,6 +5587,7 @@
       "eqTempK": 931.0,
       "orbitAU": 0.1176,
       "starTempK": 5945.0,
+      "starRadius": 1.14,
       "habitabilityIndex": 0.09
     },
     {
@@ -5090,6 +5598,7 @@
       "eqTempK": 925.0,
       "orbitAU": 0.3875,
       "starTempK": 6256.0,
+      "starRadius": 1.32,
       "habitabilityIndex": 0.0898
     },
     {
@@ -5100,6 +5609,7 @@
       "eqTempK": 933.0,
       "orbitAU": 0.10733,
       "starTempK": 6129.0,
+      "starRadius": 1.36,
       "habitabilityIndex": 0.0896
     },
     {
@@ -5110,6 +5620,7 @@
       "eqTempK": 714.0,
       "orbitAU": 0.02949,
       "starTempK": 3635.0,
+      "starRadius": 0.489,
       "habitabilityIndex": 0.0893
     },
     {
@@ -5120,6 +5631,7 @@
       "eqTempK": 913.0,
       "orbitAU": 0.115,
       "starTempK": 6133.0,
+      "starRadius": 1.335,
       "habitabilityIndex": 0.0888
     },
     {
@@ -5130,6 +5642,7 @@
       "eqTempK": 77.38,
       "orbitAU": 13.183,
       "starTempK": 5771.84,
+      "starRadius": 1.01906,
       "habitabilityIndex": 0.0887
     },
     {
@@ -5140,6 +5653,7 @@
       "eqTempK": 799.37,
       "orbitAU": 0.12,
       "starTempK": 5686.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.0884
     },
     {
@@ -5150,6 +5664,7 @@
       "eqTempK": 78.85,
       "orbitAU": 3.99,
       "starTempK": 4105.0,
+      "starRadius": 0.633112,
       "habitabilityIndex": 0.0882
     },
     {
@@ -5160,6 +5675,7 @@
       "eqTempK": 821.72,
       "orbitAU": 1.7,
       "starTempK": 4308.0,
+      "starRadius": 26.6,
       "habitabilityIndex": 0.0874
     },
     {
@@ -5170,6 +5686,7 @@
       "eqTempK": 892.87,
       "orbitAU": 0.1117,
       "starTempK": 5765.0,
+      "starRadius": 1.152288,
       "habitabilityIndex": 0.0873
     },
     {
@@ -5180,6 +5697,7 @@
       "eqTempK": 954.0,
       "orbitAU": 0.16005,
       "starTempK": 6130.0,
+      "starRadius": 1.79,
       "habitabilityIndex": 0.0873
     },
     {
@@ -5190,6 +5708,7 @@
       "eqTempK": 948.0,
       "orbitAU": 0.045,
       "starTempK": 5106.0,
+      "starRadius": 0.795,
       "habitabilityIndex": 0.087
     },
     {
@@ -5200,6 +5719,7 @@
       "eqTempK": 916.0,
       "orbitAU": 0.09514,
       "starTempK": 5731.0,
+      "starRadius": 1.06,
       "habitabilityIndex": 0.0868
     },
     {
@@ -5210,6 +5730,7 @@
       "eqTempK": 668.0,
       "orbitAU": 0.0895,
       "starTempK": 5286.0,
+      "starRadius": 0.85,
       "habitabilityIndex": 0.0865
     },
     {
@@ -5220,6 +5741,7 @@
       "eqTempK": 702.0,
       "orbitAU": 0.1595,
       "starTempK": 5720.0,
+      "starRadius": 1.035,
       "habitabilityIndex": 0.0858
     },
     {
@@ -5230,6 +5752,7 @@
       "eqTempK": 969.0,
       "orbitAU": 0.07839,
       "starTempK": 5770.0,
+      "starRadius": 1.05,
       "habitabilityIndex": 0.0855
     },
     {
@@ -5240,6 +5763,7 @@
       "eqTempK": 967.0,
       "orbitAU": 0.1629,
       "starTempK": 6158.0,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.0854
     },
     {
@@ -5250,6 +5774,7 @@
       "eqTempK": 940.0,
       "orbitAU": 0.08,
       "starTempK": 6012.0,
+      "starRadius": 1.024,
       "habitabilityIndex": 0.0849
     },
     {
@@ -5260,6 +5785,7 @@
       "eqTempK": 81.19,
       "orbitAU": 6.74,
       "starTempK": 4918.0,
+      "starRadius": 0.79,
       "habitabilityIndex": 0.0844
     },
     {
@@ -5270,6 +5796,7 @@
       "eqTempK": 76.05,
       "orbitAU": 5.062,
       "starTempK": 4171.0,
+      "starRadius": 0.723643,
       "habitabilityIndex": 0.0838
     },
     {
@@ -5280,6 +5807,7 @@
       "eqTempK": 867.0,
       "orbitAU": 0.1357,
       "starTempK": 6189.0,
+      "starRadius": 1.425,
       "habitabilityIndex": 0.0836
     },
     {
@@ -5290,6 +5818,7 @@
       "eqTempK": 920.0,
       "orbitAU": 0.09291,
       "starTempK": 5843.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.0825
     },
     {
@@ -5300,6 +5829,7 @@
       "eqTempK": 968.0,
       "orbitAU": 0.039,
       "starTempK": 4910.0,
+      "starRadius": 0.787,
       "habitabilityIndex": 0.0818
     },
     {
@@ -5310,6 +5840,7 @@
       "eqTempK": 987.0,
       "orbitAU": 0.089,
       "starTempK": 6080.0,
+      "starRadius": 1.2,
       "habitabilityIndex": 0.0816
     },
     {
@@ -5320,6 +5851,7 @@
       "eqTempK": 968.0,
       "orbitAU": 0.12545,
       "starTempK": 6072.0,
+      "starRadius": 1.659,
       "habitabilityIndex": 0.0815
     },
     {
@@ -5330,6 +5862,7 @@
       "eqTempK": 752.0,
       "orbitAU": 0.2138,
       "starTempK": 5904.0,
+      "starRadius": 1.82,
       "habitabilityIndex": 0.0802
     },
     {
@@ -5340,6 +5873,7 @@
       "eqTempK": 946.0,
       "orbitAU": 0.08308,
       "starTempK": 6074.0,
+      "starRadius": 1.005,
       "habitabilityIndex": 0.0802
     },
     {
@@ -5350,6 +5884,7 @@
       "eqTempK": 998.0,
       "orbitAU": 0.0236,
       "starTempK": 4106.0,
+      "starRadius": 0.6,
       "habitabilityIndex": 0.0801
     },
     {
@@ -5360,6 +5895,7 @@
       "eqTempK": 876.0,
       "orbitAU": 0.04823,
       "starTempK": 4996.0,
+      "starRadius": 0.78,
       "habitabilityIndex": 0.08
     },
     {
@@ -5370,6 +5906,7 @@
       "eqTempK": 909.0,
       "orbitAU": 0.08361,
       "starTempK": 5813.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.0799
     },
     {
@@ -5380,6 +5917,7 @@
       "eqTempK": 901.0,
       "orbitAU": 0.0738,
       "starTempK": 5868.0,
+      "starRadius": 0.894,
       "habitabilityIndex": 0.0794
     },
     {
@@ -5390,6 +5928,7 @@
       "eqTempK": 1000.0,
       "orbitAU": 0.0518,
       "starTempK": 5772.0,
+      "starRadius": 1.0,
       "habitabilityIndex": 0.0793
     },
     {
@@ -5400,6 +5939,7 @@
       "eqTempK": 911.0,
       "orbitAU": 0.131,
       "starTempK": 6252.6,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.0793
     },
     {
@@ -5410,6 +5950,7 @@
       "eqTempK": 991.0,
       "orbitAU": 0.04958,
       "starTempK": 5521.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.0792
     },
     {
@@ -5420,6 +5961,7 @@
       "eqTempK": 967.0,
       "orbitAU": 0.0718,
       "starTempK": 5904.0,
+      "starRadius": 1.07,
       "habitabilityIndex": 0.0791
     },
     {
@@ -5430,6 +5972,7 @@
       "eqTempK": 761.0,
       "orbitAU": 0.25029,
       "starTempK": 6392.0,
+      "starRadius": 1.98,
       "habitabilityIndex": 0.0789
     },
     {
@@ -5440,6 +5983,7 @@
       "eqTempK": 959.0,
       "orbitAU": 0.14023,
       "starTempK": 6161.0,
+      "starRadius": 1.72,
       "habitabilityIndex": 0.0788
     },
     {
@@ -5450,6 +5994,7 @@
       "eqTempK": 930.0,
       "orbitAU": 0.09,
       "starTempK": 6004.0,
+      "starRadius": 1.12,
       "habitabilityIndex": 0.0786
     },
     {
@@ -5460,6 +6005,7 @@
       "eqTempK": 753.0,
       "orbitAU": 0.1058,
       "starTempK": 5559.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.0784
     },
     {
@@ -5470,6 +6016,7 @@
       "eqTempK": 906.0,
       "orbitAU": 0.096,
       "starTempK": 5049.84,
+      "starRadius": 0.777785,
       "habitabilityIndex": 0.0778
     },
     {
@@ -5480,6 +6027,7 @@
       "eqTempK": 1006.0,
       "orbitAU": 0.087,
       "starTempK": 6090.0,
+      "starRadius": 1.264,
       "habitabilityIndex": 0.0774
     },
     {
@@ -5490,6 +6038,7 @@
       "eqTempK": 979.0,
       "orbitAU": 0.0503,
       "starTempK": 5152.0,
+      "starRadius": 0.78,
       "habitabilityIndex": 0.0772
     },
     {
@@ -5500,6 +6049,7 @@
       "eqTempK": 1001.0,
       "orbitAU": 0.045,
       "starTempK": 5299.0,
+      "starRadius": 0.826,
       "habitabilityIndex": 0.077
     },
     {
@@ -5510,6 +6060,7 @@
       "eqTempK": 1002.42,
       "orbitAU": 0.0596,
       "starTempK": 5441.0,
+      "starRadius": 0.87,
       "habitabilityIndex": 0.0768
     },
     {
@@ -5520,6 +6071,7 @@
       "eqTempK": 1013.11,
       "orbitAU": 0.032,
       "starTempK": 4356.47,
+      "starRadius": 0.744261,
       "habitabilityIndex": 0.0767
     },
     {
@@ -5530,6 +6082,7 @@
       "eqTempK": 1020.0,
       "orbitAU": 0.07116,
       "starTempK": 6053.0,
+      "starRadius": 1.16,
       "habitabilityIndex": 0.0764
     },
     {
@@ -5540,6 +6093,7 @@
       "eqTempK": 785.71,
       "orbitAU": 0.117,
       "starTempK": 5823.0,
+      "starRadius": 1.072,
       "habitabilityIndex": 0.0761
     },
     {
@@ -5550,6 +6104,7 @@
       "eqTempK": 876.0,
       "orbitAU": 0.073,
       "starTempK": 5560.0,
+      "starRadius": 0.939,
       "habitabilityIndex": 0.0759
     },
     {
@@ -5560,6 +6115,7 @@
       "eqTempK": 934.0,
       "orbitAU": null,
       "starTempK": 5769.0,
+      "starRadius": 1.05,
       "habitabilityIndex": 0.0757
     },
     {
@@ -5570,6 +6126,7 @@
       "eqTempK": 931.0,
       "orbitAU": 0.15594,
       "starTempK": 6112.0,
+      "starRadius": 1.99,
       "habitabilityIndex": 0.0757
     },
     {
@@ -5580,6 +6137,7 @@
       "eqTempK": 996.0,
       "orbitAU": 0.0331,
       "starTempK": 4751.0,
+      "starRadius": 0.71,
       "habitabilityIndex": 0.0756
     },
     {
@@ -5590,6 +6148,7 @@
       "eqTempK": 876.0,
       "orbitAU": 0.0933,
       "starTempK": 5871.0,
+      "starRadius": 1.04,
       "habitabilityIndex": 0.0754
     },
     {
@@ -5600,6 +6159,7 @@
       "eqTempK": 903.49,
       "orbitAU": 1.09,
       "starTempK": 4312.0,
+      "starRadius": 20.58,
       "habitabilityIndex": 0.0753
     },
     {
@@ -5610,6 +6170,7 @@
       "eqTempK": 935.0,
       "orbitAU": 0.096,
       "starTempK": 6250.0,
+      "starRadius": 1.146,
       "habitabilityIndex": 0.0752
     },
     {
@@ -5620,6 +6181,7 @@
       "eqTempK": 996.0,
       "orbitAU": 0.051,
       "starTempK": 5388.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.0751
     },
     {
@@ -5630,6 +6192,7 @@
       "eqTempK": 745.79,
       "orbitAU": 0.18,
       "starTempK": 5990.0,
+      "starRadius": 1.2,
       "habitabilityIndex": 0.0748
     },
     {
@@ -5640,6 +6203,7 @@
       "eqTempK": 923.5,
       "orbitAU": null,
       "starTempK": 5597.99,
+      "starRadius": 0.971675,
       "habitabilityIndex": 0.0744
     },
     {
@@ -5650,6 +6214,7 @@
       "eqTempK": 1010.0,
       "orbitAU": 0.0418,
       "starTempK": 5575.53,
+      "starRadius": 0.725,
       "habitabilityIndex": 0.0742
     },
     {
@@ -5660,6 +6225,7 @@
       "eqTempK": 941.0,
       "orbitAU": 0.02636,
       "starTempK": 4435.0,
+      "starRadius": 0.671,
       "habitabilityIndex": 0.074
     },
     {
@@ -5670,6 +6236,7 @@
       "eqTempK": 956.0,
       "orbitAU": 0.0343,
       "starTempK": 4786.0,
+      "starRadius": 0.704,
       "habitabilityIndex": 0.0736
     },
     {
@@ -5680,6 +6247,7 @@
       "eqTempK": 1035.0,
       "orbitAU": 0.0806,
       "starTempK": 6149.0,
+      "starRadius": 1.21,
       "habitabilityIndex": 0.0735
     },
     {
@@ -5690,6 +6258,7 @@
       "eqTempK": 718.0,
       "orbitAU": 0.1019,
       "starTempK": 5357.0,
+      "starRadius": 0.789,
       "habitabilityIndex": 0.0735
     },
     {
@@ -5700,6 +6269,7 @@
       "eqTempK": 991.0,
       "orbitAU": 0.0378,
       "starTempK": 5418.0,
+      "starRadius": 0.76,
       "habitabilityIndex": 0.073
     },
     {
@@ -5710,6 +6280,7 @@
       "eqTempK": 978.0,
       "orbitAU": 0.06053,
       "starTempK": 5719.0,
+      "starRadius": 0.92,
       "habitabilityIndex": 0.0729
     },
     {
@@ -5720,6 +6291,7 @@
       "eqTempK": 1019.0,
       "orbitAU": 0.04278,
       "starTempK": 5101.0,
+      "starRadius": 0.79,
       "habitabilityIndex": 0.0728
     },
     {
@@ -5730,6 +6302,7 @@
       "eqTempK": 994.0,
       "orbitAU": 0.0556,
       "starTempK": 5664.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.0719
     },
     {
@@ -5740,6 +6313,7 @@
       "eqTempK": 1021.0,
       "orbitAU": 0.08185,
       "starTempK": 5899.0,
+      "starRadius": 1.15,
       "habitabilityIndex": 0.0716
     },
     {
@@ -5750,6 +6324,7 @@
       "eqTempK": 753.0,
       "orbitAU": 0.107,
       "starTempK": 5529.0,
+      "starRadius": 1.025,
       "habitabilityIndex": 0.0714
     },
     {
@@ -5760,6 +6335,7 @@
       "eqTempK": 888.0,
       "orbitAU": 0.1385,
       "starTempK": 6492.3,
+      "starRadius": 1.25,
       "habitabilityIndex": 0.0712
     },
     {
@@ -5770,6 +6346,7 @@
       "eqTempK": 1059.0,
       "orbitAU": 0.07211,
       "starTempK": 5876.0,
+      "starRadius": 1.06,
       "habitabilityIndex": 0.0711
     },
     {
@@ -5780,6 +6357,7 @@
       "eqTempK": 1008.0,
       "orbitAU": 0.11818,
       "starTempK": 6231.0,
+      "starRadius": 1.59,
       "habitabilityIndex": 0.0703
     },
     {
@@ -5790,6 +6368,7 @@
       "eqTempK": 900.0,
       "orbitAU": 0.075,
       "starTempK": 5070.0,
+      "starRadius": 0.9,
       "habitabilityIndex": 0.0702
     },
     {
@@ -5800,6 +6379,7 @@
       "eqTempK": 939.0,
       "orbitAU": 0.1256,
       "starTempK": 6383.0,
+      "starRadius": 1.47,
       "habitabilityIndex": 0.0701
     },
     {
@@ -5810,6 +6390,7 @@
       "eqTempK": 888.0,
       "orbitAU": 0.0719,
       "starTempK": 5943.0,
+      "starRadius": 1.13,
       "habitabilityIndex": 0.0701
     },
     {
@@ -5820,6 +6401,7 @@
       "eqTempK": 1024.0,
       "orbitAU": 0.0543,
       "starTempK": 5536.0,
+      "starRadius": 0.946,
       "habitabilityIndex": 0.0699
     },
     {
@@ -5830,6 +6412,7 @@
       "eqTempK": 870.0,
       "orbitAU": 0.107,
       "starTempK": 5840.0,
+      "starRadius": 1.019,
       "habitabilityIndex": 0.0696
     },
     {
@@ -5840,6 +6423,7 @@
       "eqTempK": 1062.0,
       "orbitAU": 0.074,
       "starTempK": 6080.0,
+      "starRadius": 1.2,
       "habitabilityIndex": 0.0693
     },
     {
@@ -5850,6 +6434,7 @@
       "eqTempK": 950.0,
       "orbitAU": 0.1223,
       "starTempK": 5770.0,
+      "starRadius": 1.427,
       "habitabilityIndex": 0.0689
     },
     {
@@ -5860,6 +6445,7 @@
       "eqTempK": 69.53,
       "orbitAU": 12.688,
       "starTempK": 5387.0,
+      "starRadius": 0.909,
       "habitabilityIndex": 0.0689
     },
     {
@@ -5870,6 +6456,7 @@
       "eqTempK": 828.3,
       "orbitAU": 0.03607,
       "starTempK": 4071.0,
+      "starRadius": 0.6428,
       "habitabilityIndex": 0.0687
     },
     {
@@ -5880,6 +6467,7 @@
       "eqTempK": 980.0,
       "orbitAU": 0.03989,
       "starTempK": 5009.0,
+      "starRadius": 0.79,
       "habitabilityIndex": 0.0686
     },
     {
@@ -5890,6 +6478,7 @@
       "eqTempK": 1059.0,
       "orbitAU": 0.0364,
       "starTempK": 5167.0,
+      "starRadius": 0.787,
       "habitabilityIndex": 0.0686
     },
     {
@@ -5900,6 +6489,7 @@
       "eqTempK": 855.0,
       "orbitAU": 0.1,
       "starTempK": 5821.0,
+      "starRadius": 1.114,
       "habitabilityIndex": 0.0682
     },
     {
@@ -5910,6 +6500,7 @@
       "eqTempK": 1069.0,
       "orbitAU": 0.068,
       "starTempK": 6003.0,
+      "starRadius": 1.178,
       "habitabilityIndex": 0.0682
     },
     {
@@ -5920,6 +6511,7 @@
       "eqTempK": 1063.0,
       "orbitAU": 0.0511,
       "starTempK": 5406.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.0674
     },
     {
@@ -5930,6 +6522,7 @@
       "eqTempK": 1049.0,
       "orbitAU": 0.11051,
       "starTempK": 6184.0,
+      "starRadius": 1.36,
       "habitabilityIndex": 0.0673
     },
     {
@@ -5940,6 +6533,7 @@
       "eqTempK": 1064.0,
       "orbitAU": 0.0648,
       "starTempK": 5806.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.0672
     },
     {
@@ -5950,6 +6544,7 @@
       "eqTempK": 73.57,
       "orbitAU": 4.11,
       "starTempK": 3897.0,
+      "starRadius": 0.63,
       "habitabilityIndex": 0.067
     },
     {
@@ -5960,6 +6555,7 @@
       "eqTempK": 959.0,
       "orbitAU": 0.080496,
       "starTempK": 5879.0,
+      "starRadius": 1.24,
       "habitabilityIndex": 0.0662
     },
     {
@@ -5970,6 +6566,7 @@
       "eqTempK": 1003.0,
       "orbitAU": 0.0574,
       "starTempK": 5568.0,
+      "starRadius": 0.957,
       "habitabilityIndex": 0.0662
     },
     {
@@ -5980,6 +6577,7 @@
       "eqTempK": 1005.0,
       "orbitAU": 0.117,
       "starTempK": 5923.0,
+      "starRadius": 1.735,
       "habitabilityIndex": 0.066
     },
     {
@@ -5990,6 +6588,7 @@
       "eqTempK": 1089.0,
       "orbitAU": 0.0801,
       "starTempK": 6194.0,
+      "starRadius": 1.29,
       "habitabilityIndex": 0.066
     },
     {
@@ -6000,6 +6599,7 @@
       "eqTempK": 1005.0,
       "orbitAU": 0.0465,
       "starTempK": 5223.0,
+      "starRadius": 0.885,
       "habitabilityIndex": 0.0658
     },
     {
@@ -6010,6 +6610,7 @@
       "eqTempK": 1052.0,
       "orbitAU": 0.0569,
       "starTempK": 6028.0,
+      "starRadius": 1.14,
       "habitabilityIndex": 0.0657
     },
     {
@@ -6020,6 +6621,7 @@
       "eqTempK": 1088.0,
       "orbitAU": 0.07595,
       "starTempK": 5129.0,
+      "starRadius": 1.781,
       "habitabilityIndex": 0.0657
     },
     {
@@ -6030,6 +6632,7 @@
       "eqTempK": 989.0,
       "orbitAU": 0.05947,
       "starTempK": 5646.0,
+      "starRadius": 0.94,
       "habitabilityIndex": 0.0655
     },
     {
@@ -6040,6 +6643,7 @@
       "eqTempK": 964.55,
       "orbitAU": 0.53,
       "starTempK": 4830.0,
+      "starRadius": 9.09,
       "habitabilityIndex": 0.0655
     },
     {
@@ -6050,6 +6654,7 @@
       "eqTempK": 1081.0,
       "orbitAU": 0.0485,
       "starTempK": 5776.0,
+      "starRadius": 1.01,
       "habitabilityIndex": 0.0651
     },
     {
@@ -6060,6 +6665,7 @@
       "eqTempK": 1015.0,
       "orbitAU": 0.098,
       "starTempK": 6165.0,
+      "starRadius": 1.383,
       "habitabilityIndex": 0.0648
     },
     {
@@ -6070,6 +6676,7 @@
       "eqTempK": 1031.14,
       "orbitAU": 0.065757,
       "starTempK": 5977.0,
+      "starRadius": 1.006,
       "habitabilityIndex": 0.0633
     },
     {
@@ -6080,6 +6687,7 @@
       "eqTempK": 1077.0,
       "orbitAU": 0.052,
       "starTempK": 5328.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.0629
     },
     {
@@ -6090,6 +6698,7 @@
       "eqTempK": 1046.0,
       "orbitAU": 0.0452,
       "starTempK": 5508.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.0628
     },
     {
@@ -6100,6 +6709,7 @@
       "eqTempK": 1034.0,
       "orbitAU": 0.0765,
       "starTempK": 6174.0,
+      "starRadius": 1.103,
       "habitabilityIndex": 0.0623
     },
     {
@@ -6110,6 +6720,7 @@
       "eqTempK": 1120.0,
       "orbitAU": null,
       "starTempK": 3419.0,
+      "starRadius": 0.38,
       "habitabilityIndex": 0.062
     },
     {
@@ -6120,6 +6731,7 @@
       "eqTempK": 1108.0,
       "orbitAU": 0.06865,
       "starTempK": 6022.0,
+      "starRadius": 1.23,
       "habitabilityIndex": 0.062
     },
     {
@@ -6130,6 +6742,7 @@
       "eqTempK": 1102.0,
       "orbitAU": 0.07255,
       "starTempK": 5905.0,
+      "starRadius": 1.257,
       "habitabilityIndex": 0.0609
     },
     {
@@ -6140,6 +6753,7 @@
       "eqTempK": 1037.0,
       "orbitAU": 0.104,
       "starTempK": 6186.0,
+      "starRadius": 1.534,
       "habitabilityIndex": 0.0604
     },
     {
@@ -6150,6 +6764,7 @@
       "eqTempK": 1131.0,
       "orbitAU": 0.044,
       "starTempK": 5560.0,
+      "starRadius": 0.939,
       "habitabilityIndex": 0.0598
     },
     {
@@ -6160,6 +6775,7 @@
       "eqTempK": 1053.0,
       "orbitAU": 0.05,
       "starTempK": 5642.0,
+      "starRadius": 0.839,
       "habitabilityIndex": 0.0597
     },
     {
@@ -6170,6 +6786,7 @@
       "eqTempK": 976.0,
       "orbitAU": 0.2157,
       "starTempK": 6160.0,
+      "starRadius": 2.333,
       "habitabilityIndex": 0.0595
     },
     {
@@ -6180,6 +6797,7 @@
       "eqTempK": 1137.0,
       "orbitAU": 0.03497,
       "starTempK": 5212.0,
+      "starRadius": 0.81,
       "habitabilityIndex": 0.0594
     },
     {
@@ -6190,6 +6808,7 @@
       "eqTempK": 960.27,
       "orbitAU": 2.1,
       "starTempK": 4069.0,
+      "starRadius": 50.3,
       "habitabilityIndex": 0.0588
     },
     {
@@ -6200,6 +6819,7 @@
       "eqTempK": 1038.0,
       "orbitAU": 0.05,
       "starTempK": 5554.0,
+      "starRadius": 0.803,
       "habitabilityIndex": 0.0582
     },
     {
@@ -6210,6 +6830,7 @@
       "eqTempK": 1007.53,
       "orbitAU": null,
       "starTempK": 5890.3,
+      "starRadius": 1.31383,
       "habitabilityIndex": 0.058
     },
     {
@@ -6220,6 +6841,7 @@
       "eqTempK": 1123.0,
       "orbitAU": 0.0415,
       "starTempK": 5353.0,
+      "starRadius": 0.83,
       "habitabilityIndex": 0.0577
     },
     {
@@ -6230,6 +6852,7 @@
       "eqTempK": 1111.0,
       "orbitAU": 0.06695,
       "starTempK": 5382.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.0572
     },
     {
@@ -6240,6 +6863,7 @@
       "eqTempK": 1140.0,
       "orbitAU": 0.04766,
       "starTempK": 5769.0,
+      "starRadius": 0.98,
       "habitabilityIndex": 0.0571
     },
     {
@@ -6250,6 +6874,7 @@
       "eqTempK": 1089.0,
       "orbitAU": 0.04766,
       "starTempK": 5191.0,
+      "starRadius": 0.902,
       "habitabilityIndex": 0.057
     },
     {
@@ -6260,6 +6885,7 @@
       "eqTempK": 1025.0,
       "orbitAU": 0.066,
       "starTempK": 6021.0,
+      "starRadius": 1.141,
       "habitabilityIndex": 0.0568
     },
     {
@@ -6270,6 +6896,7 @@
       "eqTempK": 1105.0,
       "orbitAU": 0.06,
       "starTempK": 5983.0,
+      "starRadius": 1.176,
       "habitabilityIndex": 0.0564
     },
     {
@@ -6280,6 +6907,7 @@
       "eqTempK": 995.58,
       "orbitAU": 0.1097,
       "starTempK": 6092.0,
+      "starRadius": 1.26,
       "habitabilityIndex": 0.0562
     },
     {
@@ -6290,6 +6918,7 @@
       "eqTempK": 1174.0,
       "orbitAU": 0.0188,
       "starTempK": 4612.0,
+      "starRadius": 0.7,
       "habitabilityIndex": 0.0561
     },
     {
@@ -6300,6 +6929,7 @@
       "eqTempK": 1040.63,
       "orbitAU": 1.4,
       "starTempK": 4126.0,
+      "starRadius": 38.3,
       "habitabilityIndex": 0.056
     },
     {
@@ -6310,6 +6940,7 @@
       "eqTempK": 1134.0,
       "orbitAU": 0.05511,
       "starTempK": 5471.0,
+      "starRadius": 1.118,
       "habitabilityIndex": 0.0557
     },
     {
@@ -6320,6 +6951,7 @@
       "eqTempK": 1160.0,
       "orbitAU": 0.04682,
       "starTempK": 5850.0,
+      "starRadius": 1.01,
       "habitabilityIndex": 0.0556
     },
     {
@@ -6330,6 +6962,7 @@
       "eqTempK": 786.83,
       "orbitAU": 0.14,
       "starTempK": 5769.0,
+      "starRadius": 1.12,
       "habitabilityIndex": 0.0556
     },
     {
@@ -6340,6 +6973,7 @@
       "eqTempK": 1180.0,
       "orbitAU": 0.117,
       "starTempK": 6152.0,
+      "starRadius": 1.568,
       "habitabilityIndex": 0.055
     },
     {
@@ -6350,6 +6984,7 @@
       "eqTempK": 1095.0,
       "orbitAU": 0.0585,
       "starTempK": 5635.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.0546
     },
     {
@@ -6360,6 +6995,7 @@
       "eqTempK": 1000.0,
       "orbitAU": 0.1143,
       "starTempK": 5977.0,
+      "starRadius": 1.38,
       "habitabilityIndex": 0.0542
     },
     {
@@ -6370,6 +7006,7 @@
       "eqTempK": 1012.7,
       "orbitAU": 0.117,
       "starTempK": 5770.0,
+      "starRadius": 1.55,
       "habitabilityIndex": 0.0536
     },
     {
@@ -6380,6 +7017,7 @@
       "eqTempK": 1042.0,
       "orbitAU": 0.07525,
       "starTempK": 5803.0,
+      "starRadius": 1.72,
       "habitabilityIndex": 0.0536
     },
     {
@@ -6390,6 +7028,7 @@
       "eqTempK": 1181.0,
       "orbitAU": 0.04317,
       "starTempK": 5763.0,
+      "starRadius": 0.99,
       "habitabilityIndex": 0.0536
     },
     {
@@ -6400,6 +7039,7 @@
       "eqTempK": 63.49,
       "orbitAU": 2.94,
       "starTempK": 3719.0,
+      "starRadius": 0.3685,
       "habitabilityIndex": 0.0534
     },
     {
@@ -6410,6 +7050,7 @@
       "eqTempK": 918.0,
       "orbitAU": 0.0818,
       "starTempK": 5597.0,
+      "starRadius": 1.048,
       "habitabilityIndex": 0.0533
     },
     {
@@ -6420,6 +7061,7 @@
       "eqTempK": 1093.0,
       "orbitAU": 0.0602,
       "starTempK": 6123.0,
+      "starRadius": 0.987,
       "habitabilityIndex": 0.0533
     },
     {
@@ -6430,6 +7072,7 @@
       "eqTempK": 1114.0,
       "orbitAU": 0.0198,
       "starTempK": 3924.0,
+      "starRadius": 0.688,
       "habitabilityIndex": 0.053
     },
     {
@@ -6440,6 +7083,7 @@
       "eqTempK": 1213.0,
       "orbitAU": 0.04417,
       "starTempK": 6074.0,
+      "starRadius": 1.16,
       "habitabilityIndex": 0.0522
     },
     {
@@ -6450,6 +7094,7 @@
       "eqTempK": 1117.0,
       "orbitAU": 0.0875,
       "starTempK": 6327.0,
+      "starRadius": 1.43,
       "habitabilityIndex": 0.0521
     },
     {
@@ -6460,6 +7105,7 @@
       "eqTempK": 1074.0,
       "orbitAU": 0.0478,
       "starTempK": 5776.0,
+      "starRadius": 0.849,
       "habitabilityIndex": 0.0521
     },
     {
@@ -6470,6 +7116,7 @@
       "eqTempK": 897.99,
       "orbitAU": 0.61,
       "starTempK": 4639.0,
+      "starRadius": 9.83,
       "habitabilityIndex": 0.0518
     },
     {
@@ -6480,6 +7127,7 @@
       "eqTempK": 934.0,
       "orbitAU": 0.1117,
       "starTempK": 6354.0,
+      "starRadius": 1.316,
       "habitabilityIndex": 0.0517
     },
     {
@@ -6490,6 +7138,7 @@
       "eqTempK": 1206.0,
       "orbitAU": 0.04658,
       "starTempK": 5927.0,
+      "starRadius": 1.05,
       "habitabilityIndex": 0.0517
     },
     {
@@ -6500,6 +7149,7 @@
       "eqTempK": 73.63,
       "orbitAU": 2.32,
       "starTempK": 3467.0,
+      "starRadius": 0.45,
       "habitabilityIndex": 0.0514
     },
     {
@@ -6510,6 +7160,7 @@
       "eqTempK": 1035.0,
       "orbitAU": null,
       "starTempK": 5595.08,
+      "starRadius": 0.988751,
       "habitabilityIndex": 0.0511
     },
     {
@@ -6520,6 +7171,7 @@
       "eqTempK": 1002.0,
       "orbitAU": 0.16619,
       "starTempK": 6096.0,
+      "starRadius": 2.56,
       "habitabilityIndex": 0.0511
     },
     {
@@ -6530,6 +7182,7 @@
       "eqTempK": 1123.44,
       "orbitAU": null,
       "starTempK": 5434.91,
+      "starRadius": 0.986943,
       "habitabilityIndex": 0.051
     },
     {
@@ -6540,6 +7193,7 @@
       "eqTempK": 1215.0,
       "orbitAU": 0.029,
       "starTempK": 5191.0,
+      "starRadius": 0.8,
       "habitabilityIndex": 0.051
     },
     {
@@ -6550,6 +7204,7 @@
       "eqTempK": 911.0,
       "orbitAU": 0.154,
       "starTempK": 6635.0,
+      "starRadius": 1.4,
       "habitabilityIndex": 0.0508
     },
     {
@@ -6560,6 +7215,7 @@
       "eqTempK": 958.66,
       "orbitAU": 0.648,
       "starTempK": 4797.0,
+      "starRadius": 11.13,
       "habitabilityIndex": 0.0508
     },
     {
@@ -6570,6 +7226,7 @@
       "eqTempK": 894.0,
       "orbitAU": 0.098,
       "starTempK": 5805.0,
+      "starRadius": 1.0,
       "habitabilityIndex": 0.0507
     },
     {
@@ -6580,6 +7237,7 @@
       "eqTempK": 1212.0,
       "orbitAU": 0.0451,
       "starTempK": 5788.0,
+      "starRadius": 1.015,
       "habitabilityIndex": 0.0502
     },
     {
@@ -6590,6 +7248,7 @@
       "eqTempK": 1133.0,
       "orbitAU": 0.0542,
       "starTempK": 5887.0,
+      "starRadius": 1.05,
       "habitabilityIndex": 0.0502
     },
     {
@@ -6600,6 +7259,7 @@
       "eqTempK": 1209.0,
       "orbitAU": 0.037,
       "starTempK": 5626.0,
+      "starRadius": 0.815,
       "habitabilityIndex": 0.0499
     },
     {
@@ -6610,6 +7270,7 @@
       "eqTempK": 1203.0,
       "orbitAU": 0.0344,
       "starTempK": 5420.0,
+      "starRadius": 0.871,
       "habitabilityIndex": 0.0498
     },
     {
@@ -6620,6 +7281,7 @@
       "eqTempK": 882.37,
       "orbitAU": null,
       "starTempK": 4700.0,
+      "starRadius": 4.1,
       "habitabilityIndex": 0.0488
     },
     {
@@ -6630,6 +7292,7 @@
       "eqTempK": 1013.56,
       "orbitAU": 0.0464,
       "starTempK": 5000.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.0487
     },
     {
@@ -6640,6 +7303,7 @@
       "eqTempK": 1056.0,
       "orbitAU": 0.0647,
       "starTempK": 6000.0,
+      "starRadius": 1.15,
       "habitabilityIndex": 0.0486
     },
     {
@@ -6650,6 +7314,7 @@
       "eqTempK": 1195.0,
       "orbitAU": 0.0443,
       "starTempK": 5556.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.0485
     },
     {
@@ -6660,6 +7325,7 @@
       "eqTempK": 1238.0,
       "orbitAU": 0.0453,
       "starTempK": 5660.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.0481
     },
     {
@@ -6670,6 +7336,7 @@
       "eqTempK": 1177.85,
       "orbitAU": 0.050201,
       "starTempK": 5577.0,
+      "starRadius": 0.963,
       "habitabilityIndex": 0.0479
     },
     {
@@ -6680,6 +7347,7 @@
       "eqTempK": 1166.0,
       "orbitAU": 0.0277,
       "starTempK": 4841.0,
+      "starRadius": 0.69,
       "habitabilityIndex": 0.0474
     },
     {
@@ -6690,6 +7358,7 @@
       "eqTempK": 1053.0,
       "orbitAU": 0.04101,
       "starTempK": 4953.0,
+      "starRadius": 0.798,
       "habitabilityIndex": 0.0474
     },
     {
@@ -6700,6 +7369,7 @@
       "eqTempK": 1171.0,
       "orbitAU": 0.1694,
       "starTempK": 5598.0,
+      "starRadius": 0.92,
       "habitabilityIndex": 0.0472
     },
     {
@@ -6710,6 +7380,7 @@
       "eqTempK": 1015.0,
       "orbitAU": 0.067,
       "starTempK": 5723.0,
+      "starRadius": 0.99,
       "habitabilityIndex": 0.0472
     },
     {
@@ -6720,6 +7391,7 @@
       "eqTempK": 1169.8,
       "orbitAU": 0.06839,
       "starTempK": 5998.0,
+      "starRadius": 1.17,
       "habitabilityIndex": 0.0471
     },
     {
@@ -6730,6 +7402,7 @@
       "eqTempK": 1059.0,
       "orbitAU": 0.0801,
       "starTempK": 5600.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.0466
     },
     {
@@ -6740,6 +7413,7 @@
       "eqTempK": 1219.0,
       "orbitAU": 0.05501,
       "starTempK": 5981.0,
+      "starRadius": 1.13,
       "habitabilityIndex": 0.0462
     },
     {
@@ -6750,6 +7424,7 @@
       "eqTempK": 1145.89,
       "orbitAU": 0.041,
       "starTempK": 5576.0,
+      "starRadius": 0.744665,
       "habitabilityIndex": 0.046
     },
     {
@@ -6760,6 +7435,7 @@
       "eqTempK": 1272.0,
       "orbitAU": 0.056,
       "starTempK": 5977.0,
+      "starRadius": 0.911,
       "habitabilityIndex": 0.0459
     },
     {
@@ -6770,6 +7446,7 @@
       "eqTempK": 1060.0,
       "orbitAU": 0.0734,
       "starTempK": 6146.0,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.0454
     },
     {
@@ -6780,6 +7457,7 @@
       "eqTempK": 1276.0,
       "orbitAU": 0.02876,
       "starTempK": 5331.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.0452
     },
     {
@@ -6790,6 +7468,7 @@
       "eqTempK": 1278.0,
       "orbitAU": 0.03336,
       "starTempK": 5462.0,
+      "starRadius": 0.88,
       "habitabilityIndex": 0.0452
     },
     {
@@ -6800,6 +7479,7 @@
       "eqTempK": 1231.0,
       "orbitAU": 0.055,
       "starTempK": 6035.0,
+      "starRadius": 1.22,
       "habitabilityIndex": 0.0449
     },
     {
@@ -6810,6 +7490,7 @@
       "eqTempK": 1269.21,
       "orbitAU": 0.0378,
       "starTempK": 5785.0,
+      "starRadius": 0.9356,
       "habitabilityIndex": 0.0448
     },
     {
@@ -6820,6 +7501,7 @@
       "eqTempK": 882.0,
       "orbitAU": 0.0769,
       "starTempK": 5493.0,
+      "starRadius": 1.05,
       "habitabilityIndex": 0.0446
     },
     {
@@ -6830,6 +7512,7 @@
       "eqTempK": 1298.0,
       "orbitAU": 0.07375,
       "starTempK": 6040.0,
+      "starRadius": 1.686,
       "habitabilityIndex": 0.0446
     },
     {
@@ -6840,6 +7523,7 @@
       "eqTempK": 1293.0,
       "orbitAU": 0.05838,
       "starTempK": 5618.0,
+      "starRadius": 0.95,
       "habitabilityIndex": 0.0446
     },
     {
@@ -6850,6 +7534,7 @@
       "eqTempK": 1282.0,
       "orbitAU": 0.0511,
       "starTempK": 6202.0,
+      "starRadius": 1.122,
       "habitabilityIndex": 0.044
     },
     {
@@ -6860,6 +7545,7 @@
       "eqTempK": 1178.0,
       "orbitAU": 0.03841,
       "starTempK": 5593.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.0433
     },
     {
@@ -6870,6 +7556,7 @@
       "eqTempK": 1211.0,
       "orbitAU": 0.06,
       "starTempK": 5912.0,
+      "starRadius": 1.58,
       "habitabilityIndex": 0.0429
     },
     {
@@ -6880,6 +7567,7 @@
       "eqTempK": 1312.0,
       "orbitAU": 0.0366,
       "starTempK": 5667.0,
+      "starRadius": 0.92,
       "habitabilityIndex": 0.0427
     },
     {
@@ -6890,6 +7578,7 @@
       "eqTempK": 1150.0,
       "orbitAU": 16.4,
       "starTempK": 7400.0,
+      "starRadius": 1.49338,
       "habitabilityIndex": 0.0426
     },
     {
@@ -6900,6 +7589,7 @@
       "eqTempK": 1320.0,
       "orbitAU": 0.0917,
       "starTempK": 6291.0,
+      "starRadius": 2.04,
       "habitabilityIndex": 0.0425
     },
     {
@@ -6910,6 +7600,7 @@
       "eqTempK": 1238.0,
       "orbitAU": 0.064,
       "starTempK": 6060.0,
+      "starRadius": 1.15,
       "habitabilityIndex": 0.0425
     },
     {
@@ -6920,6 +7611,7 @@
       "eqTempK": 1283.0,
       "orbitAU": 0.0313,
       "starTempK": 5527.0,
+      "starRadius": 0.9,
       "habitabilityIndex": 0.0423
     },
     {
@@ -6930,6 +7622,7 @@
       "eqTempK": 1163.0,
       "orbitAU": 0.07931,
       "starTempK": 5933.0,
+      "starRadius": 1.59,
       "habitabilityIndex": 0.0421
     },
     {
@@ -6940,6 +7633,7 @@
       "eqTempK": 1328.0,
       "orbitAU": 0.04975,
       "starTempK": 5961.0,
+      "starRadius": 1.25,
       "habitabilityIndex": 0.042
     },
     {
@@ -6950,6 +7644,7 @@
       "eqTempK": 929.0,
       "orbitAU": 0.0654,
       "starTempK": 5271.0,
+      "starRadius": 0.873,
       "habitabilityIndex": 0.042
     },
     {
@@ -6960,6 +7655,7 @@
       "eqTempK": 1156.34,
       "orbitAU": 0.0644,
       "starTempK": 5869.0,
+      "starRadius": 1.075139,
       "habitabilityIndex": 0.0417
     },
     {
@@ -6970,6 +7666,7 @@
       "eqTempK": 1328.0,
       "orbitAU": 0.05712,
       "starTempK": 6046.0,
+      "starRadius": 1.396,
       "habitabilityIndex": 0.0414
     },
     {
@@ -6980,6 +7677,7 @@
       "eqTempK": 1301.0,
       "orbitAU": 0.045,
       "starTempK": 6077.0,
+      "starRadius": 1.288,
       "habitabilityIndex": 0.0413
     },
     {
@@ -6990,6 +7688,7 @@
       "eqTempK": 1266.0,
       "orbitAU": 0.04994,
       "starTempK": 5731.0,
+      "starRadius": 1.06,
       "habitabilityIndex": 0.0411
     },
     {
@@ -7000,6 +7699,7 @@
       "eqTempK": 1331.0,
       "orbitAU": 0.05456,
       "starTempK": 6356.0,
+      "starRadius": 1.32,
       "habitabilityIndex": 0.0411
     },
     {
@@ -7010,6 +7710,7 @@
       "eqTempK": 1128.86,
       "orbitAU": 0.079,
       "starTempK": 5783.0,
+      "starRadius": 1.294595,
       "habitabilityIndex": 0.0407
     },
     {
@@ -7020,6 +7721,7 @@
       "eqTempK": 996.0,
       "orbitAU": 0.0762,
       "starTempK": 5835.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.0406
     },
     {
@@ -7030,6 +7732,7 @@
       "eqTempK": 1304.0,
       "orbitAU": 0.0467,
       "starTempK": 5794.0,
+      "starRadius": 1.216,
       "habitabilityIndex": 0.0406
     },
     {
@@ -7040,6 +7743,7 @@
       "eqTempK": 1054.0,
       "orbitAU": 0.079,
       "starTempK": 5593.0,
+      "starRadius": 1.485,
       "habitabilityIndex": 0.0405
     },
     {
@@ -7050,6 +7754,7 @@
       "eqTempK": 1200.0,
       "orbitAU": 68.0,
       "starTempK": 7204.58,
+      "starRadius": 1.49338,
       "habitabilityIndex": 0.0402
     },
     {
@@ -7060,6 +7765,7 @@
       "eqTempK": 1314.0,
       "orbitAU": 0.0201,
       "starTempK": 4877.0,
+      "starRadius": 0.75,
       "habitabilityIndex": 0.0402
     },
     {
@@ -7070,6 +7776,7 @@
       "eqTempK": 1226.0,
       "orbitAU": 0.03445,
       "starTempK": 5422.0,
+      "starRadius": 0.887,
       "habitabilityIndex": 0.0398
     },
     {
@@ -7080,6 +7787,7 @@
       "eqTempK": 1181.9,
       "orbitAU": 3.74,
       "starTempK": 6500.0,
+      "starRadius": 1.31116,
       "habitabilityIndex": 0.0396
     },
     {
@@ -7090,6 +7798,7 @@
       "eqTempK": 1313.0,
       "orbitAU": 0.02449,
       "starTempK": 5350.0,
+      "starRadius": 0.83,
       "habitabilityIndex": 0.0396
     },
     {
@@ -7100,6 +7809,7 @@
       "eqTempK": 1129.0,
       "orbitAU": 0.0484,
       "starTempK": 5626.0,
+      "starRadius": 0.92,
       "habitabilityIndex": 0.0395
     },
     {
@@ -7110,6 +7820,7 @@
       "eqTempK": 993.25,
       "orbitAU": 0.154,
       "starTempK": 6255.0,
+      "starRadius": 1.67,
       "habitabilityIndex": 0.0394
     },
     {
@@ -7120,6 +7831,7 @@
       "eqTempK": 1236.7,
       "orbitAU": 0.0207,
       "starTempK": 4635.0,
+      "starRadius": 0.7558,
       "habitabilityIndex": 0.0393
     },
     {
@@ -7130,6 +7842,7 @@
       "eqTempK": 1362.93,
       "orbitAU": 0.008332353,
       "starTempK": 3702.0,
+      "starRadius": 0.485948,
       "habitabilityIndex": 0.0392
     },
     {
@@ -7140,6 +7853,7 @@
       "eqTempK": 1200.0,
       "orbitAU": 38.0,
       "starTempK": 7204.58,
+      "starRadius": 1.49338,
       "habitabilityIndex": 0.0389
     },
     {
@@ -7150,6 +7864,7 @@
       "eqTempK": 1041.19,
       "orbitAU": 0.05741,
       "starTempK": 5875.0,
+      "starRadius": 0.881,
       "habitabilityIndex": 0.0386
     },
     {
@@ -7160,6 +7875,7 @@
       "eqTempK": 1360.0,
       "orbitAU": 0.038,
       "starTempK": 6043.0,
+      "starRadius": 1.014,
       "habitabilityIndex": 0.0378
     },
     {
@@ -7170,6 +7886,7 @@
       "eqTempK": 1329.0,
       "orbitAU": 0.04647,
       "starTempK": 5423.0,
+      "starRadius": 1.404,
       "habitabilityIndex": 0.0377
     },
     {
@@ -7180,6 +7897,7 @@
       "eqTempK": 1368.0,
       "orbitAU": 0.0488,
       "starTempK": 6296.0,
+      "starRadius": 1.36,
       "habitabilityIndex": 0.0376
     },
     {
@@ -7190,6 +7908,7 @@
       "eqTempK": 1060.0,
       "orbitAU": 0.0787,
       "starTempK": 5991.0,
+      "starRadius": 1.08,
       "habitabilityIndex": 0.0376
     },
     {
@@ -7200,6 +7919,7 @@
       "eqTempK": 1309.0,
       "orbitAU": 0.0687,
       "starTempK": 6354.0,
+      "starRadius": 1.258,
       "habitabilityIndex": 0.0371
     },
     {
@@ -7210,6 +7930,7 @@
       "eqTempK": 1036.0,
       "orbitAU": 0.1086,
       "starTempK": 5490.0,
+      "starRadius": 1.663,
       "habitabilityIndex": 0.0363
     },
     {
@@ -7220,6 +7941,7 @@
       "eqTempK": 1113.78,
       "orbitAU": 0.06,
       "starTempK": 5602.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.036
     },
     {
@@ -7230,6 +7952,7 @@
       "eqTempK": 1372.0,
       "orbitAU": 0.05768,
       "starTempK": 6228.0,
+      "starRadius": 1.42,
       "habitabilityIndex": 0.036
     },
     {
@@ -7240,6 +7963,7 @@
       "eqTempK": 1314.0,
       "orbitAU": 0.0631,
       "starTempK": 6327.0,
+      "starRadius": 1.43,
       "habitabilityIndex": 0.0359
     },
     {
@@ -7250,6 +7974,7 @@
       "eqTempK": 1377.0,
       "orbitAU": 0.042,
       "starTempK": 5766.0,
+      "starRadius": 1.08,
       "habitabilityIndex": 0.0353
     },
     {
@@ -7260,6 +7985,7 @@
       "eqTempK": 1308.0,
       "orbitAU": 0.043,
       "starTempK": 5821.0,
+      "starRadius": 1.114,
       "habitabilityIndex": 0.0352
     },
     {
@@ -7270,6 +7996,7 @@
       "eqTempK": 1258.0,
       "orbitAU": 0.03478,
       "starTempK": 5350.0,
+      "starRadius": 0.824,
       "habitabilityIndex": 0.0351
     },
     {
@@ -7280,6 +8007,7 @@
       "eqTempK": 1091.99,
       "orbitAU": 0.04,
       "starTempK": 5316.0,
+      "starRadius": 0.864673,
       "habitabilityIndex": 0.0348
     },
     {
@@ -7290,6 +8018,7 @@
       "eqTempK": 1091.0,
       "orbitAU": 0.04871,
       "starTempK": 5306.0,
+      "starRadius": 0.886,
       "habitabilityIndex": 0.0348
     },
     {
@@ -7300,6 +8029,7 @@
       "eqTempK": 930.0,
       "orbitAU": 0.083,
       "starTempK": 5038.0,
+      "starRadius": 2.879,
       "habitabilityIndex": 0.0338
     },
     {
@@ -7310,6 +8040,7 @@
       "eqTempK": 1092.0,
       "orbitAU": 0.04839,
       "starTempK": 5425.0,
+      "starRadius": 0.844,
       "habitabilityIndex": 0.0337
     },
     {
@@ -7320,6 +8051,7 @@
       "eqTempK": 1453.0,
       "orbitAU": 0.04004,
       "starTempK": 5908.0,
+      "starRadius": 1.21,
       "habitabilityIndex": 0.0336
     },
     {
@@ -7330,6 +8062,7 @@
       "eqTempK": 1429.0,
       "orbitAU": 0.0531,
       "starTempK": 6209.0,
+      "starRadius": 1.45,
       "habitabilityIndex": 0.0334
     },
     {
@@ -7340,6 +8073,7 @@
       "eqTempK": 1273.0,
       "orbitAU": 0.0432,
       "starTempK": 5633.0,
+      "starRadius": 0.91,
       "habitabilityIndex": 0.0332
     },
     {
@@ -7350,6 +8084,7 @@
       "eqTempK": 1413.0,
       "orbitAU": 0.0684,
       "starTempK": 5667.0,
+      "starRadius": 1.56,
       "habitabilityIndex": 0.0325
     },
     {
@@ -7360,6 +8095,7 @@
       "eqTempK": 1455.0,
       "orbitAU": 0.0394,
       "starTempK": 5887.0,
+      "starRadius": 1.235,
       "habitabilityIndex": 0.0319
     },
     {
@@ -7370,6 +8106,7 @@
       "eqTempK": 1128.0,
       "orbitAU": 0.06112,
       "starTempK": 5670.0,
+      "starRadius": 1.036,
       "habitabilityIndex": 0.0316
     },
     {
@@ -7380,6 +8117,7 @@
       "eqTempK": 1431.0,
       "orbitAU": 0.0393,
       "starTempK": 5717.0,
+      "starRadius": 0.98,
       "habitabilityIndex": 0.0313
     },
     {
@@ -7390,6 +8128,7 @@
       "eqTempK": 1186.0,
       "orbitAU": 0.0261,
       "starTempK": 4738.0,
+      "starRadius": 0.7,
       "habitabilityIndex": 0.0313
     },
     {
@@ -7400,6 +8139,7 @@
       "eqTempK": 1405.35,
       "orbitAU": null,
       "starTempK": 5315.91,
+      "starRadius": 0.848099,
       "habitabilityIndex": 0.0312
     },
     {
@@ -7410,6 +8150,7 @@
       "eqTempK": 1243.0,
       "orbitAU": 0.0529,
       "starTempK": 6038.0,
+      "starRadius": 1.2,
       "habitabilityIndex": 0.0311
     },
     {
@@ -7420,6 +8161,7 @@
       "eqTempK": 1034.4,
       "orbitAU": 0.1508,
       "starTempK": 5935.0,
+      "starRadius": 1.97,
       "habitabilityIndex": 0.0311
     },
     {
@@ -7430,6 +8172,7 @@
       "eqTempK": 57.84,
       "orbitAU": 3.7,
       "starTempK": 3472.0,
+      "starRadius": 0.441557,
       "habitabilityIndex": 0.031
     },
     {
@@ -7440,6 +8183,7 @@
       "eqTempK": 48.85,
       "orbitAU": 15.898,
       "starTempK": 4836.0,
+      "starRadius": 0.697551,
       "habitabilityIndex": 0.0309
     },
     {
@@ -7450,6 +8194,7 @@
       "eqTempK": 1365.0,
       "orbitAU": 0.0331,
       "starTempK": 5575.0,
+      "starRadius": 0.92,
       "habitabilityIndex": 0.0309
     },
     {
@@ -7460,6 +8205,7 @@
       "eqTempK": 1111.0,
       "orbitAU": 0.05191,
       "starTempK": 5582.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.0309
     },
     {
@@ -7470,6 +8216,7 @@
       "eqTempK": 1095.0,
       "orbitAU": 0.1212,
       "starTempK": 5561.0,
+      "starRadius": 2.02,
       "habitabilityIndex": 0.0303
     },
     {
@@ -7480,6 +8227,7 @@
       "eqTempK": 1232.5,
       "orbitAU": 0.0446,
       "starTempK": 5800.0,
+      "starRadius": 1.003,
       "habitabilityIndex": 0.0302
     },
     {
@@ -7490,6 +8238,7 @@
       "eqTempK": 1210.0,
       "orbitAU": 0.0457,
       "starTempK": 5834.0,
+      "starRadius": 1.11,
       "habitabilityIndex": 0.0301
     },
     {
@@ -7500,6 +8249,7 @@
       "eqTempK": 1180.0,
       "orbitAU": 0.073,
       "starTempK": 5808.0,
+      "starRadius": 1.29,
       "habitabilityIndex": 0.03
     },
     {
@@ -7510,6 +8260,7 @@
       "eqTempK": 1003.0,
       "orbitAU": 0.04944,
       "starTempK": 5099.0,
+      "starRadius": 0.812,
       "habitabilityIndex": 0.0298
     },
     {
@@ -7520,6 +8271,7 @@
       "eqTempK": 1520.0,
       "orbitAU": 0.0187,
       "starTempK": 5123.0,
+      "starRadius": 0.847,
       "habitabilityIndex": 0.0296
     },
     {
@@ -7530,6 +8282,7 @@
       "eqTempK": 1367.0,
       "orbitAU": 0.05037,
       "starTempK": 5588.0,
+      "starRadius": 1.21,
       "habitabilityIndex": 0.0293
     },
     {
@@ -7540,6 +8293,7 @@
       "eqTempK": 1218.0,
       "orbitAU": 0.03694,
       "starTempK": 5131.0,
+      "starRadius": 0.893,
       "habitabilityIndex": 0.0291
     },
     {
@@ -7550,6 +8304,7 @@
       "eqTempK": 1539.0,
       "orbitAU": 0.01405,
       "starTempK": 4865.0,
+      "starRadius": 0.75,
       "habitabilityIndex": 0.0289
     },
     {
@@ -7560,6 +8315,7 @@
       "eqTempK": 1162.0,
       "orbitAU": 0.0539,
       "starTempK": 5618.0,
+      "starRadius": 0.92,
       "habitabilityIndex": 0.0286
     },
     {
@@ -7570,6 +8326,7 @@
       "eqTempK": 1407.0,
       "orbitAU": 0.1216,
       "starTempK": 6900.0,
+      "starRadius": 2.599,
       "habitabilityIndex": 0.0285
     },
     {
@@ -7580,6 +8337,7 @@
       "eqTempK": 1040.0,
       "orbitAU": 0.05389,
       "starTempK": 5347.0,
+      "starRadius": 0.89,
       "habitabilityIndex": 0.0282
     },
     {
@@ -7590,6 +8348,7 @@
       "eqTempK": 46.73,
       "orbitAU": 13.39,
       "starTempK": 4678.0,
+      "starRadius": 0.574666,
       "habitabilityIndex": 0.0281
     },
     {
@@ -7600,6 +8359,7 @@
       "eqTempK": 1230.0,
       "orbitAU": 0.0515,
       "starTempK": 5430.0,
+      "starRadius": 1.13,
       "habitabilityIndex": 0.0281
     },
     {
@@ -7610,6 +8370,7 @@
       "eqTempK": 1574.0,
       "orbitAU": 0.03046,
       "starTempK": 6014.0,
+      "starRadius": 1.1,
       "habitabilityIndex": 0.0281
     },
     {
@@ -7620,6 +8381,7 @@
       "eqTempK": 1270.0,
       "orbitAU": 0.0323,
       "starTempK": 5300.0,
+      "starRadius": 0.87,
       "habitabilityIndex": 0.028
     },
     {
@@ -7630,6 +8392,7 @@
       "eqTempK": 1537.0,
       "orbitAU": 0.05009,
       "starTempK": 6160.0,
+      "starRadius": 1.23,
       "habitabilityIndex": 0.0278
     },
     {
@@ -7640,6 +8403,7 @@
       "eqTempK": 1391.0,
       "orbitAU": 0.0665,
       "starTempK": 6426.0,
+      "starRadius": 1.338,
       "habitabilityIndex": 0.0275
     },
     {
@@ -7650,6 +8414,7 @@
       "eqTempK": 1562.0,
       "orbitAU": 0.02342,
       "starTempK": 5636.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.0272
     },
     {
@@ -7660,6 +8425,7 @@
       "eqTempK": 1589.0,
       "orbitAU": 0.0154,
       "starTempK": 5142.0,
+      "starRadius": 0.755,
       "habitabilityIndex": 0.027
     },
     {
@@ -7670,6 +8436,7 @@
       "eqTempK": 1602.0,
       "orbitAU": 0.03783,
       "starTempK": 6289.0,
+      "starRadius": 1.27,
       "habitabilityIndex": 0.0269
     },
     {
@@ -7680,6 +8447,7 @@
       "eqTempK": 1210.0,
       "orbitAU": 0.0488,
       "starTempK": 5750.0,
+      "starRadius": 0.88,
       "habitabilityIndex": 0.0268
     },
     {
@@ -7690,6 +8458,7 @@
       "eqTempK": 1415.0,
       "orbitAU": 0.04127,
       "starTempK": 5747.0,
+      "starRadius": 1.076,
       "habitabilityIndex": 0.0266
     },
     {
@@ -7700,6 +8469,7 @@
       "eqTempK": 1162.08,
       "orbitAU": 0.0579,
       "starTempK": 4974.0,
+      "starRadius": 3.52,
       "habitabilityIndex": 0.0264
     },
     {
@@ -7710,6 +8480,7 @@
       "eqTempK": 1612.0,
       "orbitAU": 0.01834,
       "starTempK": 5468.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.0262
     },
     {
@@ -7720,6 +8491,7 @@
       "eqTempK": 1446.0,
       "orbitAU": 0.0441,
       "starTempK": 6357.0,
+      "starRadius": 1.17,
       "habitabilityIndex": 0.0261
     },
     {
@@ -7730,6 +8502,7 @@
       "eqTempK": 1610.0,
       "orbitAU": 0.0276,
       "starTempK": 5735.0,
+      "starRadius": 0.96,
       "habitabilityIndex": 0.0261
     },
     {
@@ -7740,6 +8513,7 @@
       "eqTempK": 1616.0,
       "orbitAU": 0.04218,
       "starTempK": 6170.0,
+      "starRadius": 1.35,
       "habitabilityIndex": 0.026
     },
     {
@@ -7750,6 +8524,7 @@
       "eqTempK": 1200.0,
       "orbitAU": 0.038,
       "starTempK": 5297.0,
+      "starRadius": 0.929,
       "habitabilityIndex": 0.0258
     },
     {
@@ -7760,6 +8535,7 @@
       "eqTempK": 1258.0,
       "orbitAU": 0.0502,
       "starTempK": 5967.0,
+      "starRadius": 1.15,
       "habitabilityIndex": 0.0258
     },
     {
@@ -7770,6 +8546,7 @@
       "eqTempK": 1400.0,
       "orbitAU": 8.996,
       "starTempK": 6140.0,
+      "starRadius": 1.25,
       "habitabilityIndex": 0.0257
     },
     {
@@ -7780,6 +8557,7 @@
       "eqTempK": 1199.0,
       "orbitAU": 0.0827,
       "starTempK": 6197.21,
+      "starRadius": 1.64162,
       "habitabilityIndex": 0.0255
     },
     {
@@ -7790,6 +8568,7 @@
       "eqTempK": 1540.0,
       "orbitAU": 0.03044,
       "starTempK": 5821.0,
+      "starRadius": 1.0,
       "habitabilityIndex": 0.0253
     },
     {
@@ -7800,6 +8579,7 @@
       "eqTempK": 1344.0,
       "orbitAU": 0.02153,
       "starTempK": 4645.0,
+      "starRadius": 0.776,
       "habitabilityIndex": 0.0249
     },
     {
@@ -7810,6 +8590,7 @@
       "eqTempK": 1484.0,
       "orbitAU": 0.1117,
       "starTempK": 6206.0,
+      "starRadius": 2.75,
       "habitabilityIndex": 0.0249
     },
     {
@@ -7820,6 +8601,7 @@
       "eqTempK": 1400.0,
       "orbitAU": 0.045,
       "starTempK": 5500.0,
+      "starRadius": 1.12,
       "habitabilityIndex": 0.0248
     },
     {
@@ -7830,6 +8612,7 @@
       "eqTempK": 1473.18,
       "orbitAU": 0.0444,
       "starTempK": 5966.0,
+      "starRadius": 1.164285,
       "habitabilityIndex": 0.0247
     },
     {
@@ -7840,6 +8623,7 @@
       "eqTempK": 1295.7,
       "orbitAU": 0.03211,
       "starTempK": 5137.0,
+      "starRadius": 0.8785,
       "habitabilityIndex": 0.0246
     },
     {
@@ -7850,6 +8634,7 @@
       "eqTempK": 1541.0,
       "orbitAU": null,
       "starTempK": 5385.64,
+      "starRadius": 0.933361,
       "habitabilityIndex": 0.0245
     },
     {
@@ -7860,6 +8645,7 @@
       "eqTempK": 1177.0,
       "orbitAU": 0.0523,
       "starTempK": 5550.0,
+      "starRadius": 1.213,
       "habitabilityIndex": 0.0242
     },
     {
@@ -7870,6 +8656,7 @@
       "eqTempK": 1642.0,
       "orbitAU": 0.02356,
       "starTempK": 5586.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.0241
     },
     {
@@ -7880,6 +8667,7 @@
       "eqTempK": 1213.76,
       "orbitAU": null,
       "starTempK": 6100.0,
+      "starRadius": 1.24,
       "habitabilityIndex": 0.024
     },
     {
@@ -7890,6 +8678,7 @@
       "eqTempK": 1507.0,
       "orbitAU": 0.0421,
       "starTempK": 5849.0,
+      "starRadius": 1.35,
       "habitabilityIndex": 0.0239
     },
     {
@@ -7900,6 +8689,7 @@
       "eqTempK": 1677.0,
       "orbitAU": 0.01839,
       "starTempK": 5791.0,
+      "starRadius": 0.98,
       "habitabilityIndex": 0.0238
     },
     {
@@ -7910,6 +8700,7 @@
       "eqTempK": 1664.0,
       "orbitAU": 0.0252,
       "starTempK": 5851.0,
+      "starRadius": 1.03,
       "habitabilityIndex": 0.0236
     },
     {
@@ -7920,6 +8711,7 @@
       "eqTempK": 1213.95,
       "orbitAU": 0.057,
       "starTempK": 4250.0,
+      "starRadius": 2.0,
       "habitabilityIndex": 0.0236
     },
     {
@@ -7930,6 +8722,7 @@
       "eqTempK": 1213.23,
       "orbitAU": 0.0467,
       "starTempK": 5720.0,
+      "starRadius": 1.064,
       "habitabilityIndex": 0.0234
     },
     {
@@ -7940,6 +8733,7 @@
       "eqTempK": 1281.0,
       "orbitAU": 0.0667,
       "starTempK": 6087.0,
+      "starRadius": 1.3,
       "habitabilityIndex": 0.0233
     },
     {
@@ -7950,6 +8744,7 @@
       "eqTempK": 1700.0,
       "orbitAU": 0.02466,
       "starTempK": 5925.0,
+      "starRadius": 1.035,
       "habitabilityIndex": 0.0231
     },
     {
@@ -7960,6 +8755,7 @@
       "eqTempK": 1292.0,
       "orbitAU": 0.04756,
       "starTempK": 5890.0,
+      "starRadius": 0.985,
       "habitabilityIndex": 0.0229
     },
     {
@@ -7970,6 +8766,7 @@
       "eqTempK": 1632.0,
       "orbitAU": 0.04467,
       "starTempK": 6196.0,
+      "starRadius": 1.26,
       "habitabilityIndex": 0.0225
     },
     {
@@ -7980,6 +8777,7 @@
       "eqTempK": 1373.0,
       "orbitAU": 0.099,
       "starTempK": 5259.9,
+      "starRadius": 2.9,
       "habitabilityIndex": 0.0224
     },
     {
@@ -7990,6 +8788,7 @@
       "eqTempK": 1442.0,
       "orbitAU": 0.06519,
       "starTempK": 6150.0,
+      "starRadius": 1.241,
       "habitabilityIndex": 0.0221
     },
     {
@@ -8000,6 +8799,7 @@
       "eqTempK": 1714.0,
       "orbitAU": 0.0136,
       "starTempK": 5106.0,
+      "starRadius": 0.78,
       "habitabilityIndex": 0.0217
     },
     {
@@ -8010,6 +8810,7 @@
       "eqTempK": 1168.2,
       "orbitAU": 0.05042,
       "starTempK": 5453.0,
+      "starRadius": 0.995,
       "habitabilityIndex": 0.0216
     },
     {
@@ -8020,6 +8821,7 @@
       "eqTempK": 1650.0,
       "orbitAU": 0.019,
       "starTempK": 5143.0,
+      "starRadius": 0.84,
       "habitabilityIndex": 0.0213
     },
     {
@@ -8030,6 +8832,7 @@
       "eqTempK": 1569.0,
       "orbitAU": 0.02231,
       "starTempK": 5281.0,
+      "starRadius": 0.82,
       "habitabilityIndex": 0.0213
     },
     {
@@ -8040,6 +8843,7 @@
       "eqTempK": 1566.0,
       "orbitAU": 0.076381,
       "starTempK": 5994.0,
+      "starRadius": 1.1,
       "habitabilityIndex": 0.0206
     },
     {
@@ -8050,6 +8854,7 @@
       "eqTempK": 1790.0,
       "orbitAU": 0.0283,
       "starTempK": 5818.0,
+      "starRadius": 0.99,
       "habitabilityIndex": 0.0206
     },
     {
@@ -8060,6 +8865,7 @@
       "eqTempK": 1756.0,
       "orbitAU": 0.017016,
       "starTempK": 5275.0,
+      "starRadius": 0.83,
       "habitabilityIndex": 0.0204
     },
     {
@@ -8070,6 +8876,7 @@
       "eqTempK": 1142.0,
       "orbitAU": 0.03957,
       "starTempK": 5017.0,
+      "starRadius": 0.885,
       "habitabilityIndex": 0.0203
     },
     {
@@ -8080,6 +8887,7 @@
       "eqTempK": 1663.13,
       "orbitAU": 0.038,
       "starTempK": 5966.0,
+      "starRadius": 1.27,
       "habitabilityIndex": 0.0198
     },
     {
@@ -8090,6 +8898,7 @@
       "eqTempK": 1815.0,
       "orbitAU": 0.0164,
       "starTempK": 5438.0,
+      "starRadius": 0.83,
       "habitabilityIndex": 0.0196
     },
     {
@@ -8100,6 +8909,7 @@
       "eqTempK": 1844.0,
       "orbitAU": 0.0197,
       "starTempK": 5793.0,
+      "starRadius": 1.01,
       "habitabilityIndex": 0.0191
     },
     {
@@ -8110,6 +8920,7 @@
       "eqTempK": 1237.0,
       "orbitAU": 0.04163,
       "starTempK": 5416.0,
+      "starRadius": 0.933,
       "habitabilityIndex": 0.0186
     },
     {
@@ -8120,6 +8931,7 @@
       "eqTempK": 1735.0,
       "orbitAU": 0.03957,
       "starTempK": 6210.0,
+      "starRadius": 1.309,
       "habitabilityIndex": 0.0186
     },
     {
@@ -8130,6 +8942,7 @@
       "eqTempK": 1774.0,
       "orbitAU": 0.0266,
       "starTempK": 5334.0,
+      "starRadius": 0.83,
       "habitabilityIndex": 0.0185
     },
     {
@@ -8140,6 +8953,7 @@
       "eqTempK": 1395.0,
       "orbitAU": 0.04036,
       "starTempK": 5640.0,
+      "starRadius": 1.062,
       "habitabilityIndex": 0.0185
     },
     {
@@ -8150,6 +8964,7 @@
       "eqTempK": 1626.0,
       "orbitAU": 0.0461,
       "starTempK": 5740.0,
+      "starRadius": 1.59,
       "habitabilityIndex": 0.0182
     },
     {
@@ -8160,6 +8975,7 @@
       "eqTempK": 1885.0,
       "orbitAU": 0.0204,
       "starTempK": 5752.0,
+      "starRadius": 0.94,
       "habitabilityIndex": 0.0179
     },
     {
@@ -8170,6 +8986,7 @@
       "eqTempK": 1876.0,
       "orbitAU": 0.01795,
       "starTempK": 5671.0,
+      "starRadius": 0.93,
       "habitabilityIndex": 0.0178
     },
     {
@@ -8180,6 +8997,7 @@
       "eqTempK": 1324.0,
       "orbitAU": 0.04667,
       "starTempK": 5679.0,
+      "starRadius": 1.086,
       "habitabilityIndex": 0.0176
     },
     {
@@ -8190,6 +9008,7 @@
       "eqTempK": 1711.0,
       "orbitAU": 0.0488,
       "starTempK": 6747.0,
+      "starRadius": 1.61,
       "habitabilityIndex": 0.0176
     },
     {
@@ -8200,6 +9019,7 @@
       "eqTempK": 1414.0,
       "orbitAU": 0.04354,
       "starTempK": 5943.0,
+      "starRadius": 1.061,
       "habitabilityIndex": 0.0175
     },
     {
@@ -8210,6 +9030,7 @@
       "eqTempK": 1891.0,
       "orbitAU": 0.0123,
       "starTempK": 5278.0,
+      "starRadius": 0.815,
       "habitabilityIndex": 0.0171
     },
     {
@@ -8220,6 +9041,7 @@
       "eqTempK": 1592.0,
       "orbitAU": 0.03744,
       "starTempK": 5738.0,
+      "starRadius": 1.238,
       "habitabilityIndex": 0.0171
     },
     {
@@ -8230,6 +9052,7 @@
       "eqTempK": 1710.0,
       "orbitAU": 0.0583,
       "starTempK": 6424.0,
+      "starRadius": 1.71,
       "habitabilityIndex": 0.0171
     },
     {
@@ -8240,6 +9063,7 @@
       "eqTempK": 1330.0,
       "orbitAU": 0.0578,
       "starTempK": 6040.0,
+      "starRadius": 1.19,
       "habitabilityIndex": 0.0171
     },
     {
@@ -8250,6 +9074,7 @@
       "eqTempK": 1312.0,
       "orbitAU": 0.055,
       "starTempK": 5871.0,
+      "starRadius": 1.181,
       "habitabilityIndex": 0.0169
     },
     {
@@ -8260,6 +9085,7 @@
       "eqTempK": 1500.0,
       "orbitAU": 0.0663,
       "starTempK": 6400.0,
+      "starRadius": 1.6,
       "habitabilityIndex": 0.0168
     },
     {
@@ -8270,6 +9096,7 @@
       "eqTempK": 1305.0,
       "orbitAU": 0.051,
       "starTempK": 5897.0,
+      "starRadius": 1.289,
       "habitabilityIndex": 0.0168
     },
     {
@@ -8280,6 +9107,7 @@
       "eqTempK": 1392.74,
       "orbitAU": 0.051,
       "starTempK": 5718.0,
+      "starRadius": 1.5566,
       "habitabilityIndex": 0.0167
     },
     {
@@ -8290,6 +9118,7 @@
       "eqTempK": 1774.0,
       "orbitAU": 0.0867,
       "starTempK": 6561.0,
+      "starRadius": 1.65,
       "habitabilityIndex": 0.0167
     },
     {
@@ -8300,6 +9129,7 @@
       "eqTempK": 1379.0,
       "orbitAU": null,
       "starTempK": 5768.0,
+      "starRadius": 1.344,
       "habitabilityIndex": 0.0166
     },
     {
@@ -8310,6 +9140,7 @@
       "eqTempK": 1799.55,
       "orbitAU": null,
       "starTempK": 6302.74,
+      "starRadius": 1.45382,
       "habitabilityIndex": 0.0166
     },
     {
@@ -8320,6 +9151,7 @@
       "eqTempK": 1468.0,
       "orbitAU": 0.043,
       "starTempK": 5660.0,
+      "starRadius": 1.24,
       "habitabilityIndex": 0.0165
     },
     {
@@ -8330,6 +9162,7 @@
       "eqTempK": 1458.0,
       "orbitAU": 0.04469,
       "starTempK": 6060.0,
+      "starRadius": 1.112,
       "habitabilityIndex": 0.0165
     },
     {
@@ -8340,6 +9173,7 @@
       "eqTempK": 1700.0,
       "orbitAU": 0.051,
       "starTempK": 5945.0,
+      "starRadius": 1.01,
       "habitabilityIndex": 0.0161
     },
     {
@@ -8350,6 +9184,7 @@
       "eqTempK": 1400.0,
       "orbitAU": 0.0379,
       "starTempK": 5600.0,
+      "starRadius": 0.97,
       "habitabilityIndex": 0.016
     },
     {
@@ -8360,6 +9195,7 @@
       "eqTempK": 1570.0,
       "orbitAU": 0.05222,
       "starTempK": 6202.0,
+      "starRadius": 1.438,
       "habitabilityIndex": 0.0157
     },
     {
@@ -8370,6 +9206,7 @@
       "eqTempK": 1569.7,
       "orbitAU": 0.0546,
       "starTempK": 6600.0,
+      "starRadius": 1.76,
       "habitabilityIndex": 0.0156
     },
     {
@@ -8380,6 +9217,7 @@
       "eqTempK": 1636.0,
       "orbitAU": 0.02335,
       "starTempK": 5600.0,
+      "starRadius": 0.858,
       "habitabilityIndex": 0.0155
     },
     {
@@ -8390,6 +9228,7 @@
       "eqTempK": 1529.0,
       "orbitAU": 0.04435,
       "starTempK": 5842.0,
+      "starRadius": 1.308,
       "habitabilityIndex": 0.0153
     },
     {
@@ -8400,6 +9239,7 @@
       "eqTempK": 1445.0,
       "orbitAU": 0.0529,
       "starTempK": 5731.0,
+      "starRadius": 1.445,
       "habitabilityIndex": 0.0151
     },
     {
@@ -8410,6 +9250,7 @@
       "eqTempK": 1445.0,
       "orbitAU": 0.03166,
       "starTempK": 5380.0,
+      "starRadius": 0.98,
       "habitabilityIndex": 0.015
     },
     {
@@ -8420,6 +9261,7 @@
       "eqTempK": 2024.0,
       "orbitAU": 0.0218,
       "starTempK": 6011.0,
+      "starRadius": 1.12,
       "habitabilityIndex": 0.015
     },
     {
@@ -8430,6 +9272,7 @@
       "eqTempK": 1442.0,
       "orbitAU": 0.04016,
       "starTempK": 5675.0,
+      "starRadius": 1.116,
       "habitabilityIndex": 0.0149
     },
     {
@@ -8440,6 +9283,7 @@
       "eqTempK": 1404.0,
       "orbitAU": 0.0549,
       "starTempK": 5702.0,
+      "starRadius": 1.429,
       "habitabilityIndex": 0.0147
     },
     {
@@ -8450,6 +9294,7 @@
       "eqTempK": 1502.0,
       "orbitAU": 0.047,
       "starTempK": 6000.0,
+      "starRadius": 1.24,
       "habitabilityIndex": 0.0144
     },
     {
@@ -8460,6 +9305,7 @@
       "eqTempK": 2102.0,
       "orbitAU": 0.0205,
       "starTempK": 6166.0,
+      "starRadius": 1.25,
       "habitabilityIndex": 0.0138
     },
     {
@@ -8470,6 +9316,7 @@
       "eqTempK": 1458.0,
       "orbitAU": 0.0577,
       "starTempK": 6120.0,
+      "starRadius": 1.396,
       "habitabilityIndex": 0.0137
     },
     {
@@ -8480,6 +9327,7 @@
       "eqTempK": 2099.0,
       "orbitAU": 0.015,
       "starTempK": 5769.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.0137
     },
     {
@@ -8490,6 +9338,7 @@
       "eqTempK": 1642.0,
       "orbitAU": 0.05018,
       "starTempK": 6370.0,
+      "starRadius": 1.434,
       "habitabilityIndex": 0.0136
     },
     {
@@ -8500,6 +9349,7 @@
       "eqTempK": 1670.0,
       "orbitAU": 0.05708,
       "starTempK": 4881.0,
+      "starRadius": 2.97,
       "habitabilityIndex": 0.0134
     },
     {
@@ -8510,6 +9360,7 @@
       "eqTempK": 1445.0,
       "orbitAU": 0.0635,
       "starTempK": 5760.0,
+      "starRadius": 1.726,
       "habitabilityIndex": 0.0133
     },
     {
@@ -8520,6 +9371,7 @@
       "eqTempK": 1414.84,
       "orbitAU": 0.051,
       "starTempK": 5567.0,
+      "starRadius": 1.7031,
       "habitabilityIndex": 0.0132
     },
     {
@@ -8530,6 +9382,7 @@
       "eqTempK": 1531.0,
       "orbitAU": 0.05354,
       "starTempK": 6000.0,
+      "starRadius": 1.502,
       "habitabilityIndex": 0.0132
     },
     {
@@ -8540,6 +9393,7 @@
       "eqTempK": 1783.0,
       "orbitAU": null,
       "starTempK": 5116.06,
+      "starRadius": 0.95255,
       "habitabilityIndex": 0.0131
     },
     {
@@ -8550,6 +9404,7 @@
       "eqTempK": 1577.0,
       "orbitAU": 0.0815,
       "starTempK": 6720.0,
+      "starRadius": 1.93,
       "habitabilityIndex": 0.0129
     },
     {
@@ -8560,6 +9415,7 @@
       "eqTempK": 1733.0,
       "orbitAU": 0.02677,
       "starTempK": 5959.0,
+      "starRadius": 0.985,
       "habitabilityIndex": 0.0128
     },
     {
@@ -8570,6 +9426,7 @@
       "eqTempK": 2130.02,
       "orbitAU": 0.0116,
       "starTempK": 5460.0,
+      "starRadius": 0.9105,
       "habitabilityIndex": 0.0127
     },
     {
@@ -8580,6 +9437,7 @@
       "eqTempK": 1566.0,
       "orbitAU": 0.0854,
       "starTempK": 4673.0,
+      "starRadius": 4.14,
       "habitabilityIndex": 0.0126
     },
     {
@@ -8590,6 +9448,7 @@
       "eqTempK": 1579.0,
       "orbitAU": 0.0265,
       "starTempK": 5963.0,
+      "starRadius": 1.16,
       "habitabilityIndex": 0.0126
     },
     {
@@ -8600,6 +9459,7 @@
       "eqTempK": 1689.0,
       "orbitAU": 0.02648,
       "starTempK": 5400.0,
+      "starRadius": 1.058,
       "habitabilityIndex": 0.0123
     },
     {
@@ -8610,6 +9470,7 @@
       "eqTempK": 1653.0,
       "orbitAU": 0.02261,
       "starTempK": 5436.0,
+      "starRadius": 0.912,
       "habitabilityIndex": 0.0121
     },
     {
@@ -8620,6 +9481,7 @@
       "eqTempK": 1512.0,
       "orbitAU": 0.0463,
       "starTempK": 5725.0,
+      "starRadius": 1.392,
       "habitabilityIndex": 0.0121
     },
     {
@@ -8630,6 +9492,7 @@
       "eqTempK": 2128.0,
       "orbitAU": 0.02012,
       "starTempK": 5978.0,
+      "starRadius": 1.1011,
       "habitabilityIndex": 0.012
     },
     {
@@ -8640,6 +9503,7 @@
       "eqTempK": 2161.0,
       "orbitAU": 0.01554,
       "starTempK": 5589.0,
+      "starRadius": 0.94,
       "habitabilityIndex": 0.012
     },
     {
@@ -8650,6 +9514,7 @@
       "eqTempK": 1648.0,
       "orbitAU": 0.0485,
       "starTempK": 6351.0,
+      "starRadius": 1.404,
       "habitabilityIndex": 0.0117
     },
     {
@@ -8660,6 +9525,7 @@
       "eqTempK": 1567.0,
       "orbitAU": 0.066,
       "starTempK": 6730.0,
+      "starRadius": 1.52,
       "habitabilityIndex": 0.0115
     },
     {
@@ -8670,6 +9536,7 @@
       "eqTempK": 1456.0,
       "orbitAU": 0.0571,
       "starTempK": 5936.0,
+      "starRadius": 1.477,
       "habitabilityIndex": 0.0115
     },
     {
@@ -8680,6 +9547,7 @@
       "eqTempK": 1586.0,
       "orbitAU": 0.0916,
       "starTempK": 4840.0,
+      "starRadius": 3.85,
       "habitabilityIndex": 0.0111
     },
     {
@@ -8690,6 +9558,7 @@
       "eqTempK": 1054.0,
       "orbitAU": 0.0175,
       "starTempK": 4540.0,
+      "starRadius": 0.678,
       "habitabilityIndex": 0.0105
     },
     {
@@ -8700,6 +9569,7 @@
       "eqTempK": 1998.0,
       "orbitAU": 0.04714,
       "starTempK": 6626.0,
+      "starRadius": 1.841,
       "habitabilityIndex": 0.0102
     },
     {
@@ -8710,6 +9580,7 @@
       "eqTempK": 34.0,
       "orbitAU": 5.9,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": 0.0101
     },
     {
@@ -8720,6 +9591,7 @@
       "eqTempK": 1642.0,
       "orbitAU": 0.04613,
       "starTempK": 6003.0,
+      "starRadius": 1.78,
       "habitabilityIndex": 0.0101
     },
     {
@@ -8730,6 +9602,7 @@
       "eqTempK": 1804.96,
       "orbitAU": 0.0807,
       "starTempK": 4985.0,
+      "starRadius": 4.55,
       "habitabilityIndex": 0.0101
     },
     {
@@ -8740,6 +9613,7 @@
       "eqTempK": 1528.0,
       "orbitAU": 0.05503,
       "starTempK": 6399.0,
+      "starRadius": 1.347,
       "habitabilityIndex": 0.01
     },
     {
@@ -8750,6 +9624,7 @@
       "eqTempK": 1646.0,
       "orbitAU": 0.0421,
       "starTempK": 5772.0,
+      "starRadius": 1.468,
       "habitabilityIndex": 0.0099
     },
     {
@@ -8760,6 +9635,7 @@
       "eqTempK": 1890.0,
       "orbitAU": 0.055,
       "starTempK": 6110.0,
+      "starRadius": 1.51,
       "habitabilityIndex": 0.0095
     },
     {
@@ -8770,6 +9646,7 @@
       "eqTempK": 1716.2,
       "orbitAU": 0.0519,
       "starTempK": 6600.0,
+      "starRadius": 1.51,
       "habitabilityIndex": 0.0091
     },
     {
@@ -8780,6 +9657,7 @@
       "eqTempK": 2438.0,
       "orbitAU": 0.01657,
       "starTempK": 5959.0,
+      "starRadius": 1.199,
       "habitabilityIndex": 0.0089
     },
     {
@@ -8790,6 +9668,7 @@
       "eqTempK": 1910.88,
       "orbitAU": 0.04789,
       "starTempK": 6500.0,
+      "starRadius": 1.78,
       "habitabilityIndex": 0.0088
     },
     {
@@ -8800,6 +9679,7 @@
       "eqTempK": 1747.0,
       "orbitAU": 0.0429,
       "starTempK": 6390.0,
+      "starRadius": 1.65,
       "habitabilityIndex": 0.0086
     },
     {
@@ -8810,6 +9690,7 @@
       "eqTempK": 1789.0,
       "orbitAU": 0.03935,
       "starTempK": 6237.0,
+      "starRadius": 1.393,
       "habitabilityIndex": 0.0084
     },
     {
@@ -8820,6 +9701,7 @@
       "eqTempK": 2013.0,
       "orbitAU": 0.03035,
       "starTempK": 6210.0,
+      "starRadius": 1.32,
       "habitabilityIndex": 0.0082
     },
     {
@@ -8830,6 +9712,7 @@
       "eqTempK": 2028.25,
       "orbitAU": 0.0379,
       "starTempK": 6380.0,
+      "starRadius": 1.647304,
       "habitabilityIndex": 0.008
     },
     {
@@ -8840,6 +9723,7 @@
       "eqTempK": 2069.48,
       "orbitAU": 0.0174,
       "starTempK": 5600.0,
+      "starRadius": 1.02,
       "habitabilityIndex": 0.008
     },
     {
@@ -8850,6 +9734,7 @@
       "eqTempK": 1865.0,
       "orbitAU": 0.03443,
       "starTempK": 5990.0,
+      "starRadius": 1.42,
       "habitabilityIndex": 0.0079
     },
     {
@@ -8860,6 +9745,7 @@
       "eqTempK": 1793.0,
       "orbitAU": 0.06562,
       "starTempK": 6554.0,
+      "starRadius": 2.113,
       "habitabilityIndex": 0.0078
     },
     {
@@ -8870,6 +9756,7 @@
       "eqTempK": 2255.0,
       "orbitAU": 0.03216,
       "starTempK": 6740.0,
+      "starRadius": 1.55,
       "habitabilityIndex": 0.0077
     },
     {
@@ -8880,6 +9767,7 @@
       "eqTempK": 1752.0,
       "orbitAU": 0.0509,
       "starTempK": 6430.0,
+      "starRadius": 1.625,
       "habitabilityIndex": 0.0077
     },
     {
@@ -8890,6 +9778,7 @@
       "eqTempK": 1870.75,
       "orbitAU": 0.03,
       "starTempK": 6239.0,
+      "starRadius": 1.16,
       "habitabilityIndex": 0.0077
     },
     {
@@ -8900,6 +9789,7 @@
       "eqTempK": 1770.0,
       "orbitAU": 0.0608,
       "starTempK": 6080.0,
+      "starRadius": 1.94,
       "habitabilityIndex": 0.0073
     },
     {
@@ -8910,6 +9800,7 @@
       "eqTempK": 2037.0,
       "orbitAU": 0.03199,
       "starTempK": 6300.0,
+      "starRadius": 1.433,
       "habitabilityIndex": 0.0068
     },
     {
@@ -8920,6 +9811,7 @@
       "eqTempK": 1896.0,
       "orbitAU": 0.04363,
       "starTempK": 6002.0,
+      "starRadius": 1.881,
       "habitabilityIndex": 0.0068
     },
     {
@@ -8930,6 +9822,7 @@
       "eqTempK": 2131.0,
       "orbitAU": 0.04378,
       "starTempK": 6820.0,
+      "starRadius": 2.06,
       "habitabilityIndex": 0.0065
     },
     {
@@ -8940,6 +9833,7 @@
       "eqTempK": 2053.0,
       "orbitAU": 0.0352,
       "starTempK": 6387.0,
+      "starRadius": 1.564,
       "habitabilityIndex": 0.0065
     },
     {
@@ -8950,6 +9844,7 @@
       "eqTempK": 2101.0,
       "orbitAU": 0.04997,
       "starTempK": 6460.0,
+      "starRadius": 2.26,
       "habitabilityIndex": 0.0063
     },
     {
@@ -8960,6 +9855,7 @@
       "eqTempK": 2000.0,
       "orbitAU": 0.0347,
       "starTempK": 6010.0,
+      "starRadius": 1.64,
       "habitabilityIndex": 0.0062
     },
     {
@@ -8970,6 +9866,7 @@
       "eqTempK": 2453.0,
       "orbitAU": 0.02044,
       "starTempK": 6236.0,
+      "starRadius": 1.36,
       "habitabilityIndex": 0.0053
     },
     {
@@ -8980,6 +9877,7 @@
       "eqTempK": 1642.0,
       "orbitAU": 0.034,
       "starTempK": 5751.0,
+      "starRadius": 1.43,
       "habitabilityIndex": 0.0052
     },
     {
@@ -8990,6 +9888,7 @@
       "eqTempK": 2193.0,
       "orbitAU": 0.03032,
       "starTempK": 6594.0,
+      "starRadius": 1.441,
       "habitabilityIndex": 0.0052
     },
     {
@@ -9000,6 +9899,7 @@
       "eqTempK": null,
       "orbitAU": 3.79,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9010,6 +9910,7 @@
       "eqTempK": null,
       "orbitAU": 2.424,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9020,6 +9921,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5250.0,
+      "starRadius": 0.8389,
       "habitabilityIndex": null
     },
     {
@@ -9030,6 +9932,7 @@
       "eqTempK": null,
       "orbitAU": 4.5,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9040,6 +9943,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5726.0,
+      "starRadius": 1.058,
       "habitabilityIndex": null
     },
     {
@@ -9050,6 +9954,7 @@
       "eqTempK": null,
       "orbitAU": 4.18,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9060,6 +9965,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4375.52,
+      "starRadius": 0.664503,
       "habitabilityIndex": null
     },
     {
@@ -9070,6 +9976,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 6474.0,
+      "starRadius": 1.26,
       "habitabilityIndex": null
     },
     {
@@ -9080,6 +9987,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5737.0,
+      "starRadius": 1.179,
       "habitabilityIndex": null
     },
     {
@@ -9090,6 +9998,7 @@
       "eqTempK": null,
       "orbitAU": 5.4,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9100,6 +10009,7 @@
       "eqTempK": null,
       "orbitAU": 3.51,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9110,6 +10020,7 @@
       "eqTempK": null,
       "orbitAU": 2.43,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9120,6 +10031,7 @@
       "eqTempK": null,
       "orbitAU": 1.9,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9130,6 +10042,7 @@
       "eqTempK": null,
       "orbitAU": 1.88,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9140,6 +10053,7 @@
       "eqTempK": null,
       "orbitAU": 2.7,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9150,6 +10064,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5712.0,
+      "starRadius": 0.906367,
       "habitabilityIndex": null
     },
     {
@@ -9160,6 +10075,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5507.0,
+      "starRadius": 0.878161,
       "habitabilityIndex": null
     },
     {
@@ -9170,6 +10086,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4213.0,
+      "starRadius": 0.675,
       "habitabilityIndex": null
     },
     {
@@ -9180,6 +10097,7 @@
       "eqTempK": null,
       "orbitAU": 1.7,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9190,6 +10108,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4169.0,
+      "starRadius": 0.623,
       "habitabilityIndex": null
     },
     {
@@ -9200,6 +10119,7 @@
       "eqTempK": null,
       "orbitAU": 0.055,
       "starTempK": null,
+      "starRadius": 1.18,
       "habitabilityIndex": null
     },
     {
@@ -9210,6 +10130,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5544.0,
+      "starRadius": 0.859,
       "habitabilityIndex": null
     },
     {
@@ -9220,6 +10141,7 @@
       "eqTempK": null,
       "orbitAU": 0.83,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9230,6 +10152,7 @@
       "eqTempK": 484.0,
       "orbitAU": 0.2213,
       "starTempK": 5498.0,
+      "starRadius": 0.87,
       "habitabilityIndex": null
     },
     {
@@ -9240,6 +10163,7 @@
       "eqTempK": null,
       "orbitAU": 1.4,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9250,6 +10174,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9260,6 +10185,7 @@
       "eqTempK": null,
       "orbitAU": 4.53,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9270,6 +10196,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5491.0,
+      "starRadius": 0.910685,
       "habitabilityIndex": null
     },
     {
@@ -9280,6 +10207,7 @@
       "eqTempK": null,
       "orbitAU": 2.07,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9290,6 +10218,7 @@
       "eqTempK": 59.3,
       "orbitAU": 4.85,
       "starTempK": 3720.0,
+      "starRadius": 0.53,
       "habitabilityIndex": null
     },
     {
@@ -9300,6 +10229,7 @@
       "eqTempK": null,
       "orbitAU": 0.85,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9310,6 +10240,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4114.0,
+      "starRadius": 0.5,
       "habitabilityIndex": null
     },
     {
@@ -9320,6 +10251,7 @@
       "eqTempK": null,
       "orbitAU": 0.87,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9330,6 +10262,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 3489.0,
+      "starRadius": 0.37344,
       "habitabilityIndex": null
     },
     {
@@ -9340,6 +10273,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 3623.0,
+      "starRadius": 0.348,
       "habitabilityIndex": null
     },
     {
@@ -9350,6 +10284,7 @@
       "eqTempK": null,
       "orbitAU": 2.96,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9360,6 +10295,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5784.0,
+      "starRadius": 0.98083,
       "habitabilityIndex": null
     },
     {
@@ -9370,6 +10306,7 @@
       "eqTempK": null,
       "orbitAU": 1.63,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9380,6 +10317,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4823.0,
+      "starRadius": 0.732,
       "habitabilityIndex": null
     },
     {
@@ -9390,6 +10328,7 @@
       "eqTempK": 153.53,
       "orbitAU": 1.885,
       "starTempK": 4918.0,
+      "starRadius": 0.79,
       "habitabilityIndex": null
     },
     {
@@ -9400,6 +10339,7 @@
       "eqTempK": 798.86,
       "orbitAU": 0.06,
       "starTempK": 4816.0,
+      "starRadius": 0.71,
       "habitabilityIndex": null
     },
     {
@@ -9410,6 +10350,7 @@
       "eqTempK": 492.46,
       "orbitAU": 1.566,
       "starTempK": 5040.0,
+      "starRadius": 6.43,
       "habitabilityIndex": null
     },
     {
@@ -9420,6 +10361,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 6165.0,
+      "starRadius": 1.215821,
       "habitabilityIndex": null
     },
     {
@@ -9430,6 +10372,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4545.43,
+      "starRadius": 0.713599,
       "habitabilityIndex": null
     },
     {
@@ -9440,6 +10383,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5335.0,
+      "starRadius": 0.784,
       "habitabilityIndex": null
     },
     {
@@ -9450,6 +10394,7 @@
       "eqTempK": null,
       "orbitAU": 0.24,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9460,6 +10405,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5703.36,
+      "starRadius": 0.952319,
       "habitabilityIndex": null
     },
     {
@@ -9470,6 +10416,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5692.29,
+      "starRadius": 1.73709,
       "habitabilityIndex": null
     },
     {
@@ -9480,6 +10427,7 @@
       "eqTempK": null,
       "orbitAU": 1.7,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9490,6 +10438,7 @@
       "eqTempK": null,
       "orbitAU": 3.97,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9500,6 +10449,7 @@
       "eqTempK": null,
       "orbitAU": 0.95,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9510,6 +10460,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5328.97,
+      "starRadius": 0.943767,
       "habitabilityIndex": null
     },
     {
@@ -9520,6 +10471,7 @@
       "eqTempK": null,
       "orbitAU": 1.26,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9530,6 +10482,7 @@
       "eqTempK": null,
       "orbitAU": 7.78,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9540,6 +10493,7 @@
       "eqTempK": null,
       "orbitAU": 6.4,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9550,6 +10504,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 3828.93,
+      "starRadius": 1.103075,
       "habitabilityIndex": null
     },
     {
@@ -9560,6 +10515,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4396.27,
+      "starRadius": 0.713832,
       "habitabilityIndex": null
     },
     {
@@ -9570,6 +10526,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 3472.0,
+      "starRadius": 0.45,
       "habitabilityIndex": null
     },
     {
@@ -9580,6 +10537,7 @@
       "eqTempK": null,
       "orbitAU": 3.45,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9590,6 +10548,7 @@
       "eqTempK": null,
       "orbitAU": 4.06,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9600,6 +10559,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5236.0,
+      "starRadius": 0.92,
       "habitabilityIndex": null
     },
     {
@@ -9610,6 +10570,7 @@
       "eqTempK": null,
       "orbitAU": 84.0,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9620,6 +10581,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4817.31,
+      "starRadius": 0.789834,
       "habitabilityIndex": null
     },
     {
@@ -9630,6 +10592,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5994.0,
+      "starRadius": 1.08,
       "habitabilityIndex": null
     },
     {
@@ -9640,6 +10603,7 @@
       "eqTempK": null,
       "orbitAU": 4.51,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9650,6 +10614,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4981.0,
+      "starRadius": 4.16,
       "habitabilityIndex": null
     },
     {
@@ -9660,6 +10625,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5482.0,
+      "starRadius": 0.87,
       "habitabilityIndex": null
     },
     {
@@ -9670,6 +10636,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5749.0,
+      "starRadius": 0.97,
       "habitabilityIndex": null
     },
     {
@@ -9680,6 +10647,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5043.0,
+      "starRadius": 0.758046,
       "habitabilityIndex": null
     },
     {
@@ -9690,6 +10658,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9700,6 +10669,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5620.0,
+      "starRadius": 0.89,
       "habitabilityIndex": null
     },
     {
@@ -9710,6 +10680,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5800.0,
+      "starRadius": 1.27,
       "habitabilityIndex": null
     },
     {
@@ -9720,6 +10691,7 @@
       "eqTempK": null,
       "orbitAU": 0.125,
       "starTempK": 3350.0,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9730,6 +10702,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5007.0,
+      "starRadius": 0.783,
       "habitabilityIndex": null
     },
     {
@@ -9740,6 +10713,7 @@
       "eqTempK": null,
       "orbitAU": 4.17,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9750,6 +10724,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 4981.0,
+      "starRadius": 4.16,
       "habitabilityIndex": null
     },
     {
@@ -9760,6 +10735,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 6118.4,
+      "starRadius": 1.574,
       "habitabilityIndex": null
     },
     {
@@ -9770,6 +10746,7 @@
       "eqTempK": null,
       "orbitAU": 0.8,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9780,6 +10757,7 @@
       "eqTempK": 1497.0,
       "orbitAU": 0.0322,
       "starTempK": 6191.0,
+      "starRadius": 1.3,
       "habitabilityIndex": null
     },
     {
@@ -9790,6 +10768,7 @@
       "eqTempK": null,
       "orbitAU": null,
       "starTempK": 5507.0,
+      "starRadius": 0.878161,
       "habitabilityIndex": null
     },
     {
@@ -9800,6 +10779,7 @@
       "eqTempK": null,
       "orbitAU": 1.16,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     },
     {
@@ -9810,6 +10790,7 @@
       "eqTempK": null,
       "orbitAU": 3.2,
       "starTempK": null,
+      "starRadius": null,
       "habitabilityIndex": null
     }
   ]

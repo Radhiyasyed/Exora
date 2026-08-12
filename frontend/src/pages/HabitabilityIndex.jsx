@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Gauge, Sparkles, ChevronDown, ChevronUp, Calculator, Info, Orbit, HelpCircle } from 'lucide-react';
+import 'katex/dist/katex.min.css';
+import { BlockMath, InlineMath } from 'react-katex';
 
 export default function HabitabilityIndex() {
   // 3 Dynamic Parameter Sliders
   const [radius, setRadius] = useState(1.63); // Earth radii
   const [density, setDensity] = useState(1.15); // Earth relative density
   const [flux, setFlux] = useState(1.10); // Solar irradiance relative to Earth
-
-  const [isFormulaExpanded, setIsFormulaExpanded] = useState(false);
 
   // Compute live ESI scores and complementary habitability metrics
   const calculateESI = (r, d, f) => {
@@ -20,18 +20,23 @@ export default function HabitabilityIndex() {
     return Math.max(0, Math.min(1.0, esiR * esiD * esiF));
   };
 
-  const calculateHI = (r, d, f) => {
-    const esiR = Math.pow(1 - Math.abs(r - 1) / (r + 1), 0.57);
-    const esiD = Math.pow(1 - Math.abs(d - 1) / (d + 1), 1.07);
-    const esiF = Math.pow(1 - Math.abs(f - 1) / (f + 1), 0.62);
-    const hi = 0.45 * esiR + 0.30 * esiD + 0.25 * esiF;
-    return Math.max(0, Math.min(1.0, hi));
+  const calculatePHI = (r, d, f) => {
+    // PHI uses 4 normalized components based on (1 - |difference ratio|).
+    // Note: Since starTempK and orbitAU are not available in this component's scope,
+    // we use the existing flux input as a proxy for the stellar/orbital similarity component.
+    const simR = Math.max(0, 1 - Math.abs(r - 1) / (r + 1));
+    const simD = Math.max(0, 1 - Math.abs(d - 1) / (d + 1));
+    const simT = Math.max(0, 1 - Math.abs(f - 1) / (f + 1));
+    const simS = Math.max(0, 1 - Math.abs(f - 1) / (f + 1)); // Proxy
+    
+    const phi = Math.pow(simR * simD * simT * simS, 0.25);
+    return Math.max(0, Math.min(1.0, phi));
   };
 
   const computedESI = calculateESI(radius, density, flux);
-  const computedHI = calculateHI(radius, density, flux);
+  const computedPHI = calculatePHI(radius, density, flux);
   const esiPercent = Math.round(computedESI * 100);
-  const hiPercent = Math.round(computedHI * 100);
+  const phiPercent = Math.round(computedPHI * 100);
 
   const getStatusColor = (score) => {
     if (score >= 0.8) return 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10';
@@ -47,7 +52,7 @@ export default function HabitabilityIndex() {
       <div>
         <h1 className="text-3xl font-extrabold text-white flex items-center space-x-3">
           <Gauge className="w-7 h-7 text-cyan-400" />
-          <span>Earth Similarity Index Calculator (ESI)</span>
+          <span>Planetary Metrics Calculator</span>
         </h1>
         <p className="text-slate-400 text-xs mt-1">
           Interactively model the Earth Similarity Index using Schulze-Makuch's planetary similarity formulation.
@@ -164,95 +169,130 @@ export default function HabitabilityIndex() {
         </div>
 
         {/* Right Animated Dual Score Display Panel */}
-        <div className="lg:col-span-5 glass-panel p-8 rounded-2xl border border-slate-800 flex flex-col items-center justify-center space-y-6 text-center">
-          <span className="text-xs font-mono-data text-slate-400 uppercase tracking-widest">
-            Computed Planetary Similarity Metrics
-          </span>
+        <div className="lg:col-span-5 glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col space-y-6">
+          <div className="text-center">
+            <span className="text-xs font-mono-data text-slate-400 uppercase tracking-widest">
+              Computed Planetary Similarity Metrics
+            </span>
+          </div>
 
-          <div className="relative w-56 h-56">
-            <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-              <path
-                className="text-slate-800"
-                strokeWidth="3.5"
-                stroke="currentColor"
-                fill="none"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path
-                className="text-cyan-400 transition-all duration-500 ease-out"
-                strokeDasharray={`${esiPercent}, 100`}
-                strokeWidth="3.5"
-                strokeLinecap="round"
-                stroke="currentColor"
-                fill="none"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path
-                className="text-emerald-400 transition-all duration-500 ease-out"
-                strokeDasharray={`${hiPercent}, 100`}
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                stroke="currentColor"
-                fill="none"
-                d="M18 4.5 a 13.4155 13.4155 0 0 1 0 26.831 a 13.4155 13.4155 0 0 1 0 -26.831"
-              />
-            </svg>
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-              <span className="text-4xl font-extrabold font-display text-white">{computedESI.toFixed(2)}</span>
-              <span className="text-[12px] text-slate-400">ESI</span>
-              <span className="text-xs text-slate-500">HI {computedHI.toFixed(2)}</span>
+          <div className="flex flex-col sm:flex-row gap-6 items-center justify-center w-full">
+            {/* ESI Block */}
+            <div className="flex-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-cyan-500/20 bg-slate-900/40 w-full shadow-inner">
+              <div className="relative w-36 h-36 mb-4">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                  <path
+                    className="text-slate-800"
+                    strokeWidth="3.5"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className="text-cyan-400 transition-all duration-500 ease-out"
+                    strokeDasharray={`${esiPercent}, 100`}
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-3xl font-extrabold font-display text-white leading-none">{computedESI.toFixed(2)}</span>
+                  <span className="text-[12px] text-slate-400 font-bold mt-1">ESI</span>
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="font-semibold text-cyan-300 text-xs">Earth Similarity Index</div>
+                <div className="text-white text-lg font-bold">{esiPercent}%</div>
+              </div>
+            </div>
+
+            {/* PHI Block */}
+            <div className="flex-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-emerald-500/20 bg-slate-900/40 w-full shadow-inner">
+              <div className="relative w-36 h-36 mb-4">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                  <path
+                    className="text-slate-800"
+                    strokeWidth="3.5"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className="text-emerald-400 transition-all duration-500 ease-out"
+                    strokeDasharray={`${phiPercent}, 100`}
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-3xl font-extrabold font-display text-white leading-none">{computedPHI.toFixed(2)}</span>
+                  <span className="text-[12px] text-slate-400 font-bold mt-1">PHI</span>
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="font-semibold text-emerald-300 text-xs">Planetary Habitability</div>
+                <div className="text-white text-lg font-bold">{phiPercent}%</div>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 w-full">
-            <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/80 p-3 text-xs text-slate-300">
-              <div className="font-semibold text-cyan-300">Earth Similarity Index</div>
-              <div className="mt-2 text-2xl font-bold text-white">{esiPercent}%</div>
+          <div className="flex justify-center pt-2">
+            <div className={`px-4 py-1.5 rounded-full border text-xs font-mono-data font-bold ${getStatusColor(computedESI)}`}>
+              {computedESI >= 0.8
+                ? 'High Terrestrial Parity'
+                : computedESI >= 0.6
+                ? 'Moderate Parity'
+                : 'Low Terrestrial Parity'}
             </div>
-            <div className="rounded-2xl border border-emerald-500/20 bg-slate-900/80 p-3 text-xs text-slate-300">
-              <div className="font-semibold text-emerald-300">Habitability Index</div>
-              <div className="mt-2 text-2xl font-bold text-white">{hiPercent}%</div>
-            </div>
-          </div>
-
-          <div className={`px-4 py-1.5 rounded-full border text-xs font-mono-data font-bold ${getStatusColor(computedESI)}`}>
-            {computedESI >= 0.8
-              ? 'High Terrestrial Parity'
-              : computedESI >= 0.6
-              ? 'Moderate Parity'
-              : 'Low Terrestrial Parity'}
           </div>
         </div>
 
       </div>
 
-      {/* Expandable Mathematical Formula Breakdown */}
-      <div className="glass-panel rounded-2xl border border-slate-800 overflow-hidden">
-        <button
-          onClick={() => setIsFormulaExpanded(!isFormulaExpanded)}
-          className="w-full p-5 text-left flex justify-between items-center hover:bg-slate-900/50 transition-colors"
-        >
-          <div className="flex items-center space-x-2 text-white font-bold text-sm">
+      {/* Formula Breakdowns */}
+      <div className="flex flex-col sm:flex-row gap-6 items-stretch w-full mb-6">
+        {/* ESI Formula Block */}
+        <div className="flex-1 glass-panel rounded-2xl border border-slate-800 flex flex-col overflow-hidden shadow-lg">
+          <div className="p-4 border-b border-slate-800/80 bg-slate-900/50 flex items-center justify-center space-x-2">
             <Info className="w-4 h-4 text-cyan-400" />
-            <span>Mathematical Formula Breakdown (Schulze-Makuch ESI)</span>
+            <span className="text-white font-bold text-sm">Schulze-Makuch ESI</span>
           </div>
-          {isFormulaExpanded ? (
-            <ChevronUp className="w-5 h-5 text-slate-400" />
-          ) : (
-            <ChevronDown className="w-5 h-5 text-slate-400" />
-          )}
-        </button>
-
-        {isFormulaExpanded && (
-          <div className="p-6 border-t border-slate-800/80 bg-slate-950/60 space-y-4 text-xs font-mono-data text-slate-300">
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-cyan-300 text-center font-bold text-sm">
-              ESI = ∏ [ 1 - | (x_i - x_i0) / (x_i + x_i0) | ]^(w_i)
+          <div className="p-6 bg-slate-950/60 flex-1 flex flex-col justify-center items-center space-y-4">
+            <div className="p-4 rounded-xl bg-slate-900 w-full overflow-x-auto text-cyan-300 flex justify-center border border-cyan-500/10">
+              <BlockMath math="ESI = \prod_{i} \left[1 - \left|\frac{x_i - x_{i,0}}{x_i + x_{i,0}}\right|\right]^{w_i}" />
             </div>
-            <p className="leading-relaxed">
-              Where $x_i$ represents the planetary parameter value (radius, density, flux), $x_i0$ is Earth's baseline reference value (1.0), and $w_i$ is the empirical weighting exponent calibrated for physical property sensitivity.
+            <p className="text-xs font-mono-data text-slate-400 leading-relaxed text-center px-2">
+              Where <InlineMath math="x_i" /> represents the planetary parameter value (radius, density, flux), <InlineMath math="x_{i,0}" /> is Earth's baseline reference value (1.0), and <InlineMath math="w_i" /> is the empirical weighting exponent.
             </p>
           </div>
-        )}
+        </div>
+
+        {/* PHI Formula Block */}
+        <div className="flex-1 glass-panel rounded-2xl border border-slate-800 flex flex-col overflow-hidden shadow-lg">
+          <div className="p-4 border-b border-slate-800/80 bg-slate-900/50 flex items-center justify-center space-x-2">
+            <Info className="w-4 h-4 text-emerald-400" />
+            <span className="text-white font-bold text-sm">Planetary Habitability Index</span>
+          </div>
+          <div className="p-6 bg-slate-950/60 flex-1 flex flex-col justify-center items-center space-y-4">
+            <div className="p-4 rounded-xl bg-slate-900 w-full overflow-x-auto text-emerald-300 flex justify-center border border-emerald-500/10">
+              <BlockMath math="PHI = \sqrt[4]{S_r \cdot S_\rho \cdot S_T \cdot S_o}" />
+            </div>
+            <p className="text-xs font-mono-data text-slate-400 leading-relaxed text-center px-2">
+              Where the subscripts represent similarity sub-scores for planetary radius (<InlineMath math="S_r" />), bulk density (<InlineMath math="S_\rho" />), surface temperature proxy (<InlineMath math="S_T" />), and stellar/orbital characteristics (<InlineMath math="S_o" />), combined as a geometric mean.
+            </p>
+            <div className="pt-2 w-full flex justify-center">
+              <span className="px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded text-[12px] text-emerald-400 font-bold uppercase tracking-widest">
+                API: planetaryHabitabilityIndex
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Comprehensive Scientific Context Panel */}

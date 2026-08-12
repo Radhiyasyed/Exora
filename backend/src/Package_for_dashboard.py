@@ -33,6 +33,7 @@ FIELD_MAP = {
     "pl_eqt": "eqTempK",
     "pl_orbsmax": "orbitAU",
     "st_teff": "starTempK",
+    "st_rad": "starRadius",
     "habitability_index": "habitabilityIndex",
 }
 

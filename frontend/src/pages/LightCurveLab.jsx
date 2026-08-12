@@ -12,8 +12,8 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     const dataPoint = payload[0].payload;
     const fluxVal = payload[0].value;
-    const dropPct = ((1.000 - fluxVal) * 100).toFixed(2);
-    const brightPct = (fluxVal * 100).toFixed(2);
+    const dropPct = ((1.000 - fluxVal) * 100).toFixed(3);
+    const brightPct = (fluxVal * 100).toFixed(3);
 
     let phase = "Baseline (Out-of-Transit)";
     let phaseColor = "text-slate-400 border-slate-700 bg-slate-800/80";
@@ -38,8 +38,13 @@ const CustomTooltip = ({ active, payload, label }) => {
       <div className="glass-panel p-4 rounded-xl border border-cyan-500/40 shadow-2xl space-y-2 text-xs font-mono-data bg-slate-950/95 backdrop-blur-md max-w-xs">
         <div className="flex justify-between items-center border-b border-slate-800 pb-2">
           <span className="text-slate-400">Hours from Mid-Transit:</span>
-          <span className="text-cyan-300 font-bold">{label > 0 ? `+${label.toFixed(2)}` : label.toFixed(2)} hrs</span>
+          <span className="text-cyan-300 font-bold">{label > 0 ? `+${label.toFixed(3)}` : label.toFixed(3)} hrs</span>
         </div>
+        <div className="flex justify-between items-center border-b border-slate-800 pb-2 mt-2">
+          <span className="text-slate-400">Time (BJD):</span>
+          <span className="text-cyan-300 font-bold">{(2459000.5 + (label / 24)).toFixed(3)}</span>
+        </div>
+
 
         <div className="space-y-1 pt-1">
           <div className="flex justify-between">
@@ -52,7 +57,7 @@ const CustomTooltip = ({ active, payload, label }) => {
           </div>
           <div className="flex justify-between">
             <span className="text-slate-400">Normalized Flux:</span>
-            <span className="text-cyan-400 font-bold">{fluxVal.toFixed(4)}</span>
+            <span className="text-cyan-400 font-bold">{fluxVal.toFixed(3)}</span>
           </div>
         </div>
 
@@ -66,14 +71,52 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 export default function LightCurveLab() {
+  const [planets, setPlanets] = useState(() => EXOPLANETS.filter(p => p.discoveryMethod === 'Transit' && p.id !== 'earth'));
   const [selectedPlanetId, setSelectedPlanetId] = useState('kepler-452b');
   const [showProcessed, setShowProcessed] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
   const [transitProgress, setTransitProgress] = useState(0);
   const [hoveredPoint, setHoveredPoint] = useState(null);
 
-  const planet = EXOPLANETS.find((p) => p.id === selectedPlanetId) || EXOPLANETS[1];
-  const rawLightCurveData = planet.lightCurve || EXOPLANETS[1].lightCurve;
+  useEffect(() => {
+    import('../api/exoplanetsApi').then(({ fetchPlanets }) => {
+      fetchPlanets().then(res => {
+        const transiting = res.planets.filter(p => p.discoveryMethod === 'Transit' && p.id !== 'earth');
+        if (transiting.length > 0) setPlanets(transiting);
+      });
+    });
+  }, []);
+
+  const planet = planets.find((p) => p.id === selectedPlanetId) || planets[0] || EXOPLANETS[1];
+
+  const rawLightCurveData = useMemo(() => {
+    const rEarth = planet.radiusEarth || 1.0;
+    const sRad = planet.starRadius || 1.0; 
+    const depth = Math.pow(rEarth / (sRad * 109.2), 2);
+    
+    const curve = [];
+    const sigma = 0.5;
+    for (let t = -4; t <= 4; t += 0.25) {
+      const drop = depth * Math.exp(-(t * t) / (2 * sigma * sigma));
+      const flux = 1.0 - drop;
+      const noise = (Math.random() - 0.5) * (depth * 0.05 + 0.00005);
+      curve.push({
+        time: t,
+        flux: flux + noise,
+        processed: flux,
+      });
+    }
+    return curve;
+  }, [planet]);
+
+  const primaryDipBounds = useMemo(() => {
+    const dips = rawLightCurveData.filter(d => d.processed < 1.0 - 0.000001);
+    if (!dips.length) return { min: -1.5, max: 1.5 };
+    return {
+      min: dips[0].time,
+      max: dips[dips.length - 1].time
+    };
+  }, [rawLightCurveData]);
 
   const rawTimeBounds = useMemo(() => {
     const times = rawLightCurveData.map((d) => d.time);
@@ -87,25 +130,28 @@ export default function LightCurveLab() {
     const base = rawLightCurveData.map((point) => ({
       ...point,
       processed: point.processed ?? point.flux,
-      type: Math.abs(point.time) <= 1.5 ? 'primary' : 'baseline',
+      type: (point.time >= primaryDipBounds.min && point.time <= primaryDipBounds.max) ? 'primary' : 'baseline',
     }));
 
-    const center = rawTimeBounds.max + Math.max(4, rawTimeBounds.max - rawTimeBounds.min);
+    // Place secondary eclipse roughly half an orbital phase (in hours) after primary transit
+    const center = planet.orbitalPeriodDays ? (planet.orbitalPeriodDays * 24) / 2 : rawTimeBounds.max + Math.max(4, rawTimeBounds.max - rawTimeBounds.min);
+    
+    const sDepth = Math.pow((planet.radiusEarth || 1.0) / ((planet.starRadius || 1.0) * 109.2), 2) * 0.1;
     const secondaryShape = [
-      { time: center - 1.0, flux: 0.9994, processed: 0.9995, type: 'baseline' },
-      { time: center - 0.6, flux: 0.9988, processed: 0.9990, type: 'secondary' },
-      { time: center - 0.3, flux: 0.9983, processed: 0.9985, type: 'secondary' },
-      { time: center, flux: 0.9978, processed: 0.9980, type: 'secondary' },
-      { time: center + 0.3, flux: 0.9986, processed: 0.9986, type: 'secondary' },
-      { time: center + 0.6, flux: 0.9993, processed: 0.9994, type: 'secondary' },
-      { time: center + 1.0, flux: 0.9998, processed: 0.9999, type: 'baseline' },
+      { time: center - 1.0, flux: 1.0, processed: 1.0, type: 'baseline' },
+      { time: center - 0.6, flux: 1.0 - sDepth*0.2, processed: 1.0 - sDepth*0.2, type: 'secondary' },
+      { time: center - 0.3, flux: 1.0 - sDepth*0.5, processed: 1.0 - sDepth*0.5, type: 'secondary' },
+      { time: center,       flux: 1.0 - sDepth,     processed: 1.0 - sDepth,     type: 'secondary' },
+      { time: center + 0.3, flux: 1.0 - sDepth*0.5, processed: 1.0 - sDepth*0.5, type: 'secondary' },
+      { time: center + 0.6, flux: 1.0 - sDepth*0.2, processed: 1.0 - sDepth*0.2, type: 'secondary' },
+      { time: center + 1.0, flux: 1.0, processed: 1.0, type: 'baseline' },
     ];
 
     return {
       lightCurveData: [...base, ...secondaryShape].sort((a, b) => a.time - b.time),
       secondaryCenter: center,
     };
-  }, [rawLightCurveData, rawTimeBounds]);
+  }, [rawLightCurveData, rawTimeBounds, primaryDipBounds, planet]);
 
   // Real-time animated orbital transit loop (0% to 100%)
   useEffect(() => {
@@ -169,6 +215,15 @@ export default function LightCurveLab() {
     };
   }, [currentTime, timeBounds]);
 
+  const planetOrbitCoords2 = useMemo(() => {
+    const tRange = timeBounds.max - timeBounds.min || 1;
+    const angle = (currentTime / tRange) * Math.PI * 2 + Math.PI / 2;
+    return {
+      x: 100 + 80 * Math.cos(angle),
+      y: 50 + 16 * Math.sin(angle)
+    };
+  }, [currentTime, timeBounds]);
+
   const distFromCenter = Math.sqrt(
     Math.pow(planetOrbitCoords.x - 100, 2) + Math.pow(planetOrbitCoords.y - 50, 2)
   );
@@ -180,6 +235,17 @@ export default function LightCurveLab() {
       ? 'Ingress Phase'
       : 'Egress Phase'
     : 'Out-of-Transit Baseline';
+
+  const activeStepTime = useMemo(() => {
+    switch (activeStep) {
+      case 0: return rawTimeBounds.min;
+      case 1: return primaryDipBounds.min;
+      case 2: return 0;
+      case 3: return primaryDipBounds.max;
+      case 4: return secondaryCenter;
+      default: return 0;
+    }
+  }, [activeStep, rawTimeBounds, primaryDipBounds, secondaryCenter]);
 
   // Transit Walkthrough Steps
   const walkthroughSteps = [
@@ -231,7 +297,7 @@ export default function LightCurveLab() {
             onChange={(e) => setSelectedPlanetId(e.target.value)}
             className="bg-slate-900 border border-slate-800 text-xs font-mono-data text-cyan-300 rounded-xl px-3 py-2 focus:outline-none focus:border-cyan-400"
           >
-            {EXOPLANETS.map((p) => (
+            {planets.map((p) => (
               <option key={p.id} value={p.id}>
                 {p.name} ({p.discoveryMethod})
               </option>
@@ -240,37 +306,7 @@ export default function LightCurveLab() {
         </div>
       </div>
 
-      {/* Observatory Control Room Diagnostics Panel */}
-      <div className="glass-panel p-4 rounded-2xl border border-cyan-500/30 bg-slate-950/90 shadow-[0_0_20px_rgba(34,211,238,0.1)] flex flex-wrap justify-between items-center gap-4 text-xs font-mono-data">
-        <div className="flex items-center space-x-2.5">
-          <span className="relative flex h-3 w-3" aria-hidden>
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-          </span>
-          <span className="text-emerald-400 font-bold tracking-wider">TELESCOPE STATE: TRACKING</span>
-        </div>
 
-        <div className="flex items-center space-x-3 text-slate-300">
-          <div className="flex items-center space-x-1.5">
-            <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-            <span className="text-slate-400">SNR:</span>
-            <span className="text-cyan-300 font-bold">{(24.5 + Math.sin(transitProgress / 10) * 0.3).toFixed(1)} dB</span>
-          </div>
-          <span className="text-slate-700">|</span>
-          <div className="flex items-center space-x-1.5">
-            <span className="text-slate-400">PRECISION:</span>
-            <span className="text-indigo-300 font-bold">±0.0002 F</span>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-2 text-cyan-400/90 bg-slate-900/90 px-3 py-1 rounded-xl border border-slate-800">
-          <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-          <div className="text-[12px] font-mono-data">
-            <div>Current Flux: <span className="font-bold text-white">{hoveredPoint ? Number(hoveredPoint.flux).toFixed(4) : currentFlux.toFixed(4)}</span></div>
-            <div className="text-slate-400 text-[12px]">ΔF/F: <span className="text-rose-400 font-semibold">-{((1 - currentFlux) * 100).toFixed(3)}%</span></div>
-          </div>
-        </div>
-      </div>
 
       {/* Main Interactive Light Curve Recharts Plot */}
       <div className="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
@@ -288,7 +324,7 @@ export default function LightCurveLab() {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={lightCurveData}
-              margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
+              margin={{ top: 30, right: 30, left: 20, bottom: 20 }}
               onMouseMove={(state) => {
                 if (state && state.activePayload && state.activePayload.length) {
                   setHoveredPoint(state.activePayload[0].payload);
@@ -299,16 +335,17 @@ export default function LightCurveLab() {
               onMouseLeave={() => setHoveredPoint(null)}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-              <XAxis dataKey="time" stroke="#94a3b8" label={{ value: 'Time (Hours from mid-transit)', position: 'insideBottom', offset: -5, fill: '#94a3b8', fontSize: 11 }} />
-              <YAxis domain={['auto', 'auto']} stroke="#94a3b8" label={{ value: 'Normalized Flux', angle: -90, position: 'insideLeft', fill: '#94a3b8', fontSize: 11 }} />
+              <XAxis dataKey="time" stroke="#94a3b8" label={{ value: 'Time (Hours from mid-transit)', position: 'bottom', offset: 0, fill: '#94a3b8', fontSize: 11 }} />
+              <YAxis domain={['auto', 'auto']} stroke="#94a3b8" label={{ value: 'Normalized Flux', angle: -90, position: 'insideLeft', offset: 15, dx: -25, fill: '#94a3b8', fontSize: 11 }} />
               
               {/* Custom High-Tech Interactive Tooltip */}
               <Tooltip content={<CustomTooltip />} />
               
               {/* Primary Transit Area Highlight */}
-              <ReferenceArea x1={-1.5} x2={1.5} fill="#22d3ee" fillOpacity={0.08} label={{ value: 'Primary Transit Dip Zone', fill: '#22d3ee', fontSize: 11 }} />
-          <ReferenceArea x1={secondaryCenter - 0.9} x2={secondaryCenter + 0.9} fill="#a78bfa" fillOpacity={0.08} label={{ value: 'Secondary Eclipse Zone', fill: '#a78bfa', fontSize: 11 }} />
-          <ReferenceLine y={1.000} stroke="#818cf8" strokeDasharray="4 4" label={{ value: '1.000 Baseline Flux', fill: '#818cf8', fontSize: 10 }} />
+              <ReferenceArea x1={primaryDipBounds.min} x2={primaryDipBounds.max} fill="#22d3ee" fillOpacity={0.08} label={{ value: 'Primary Transit Dip Zone', position: 'insideTop', fill: '#22d3ee', fontSize: 11 }} />
+              <ReferenceArea x1={secondaryCenter - 1.0} x2={secondaryCenter + 0.6} fill="#a78bfa" fillOpacity={0.08} label={{ value: 'Secondary Eclipse / Occultation Zone', position: 'insideTop', fill: '#a78bfa', fontSize: 11 }} />
+              <ReferenceLine y={1.000} stroke="#818cf8" strokeDasharray="4 4" label={{ value: '1.000 Baseline Flux', position: 'top', fill: '#818cf8', fontSize: 10 }} />
+              <ReferenceLine x={activeStepTime} stroke="#fbbf24" strokeDasharray="3 3" strokeWidth={2} label={{ value: 'Current Phase', position: 'insideTopLeft', fill: '#fbbf24', fontSize: 11 }} />
               <Line
                 type="monotone"
                 dataKey={showProcessed ? (lightCurveData[0].processed ? 'processed' : 'flux') : 'flux'}
@@ -462,11 +499,11 @@ export default function LightCurveLab() {
                   </radialGradient>
                 </defs>
 
-                {/* Dotted Orbital Line */}
-                <line x1="10" y1="50" x2="190" y2="50" stroke="rgba(34,211,238,0.4)" strokeWidth="1.5" strokeDasharray="3 3" />
+                {/* Elliptical Orbital Track */}
+                <ellipse cx="100" cy="50" rx="80" ry="16" fill="none" stroke="rgba(34,211,238,0.4)" strokeWidth="1.5" strokeDasharray="3 3" />
 
-                {/* Looping Planet Sphere passing across star */}
-                <circle cx={planetOrbitCoords.x} cy={planetOrbitCoords.y} r="8" fill="#0f172a" stroke="#22d3ee" strokeWidth="2" className="shadow-[0_0_10px_#22d3ee]" />
+                {/* Animated Planet Sphere passing across star edge */}
+                <circle cx={planetOrbitCoords2.x} cy={planetOrbitCoords2.y} r="8" fill="#0f172a" stroke="#22d3ee" strokeWidth="2" className="shadow-[0_0_10px_#22d3ee]" />
               </svg>
 
               {/* Dynamic Dip Status Overlay */}

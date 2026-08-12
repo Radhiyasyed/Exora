@@ -98,11 +98,13 @@ export default function SearchExplore() {
       );
     }
 
-    // Star type filter with prefix matching
+    // Star type filter with prefix matching against actual starType field
     if (selectedStarTypes.length > 0) {
       filtered = filtered.filter(p => {
-        const star = classifyStarType(p.starTempK || p.equilibriumTempK);
-        return selectedStarTypes.some(st => star.label.startsWith(st) || star.label.includes(st));
+        if (!p.starType) return false;
+        const actualTypeLower = p.starType.toLowerCase();
+        // Use the first letter of the selected filter (e.g. 'G' from 'G-type') to prefix match against 'G-type (G2V)'
+        return selectedStarTypes.some(st => actualTypeLower.startsWith(st.charAt(0).toLowerCase()));
       });
     }
 

@@ -40,6 +40,7 @@ TARGET_COLUMNS = [
     "pl_eqt",      # planet equilibrium temperature (Kelvin)
     "pl_orbsmax",  # orbital semi-major axis (AU)
     "st_teff",     # host star effective temperature (Kelvin)
+    "st_rad",      # host star radius (Solar radii)
 ]
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -82,7 +83,6 @@ def fetch_sample_dataset(table_name: str = TABLE_NAME,
     query = (
         f"SELECT TOP {limit} {column_list} "
         f"FROM {table_name} "
-        "WHERE pl_name IN (SELECT pl_name FROM exoplanets WHERE UPPER(pl_status) = 'CONFIRMED')"
     )
     raw_csv = run_tap_query(query, fmt="csv")
     df = pd.read_csv(io.StringIO(raw_csv))

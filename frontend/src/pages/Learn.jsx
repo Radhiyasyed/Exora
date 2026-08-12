@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 
 /* ── Import the JSON data file directly ── */
-import learnJSON from '../data/exovista_learn.json';
+import learnJSON from '../data/exora_learn.json';
 
 /* Icon resolver from string name to Lucide component */
 const ICON_MAP = {
@@ -251,7 +251,7 @@ export default function Learn() {
             className="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 text-slate-950 font-bold text-sm hover:brightness-110 shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all flex items-center space-x-2"
           >
             <Orbit className="w-5 h-5" />
-            <span>Theory's great. 5,000 real planets are better.</span>
+            <span>Theory's great. 1,000 real planets are better.</span>
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
