@@ -37,6 +37,9 @@ TARGET_COLUMNS = [
     "discoverymethod",
     "disc_year",
     "pl_trandur",    # transit duration, hours (archive-provided, may be null)
+    "pl_orbeccen",   # orbital eccentricity (optional, for future non-circular HZD)
+    "hostname",      # star/system name -- used to detect multi-planet systems
+    "sy_pnum",       # number of known planets in the system
 ]
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent

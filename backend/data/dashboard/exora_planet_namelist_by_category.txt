@@ -1,0 +1,141 @@
+=== FAMOUS / ICONIC PLANETS (10) ===
+  HD 209458 b            ESI=0.076   HZD=-5.37   transitDuration=3.07h
+  Kepler-186 f           ESI=0.658   HZD=3.23    transitDuration=5.62h
+  Kepler-452 b           ESI=0.843   HZD=-1.02   transitDuration=10.63h
+  TRAPPIST-1 b           ESI=0.770   HZD=-3.20   transitDuration=0.60h
+  TRAPPIST-1 c           ESI=0.873   HZD=-2.34   transitDuration=0.70h
+  TRAPPIST-1 d           ESI=0.915   HZD=-1.03   transitDuration=0.81h
+  TRAPPIST-1 e           ESI=0.871   HZD=0.38    transitDuration=0.93h
+  TRAPPIST-1 f           ESI=0.798   HZD=2.25    transitDuration=1.05h
+  TRAPPIST-1 g           ESI=0.729   HZD=3.94    transitDuration=1.14h
+  TRAPPIST-1 h           ESI=0.601   HZD=6.99    transitDuration=1.27h
+
+=== HIGH ESI SCORERS (most Earth-like) (20) ===
+  Gliese 12 b            ESI=0.912   HZD=-1.80   transitDuration=1.20h
+  K2-133 e               ESI=0.860   HZD=-2.02   transitDuration=1.44h
+  K2-18 b                ESI=0.810   HZD=-1.26   transitDuration=2.68h
+  K2-3 d                 ESI=0.870   HZD=-1.58   transitDuration=4.17h
+  Kepler-155 c           ESI=0.798   HZD=-0.90   transitDuration=3.19h
+  Kepler-186 e           ESI=0.885   HZD=-2.96   transitDuration=3.32h
+  Kepler-22 b            ESI=0.850   HZD=-0.73   transitDuration=7.42h
+  Kepler-249 d           ESI=0.817   HZD=-2.96   transitDuration=2.70h
+  Kepler-296 e           ESI=0.814   HZD=-0.97   transitDuration=2.94h
+  Kepler-296 f           ESI=0.836   HZD=1.36    transitDuration=3.60h
+  Kepler-445 d           ESI=0.913   HZD=-3.19   transitDuration=1.39h
+  Kepler-69 c            ESI=0.858   HZD=-2.13   transitDuration=13.10h
+  LHS 1903 e             ESI=0.799   HZD=-2.23   transitDuration=3.78h
+  TOI-1452 b             ESI=0.830   HZD=-2.07   transitDuration=1.76h
+  TOI-2094 b             ESI=0.825   HZD=-0.71   transitDuration=1.22h
+  TOI-2267 c             ESI=0.799   HZD=-3.36   transitDuration=0.89h
+  TOI-6002 b             ESI=0.823   HZD=-1.97   transitDuration=1.66h
+  TOI-6716 b             ESI=0.824   HZD=-3.35   transitDuration=1.24h
+  TOI-700 d              ESI=0.939   HZD=-0.40   transitDuration=3.31h
+  TOI-700 e              ESI=0.946   HZD=-1.32   transitDuration=2.78h
+
+=== EXTREME / WEIRD WORLDS (20) ===
+  EPIC 220674823 b       ESI=0.098   HZD=-5.47   transitDuration=1.60h
+  HAT-P-7 b              ESI=0.039   HZD=-5.47   transitDuration=3.88h
+  HD 80653 b             ESI=0.099   HZD=-5.48   transitDuration=1.73h
+  K2-157 b               ESI=0.108   HZD=-5.48   transitDuration=1.16h
+  KELT-16 b              ESI=0.050   HZD=-5.48   transitDuration=2.49h
+  KELT-9 b               ESI=0.022   HZD=-5.51   transitDuration=4.16h
+  MASCARA-1 b            ESI=0.044   HZD=-5.48   transitDuration=4.23h
+  TOI-1295 b             ESI=0.047   HZD=-5.42   transitDuration=6.20h
+  TOI-1431 b             ESI=0.051   HZD=-5.47   transitDuration=2.49h
+  TOI-1518 b             ESI=0.036   HZD=-5.48   transitDuration=2.40h
+  TOI-2109 b             ESI=0.033   HZD=-5.50   transitDuration=1.80h
+  TOI-2260 b             ESI=0.094   HZD=-5.48   transitDuration=0.58h
+  TOI-2580 b             ESI=0.037   HZD=-5.43   transitDuration=8.38h
+  WASP-103 b             ESI=0.041   HZD=-5.48   transitDuration=2.59h
+  WASP-121 b             ESI=0.037   HZD=-5.48   transitDuration=2.91h
+  WASP-167 b             ESI=0.056   HZD=-5.48   transitDuration=2.72h
+  WASP-178 b             ESI=0.037   HZD=-5.47   transitDuration=3.47h
+  WASP-18 b              ESI=0.058   HZD=-5.48   transitDuration=2.21h
+  WASP-33 b              ESI=0.037   HZD=-5.49   transitDuration=2.85h
+  Wendelstein-2 b        ESI=0.046   HZD=-5.25   transitDuration=2.17h
+
+=== STRONG HABITABLE ZONE CANDIDATES (5) ===
+  LP 890-9 c             ESI=0.502   HZD=-0.54   transitDuration=0.96h
+  TIC 52059926 b         ESI=0.328   HZD=0.50    transitDuration=4.87h
+  TOI-2257 b             ESI=0.742   HZD=0.38    transitDuration=3.85h
+  TOI-715 b              ESI=0.780   HZD=0.10    transitDuration=1.98h
+  TOI-7166 b             ESI=0.750   HZD=-0.94   transitDuration=1.75h
+
+=== MULTI-PLANET SYSTEMS (15) ===
+  HD 110067 b            ESI=0.334   HZD=-4.97   transitDuration=3.09h
+  HD 110067 c            ESI=0.369   HZD=-4.79   transitDuration=3.70h
+  HD 110067 d            ESI=0.398   HZD=-4.55   transitDuration=3.82h
+  HD 110067 e            ESI=0.507   HZD=-4.25   transitDuration=4.86h
+  HD 110067 f            ESI=0.473   HZD=-3.98   transitDuration=5.17h
+  HD 110067 g            ESI=0.556   HZD=-3.65   transitDuration=5.67h
+  K2-138 b               ESI=0.256   HZD=-5.31   transitDuration=2.01h
+  K2-138 c               ESI=0.257   HZD=-5.24   transitDuration=2.38h
+  K2-138 d               ESI=0.297   HZD=-5.15   transitDuration=2.70h
+  K2-138 e               ESI=0.302   HZD=-5.02   transitDuration=2.97h
+  K2-138 f               ESI=0.256   HZD=-4.85   transitDuration=3.20h
+  K2-138 g               ESI=0.450   HZD=-4.01   transitDuration=4.75h
+  TOI-178 b              ESI=0.278   HZD=-5.20   transitDuration=1.69h
+  TOI-178 c              ESI=0.336   HZD=-5.06   transitDuration=1.95h
+  TOI-178 d              ESI=0.336   HZD=-4.77   transitDuration=2.35h
+
+=== REST (complete-data, rounding out the set) (60) ===
+  CoRoT-32 b             ESI=0.190   HZD=-5.13   transitDuration=2.50h
+  CoRoT-6 b              ESI=0.160   HZD=-5.14   transitDuration=4.08h
+  HAT-P-57 b             ESI=0.043   HZD=-5.46   transitDuration=3.50h
+  HATS-30 b              ESI=0.089   HZD=-5.35   transitDuration=2.75h
+  HD 106315 b            ESI=0.232   HZD=-5.26   transitDuration=3.77h
+  HD 110113 b            ESI=0.188   HZD=-5.37   transitDuration=2.38h
+  HD 17156 b             ESI=0.194   HZD=-5.07   transitDuration=3.15h
+  HD 191939 c            ESI=0.367   HZD=-4.50   transitDuration=4.16h
+  HD 207897 b            ESI=0.465   HZD=-4.63   transitDuration=2.90h
+  HD 219134 c            ESI=0.375   HZD=-4.93   transitDuration=1.66h
+  HD 22946 d             ESI=0.454   HZD=-4.43   transitDuration=6.48h
+  HD 23472 d             ESI=0.335   HZD=-5.12   transitDuration=1.99h
+  HD 93963 A b           ESI=0.149   HZD=-5.45   transitDuration=1.82h
+  HIP 41378 b            ESI=0.254   HZD=-5.15   transitDuration=5.26h
+  HIP 41378 d            ESI=0.491   HZD=-2.01   transitDuration=12.71h
+  HIP 94235 b            ESI=0.117   HZD=-5.22   transitDuration=2.47h
+  HR 858 c               ESI=0.197   HZD=-5.32   transitDuration=2.84h
+  K2-10 b                ESI=0.359   HZD=-4.81   transitDuration=3.81h
+  K2-136 b               ESI=0.388   HZD=-4.72   transitDuration=2.67h
+  K2-19 d                ESI=0.167   HZD=-5.31   transitDuration=1.93h
+  K2-229 b               ESI=0.134   HZD=-5.44   transitDuration=1.50h
+  K2-263 b               ESI=0.557   HZD=-3.89   transitDuration=3.75h
+  K2-265 b               ESI=0.193   HZD=-5.34   transitDuration=2.31h
+  K2-292 b               ESI=0.322   HZD=-4.98   transitDuration=3.66h
+  K2-295 b               ESI=0.170   HZD=-5.05   transitDuration=2.50h
+  K2-33 b                ESI=0.148   HZD=-5.04   transitDuration=4.08h
+  K2-37 b                ESI=0.323   HZD=-5.15   transitDuration=2.30h
+  K2-38 c                ESI=0.296   HZD=-5.10   transitDuration=2.38h
+  KELT-19 A b            ESI=0.056   HZD=-5.44   transitDuration=4.39h
+  KELT-20 b              ESI=0.048   HZD=-5.47   transitDuration=3.58h
+  KELT-21 b              ESI=0.060   HZD=-5.45   transitDuration=4.11h
+  Kepler-125 b           ESI=0.436   HZD=-4.64   transitDuration=1.80h
+  Kepler-1624 b          ESI=0.304   HZD=-4.83   transitDuration=1.75h
+  Kepler-278 c           ESI=0.515   HZD=-4.89   transitDuration=11.23h
+  Kepler-69 b            ESI=0.339   HZD=-5.04   transitDuration=5.13h
+  Kepler-81 d            ESI=0.719   HZD=-3.84   transitDuration=2.57h
+  LHS 1903 d             ESI=0.543   HZD=-3.66   transitDuration=2.76h
+  LTT 3780 b             ESI=0.342   HZD=-5.10   transitDuration=0.79h
+  TOI-1246 d             ESI=0.331   HZD=-4.65   transitDuration=3.95h
+  TOI-1408 c             ESI=0.132   HZD=-5.44   transitDuration=2.67h
+  TOI-1670 b             ESI=0.181   HZD=-5.23   transitDuration=2.80h
+  TOI-178 e              ESI=0.402   HZD=-4.53   transitDuration=2.50h
+  TOI-201 d              ESI=0.206   HZD=-5.33   transitDuration=3.26h
+  TOI-2076 e             ESI=0.236   HZD=-5.24   transitDuration=2.16h
+  TOI-411 b              ESI=0.161   HZD=-5.32   transitDuration=3.07h
+  TOI-4342 b             ESI=0.416   HZD=-4.64   transitDuration=2.18h
+  TOI-4515 b             ESI=0.235   HZD=-4.80   transitDuration=3.24h
+  TOI-5076 b             ESI=0.416   HZD=-4.32   transitDuration=4.88h
+  TOI-530 b              ESI=0.279   HZD=-4.42   transitDuration=2.57h
+  TOI-5628 A b           ESI=0.264   HZD=-4.01   transitDuration=1.78h
+  TOI-6478 b             ESI=0.460   HZD=1.61    transitDuration=2.90h
+  TOI-674 b              ESI=0.290   HZD=-4.78   transitDuration=1.11h
+  TOI-771 b              ESI=0.568   HZD=-4.29   transitDuration=0.96h
+  V1298 Tau d            ESI=0.140   HZD=-5.01   transitDuration=5.57h
+  WASP-105 b             ESI=0.195   HZD=-5.17   transitDuration=3.72h
+  WASP-117 b             ESI=0.123   HZD=-5.21   transitDuration=5.94h
+  WASP-141 b             ESI=0.097   HZD=-5.38   transitDuration=3.60h
+  WASP-162 b             ESI=0.196   HZD=-5.15   transitDuration=4.26h
+  WASP-72 b              ESI=0.059   HZD=-5.46   transitDuration=3.88h
+  WD 1856+534 b          ESI=0.258   HZD=5.61    transitDuration=0.13h
