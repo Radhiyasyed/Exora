@@ -1,0 +1,542 @@
+[
+  {
+    "name": "CoRoT-32 b",
+    "significanceText": "A hot Jupiter confirmed years after CoRoT's mission ended, pulled out of the satellite's archived light curves through patient reanalysis — a reminder that even a retired telescope's data can keep yielding new worlds.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "CoRoT-32",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "CoRoT-6 b",
+    "significanceText": "A hot Jupiter found circling an unusually metal-poor star, giving astronomers an early data point for testing whether giant planets can form efficiently even around stars low in heavy elements.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2009,
+    "hostStar": "CoRoT-6 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HAT-P-57 b",
+    "significanceText": "A puffed-up gas giant orbiting the most rapidly rotating star known to host a transiting planet, spinning so fast it's stretched into an oblate shape — a rare laboratory for studying how stellar rotation warps a planet's transit signal.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2015,
+    "hostStar": "HAT-P-57 (A8V)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HATS-30 b",
+    "significanceText": "A standard-issue hot Jupiter from the HATSouth survey, useful less for any singular quirk than as one more data point fleshing out the broader population statistics of close-in giant planets.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "HATS-30 (G-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HD 106315 b",
+    "significanceText": "The inner of two small planets discovered orbiting a rapidly rotating, easily observed nearby star, making the whole system a favorite target for astronomers testing how planets of very different sizes can share close orbits.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "HD 106315 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HD 110113 b",
+    "significanceText": "A hot mini-Neptune orbiting a near-perfect solar twin, discovered sitting exactly in the low-density gap between rocky super-Earths and puffier gas-rich worlds that astronomers call the \"radius valley.\"",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "HD 110113 (G-type, solar analogue)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HD 17156 b",
+    "significanceText": "One of the earliest known hot Jupiters found on a stretched, highly eccentric orbit rather than the tidily circularized paths of most close-in giants — evidence, right from its 2007 discovery, that not every hot Jupiter's past involved a gentle migration.",
+    "discoveryMethod": "Radial Velocity, Transit",
+    "discoveryYear": 2007,
+    "hostStar": "HD 17156 (F-type subgiant)",
+    "nickname": "Mulchatna",
+    "category": "rest"
+  },
+  {
+    "name": "HD 191939 c",
+    "significanceText": "The middle world in a tightly packed system of small planets around a bright Sun-like star, part of a system compact and nearby enough that astronomers have proposed it as a promising target for future atmospheric surveys.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "HD 191939 (G-type, Sun-like)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HD 207897 b",
+    "significanceText": "A super-Earth sitting right at the edge of its star's habitable zone, its precisely measured density has made it a benchmark case for studying how mid-sized rocky-to-gassy planets are built.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "HD 207897 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HD 219134 c",
+    "significanceText": "A dense, scorched rocky world in one of the closest known multi-planet systems to Earth, first caught by the wobble it induced in its star and only later confirmed to transit — giving astronomers a rare two-method cross-check on its size and mass.",
+    "discoveryMethod": "Radial Velocity",
+    "discoveryYear": 2015,
+    "hostStar": "HD 219134 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HD 22946 d",
+    "significanceText": "The outermost of three planets around a bright, nearby star, whose true orbital period stayed a mystery for years until a dedicated European space telescope was pointed at the system specifically to pin it down.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2023,
+    "hostStar": "HD 22946 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HD 23472 d",
+    "significanceText": "One of two tiny \"super-Mercury\" candidates in a five-planet system, likely stripped down to a dense metallic core by early violent evolution — a rare nearby laboratory for studying how planets can lose most of their rocky mantle.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "HD 23472 (K-type)",
+    "nickname": "Super-Mercury Candidate",
+    "category": "rest"
+  },
+  {
+    "name": "HD 93963 A b",
+    "significanceText": "An ultra-short-period super-Earth that completes a full orbit in about a day, discovered as such a faint signal in the data that it wasn't even initially flagged as a candidate — found only through a dedicated hunt by two space telescopes working together.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "HD 93963 A (G0V, Sun-like)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HIP 41378 b",
+    "significanceText": "One of five (later six) planets found packed around a bright star in a single announcement, part of a system so intricate that some of its outer worlds have several possible orbital solutions still being untangled years later.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "HIP 41378 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HIP 41378 d",
+    "significanceText": "A puffy, low-density world in the same crowded HIP 41378 system, notable for having such a faint, hard-to-schedule transit signal that astronomers had to work out multiple possible timing solutions just to know when to look for it.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "HIP 41378 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HIP 94235 b",
+    "significanceText": "A Neptune-sized world orbiting an F-type star, contributing to the steadily growing census of mid-sized planets that inform statistical studies of how common such worlds are across different kinds of host stars.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "HIP 94235 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "HR 858 c",
+    "significanceText": "The middle of three small planets discovered in one announcement around a bright, naked-eye-adjacent star, making the whole system an easy, well-studied target for follow-up work on planet composition and orbital dynamics.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2019,
+    "hostStar": "HR 858 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-10 b",
+    "significanceText": "A Neptune-sized world found early in the K2 mission's survey of the ecliptic plane, one of the first wave of planets confirming that Kepler's repurposed spacecraft could keep discovering worlds well beyond its original field of view.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2015,
+    "hostStar": "K2-10 (G-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-136 b",
+    "significanceText": "A rocky, roughly Earth-sized world orbiting a star that belongs to the Hyades — the nearest open star cluster to Earth — making its age unusually well pinned down and turning the whole system into a benchmark for studying young planets.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "K2-136 (K-type, Hyades cluster member)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-19 d",
+    "significanceText": "The smallest and last-discovered of three planets in a system already famous for its outer pair sitting suspiciously close to, but just outside of, a clean orbital resonance — a puzzle for theories of how migrating planets lock into rhythm.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "K2-19 (G-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-229 b",
+    "significanceText": "An Earth-sized planet inferred to have a dense, iron-rich core proportionally larger than Earth's own — making it a real-world analogue for Mercury and a key data point in understanding how such metal-heavy little worlds form.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-229 (G-type)",
+    "nickname": "Mercury Analogue",
+    "category": "rest"
+  },
+  {
+    "name": "K2-263 b",
+    "significanceText": "A sub-Neptune with a precisely measured mass thanks to an intensive radial-velocity follow-up campaign, helping researchers map how a planet's density changes across the poorly understood middle ground between rocky and gas-rich worlds.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-263 (G-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-265 b",
+    "significanceText": "A dense, rocky super-Earth with one of the more tightly constrained bulk densities among K2's small-planet discoveries, giving modelers a solid anchor point for how rocky-world compositions vary with mass.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-265 (G-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-292 b",
+    "significanceText": "An ultra-dense sub-Neptune around a Sun-like star, with hints in its radial-velocity data of a hidden, much longer-period companion further out — an invitation for future surveys to go looking for what else might be lurking in the system.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2019,
+    "hostStar": "K2-292 (G-type, Sun-like)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-295 b",
+    "significanceText": "A Saturn-mass gas giant orbiting a K-type star, adding to the roster of K2 giant-planet discoveries that help astronomers compare how gas giants differ in size and density depending on the star they formed around.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-295 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-33 b",
+    "significanceText": "One of the youngest transiting exoplanets ever found, only a few million years old and still glowing with leftover formation heat while orbiting a star that itself is barely out of its stellar childhood.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "K2-33 (pre-main-sequence K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-37 b",
+    "significanceText": "A compact super-Earth in a multi-planet K2 system, its tight orbit and modest size making it representative of the small, close-in worlds that turned out to be the most common type of planet Kepler and K2 ever found.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "K2-37 (G-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "K2-38 c",
+    "significanceText": "The outer sibling of a remarkably dense super-Earth, K2-38 c helps complete the picture of a compact system whose innermost planet was once thought to rival Mercury for sheer density before later mass revisions softened that record.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "K2-38 (G2V, Sun-like)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "KELT-19 A b",
+    "significanceText": "A puffed-up hot Jupiter orbiting a rapidly rotating A-type star, one of a trio of KELT discoveries around hot, fast-spinning primaries that let astronomers study planet formation in stellar environments quite unlike our own Sun.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "KELT-19 A (A-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "KELT-20 b",
+    "significanceText": "An ultra-hot Jupiter orbiting a bright A-type star, hot enough that astronomers have directly detected water, carbon monoxide, and iron vapor streaming through its atmosphere — making it one of the best-characterized extreme gas giants known.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "KELT-20 (A-type)",
+    "nickname": "MASCARA-2 b",
+    "category": "rest"
+  },
+  {
+    "name": "KELT-21 b",
+    "significanceText": "A hot Jupiter circling the most rapidly rotating star ever found to host a transiting planet, part of a likely hierarchical triple star system whose faint stellar companions add a genuine mystery to how the planet ended up where it is.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "KELT-21 (A-type, rapid rotator)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "Kepler-125 b",
+    "significanceText": "A Neptune-sized world orbiting a red dwarf, one of thousands of workaday Kepler discoveries whose real value lies in the statistics — each one sharpens astronomers' picture of how common such planets are across the galaxy.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-125 (M-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "Kepler-1624 b",
+    "significanceText": "A Neptune-like planet orbiting a red dwarf every 3.3 days, discovered in the original Kepler dataset and useful today mainly as one more entry filling out the archive's picture of close-in planets around small, cool stars.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "Kepler-1624 (M-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "Kepler-278 c",
+    "significanceText": "A Neptune-sized outer world in a compact two-planet system, notable for an unusually elongated, non-circular orbit that hints at a more dynamically disturbed past than most Kepler multis show.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-278 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "Kepler-69 b",
+    "significanceText": "The scorched inner planet in a two-world system whose outer sibling briefly made headlines as a candidate for a super-Earth in the habitable zone of a Sun-like star, before follow-up work revised that hopeful status downward.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2013,
+    "hostStar": "Kepler-69 (G4V, Sun-like)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "Kepler-81 d",
+    "significanceText": "The outermost of three planets in a compact system, its wide 21-day orbit standing in contrast to its scorched inner neighbors and offering a useful contrast case for studying how planet properties change with distance from the same star.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-81 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "LHS 1903 d",
+    "significanceText": "One of the two gas-rich middle planets in a red dwarf system whose overall architecture — rocky, gas, gas, rocky — has stunned astronomers, since planet formation theory says rocky worlds shouldn't sandwich gas giants from both sides.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2026,
+    "hostStar": "LHS 1903 (M dwarf, thick-disk star)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "LTT 3780 b",
+    "significanceText": "An ultra-short-period rocky planet orbiting a bright, nearby red dwarf in under a day, paired with a second, puffier sibling that sits on the opposite side of the so-called radius valley — together the two make LTT 3780 a textbook case study in planetary evolution.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "LTT 3780 (M3.5V red dwarf)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-1246 d",
+    "significanceText": "One of four sub-Neptunes discovered together around the same K-type star, part of a system precise mass measurements have turned into a go-to benchmark for studying how similar-sized planets in one system can still end up with very different densities.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "TOI-1246 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-1408 c",
+    "significanceText": "A close-in super-Earth found alongside a much larger transiting gas-giant sibling, giving astronomers a rare same-system comparison between a compact rocky world and a puffed-up companion just a little farther out.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "TOI-1408 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-1670 b",
+    "significanceText": "An inner sub-Neptune paired with an outer warm Jupiter around the same star, a combination that doesn't fit the usual story of gas giants migrating inward through violent, eccentricity-pumping interactions with a companion.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "TOI-1670 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-178 e",
+    "significanceText": "A member of the remarkable six-planet TOI-178 system, whose worlds lock together in one of the most intricate orbital resonance chains ever observed — a near-perfect chain of 18:9:6:4:3 that offers a rare glimpse of a planetary system's original, undisturbed architecture.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-178 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-201 d",
+    "significanceText": "The third planet found in a system whose orbits are still visibly shifting over time, offering astronomers a rare real-time opportunity to watch gravitational interactions reshape a planetary system's dynamics.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2026,
+    "hostStar": "TOI-201 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-2076 e",
+    "significanceText": "A newly added inner super-Earth in a young, still-settling planetary system, discovered years after its three outer siblings and offering fresh insight into how such multi-planet systems finish assembling themselves.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2025,
+    "hostStar": "TOI-2076 (K-type, young star)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-411 b",
+    "significanceText": "A close-in super-Earth orbiting a bright F-type star, valuable chiefly as an accessible, well-characterized target for the kind of precise mass and density follow-up work that builds out the broader population statistics of hot rocky worlds.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "TOI-411 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-4342 b",
+    "significanceText": "One of a pair of \"twin\" planets discovered orbiting an early M dwarf in a near 2:1 orbital resonance, a clean dynamical relationship that gives theorists a tidy test case for how such systems settle into rhythm.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2023,
+    "hostStar": "TOI-4342 (M-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-4515 b",
+    "significanceText": "An eccentric warm Jupiter orbiting a relatively young, 1.2-billion-year-old Sun-like star, its stretched orbit offering astronomers a chance to catch a giant planet's migration story still mid-way through unfolding.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "TOI-4515 (G-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-5076 b",
+    "significanceText": "A warm sub-Neptune orbiting a star caught mid-transition between the Milky Way's thin and thick stellar disks, with a wide binary companion in tow — an unusual galactic pedigree for a planet-hosting system.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "TOI-5076 (thin-to-thick-disk transition star)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-530 b",
+    "significanceText": "A rare transiting giant planet found orbiting a red dwarf, a genuine outlier since gas giants are unusually uncommon around such low-mass stars — at the time of its discovery, only a handful of similar examples were known anywhere.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-530 (M-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-5628 A b",
+    "significanceText": "A rare giant planet orbiting a red dwarf that itself has a white dwarf companion nearby, making the whole system an unusual laboratory for studying how the death of one star in a pair can influence the fate of planets around its neighbor.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2026,
+    "hostStar": "TOI-5628 A (M-type, white dwarf companion)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-6478 b",
+    "significanceText": "A cold, unusually low-density Neptune-like planet orbiting a fully convective red dwarf from the galaxy's ancient thick disk, giving astronomers a rare chance to study a cold gas-rich world's atmosphere and probe planet formation around one of the Milky Way's older stellar populations.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2025,
+    "hostStar": "TOI-6478 (M-type, thick-disk star)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-674 b",
+    "significanceText": "A Neptune-sized planet orbiting a red dwarf close enough and bright enough to make it one of the more accessible targets for probing a sub-Neptune atmosphere around a low-mass star.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-674 (M-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "TOI-771 b",
+    "significanceText": "A compact super-Earth on a scorching two-day orbit around a red dwarf, adding another data point to the growing catalog of small, close-in rocky worlds astronomers use to study atmospheric survival under intense stellar radiation.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "TOI-771 (M-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "V1298 Tau d",
+    "significanceText": "One of four newborn planets found transiting a young Sun-like star barely 20 million years old, caught mid-contraction as it slowly shrinks toward its final size — a rare snapshot of a planet still visibly settling into itself.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2019,
+    "hostStar": "V1298 Tau (K-type, pre-main-sequence)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "WASP-105 b",
+    "significanceText": "A warm Jupiter announced alongside two sibling discoveries in the same paper, one of which sits squarely in the transition zone between ice giants and gas giants, making the trio a useful comparative set for studying giant-planet diversity.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "WASP-105 (K-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "WASP-117 b",
+    "significanceText": "A low-density gas giant on a relatively wide 10-day orbit, unusual among WASP discoveries for sitting farther from its star than the typical scorched hot Jupiter, giving astronomers a cooler giant-planet comparison case.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "WASP-117 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "WASP-141 b",
+    "significanceText": "A hot Jupiter announced as part of a seven-planet WASP-South discovery batch, its main scientific value lying in how it collectively helps astronomers refine the demographics of close-in giant planets around Sun-like and hotter stars.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "WASP-141 (F-type)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "WASP-162 b",
+    "significanceText": "A hot Jupiter found by the ground-based WASP-South survey and confirmed with the TRAPPIST photometer, a workaday discovery that nonetheless helps round out the full picture of how common — and how varied — close-in gas giants really are.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2019,
+    "hostStar": "WASP-162",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "WASP-72 b",
+    "significanceText": "A hot Jupiter around an evolving subgiant star, its atmosphere probed for spin-orbit alignment as part of a broader survey testing whether close-in giant planets tend to orbit in step with their star's own rotation.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2013,
+    "hostStar": "WASP-72 (F-type subgiant)",
+    "nickname": null,
+    "category": "rest"
+  },
+  {
+    "name": "WD 1856+534 b",
+    "significanceText": "The first confirmed planet transiting a white dwarf, a Jupiter-sized survivor orbiting the collapsed core of a dead Sun-like star once every 34 hours \u2014 somehow enduring the star's violent red-giant phase that should have destroyed anything this close, and now the coldest exoplanet ever directly observed in light.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "WD 1856+534 (white dwarf)",
+    "nickname": null,
+    "category": "rest"
+  }
+]

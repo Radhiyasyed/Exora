@@ -1,0 +1,47 @@
+[
+  {
+    "name": "LP 890-9 c",
+    "significanceText": "Second only to the TRAPPIST-1 worlds as a place to search for an atmosphere — and a natural experiment in why Earth kept its oceans while Venus lost hers.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "LP 890-9 / SPECULOOS-2 (M6V ultracool dwarf, second-coolest known planet-hosting star after TRAPPIST-1)",
+    "nickname": "SPECULOOS-2c",
+    "category": "strong_hz"
+  },
+  {
+    "name": "TIC 52059926 b",
+    "significanceText": "Barely made it into NASA's catalog before this list was written — still fresh, with astronomers just getting started on it.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2026,
+    "hostStar": "TIC 52059926",
+    "nickname": null,
+    "category": "strong_hz"
+  },
+  {
+    "name": "TOI-2257 b",
+    "significanceText": "Sits in the habitable zone on paper, but its wildly lopsided orbit swings the temperature from -80°C to 100°C over a single year — so much for comfortable.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-2257 (red dwarf, 188 light-years away)",
+    "nickname": null,
+    "category": "strong_hz"
+  },
+  {
+    "name": "TOI-715 b",
+    "significanceText": "A nearby super-Earth sitting right in its star's habitable zone, close enough and bright enough that JWST can get a good look.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2023,
+    "hostStar": "TOI-715 (M4 red dwarf)",
+    "nickname": null,
+    "category": "strong_hz"
+  },
+  {
+    "name": "TOI-7166 b",
+    "significanceText": "A temperate mini-Neptune confirmed in late 2025, already one of the best bets around for JWST to study up close.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2025,
+    "hostStar": "TOI-7166 (M4.5V red dwarf, ~35 pc away)",
+    "nickname": null,
+    "category": "strong_hz"
+  }
+]

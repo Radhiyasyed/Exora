@@ -1,0 +1,137 @@
+[
+  {
+    "name": "HD 110067 b",
+    "significanceText": "The innermost of six sub-Neptunes that all still move in near-perfect step with each other, like they've barely changed since the day they formed.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "HD 110067 (K0V, 100 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "HD 110067 c",
+    "significanceText": "Orbits its star twice for every three trips b makes — a tidy little rhythm that's held steady for billions of years.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "HD 110067 (K0V, 100 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "HD 110067 d",
+    "significanceText": "Astronomers worked out this planet had to exist just from the system's orbital math, then found it right where they expected.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "HD 110067 (K0V, 100 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "HD 110067 e",
+    "significanceText": "Predicted on paper before it was ever seen — the resonance pattern basically told astronomers where to look.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2023,
+    "hostStar": "HD 110067 (K0V, 100 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "HD 110067 f",
+    "significanceText": "Another planet that theory found first — its orbit fell exactly where the resonant chain said it should.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2023,
+    "hostStar": "HD 110067 (K0V, 100 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "HD 110067 g",
+    "significanceText": "The outermost of the six, taking its time — one leisurely orbit for every six the innermost planet squeezes in.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2023,
+    "hostStar": "HD 110067 (K0V, 100 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "K2-138 b",
+    "significanceText": "Found by ordinary people scrolling through telescope data on their laptops — the first exoplanet system ever discovered that way.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-138 (K-type, orange dwarf)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "K2-138 c",
+    "significanceText": "One link in the longest unbroken chain of orbital near-resonances known at the time — spotted by volunteers, not professionals.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-138 (K-type, orange dwarf)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "K2-138 d",
+    "significanceText": "Part of a five-planet find that citizen scientists pieced together within weeks of the project going live.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-138 (K-type, orange dwarf)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "K2-138 e",
+    "significanceText": "Circles its star in a little over eight days, one more link in a system that regular people helped uncover from home.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-138 (K-type, orange dwarf)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "K2-138 f",
+    "significanceText": "The fifth planet in the crowdsourced find, closing out a strikingly neat resonant chain at just under 13 days.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-138 (K-type, orange dwarf)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "K2-138 g",
+    "significanceText": "Turned up a year later in leftover data, sitting outside the tidy chain — a hint there may be even more planets hiding here.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "K2-138 (K-type, orange dwarf)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "TOI-178 b",
+    "significanceText": "The odd one out — every other planet here dances in resonance, but this innermost world sits just outside the rhythm.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-178 (K-dwarf, ~200 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "TOI-178 c",
+    "significanceText": "A dense, rocky world sitting right next door to a much puffier planet — a mismatch that still puzzles formation theories.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-178 (K-dwarf, ~200 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  },
+  {
+    "name": "TOI-178 d",
+    "significanceText": "Light and gassy where its neighbor c is dense and rocky — right next door to each other, but built completely differently.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-178 (K-dwarf, ~200 light-years away)",
+    "nickname": null,
+    "category": "multi_planet"
+  }
+]

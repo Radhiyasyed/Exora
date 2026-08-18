@@ -1,0 +1,92 @@
+[
+  {
+    "name": "HD 209458 b",
+    "significanceText": "Nicknamed \"Osiris,\" this was the first exoplanet ever caught transiting its star, and the first to have its atmosphere directly detected — a discovery that opened the entire field of exoplanet atmospheric science.",
+    "discoveryMethod": "Radial Velocity",
+    "discoveryYear": 1999,
+    "hostStar": "HD 209458 (F9V, Sun-like)",
+    "nickname": "Osiris",
+    "category": "famous"
+  },
+  {
+    "name": "Kepler-186 f",
+    "significanceText": "The first Earth-sized world ever confirmed inside another star's habitable zone, proving that rocky, temperate planets aren't unique to our solar system.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-186 (M1V red dwarf)",
+    "nickname": null,
+    "category": "famous"
+  },
+  {
+    "name": "Kepler-452 b",
+    "significanceText": "Dubbed Earth's \"older cousin,\" it's the first near-Earth-size planet found orbiting a true Sun-like star in the habitable zone, offering a glimpse of what Earth might resemble 1.5 billion years from now.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2015,
+    "hostStar": "Kepler-452 (G2V, Sun-like)",
+    "nickname": "Earth's Cousin",
+    "category": "famous"
+  },
+  {
+    "name": "TRAPPIST-1 b",
+    "significanceText": "The innermost of the seven TRAPPIST-1 worlds, sitting too close to its star for liquid water but a key JWST target for testing whether small, hot rocky planets can hold onto any atmosphere at all.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "TRAPPIST-1 (M8V ultracool dwarf)",
+    "nickname": null,
+    "category": "famous"
+  },
+  {
+    "name": "TRAPPIST-1 c",
+    "significanceText": "A Venus-sized, likely Venus-like world whose JWST observations found no evidence of a thick atmosphere, making it an important data point for how close-in rocky planets fare around flare-prone red dwarfs.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "TRAPPIST-1 (M8V ultracool dwarf)",
+    "nickname": null,
+    "category": "famous"
+  },
+  {
+    "name": "TRAPPIST-1 d",
+    "significanceText": "The lightest of the seven, sitting right at the inner edge of the habitable zone — small enough that its history and possible volatile content are still hotly debated.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "TRAPPIST-1 (M8V ultracool dwarf)",
+    "nickname": null,
+    "category": "famous"
+  },
+  {
+    "name": "TRAPPIST-1 e",
+    "significanceText": "Widely considered the most Earth-like planet in the system — similar density, squarely in the habitable zone — and one of the top targets in the search for a rocky exoplanet atmosphere.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "TRAPPIST-1 (M8V ultracool dwarf)",
+    "nickname": null,
+    "category": "famous"
+  },
+  {
+    "name": "TRAPPIST-1 f",
+    "significanceText": "A cooler habitable-zone world that could host a global ocean if it retains enough of an atmosphere to stay warm despite its dim, distant-feeling host star.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "TRAPPIST-1 (M8V ultracool dwarf)",
+    "nickname": null,
+    "category": "famous"
+  },
+  {
+    "name": "TRAPPIST-1 g",
+    "significanceText": "The largest of the seven planets, likely volatile-rich, and part of the tight orbital resonance chain that let astronomers precisely pin down the whole system's architecture.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "TRAPPIST-1 (M8V ultracool dwarf)",
+    "nickname": null,
+    "category": "famous"
+  },
+  {
+    "name": "TRAPPIST-1 h",
+    "significanceText": "The outermost and coldest of the seven, likely an ice world — its predicted orbit, confirmed only through the system's three-body resonances, was one of the cleanest wins for resonance-based planet-hunting.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "TRAPPIST-1 (M8V ultracool dwarf)",
+    "nickname": null,
+    "category": "famous"
+  }
+]

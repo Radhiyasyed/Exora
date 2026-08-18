@@ -1,0 +1,182 @@
+[
+  {
+    "name": "EPIC 220674823 b",
+    "significanceText": "An ultra-short-period super-Earth that completes an orbit in just 14 hours, part of a rare class of planets found so close to their star that their formation and survival still puzzle astronomers.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "EPIC 220674823 (G-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "HAT-P-7 b",
+    "significanceText": "One of the first hot Jupiters found on a retrograde orbit, spinning backward relative to its star's rotation — a discovery that helped overturn the assumption that all planets orbit the same way their star spins.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2008,
+    "hostStar": "HAT-P-7 (F-type)",
+    "nickname": "Kepler-2b",
+    "category": "extreme"
+  },
+  {
+    "name": "HD 80653 b",
+    "significanceText": "A rocky super-Earth so close to its star that a year lasts under 17 hours, with a bulk density consistent with iron and rock and no atmosphere left to speak of — a stripped-down world baking under extreme starlight.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "HD 80653 (G2V, Sun-like)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "K2-157 b",
+    "significanceText": "A terrestrial planet whipping around its star in under 10 hours, sitting in a sparsely populated size-and-temperature zone nicknamed the \"Neptunian savanna\" between short-period rocky worlds and puffier Neptune-like planets.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2018,
+    "hostStar": "K2-157 (G-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "KELT-16 b",
+    "significanceText": "An inflated hot Jupiter orbiting so close to its star that it sits at just 1.7 Roche radii from being ripped apart, giving it a predicted lifespan of only a few hundred thousand years before tidal forces destroy it.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "KELT-16 (F7V)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "KELT-9 b",
+    "significanceText": "The hottest giant planet ever found, with a dayside so scorching that molecules like water and methane can't hold together — its star is hot enough that the planet is being slowly evaporated by its own atmosphere's escape.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "KELT-9 (B9.5/A0-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "MASCARA-1 b",
+    "significanceText": "The first planet discovered by the Multi-site All-Sky CAmeRA survey, this hot Jupiter circles a rapidly spinning, bright A-type star in a misaligned orbit and reflects starlight unusually well for a planet this hot.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "MASCARA-1 (A8)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "TOI-1295 b",
+    "significanceText": "A hot gas giant orbiting an F-type star every three days, adding to the growing catalog of close-in giants TESS has found around hotter, brighter stars than Kepler typically surveyed.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "TOI-1295 (F-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "TOI-1431 b",
+    "significanceText": "An inflated ultra-hot Jupiter orbiting one of the hottest and brightest stars known to host a planet, with a nightside almost as blazing as its dayside — a rare case where even the \"cool\" side of a planet glows.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-1431 (Am/A-type)",
+    "nickname": "MASCARA-5b",
+    "category": "extreme"
+  },
+  {
+    "name": "TOI-1518 b",
+    "significanceText": "An inflated ultra-hot Jupiter squeezed into a 1.9-day orbit around a bright, hot A/F-type star, offering astronomers a bright, easy target for probing atmospheric chemistry at extreme temperatures.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-1518 (A/F-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "TOI-2109 b",
+    "significanceText": "The shortest-period gas giant ever found, completing a full orbit in just 16 hours and running so hot that astronomers expect it to eventually spiral into its star — a planet quite literally living on borrowed time.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2021,
+    "hostStar": "TOI-2109 (F-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "TOI-2260 b",
+    "significanceText": "A super-Earth locked into a blistering 10-hour orbit around its star, part of the small and strange population of ultra-short-period rocky planets that shouldn't, by most formation models, have survived this close in.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "TOI-2260 (G-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "TOI-2580 b",
+    "significanceText": "A hot gas giant on a 3.4-day orbit around an F-type star, one of many close-in giants TESS has flagged for follow-up study of atmospheric composition and possible ongoing atmospheric escape.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "TOI-2580 (F-type)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "WASP-103 b",
+    "significanceText": "The first exoplanet directly measured to be squashed into a slightly oval, rugby-ball shape by its star's gravity — a real-world confirmation of the tidal deformation theorists had long predicted for planets this close in.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "WASP-103 (F8V)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "WASP-121 b",
+    "significanceText": "Nicknamed Tylos, this ultra-hot Jupiter was the first planet found losing heavy metals like magnesium and iron straight out of its atmosphere, and the first shown to have a genuine stratosphere — a layer that heats up with altitude, just like Earth's.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2016,
+    "hostStar": "WASP-121 (F6V)",
+    "nickname": "Tylos",
+    "category": "extreme"
+  },
+  {
+    "name": "WASP-167 b",
+    "significanceText": "A hot Jupiter on a backward, retrograde orbit around a rapidly rotating, pulsating star, discovered jointly by two separate survey teams and confirmed by mapping the planet's shadow across the star's spinning face rather than by standard velocity measurements.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2017,
+    "hostStar": "WASP-167 (F1V)",
+    "nickname": "KELT-13b",
+    "category": "extreme"
+  },
+  {
+    "name": "WASP-178 b",
+    "significanceText": "An ultra-hot Jupiter orbiting the second-hottest star known to host any planet, second only to KELT-9 — its atmosphere shows signs of iron and magnesium and lacks the strong day-night winds seen on similar worlds.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2019,
+    "hostStar": "WASP-178 (A1V)",
+    "nickname": "KELT-26b",
+    "category": "extreme"
+  },
+  {
+    "name": "WASP-18 b",
+    "significanceText": "A gas giant ten times Jupiter's mass squeezed into a less-than-one-day orbit, exerting tidal forces so strong they may be distorting its own star's internal structure and aging it prematurely.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2009,
+    "hostStar": "WASP-18 (F6V)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "WASP-33 b",
+    "significanceText": "The first exoplanet ever found orbiting a pulsating star, circling its rapidly spinning host on a retrograde, tilted orbit that made this delta Scuti-type variable the first known exoplanet host of its kind.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2010,
+    "hostStar": "WASP-33 (A5)",
+    "nickname": null,
+    "category": "extreme"
+  },
+  {
+    "name": "Wendelstein-2 b",
+    "significanceText": "A hot Jupiter discovered through a citizen-science-supported survey out of the Wendelstein Observatory, part of a hunt for close-in giant planets around cooler, less-studied K-type stars where such planets are rarer than around Sun-like stars.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "Wendelstein-2 (K-type)",
+    "nickname": null,
+    "category": "extreme"
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Gliese 12 b",
+    "significanceText": "The nearest known transiting, temperate, Earth-sized world to us — just 40 light-years away — making it one of the best real-world targets for testing whether small rocky planets around red dwarfs can hold onto an atmosphere.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "Gliese 12 (M3V red dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "K2-133 e",
+    "significanceText": "The outermost of five tightly packed super-Earths circling a cool dwarf star, sitting closest to the temperate part of its system and offering a look at how planet size and spacing evolve across a single compact system.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2019,
+    "hostStar": "K2-133 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "K2-18 b",
+    "significanceText": "A mini-Neptune in its star's habitable zone that made headlines when JWST detected methane and carbon dioxide in its atmosphere — and, more controversially, a possible biosignature gas — reshaping the debate over \"Hycean\" ocean worlds.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2015,
+    "hostStar": "K2-18 (M2.5V red dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "K2-3 d",
+    "significanceText": "The outermost of three super-Earths around a nearby red dwarf, orbiting right where temperatures could allow liquid water, and a frequently cited benchmark in surveys of compact multi-planet systems around M dwarfs.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2015,
+    "hostStar": "K2-3 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-155 c",
+    "significanceText": "A Neptune-sized world orbiting a K-type star, useful as a comparison case for how planet composition changes at the boundary between rocky super-Earths and gas-rich mini-Neptunes.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-155 (K-type)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-186 e",
+    "significanceText": "One of four close-in siblings to the famous habitable-zone world Kepler-186f, this planet sits just inside the system's warm edge and helps map out exactly where the habitable zone begins around a red dwarf.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-186 (M1V red dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-22 b",
+    "significanceText": "The first exoplanet ever confirmed orbiting in the habitable zone of a genuinely Sun-like star, marking a milestone moment for the Kepler mission even though its larger size suggests an ocean world rather than a rocky twin.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2011,
+    "hostStar": "Kepler-22 (G5V, Sun-like)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-249 d",
+    "significanceText": "The outermost of three small planets tightly orbiting a cool dwarf star, offering another data point on how common multi-planet systems are around low-mass stars.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-249 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-296 e",
+    "significanceText": "One of two habitable-zone super-Earths in the Kepler-296 system, discovered in the same 2014 haul that nearly doubled Kepler's confirmed planet count and highlighted how often small worlds cluster in temperate orbits.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-296 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-296 f",
+    "significanceText": "The outer of two habitable-zone worlds around Kepler-296, flagged among the very first small planets confirmed inside a star's habitable zone using a statistical \"verification by multiplicity\" technique rather than individual follow-up.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2014,
+    "hostStar": "Kepler-296 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-445 d",
+    "significanceText": "A compact super-Earth in a tightly packed system around a red dwarf, part of a wave of small Kepler worlds that helped establish just how crowded planetary systems around M dwarfs can be.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2015,
+    "hostStar": "Kepler-445 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "Kepler-69 c",
+    "significanceText": "Once announced as a potential habitable-zone world, later reanalysis pushed it just outside the zone into Venus-like territory — a reminder of how habitable-zone boundaries get revised as models improve, earning it the informal tag \"super-Venus.\"",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2013,
+    "hostStar": "Kepler-69 (G-type, Sun-like)",
+    "nickname": "Super-Venus",
+    "category": "high_esi"
+  },
+  {
+    "name": "LHS 1903 e",
+    "significanceText": "The outer rocky world in a strange \"inside-out\" four-planet system where two gas-rich planets sit sandwiched between two rocky ones — a configuration that upends the usual rocky-close, gassy-far pattern and challenges standard planet-formation models.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2026,
+    "hostStar": "LHS 1903 (M-type red dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "TOI-1452 b",
+    "significanceText": "A super-Earth dense enough, relative to its size, that astronomers suspect it could be a genuine \"ocean world\" with a deep global sea beneath its atmosphere — one of the most compelling water-world candidates found to date.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2022,
+    "hostStar": "TOI-1452 (M4V red dwarf)",
+    "nickname": "Ocean World",
+    "category": "high_esi"
+  },
+  {
+    "name": "TOI-2094 b",
+    "significanceText": "A super-Earth sitting right at the edge of its star's habitable zone, straddling the line between a rocky world and a gas-rich mini-Neptune depending on which mass estimate turns out to be correct.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2026,
+    "hostStar": "TOI-2094 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "TOI-2267 c",
+    "significanceText": "Part of the first confirmed binary system found hosting transiting planets around both of its stars — an ultra-compact, ultra-cold pairing that defies predictions that such tight binaries should make planet formation impossible.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2025,
+    "hostStar": "TOI-2267 (M5V/M6V binary)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "TOI-6002 b",
+    "significanceText": "A super-Earth sitting almost exactly on the \"radius valley\" — the size gap separating rocky super-Earths from puffier mini-Neptunes — making it a useful test case for theories of atmospheric loss around small stars.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2024,
+    "hostStar": "TOI-6002 (M-type dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "TOI-6716 b",
+    "significanceText": "A near-Earth-size, near-Earth-mass world orbiting a mid-M dwarf, discovered as part of a dedicated survey to precisely measure temperate planets around small, fully convective stars.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2026,
+    "hostStar": "TOI-6716 (M4V red dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "TOI-700 d",
+    "significanceText": "The first Earth-size habitable-zone planet ever found by TESS, confirmed with backup observations from the Spitzer Space Telescope and celebrated as a landmark win for NASA's newest planet-hunting mission.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2020,
+    "hostStar": "TOI-700 (M2.5V red dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  },
+  {
+    "name": "TOI-700 e",
+    "significanceText": "A second Earth-size habitable-zone world found in the very same system as TOI-700 d, discovered a year later once TESS gathered enough extra data — giving this one star two temperate, roughly Earth-sized planets to study side by side.",
+    "discoveryMethod": "Transit",
+    "discoveryYear": 2023,
+    "hostStar": "TOI-700 (M2.5V red dwarf)",
+    "nickname": null,
+    "category": "high_esi"
+  }
+]
