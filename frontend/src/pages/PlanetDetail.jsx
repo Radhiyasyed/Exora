@@ -1,342 +1,485 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
-  Orbit, Globe, Sparkles, Activity, Scale, ArrowLeft, Info, 
-  RotateCw, ShieldCheck, Thermometer, Radio, Gauge, Move3d
+  Orbit, Globe, Sparkles, Activity, Scale, ArrowLeft,
+  RotateCw, Thermometer, Database, CheckCircle2,
+  Ruler, Compass
 } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 import { usePlanets } from '../context/PlanetContext';
+import { fetchPlanetById } from '../api/exoplanetsApi';
 import Planet3DViewer from '../components/Planet3DViewer';
 
-function getMetric(planet, camelKey, snakeKey, fallback = null) {
-  return planet?.[camelKey] ?? planet?.[snakeKey] ?? fallback;
+function generatePlanetTagline(planet) {
+  if (!planet) return 'Cataloged Exoplanetary World';
+  const nameLower = (planet.name || '').toLowerCase();
+  
+  if (nameLower.includes('kepler-452')) return "Earth's Larger, Older Cousin";
+  if (nameLower.includes('trappist-1 e') || nameLower.includes('trappist-1e')) return "Temperate Terrestrial World in Multi-Planet System";
+  if (nameLower.includes('proxima')) return "Our Nearest Known Exoplanetary Neighbor";
+  if (nameLower.includes('lhs 1140') || nameLower.includes('lhs-1140')) return "Dense Ocean Candidate in Quiet Red Dwarf System";
+  if (nameLower.includes('kepler-22')) return "First Confirmed Habitable Zone Planet of a Sun-Like Star";
+  if (nameLower.includes('kepler-186')) return "First Validated Earth-Sized Habitable Zone World";
+  if (nameLower.includes('kepler-438')) return "Warm Terrestrial Super-Earth";
+  if (nameLower.includes('toi-700')) return "TESS Validated Earth-Sized Habitable World";
+  if (nameLower.includes('k2-18')) return "Hycean Candidate with Spectroscopic Detections";
+  if (nameLower.includes('hd 209458')) return "Archetypal Hot Jupiter with Evaporating Atmosphere";
+  if (nameLower.includes('wasp-12')) return "Ultra-Hot Tidally Distorted Gas Giant";
+
+  const radius = Number(planet.radiusEarth || 1.0);
+  const temp = Number(planet.equilibriumTempK ?? planet.eqTempK ?? 288);
+  const inHZ = planet.zoneStatus === 'Habitable Zone' || planet.inHabitableZone;
+
+  if (radius > 8) return "Massive Gas Giant with Extended Atmosphere";
+  if (radius >= 1.75 && radius <= 4.0) return "Sub-Neptune Transiting Laboratory";
+  if (inHZ) return "Temperate Circumstellar Habitable Zone World";
+  if (temp > 700) return "Heavily Irradiated High-Temperature Exoplanet";
+  if (temp < 190) return "Cryogenic Outer System Exoplanetary Body";
+  return "Cataloged Exoplanetary Target";
 }
 
 export default function PlanetDetail() {
   const { planetId } = useParams();
-  const { planets, getPlanetById, getPlanetByName, isLoading } = usePlanets();
+  const { getPlanetById, planets, isLoading: isContextLoading } = usePlanets();
+  const [planet, setPlanet] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Try to find planet by ID first, then by name, fallback to first planet or null
-  const planet = getPlanetById(planetId) || getPlanetByName(planetId) || planets[0] || null;
-  const earth = getPlanetById('earth') || getPlanetByName('earth') || null;
+  useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
 
-  // Show loading state
-  if (isLoading) {
+    // 1. Try resolving from loaded context first
+    const match = getPlanetById(planetId);
+    if (match) {
+      setPlanet(match);
+      setIsLoading(false);
+      return;
+    }
+
+    // 2. If not found in context or context is loading, fetch directly
+    fetchPlanetById(planetId)
+      .then(res => {
+        if (isMounted) {
+          if (res && res.planet) {
+            setPlanet(res.planet);
+          }
+          setIsLoading(false);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [planetId, planets]);
+
+  // Loading State
+  if (isLoading || isContextLoading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="glass-panel p-12 rounded-2xl text-center border border-slate-800 font-mono-data text-xs text-cyan-400 animate-pulse">
-          Loading planet data...
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="glass-panel p-16 rounded-3xl text-center border border-slate-800 font-mono-data text-xs text-cyan-400 animate-pulse space-y-3">
+          <div className="w-10 h-10 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <div>Loading high-precision exoplanet metrics...</div>
         </div>
       </div>
     );
   }
 
-  // Show error state if planet not found
+  // Not Found State
   if (!planet) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="glass-panel p-12 rounded-2xl text-center space-y-4 border border-slate-800">
-          <p className="text-slate-400 text-sm">Planet not found: {planetId}</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="glass-panel p-12 rounded-3xl text-center space-y-5 border border-slate-800 max-w-md mx-auto">
+          <div className="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center mx-auto text-xl font-bold">
+            !
+          </div>
+          <div className="space-y-1">
+            <h2 className="text-lg font-bold text-white">Target World Not Found</h2>
+            <p className="text-slate-400 text-xs">Could not locate exoplanet parameters for "{planetId}".</p>
+          </div>
           <Link
             to="/search"
-            className="inline-block px-4 py-2 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-semibold hover:bg-cyan-500/30 transition-all"
+            className="inline-block px-5 py-2.5 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-semibold hover:bg-cyan-500/30 transition-all"
           >
-            Back to Search
+            Back to Exoplanet Catalog
           </Link>
         </div>
       </div>
     );
   }
 
-  const computeESI = (planet) => {
-    const r = planet.radiusEarth;
-    const density = planet.massEarth / Math.max(1, Math.pow(planet.radiusEarth, 3));
-    const flux = Math.max(0.1, Math.min(3.0, planet.equilibriumTempK / 255));
-    const wR = 0.57;
-    const wD = 1.07;
-    const wF = 0.62;
-    const esiR = Math.pow(1 - Math.abs(r - 1) / (r + 1), wR);
-    const esiD = Math.pow(1 - Math.abs(density - 1) / (density + 1), wD);
-    const esiF = Math.pow(1 - Math.abs(flux - 1) / (flux + 1), wF);
-    return Math.max(0, Math.min(1, esiR * esiD * esiF));
-  };
+  const name = planet.name || 'Exoplanet';
+  const tagline = generatePlanetTagline(planet);
+  const esi = Number(planet.esi ?? planet.esiScore ?? 0);
+  const esiPercent = Math.min(100, Math.max(0, Math.round(esi * 100)));
+  const hzd = planet.hzd != null ? Number(planet.hzd) : (planet.zoneStatus === 'Too Hot' || (planet.equilibriumTempK ?? planet.eqTempK) > 350 ? -1.5 : (planet.zoneStatus === 'Too Cold' || (planet.equilibriumTempK ?? planet.eqTempK) < 200 ? 2.5 : 0.2));
 
-  const computeHI = (planet) => {
-    const r = planet.radiusEarth;
-    const density = planet.massEarth / Math.max(1, Math.pow(planet.radiusEarth, 3));
-    const flux = Math.max(0.1, Math.min(3.0, planet.equilibriumTempK / 255));
-    const esiR = Math.pow(1 - Math.abs(r - 1) / (r + 1), 0.57);
-    const esiD = Math.pow(1 - Math.abs(density - 1) / (density + 1), 1.07);
-    const esiF = Math.pow(1 - Math.abs(flux - 1) / (flux + 1), 0.62);
-    return Math.max(0, Math.min(1, 0.45 * esiR + 0.30 * esiD + 0.25 * esiF));
-  };
+  let zoneStatusText = planet.zoneStatus || planet.hzStatus || planet.hzdStatus;
+  if (!zoneStatusText) {
+    if (hzd < -1.0) {
+      zoneStatusText = 'Too Hot';
+    } else if (hzd > 1.0) {
+      zoneStatusText = 'Too Cold';
+    } else {
+      zoneStatusText = 'Habitable Zone';
+    }
+  }
+  const inHZ = zoneStatusText === 'Habitable Zone' || zoneStatusText === 'HZ Candidate';
 
-  const computedESI = computeESI(planet);
-  const computedHI = computeHI(planet);
+  const radius = planet.radiusEarth ? Number(planet.radiusEarth) : null;
+  const mass = planet.massEarth ? Number(planet.massEarth) : null;
+  const temp = planet.equilibriumTempK ?? planet.eqTempK ? Number(planet.equilibriumTempK ?? planet.eqTempK) : null;
+  const period = planet.orbitalPeriodDays ?? planet.orbitPeriod ? Number(planet.orbitalPeriodDays ?? planet.orbitPeriod) : null;
+  const starType = planet.starSpectralType || planet.starType || 'Unknown Host';
+  const distance = (planet.distanceLy != null && !isNaN(Number(planet.distanceLy))) ? `${Number(planet.distanceLy).toFixed(1)} LY` : 'Distance data not yet available';
+  const discoveryMethod = planet.discoveryMethod || 'Transit Photometry';
+  const discoveryYear = planet.discoveryYear ? `${planet.discoveryYear}` : 'Archived';
 
-  const displayedESI = getMetric(planet, 'esiScore', 'esi_score', computedESI);
-  const displayedPHI = getMetric(planet, 'phiScore', 'phi_score', computedHI);
-  const habitabilityIndex = planet.habitabilityIndex ?? computedHI;
-  const inHabitableZone = planet.inHabitableZone ?? planet.isInHabitableZone ?? planet.is_in_habitable_zone ?? (habitabilityIndex >= 0.6);
-
-  // 6 Parameter Cards
-  const parameters = [
-    { label: "Planetary Radius", value: `${planet.radiusEarth ?? '—'} R⊕`, sub: "Earth radii", icon: Globe, color: "text-cyan-400" },
-    { label: "Est. Mass", value: `${planet.massEarth ?? '—'} M⊕`, sub: "Earth masses", icon: Orbit, color: "text-indigo-400" },
-    { label: "Earth Similarity Index (ESI)", value: `${displayedESI.toFixed(2)} / 1.00`, sub: "Backend-calculated similarity score", icon: Sparkles, color: "text-emerald-400" },
-    { label: "Potential Habitability Index (PHI)", value: `${displayedPHI.toFixed(2)} / 1.00`, sub: "Surface and flux habitability proxy", icon: ShieldCheck, color: "text-cyan-400" },
-    { label: "Orbital Period", value: `${planet.orbitalPeriodDays ?? planet.orbitPeriod ?? '—'} days`, sub: "Annual year length", icon: RotateCw, color: "text-emerald-400" },
-    { label: "Surface Gravity", value: `${planet.surfaceGravityG ?? '—'} g`, sub: "Relative to Earth", icon: Gauge, color: "text-amber-400" },
-  ];
-
-  // Recharts Earth-similarity metric dataset
-  const comparisonData = [
-    { metric: "Radius (R⊕)", Planet: planet.radiusEarth ?? 0, Earth: 1.0 },
-    { metric: "Mass (M⊕)", Planet: planet.massEarth ?? 0, Earth: 1.0 },
-    { metric: "Temp (K)", Planet: planet.equilibriumTempK ? Number((planet.equilibriumTempK / 255).toFixed(2)) : 0, Earth: 1.0 },
-    { metric: "Gravity (g)", Planet: planet.surfaceGravityG ?? 0, Earth: 1.0 },
-    { metric: "Earth Similarity (ESI)", Planet: Number(displayedESI), Earth: 1.0 },
-  ];
+  // Earth comparison ratios
+  const radiusRatio = radius ? Math.min(3, radius / 1.0) : 0;
+  const tempRatio = temp ? Math.min(3, temp / 255) : 0;
+  const massRatio = mass ? Math.min(3, mass / 1.0) : 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
       
-      {/* Top Navigation & Breadcrumbs */}
+      {/* Top Navigation Bar */}
       <div className="flex items-center justify-between">
         <Link
           to="/search"
-          className="inline-flex items-center space-x-2 text-xs font-mono-data text-slate-400 hover:text-cyan-400 transition-colors"
+          className="inline-flex items-center space-x-2 text-xs font-mono-data text-slate-400 hover:text-cyan-300 transition-colors py-1.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-cyan-500/30 shadow-sm"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Exoplanet Catalog</span>
         </Link>
-
-        <div className="flex space-x-3">
-          <Link
-            to="/compare"
-            className="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 text-xs font-semibold flex items-center space-x-1.5 transition-all"
-          >
-            <Scale className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Compare Worlds</span>
-          </Link>
-          <Link
-            to="/lightcurve"
-            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 border border-cyan-500/40 text-cyan-300 hover:brightness-125 text-xs font-semibold flex items-center space-x-1.5 transition-all"
-          >
-            <Activity className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Light Curve Lab</span>
-          </Link>
-        </div>
       </div>
 
       {/* Hero Showcase Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
-        {/* Left Interactive Three.js 3D Sphere Showcase */}
-        <div className="lg:col-span-6 flex flex-col items-center space-y-4">
-          <div className="relative w-full h-[380px] sm:h-[450px] glass-panel rounded-3xl border border-cyan-500/30 overflow-hidden flex items-center justify-center">
-            
-            {/* Ambient Lighting Background */}
-            <div className="absolute w-72 h-72 rounded-full bg-cyan-500/20 blur-3xl -z-10" />
-
-            {/* Pure Three.js Interactive 3D Sphere Component */}
-            <Planet3DViewer planetColor={planet.color || '#22d3ee'} planetName={planet.name || 'Exoplanet'} />
-
+        {/* Left: 3D Rotating Planet Visual with Atmospheric Glow */}
+        <div className="lg:col-span-6 flex flex-col items-center space-y-3">
+          <div className="relative w-full h-[400px] sm:h-[460px] glass-panel rounded-3xl border border-cyan-500/30 overflow-hidden flex flex-col items-center justify-center shadow-[0_0_50px_rgba(34,211,238,0.12)] p-4">
+            <div className="absolute w-80 h-80 rounded-full bg-cyan-500/15 blur-3xl -z-10" />
+            <Planet3DViewer 
+              key={planet.id || name} 
+              planet={{ ...planet, zoneStatus: zoneStatusText }} 
+              size={320}
+              isHero={false} 
+              className="w-full flex items-center justify-center" 
+            />
+            {/* Interaction Badge */}
+            <div className="text-xs font-mono-data text-cyan-300/80 bg-slate-950/60 px-3 py-1 rounded-full border border-cyan-500/20 shadow-sm mt-3">
+              Double click and drag to rotate • Scroll to zoom
+            </div>
           </div>
 
-          {/* Mandatory Label Notice */}
-          <div className="text-center">
-            <span className="text-[12px] font-mono-data text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800">
-              Artist's visualization — not a direct photograph
-            </span>
-          </div>
+          <span className="text-[11px] font-mono-data text-slate-400 bg-slate-900/80 px-3.5 py-1 rounded-full border border-slate-800">
+            Artist's visualization, not a direct photograph
+          </span>
         </div>
 
-        {/* Right Info Showcase */}
+        {/* Right: Planet Identity, Status Badges, ESI Circular Gauge, HZD & Repositioned Action Buttons */}
         <div className="lg:col-span-6 space-y-6">
           
-          <div className="space-y-2">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono-data">
-              <Orbit className="w-3.5 h-3.5" />
-              <span>{planet.system || planet.starName || 'Unknown'} System • {planet.starType || 'Unknown'} Host</span>
+          <div className="space-y-2.5">
+            {/* Status Badges */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono-data">
+                <Orbit className="w-3 h-3 text-cyan-400" />
+                <span>{planet.system || planet.starName || name} System</span>
+              </span>
+              <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-mono-data">
+                <CheckCircle2 className="w-3 h-3 text-indigo-400" />
+                <span>Confirmed Exoplanet</span>
+              </span>
+              {inHZ && (
+                <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-mono-data font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>HZ Candidate</span>
+                </span>
+              )}
             </div>
-            <h1 className="text-4xl font-extrabold text-white">{planet.name}</h1>
-            <p className="text-slate-300 text-sm leading-relaxed">{planet.description || `Exoplanet ${planet.name} orbits ${planet.starName || 'a host star'} at a distance of ${planet.distanceLy || 'unknown'} light-years from Earth.`}</p>
+
+            {/* Title & Tagline */}
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              {name}
+            </h1>
+            <p className="text-base sm:text-lg font-medium text-cyan-400/90 font-display">
+              {tagline}
+            </p>
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed pt-1">
+              {planet.description || `${name} orbits host star ${planet.starName || 'a stellar host'} at an orbital distance of ${planet.orbitAU || planet.orbitalSemiMajorAxisAU || 'undetermined'} AU.`}
+            </p>
           </div>
 
-          {/* Dual ESI & PHI Radial Gauges */}
-          <div className="glass-panel p-6 rounded-2xl border border-slate-800 flex items-center justify-between space-x-6">
-            {/* ESI Gauge */}
-            <div className="flex-1 space-y-2">
-              <div className="text-center space-y-1">
-                <span className="text-xs font-mono-data text-slate-400">Earth Similarity Index (ESI)</span>
-                <div className="text-2xl font-extrabold text-white font-display">
-                  {displayedESI.toFixed(2)} <span className="text-xs font-normal text-slate-400">/ 1.00</span>
+          {/* Gauges & Habitable Zone Card */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            {/* ESI Circular Gauge */}
+            <div className="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between space-x-4">
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono-data text-slate-400 uppercase tracking-wider block">
+                  Earth Similarity
+                </span>
+                <div className="text-2xl font-extrabold text-white font-mono-data">
+                  {esi.toFixed(2)} <span className="text-xs text-slate-400 font-normal">/ 1.00</span>
                 </div>
+                <span className="text-[11px] text-cyan-400 font-mono-data block">
+                  {esi >= 0.8 ? 'High Similarity' : (esi >= 0.5 ? 'Moderate Similarity' : 'Low Similarity')}
+                </span>
               </div>
-              <div className="relative w-16 h-16 mx-auto flex items-center justify-center">
+
+              <div className="relative w-16 h-16 shrink-0 flex items-center justify-center">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                   <path
                     className="text-slate-800"
-                    strokeWidth="3"
+                    strokeWidth="3.5"
                     stroke="currentColor"
                     fill="none"
                     d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                   />
                   <path
                     className="text-cyan-400"
-                    strokeDasharray={`${displayedESI * 100}, 100`}
-                    strokeWidth="3"
+                    strokeDasharray={`${esiPercent}, 100`}
+                    strokeWidth="3.5"
                     strokeLinecap="round"
                     stroke="currentColor"
                     fill="none"
                     d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                   />
                 </svg>
-                <span className="absolute text-[12px] font-bold font-mono-data text-cyan-300">
-                  {Math.round(displayedESI * 100)}%
+                <span className="absolute text-xs font-bold font-mono-data text-cyan-300">
+                  {esiPercent}%
                 </span>
               </div>
             </div>
 
-            {/* Divider */}
-            <div className="w-px h-16 bg-slate-800"></div>
-
-            {/* PHI Gauge */}
-            <div className="flex-1 space-y-2">
-              <div className="text-center space-y-1">
-                <span className="text-xs font-mono-data text-slate-400">Potential Habitability Index (PHI)</span>
-                <div className="text-2xl font-extrabold text-white font-display">
-                  {displayedPHI.toFixed(2)} <span className="text-xs font-normal text-slate-400">/ 1.00</span>
+            {/* HZD Value & Habitable Zone Status */}
+            <div className="glass-panel p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-2">
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono-data text-slate-400 uppercase tracking-wider block">
+                  Habitable Zone (HZD)
+                </span>
+                <div className="text-xl font-extrabold text-white font-mono-data">
+                  {hzd >= 0 ? `+${hzd.toFixed(2)}` : hzd.toFixed(2)}
                 </div>
               </div>
-              <div className="relative w-16 h-16 mx-auto flex items-center justify-center">
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                  <path
-                    className="text-slate-800"
-                    strokeWidth="3"
-                    stroke="currentColor"
-                    fill="none"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    className="text-purple-400"
-                    strokeDasharray={`${displayedPHI * 100}, 100`}
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    stroke="currentColor"
-                    fill="none"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                </svg>
-                <span className="absolute text-[12px] font-bold font-mono-data text-purple-300">
-                  {Math.round(displayedPHI * 100)}%
+              <div className="flex items-center space-x-2 pt-1 border-t border-slate-800/80">
+                <span className={`w-2 h-2 rounded-full ${inHZ ? 'bg-emerald-400' : 'bg-rose-400'}`}></span>
+                <span className="text-xs text-slate-200 font-mono-data">
+                  {zoneStatusText}
                 </span>
               </div>
             </div>
+
           </div>
 
-          {/* HZ Status Badge */}
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800 flex items-center justify-between">
-            <div className="space-y-1">
-              <span className="text-xs font-mono-data text-slate-400">Habitable Zone Status</span>
-              <p className="text-sm text-slate-200">
-                {inHabitableZone ? '✓ Inside Circumstellar Habitable Zone' : '⚠ Outside Optimistic HZ'}
-              </p>
-            </div>
-            <div className={`w-3 h-3 rounded-full ${inHabitableZone ? 'bg-emerald-400' : 'bg-rose-400'}`} />
-          </div>
-
-          {/* Atmosphere Composition Tags */}
-          <div className="space-y-2">
-            <span className="text-xs font-mono-data text-slate-400">Atmospheric Spectrographic Indicators:</span>
-            <div className="flex flex-wrap gap-2">
-              {planet.atmosphere && planet.atmosphere.length > 0 ? (
-                planet.atmosphere.map((gas, i) => (
-                  <span key={i} className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono-data text-slate-300">
-                    {gas}
-                  </span>
-                ))
-              ) : (
-                <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono-data text-slate-500">
-                  No atmospheric data available
-                </span>
-              )}
-            </div>
+          {/* Repositioned Action Buttons: Light Curve & Compare */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+            <Link
+              to={`/lightcurve`}
+              className="px-4 py-3 rounded-2xl bg-gradient-to-r from-cyan-500/25 to-blue-600/25 hover:from-cyan-500/35 hover:to-blue-600/35 border border-cyan-500/40 hover:border-cyan-400 text-cyan-200 hover:text-white text-xs font-semibold flex items-center justify-center space-x-2 transition-all shadow-[0_0_20px_rgba(34,211,238,0.15)] group"
+            >
+              <Activity className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+              <span>Explore its Light Curve &rarr;</span>
+            </Link>
+            <Link
+              to={`/compare`}
+              className="px-4 py-3 rounded-2xl bg-slate-900/90 hover:bg-slate-800/90 border border-cyan-500/30 hover:border-cyan-400 text-slate-200 hover:text-cyan-300 text-xs font-semibold flex items-center justify-center space-x-2 transition-all shadow-sm group"
+            >
+              <Scale className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+              <span>Compare with Earth &rarr;</span>
+            </Link>
           </div>
 
         </div>
-
       </div>
 
-      {/* 6 Parameter Metrics Cards Grid */}
+      {/* Key Stats Grid: Radius, Orbital Period, Eq. Temperature, Host Star Type, Distance, Discovery Method */}
       <section className="space-y-4">
-        <h3 className="text-xl font-bold text-white">Physical & Orbital Parameters</h3>
+        <div className="flex items-center space-x-2 text-white font-bold text-base">
+          <Sparkles className="w-4 h-4 text-cyan-400" />
+          <h2>Key Astronomical Parameters</h2>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {parameters.map((param, i) => {
-            const Icon = param.icon;
-            return (
-              <div key={i} className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-2">
-                <div className="flex justify-between items-center text-xs font-mono-data text-slate-400">
-                  <span>{param.label}</span>
-                  <Icon className={`w-4 h-4 ${param.color}`} />
-                </div>
-                <div className="text-2xl font-extrabold text-white font-mono-data">
-                  {param.value}
-                </div>
-                <div className="text-[12px] text-slate-500 font-mono-data">{param.sub}</div>
-              </div>
-            );
-          })}
+          {/* Radius */}
+          <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1.5">
+            <div className="flex justify-between items-center text-xs font-mono-data text-slate-400">
+              <span>Planetary Radius</span>
+              <Ruler className="w-4 h-4 text-cyan-400" />
+            </div>
+            <div className="text-2xl font-extrabold text-white font-mono-data">
+              {radius ? `${radius.toFixed(2)} R⊕` : 'Archive Undetermined'}
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono-data">Relative to Earth radius (1.00 R⊕)</div>
+          </div>
+
+          {/* Orbital Period */}
+          <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1.5">
+            <div className="flex justify-between items-center text-xs font-mono-data text-slate-400">
+              <span>Orbital Period</span>
+              <RotateCw className="w-4 h-4 text-indigo-400" />
+            </div>
+            <div className="text-2xl font-extrabold text-white font-mono-data">
+              {period ? `${period.toFixed(1)} days` : 'Archive Undetermined'}
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono-data">Duration of one complete planetary year</div>
+          </div>
+
+          {/* Eq. Temperature */}
+          <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1.5">
+            <div className="flex justify-between items-center text-xs font-mono-data text-slate-400">
+              <span>Eq. Temperature</span>
+              <Thermometer className="w-4 h-4 text-amber-400" />
+            </div>
+            <div className="text-2xl font-extrabold text-white font-mono-data">
+              {temp ? `${temp.toFixed(0)} K` : 'Archive Undetermined'}
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono-data">
+              {temp ? `${(temp - 273.15).toFixed(0)} °C surface equilibrium` : 'Surface thermal estimate'}
+            </div>
+          </div>
+
+          {/* Host Star Type */}
+          <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1.5">
+            <div className="flex justify-between items-center text-xs font-mono-data text-slate-400">
+              <span>Host Star Type</span>
+              <Globe className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div className="text-xl font-extrabold text-white font-mono-data">
+              {starType}
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono-data">
+              {planet.stellarTempK ? `${Number(planet.stellarTempK).toFixed(0)} K host temperature` : 'Spectral classification'}
+            </div>
+          </div>
+
+          {/* Distance */}
+          <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1.5">
+            <div className="flex justify-between items-center text-xs font-mono-data text-slate-400">
+              <span>Distance from Earth</span>
+              <Compass className="w-4 h-4 text-purple-400" />
+            </div>
+            <div className="text-2xl font-extrabold text-white font-mono-data">
+              {distance}
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono-data">Measured in light-years (LY)</div>
+          </div>
+
+          {/* Discovery Method */}
+          <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1.5">
+            <div className="flex justify-between items-center text-xs font-mono-data text-slate-400">
+              <span>Discovery Pipeline</span>
+              <Database className="w-4 h-4 text-cyan-400" />
+            </div>
+            <div className="text-xl font-extrabold text-white font-mono-data">
+              {discoveryMethod}
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono-data">Confirmed {discoveryYear}</div>
+          </div>
         </div>
       </section>
 
-      {/* Earth-Similarity Comparison Bar Chart & Prose Panel */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      {/* "vs. Earth Reference" Comparison Bars & "Why Interesting" Narrative */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        {/* Recharts Bar Chart */}
-        <div className="lg:col-span-7 glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-bold text-white">Earth Comparison Matrix</h3>
-            <span className="text-xs font-mono-data text-cyan-400">Normalized Scale</span>
+        {/* Left: vs. Earth Reference Comparison Bars */}
+        <div className="lg:col-span-7 glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+            <div className="space-y-0.5">
+              <h3 className="text-base font-bold text-white">vs. Earth Reference</h3>
+              <p className="text-xs text-slate-400">Direct parameter benchmarks relative to Earth standard (1.00x)</p>
+            </div>
+            <Scale className="w-4 h-4 text-cyan-400" />
           </div>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={comparisonData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="metric" stroke="#94a3b8" tick={{ fontSize: 11, fontFamily: 'JetBrains Mono' }} />
-                <YAxis stroke="#94a3b8" tick={{ fontSize: 11, fontFamily: 'JetBrains Mono' }} />
-                <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
-                  formatter={(value, name) => [typeof value === 'number' ? value.toFixed(2) : value, name]}
+
+          <div className="space-y-5 text-xs font-mono-data">
+            {/* Radius Bar */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-300">Planetary Radius</span>
+                <span className="text-cyan-400 font-bold">
+                  {radius ? `${radius.toFixed(2)}x Earth (${radius.toFixed(2)} R⊕)` : 'Undetermined'}
+                </span>
+              </div>
+              <div className="w-full bg-slate-900 rounded-full h-3 overflow-hidden border border-slate-800 relative">
+                <div 
+                  className="bg-gradient-to-r from-cyan-500 to-cyan-400 h-full rounded-full transition-all duration-500"
+                  style={{ width: `${Math.min(100, (radiusRatio / 2.5) * 100)}%` }}
                 />
-                <Bar dataKey="Planet" fill="#22d3ee" radius={[6, 6, 0, 0]} name={planet.name || 'Planet'} />
-                <Bar dataKey="Earth" fill="#818cf8" radius={[6, 6, 0, 0]} name="Earth" />
-              </BarChart>
-            </ResponsiveContainer>
+                <div className="absolute top-0 bottom-0 left-[40%] w-0.5 bg-slate-400/60" title="Earth (1.0x)" />
+              </div>
+            </div>
+
+            {/* Temperature Bar */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-300">Equilibrium Temperature</span>
+                <span className="text-indigo-400 font-bold">
+                  {temp ? `${(temp / 255).toFixed(2)}x Earth (${temp.toFixed(0)} K)` : 'Undetermined'}
+                </span>
+              </div>
+              <div className="w-full bg-slate-900 rounded-full h-3 overflow-hidden border border-slate-800 relative">
+                <div 
+                  className="bg-gradient-to-r from-indigo-500 to-indigo-400 h-full rounded-full transition-all duration-500"
+                  style={{ width: `${Math.min(100, (tempRatio / 2.5) * 100)}%` }}
+                />
+                <div className="absolute top-0 bottom-0 left-[40%] w-0.5 bg-slate-400/60" title="Earth (1.0x)" />
+              </div>
+            </div>
+
+            {/* Mass Bar */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-300">Planetary Mass</span>
+                <span className="text-purple-400 font-bold">
+                  {mass ? `${mass.toFixed(2)}x Earth (${mass.toFixed(2)} M⊕)` : 'Archive Estimated'}
+                </span>
+              </div>
+              <div className="w-full bg-slate-900 rounded-full h-3 overflow-hidden border border-slate-800 relative">
+                <div 
+                  className="bg-gradient-to-r from-purple-500 to-purple-400 h-full rounded-full transition-all duration-500"
+                  style={{ width: `${Math.min(100, (massRatio / 5.0) * 100)}%` }}
+                />
+                <div className="absolute top-0 bottom-0 left-[20%] w-0.5 bg-slate-400/60" title="Earth (1.0x)" />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Why Interesting Prose Panel */}
-        <div className="lg:col-span-5 glass-panel p-6 rounded-2xl border border-slate-800 space-y-4 flex flex-col justify-between">
-          <div className="space-y-3">
+        {/* Right: "Why is [Planet] interesting?" Narrative Panel & Data Source Attribution */}
+        <div className="lg:col-span-5 space-y-6">
+          
+          {/* Why Interesting Narrative */}
+          <div className="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800 space-y-3.5">
             <div className="flex items-center space-x-2 text-cyan-400 text-xs font-mono-data">
               <Sparkles className="w-4 h-4" />
               <span>Scientific Significance</span>
             </div>
-            <h3 className="text-lg font-bold text-white">Why {planet.name} is Compelling</h3>
+            <h3 className="text-lg font-bold text-white">
+              Why is {name} interesting?
+            </h3>
             <p className="text-slate-300 text-xs leading-relaxed">
-              {planet.whyInteresting || `This exoplanet represents one of the many fascinating worlds discovered in our galaxy. With an Earth Similarity Index of ${displayedESI.toFixed(2)} and a Potential Habitability Index of ${displayedPHI.toFixed(2)}, it offers a modern perspective on planetary habitability.`}
+              {planet.whyInteresting || `${name} offers a valuable perspective on planetary formation and evolution beyond our solar system, with an Earth Similarity Index of ${esi.toFixed(2)}.`}
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-            <span className="text-xs font-mono-data text-slate-400 block">Discovery Pipeline:</span>
-            <div className="flex justify-between text-xs font-mono-data text-slate-200">
-              <span>Method: {planet.discoveryMethod || 'Unknown'}</span>
-              <span>Year: {planet.discoveryYear || 'N/A'}</span>
+          {/* Data Source Attribution Panel */}
+          <div className="p-5 rounded-2xl bg-slate-950/80 border border-slate-800/90 space-y-2">
+            <div className="flex items-center space-x-2 text-slate-300 text-xs font-semibold">
+              <Database className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Data Source Attribution</span>
             </div>
+            <p className="text-[12px] text-slate-400 leading-relaxed font-mono-data">
+              NASA Exoplanet Archive (Composite Parameters Table, pscomppars). Transit ephemerides and physical radii calibrated against standard astrophysical benchmarks.
+            </p>
           </div>
+
         </div>
 
       </div>

@@ -85,11 +85,21 @@ export const PlanetProvider = ({ children }) => {
   }, []);
 
   const getPlanetById = (planetId) => {
-    return planets.find(p => (p.id === planetId || p.name === planetId));
+    if (!planetId || !planets || planets.length === 0) return null;
+    const searchClean = String(planetId).toLowerCase().replace(/[^a-z0-9]/g, '');
+    return planets.find(p => {
+      if (!p) return false;
+      if (p.id === planetId || p.name === planetId) return true;
+      if (p.id?.toLowerCase() === planetId?.toLowerCase()) return true;
+      if (p.name?.toLowerCase() === planetId?.toLowerCase()) return true;
+      const pCleanId = p.id ? String(p.id).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
+      const pCleanName = p.name ? String(p.name).toLowerCase().replace(/[^a-z0-9]/g, '') : '';
+      return pCleanId === searchClean || pCleanName === searchClean;
+    }) || null;
   };
 
   const getPlanetByName = (planetName) => {
-    return planets.find(p => p.name === planetName || p.name.toLowerCase() === planetName.toLowerCase());
+    return getPlanetById(planetName);
   };
 
   const getExoplanetsOnly = () => {

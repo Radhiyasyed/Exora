@@ -3,24 +3,28 @@ import { Link } from 'react-router-dom';
 import { 
   Search, LayoutGrid, Table as TableIcon, SlidersHorizontal, 
   RotateCcw, Sparkles, ChevronRight, Check, ArrowUpDown, Server,
-  Atom, Thermometer, Ruler, Scale, CircleDot, Sun, Orbit, RefreshCw
+  RefreshCw, Ruler, Thermometer
 } from 'lucide-react';
 import { usePlanets } from '../context/PlanetContext';
+import { slugify } from '../api/exoplanetsApi';
 
-/* Helper: classify star type from effective temp */
-function classifyStarType(starTempK) {
-  if (!starTempK) return { label: 'Unknown', color: 'text-slate-400' };
-  if (starTempK >= 7500) return { label: 'A-type', color: 'text-blue-300' };
-  if (starTempK >= 6000) return { label: 'F-type', color: 'text-sky-300' };
-  if (starTempK >= 5200) return { label: 'G-type', color: 'text-amber-300' };
-  if (starTempK >= 3700) return { label: 'K-type', color: 'text-orange-300' };
-  return { label: 'M-type', color: 'text-red-400' };
-}
-
-/* Helper: format numbers with appropriate precision */
-function fmt(val, decimals = 2) {
-  if (val === null || val === undefined) return '—';
-  return typeof val === 'number' ? val.toFixed(decimals) : String(val);
+/* Helper: classify star type from effective temp or spectral string */
+function classifyStarType(starSpectralType, starTempK) {
+  if (starSpectralType) {
+    const s = String(starSpectralType).trim();
+    if (s.startsWith('G')) return { label: s.includes('type') ? s : `${s.split(' ')[0]} Star`, color: 'text-amber-300', bg: 'bg-amber-500/10 border-amber-500/30' };
+    if (s.startsWith('M')) return { label: s.includes('type') ? s : `${s.split(' ')[0]} Star`, color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/30' };
+    if (s.startsWith('K')) return { label: s.includes('type') ? s : `${s.split(' ')[0]} Star`, color: 'text-orange-300', bg: 'bg-orange-500/10 border-orange-500/30' };
+    if (s.startsWith('F')) return { label: s.includes('type') ? s : `${s.split(' ')[0]} Star`, color: 'text-sky-300', bg: 'bg-sky-500/10 border-sky-500/30' };
+    if (s.startsWith('A')) return { label: s.includes('type') ? s : `${s.split(' ')[0]} Star`, color: 'text-blue-300', bg: 'bg-blue-500/10 border-blue-500/30' };
+    return { label: s, color: 'text-slate-300', bg: 'bg-slate-800/80 border-slate-700' };
+  }
+  if (!starTempK) return { label: 'Unknown Star', color: 'text-slate-400', bg: 'bg-slate-800/80 border-slate-700' };
+  if (starTempK >= 7500) return { label: 'A-type Star', color: 'text-blue-300', bg: 'bg-blue-500/10 border-blue-500/30' };
+  if (starTempK >= 6000) return { label: 'F-type Star', color: 'text-sky-300', bg: 'bg-sky-500/10 border-sky-500/30' };
+  if (starTempK >= 5200) return { label: 'G-type Star', color: 'text-amber-300', bg: 'bg-amber-500/10 border-amber-500/30' };
+  if (starTempK >= 3700) return { label: 'K-type Star', color: 'text-orange-300', bg: 'bg-orange-500/10 border-orange-500/30' };
+  return { label: 'M-type Star', color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/30' };
 }
 
 function getMetric(planet, camelKey, snakeKey, fallback = null) {
@@ -29,112 +33,125 @@ function getMetric(planet, camelKey, snakeKey, fallback = null) {
 }
 
 export default function SearchExplore() {
-  const { planets, isLoading, isLiveBackend, forceRefresh, getExoplanetsOnly, isEarth } = usePlanets();
+  const { planets, isLoading, isLiveBackend, forceRefresh, getExoplanetsOnly } = usePlanets();
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState('card');
-  const [expandedCard, setExpandedCard] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 24;
   
-  // Filter States
+  // Section 5 Filter States
   const [radiusMax, setRadiusMax] = useState(20);
   const [tempMax, setTempMax] = useState(3000);
-  const [minHabitability, setMinHabitability] = useState(0.0);
   const [minEsi, setMinEsi] = useState(0.0);
-  const [minPhi, setMinPhi] = useState(0.0);
-  const [selectedStarTypes, setSelectedStarTypes] = useState([]);
   const [hzOnly, setHzOnly] = useState(false);
-  const [sortField, setSortField] = useState('habitabilityIndex');
+  const [habitabilityStatus, setHabitabilityStatus] = useState('all'); // 'all', 'hz_candidate', 'not_habitable', 'unknown'
+  const [selectedStarTypes, setSelectedStarTypes] = useState([]);
+  const [sortField, setSortField] = useState('esi');
   const [sortOrder, setSortOrder] = useState('desc');
 
-  const starTypeOptions = ['G-type', 'M-type', 'K-type', 'F-type'];
+  const starTypeOptions = ['G-type', 'M-type', 'K-type', 'F-type', 'A-type'];
 
-  // Filter and sort planets from cached data (excluding Earth for exoplanet-only searches)
+  // Filter exoplanets (excluding Earth baseline)
   const exoplanetsOnly = useMemo(() => getExoplanetsOnly(), [planets]);
   
   const filteredPlanets = useMemo(() => {
     let filtered = [...exoplanetsOnly];
 
-    // Search filter
-    if (searchTerm) {
-      const searchLower = searchTerm.toLowerCase();
+    // Full-text Search filter
+    if (searchTerm.trim() !== '') {
+      const searchLower = searchTerm.toLowerCase().trim();
       filtered = filtered.filter(p => 
         p.name?.toLowerCase().includes(searchLower) ||
         p.system?.toLowerCase().includes(searchLower) ||
-        p.starName?.toLowerCase().includes(searchLower)
+        p.starName?.toLowerCase().includes(searchLower) ||
+        p.starSpectralType?.toLowerCase().includes(searchLower) ||
+        p.starType?.toLowerCase().includes(searchLower)
       );
     }
 
-    // Radius filter
-    if (radiusMax) {
+    // Max Radius filter
+    if (radiusMax < 20) {
       filtered = filtered.filter(p => 
-        (p.radiusEarth ?? Infinity) <= radiusMax
+        p.radiusEarth == null || p.radiusEarth <= radiusMax
       );
     }
 
-    // Temperature filter
-    if (tempMax) {
+    // Max Temperature filter
+    if (tempMax < 3000) {
       filtered = filtered.filter(p => 
-        (p.equilibriumTempK ?? Infinity) <= tempMax
+        (p.equilibriumTempK ?? p.eqTempK) == null || (p.equilibriumTempK ?? p.eqTempK) <= tempMax
       );
     }
 
-    // Habitability filter
-    if (minHabitability > 0) {
-      filtered = filtered.filter(p => 
-        (p.habitabilityIndex ?? 0) >= minHabitability
-      );
-    }
-
-    // ESI / PHI filters
+    // Min ESI Score filter (0.00 - 1.00)
     if (minEsi > 0) {
-      filtered = filtered.filter(p => 
-        (getMetric(p, 'esiScore', 'esi_score', p.habitabilityIndex ?? 0) ?? 0) >= minEsi
-      );
-    }
-    if (minPhi > 0) {
-      filtered = filtered.filter(p => 
-        (getMetric(p, 'phiScore', 'phi_score', 0) ?? 0) >= minPhi
-      );
-    }
-
-    // Star type filter with prefix matching against actual starType field
-    if (selectedStarTypes.length > 0) {
       filtered = filtered.filter(p => {
-        if (!p.starType) return false;
-        const actualTypeLower = p.starType.toLowerCase();
-        // Use the first letter of the selected filter (e.g. 'G' from 'G-type') to prefix match against 'G-type (G2V)'
-        return selectedStarTypes.some(st => actualTypeLower.startsWith(st.charAt(0).toLowerCase()));
+        const esi = Number(getMetric(p, 'esi', 'esiScore', p.esi_score ?? 0));
+        return esi >= minEsi;
       });
     }
 
-    // Habitable zone filter
+    // HZD / Habitable Zone Only Toggle
     if (hzOnly) {
       filtered = filtered.filter(p => {
-        const esi = getMetric(p, 'esiScore', 'esi_score', p.habitabilityIndex ?? 0);
-        const inHz = p.inHabitableZone ?? p.isInHabitableZone ?? p.is_in_habitable_zone ?? (esi >= 0.6);
-        return inHz;
+        const isHz = p.zoneStatus === 'Habitable Zone' || 
+          p.inHabitableZone || 
+          (p.hzd != null && p.hzd >= -1.0 && p.hzd <= 1.0) ||
+          Number(getMetric(p, 'esi', 'esiScore', 0)) >= 0.7;
+        return isHz;
+      });
+    }
+
+    // Habitability Status Filter
+    if (habitabilityStatus !== 'all') {
+      filtered = filtered.filter(p => {
+        const isHz = p.zoneStatus === 'Habitable Zone' || 
+          p.inHabitableZone || 
+          (p.hzd != null && p.hzd >= -1.0 && p.hzd <= 1.0);
+        
+        if (habitabilityStatus === 'hz_candidate') {
+          return isHz;
+        } else if (habitabilityStatus === 'not_habitable') {
+          return (p.zoneStatus === 'Too Hot' || p.zoneStatus === 'Too Cold') || (!isHz && p.zoneStatus);
+        } else if (habitabilityStatus === 'unknown') {
+          return p.zoneStatus == null && !p.inHabitableZone && p.hzd == null;
+        }
+        return true;
+      });
+    }
+
+    // Star Type Chips Filter
+    if (selectedStarTypes.length > 0) {
+      filtered = filtered.filter(p => {
+        const typeStr = (p.starType || p.starSpectralType || '').toUpperCase();
+        return selectedStarTypes.some(st => typeStr.startsWith(st.charAt(0).toUpperCase()));
       });
     }
 
     // Sorting
     filtered.sort((a, b) => {
       const getSortValue = (planet) => {
-        if (sortField === 'esiScore') {
-          return getMetric(planet, 'esiScore', 'esi_score', planet.habitabilityIndex ?? 0) ?? 0;
+        if (sortField === 'esi') {
+          return Number(getMetric(planet, 'esi', 'esiScore', 0));
         }
-        if (sortField === 'phiScore') {
-          return getMetric(planet, 'phiScore', 'phi_score', 0) ?? 0;
+        if (sortField === 'radiusEarth') {
+          return planet.radiusEarth ?? (sortOrder === 'asc' ? Infinity : -Infinity);
         }
-        return planet[sortField];
+        if (sortField === 'equilibriumTempK') {
+          return (planet.equilibriumTempK ?? planet.eqTempK) ?? (sortOrder === 'asc' ? Infinity : -Infinity);
+        }
+        if (sortField === 'name') {
+          return planet.name || '';
+        }
+        return planet[sortField] ?? 0;
       };
 
-      let aVal = getSortValue(a);
-      let bVal = getSortValue(b);
+      const aVal = getSortValue(a);
+      const bVal = getSortValue(b);
 
-      // Handle missing values
-      if (aVal === undefined || aVal === null) aVal = sortOrder === 'asc' ? Infinity : -Infinity;
-      if (bVal === undefined || bVal === null) bVal = sortOrder === 'asc' ? Infinity : -Infinity;
+      if (typeof aVal === 'string' && typeof bVal === 'string') {
+        return sortOrder === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+      }
 
       if (sortOrder === 'asc') {
         return aVal > bVal ? 1 : -1;
@@ -144,7 +161,7 @@ export default function SearchExplore() {
     });
 
     return filtered;
-  }, [planets, searchTerm, radiusMax, tempMax, minHabitability, minEsi, minPhi, selectedStarTypes, hzOnly, sortField, sortOrder]);
+  }, [exoplanetsOnly, searchTerm, radiusMax, tempMax, minEsi, hzOnly, habitabilityStatus, selectedStarTypes, sortField, sortOrder]);
 
   const totalPages = Math.max(1, Math.ceil(filteredPlanets.length / pageSize));
   const paginatedPlanets = useMemo(() => {
@@ -160,7 +177,7 @@ export default function SearchExplore() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, radiusMax, tempMax, minHabitability, minEsi, minPhi, selectedStarTypes, hzOnly, sortField, sortOrder]);
+  }, [searchTerm, radiusMax, tempMax, minEsi, hzOnly, habitabilityStatus, selectedStarTypes, sortField, sortOrder]);
 
   const toggleStarType = (type) => {
     setSelectedStarTypes((prev) =>
@@ -172,51 +189,18 @@ export default function SearchExplore() {
     setSearchTerm('');
     setRadiusMax(20);
     setTempMax(3000);
-    setMinHabitability(0.0);
     setMinEsi(0.0);
-    setMinPhi(0.0);
-    setSelectedStarTypes([]);
     setHzOnly(false);
-  };
-
-  /* ──────────── Inline Detail Row for a planet ──────────── */
-  const DetailRow = ({ icon: Icon, label, value, unit, color = 'text-cyan-400' }) => (
-    <div className="flex items-center justify-between py-1.5 border-b border-slate-800/40 last:border-b-0">
-      <div className="flex items-center space-x-2 text-slate-400 text-[12px] font-mono-data">
-        <Icon className={`w-3 h-3 ${color}`} />
-        <span>{label}</span>
-      </div>
-      <span className="text-slate-200 text-[12px] font-mono-data font-semibold">
-        {value}{unit && <span className="text-slate-500 ml-0.5">{unit}</span>}
-      </span>
-    </div>
-  );
-
-  /* ──────────── Simplified minimal detail section ──────────── */
-  const PlanetDetails = ({ planet }) => {
-    const star = classifyStarType(planet.starTempK || planet.equilibriumTempK);
-    const hi = planet.habitabilityIndex ?? 0;
-    const esi = getMetric(planet, 'esiScore', 'esi_score', hi);
-    const phi = getMetric(planet, 'phiScore', 'phi_score', 0);
-    const inHZ = planet.inHabitableZone ?? planet.isInHabitableZone ?? planet.is_in_habitable_zone ?? (esi >= 0.6);
-
-    return (
-      <div className="mt-3 space-y-1 bg-slate-950/60 rounded-xl p-3 border border-slate-800/50">
-        <DetailRow icon={Ruler}        label="Radius"           value={fmt(planet.radiusEarth)}           unit="R⊕"    color="text-cyan-400" />
-        <DetailRow icon={Scale}        label="Mass"             value={fmt(planet.massEarth)}             unit="M⊕"    color="text-indigo-400" />
-        <DetailRow icon={Atom}         label="Density"          value={fmt(planet.densityGCm3)}           unit="g/cm³" color="text-purple-400" />
-        <DetailRow icon={Thermometer}  label="Eq. Temperature"  value={fmt(planet.eqTempK ?? planet.equilibriumTempK)} unit="K"     color="text-amber-400" />
-        <DetailRow icon={Orbit}        label="Orbit Semi-Major" value={fmt(planet.orbitAU, 4)}            unit="AU"    color="text-emerald-400" />
-        <DetailRow icon={Sun}          label="Host Star Temp"   value={fmt(planet.starTempK, 0)}          unit="K"     color="text-orange-400" />
-        <DetailRow icon={CircleDot}    label="Star Type"        value={star.label}                        unit=""      color={star.color} />
-      </div>
-    );
+    setHabitabilityStatus('all');
+    setSelectedStarTypes([]);
+    setSortField('esi');
+    setSortOrder('desc');
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       
-      {/* Header */}
+      {/* Header Section */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2 mb-2 flex-wrap gap-y-2">
@@ -227,16 +211,16 @@ export default function SearchExplore() {
             <div className={`inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[12px] font-mono-data border ${
               isLiveBackend
                 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                : 'bg-amber-500/10 text-amber-300 border-amber-500/30'
+                : 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30'
             }`}>
               <Server className="w-3 h-3" />
-              <span>{isLiveBackend ? 'Python Flask API Connected' : 'Embedded Data Cache'}</span>
+              <span>{isLiveBackend ? 'Python Flask API Connected' : '100+ Synced Catalog Cache'}</span>
               <button
                 onClick={() => {
                   forceRefresh().catch(err => console.error('Refresh failed:', err));
                 }}
-                className="ml-2 p-1 rounded hover:bg-cyan-500/20 transition-colors"
-                title="Force refresh data from backend"
+                className="ml-1.5 p-1 rounded hover:bg-cyan-500/20 transition-colors"
+                title="Refresh catalog data"
               >
                 <RefreshCw className="w-3 h-3" />
               </button>
@@ -244,7 +228,7 @@ export default function SearchExplore() {
           </div>
           <h1 className="text-3xl font-extrabold text-white">Exoplanet Explorer</h1>
           <p className="text-slate-400 text-xs mt-1">
-            Search, filter, and compare cataloged worlds powered by NASA Exoplanet Archive TAP queries.
+            Search, filter, and compare cataloged worlds powered by NASA Exoplanet Archive parameters.
           </p>
         </div>
 
@@ -275,17 +259,20 @@ export default function SearchExplore() {
         </div>
       </div>
 
-      {/* Main Grid */}
+      {/* Main Grid: Sidebar Filters + Planet Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        {/* ─── Filter Sidebar ─── */}
+        {/* ─── Filter Sidebar (Section 5) ─── */}
         <div className="lg:col-span-4 glass-panel p-6 rounded-2xl border border-slate-800 space-y-6">
           <div className="flex justify-between items-center pb-4 border-b border-slate-800/80">
             <div className="flex items-center space-x-2 text-white font-bold text-sm">
               <SlidersHorizontal className="w-4 h-4 text-cyan-400" />
               <span>Parametric Filters</span>
             </div>
-            <button onClick={resetFilters} className="text-slate-400 hover:text-cyan-400 text-xs font-mono-data flex items-center space-x-1 transition-colors">
+            <button 
+              onClick={resetFilters} 
+              className="text-slate-400 hover:text-cyan-400 text-xs font-mono-data flex items-center space-x-1 transition-colors"
+            >
               <RotateCcw className="w-3 h-3" />
               <span>Reset</span>
             </button>
@@ -306,7 +293,7 @@ export default function SearchExplore() {
             </div>
           </div>
 
-          {/* HZ Toggle */}
+          {/* Habitable Zone Only Toggle (HZD-based) */}
           <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800">
             <span className="text-xs font-medium text-slate-200">Habitable Zone Only</span>
             <button
@@ -314,12 +301,28 @@ export default function SearchExplore() {
               className={`w-11 h-6 rounded-full transition-colors relative p-1 ${
                 hzOnly ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.3)]' : 'bg-slate-800'
               }`}
+              aria-label="Toggle Habitable Zone Only"
             >
               <div className={`w-4 h-4 rounded-full bg-white transition-transform ${hzOnly ? 'translate-x-5' : 'translate-x-0'}`} />
             </button>
           </div>
 
-          {/* Star Type Chips */}
+          {/* Habitability Status Filter Dropdown */}
+          <div className="space-y-2">
+            <label className="text-xs font-mono-data text-slate-300">Habitability Status</label>
+            <select
+              value={habitabilityStatus}
+              onChange={(e) => setHabitabilityStatus(e.target.value)}
+              className="w-full bg-slate-900/90 border border-slate-800 text-slate-200 text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-cyan-400"
+            >
+              <option value="all">All Statuses</option>
+              <option value="hz_candidate">HZ Candidate (Circumstellar Habitable)</option>
+              <option value="not_habitable">Non-Habitable (Too Hot / Too Cold)</option>
+              <option value="unknown">Unspecified / Unknown</option>
+            </select>
+          </div>
+
+          {/* Host Star Type Chips */}
           <div className="space-y-2">
             <label className="text-xs font-mono-data text-slate-300">Host Star Type</label>
             <div className="flex flex-wrap gap-2">
@@ -343,223 +346,238 @@ export default function SearchExplore() {
             </div>
           </div>
 
-          {/* Sliders */}
-          <div className="space-y-2">
-            <div className="flex justify-between text-xs font-mono-data">
-              <span className="text-slate-400">Max Radius:</span>
-              <span className="text-cyan-400 font-bold">{radiusMax} R⊕</span>
-            </div>
-            <input type="range" min="0.5" max="20" step="0.5" value={radiusMax}
-              onChange={(e) => setRadiusMax(parseFloat(e.target.value))} className="w-full accent-cyan-400 cursor-pointer" />
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex justify-between text-xs font-mono-data">
-              <span className="text-slate-400">Max Eq. Temperature:</span>
-              <span className="text-indigo-400 font-bold">{tempMax} K</span>
-            </div>
-            <input type="range" min="100" max="3000" step="50" value={tempMax}
-              onChange={(e) => setTempMax(parseInt(e.target.value, 10))} className="w-full accent-indigo-400 cursor-pointer" />
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex justify-between text-xs font-mono-data">
-              <span className="text-slate-400">Min Habitability Score:</span>
-              <span className="text-emerald-400 font-bold">{minHabitability.toFixed(2)}</span>
-            </div>
-            <input type="range" min="0.0" max="1.0" step="0.05" value={minHabitability}
-              onChange={(e) => setMinHabitability(parseFloat(e.target.value))} className="w-full accent-emerald-400 cursor-pointer" />
-          </div>
-
+          {/* Min ESI Score Slider (0.00 to 1.00) */}
           <div className="space-y-2">
             <div className="flex justify-between text-xs font-mono-data">
               <span className="text-slate-400">Min ESI Score:</span>
               <span className="text-cyan-400 font-bold">{minEsi.toFixed(2)}</span>
             </div>
-            <input type="range" min="0.0" max="1.0" step="0.05" value={minEsi}
-              onChange={(e) => setMinEsi(parseFloat(e.target.value))} className="w-full accent-cyan-400 cursor-pointer" />
+            <input 
+              type="range" 
+              min="0.0" 
+              max="1.0" 
+              step="0.05" 
+              value={minEsi}
+              onChange={(e) => setMinEsi(parseFloat(e.target.value))} 
+              className="w-full accent-cyan-400 cursor-pointer" 
+            />
           </div>
 
+          {/* Max Radius Slider */}
           <div className="space-y-2">
             <div className="flex justify-between text-xs font-mono-data">
-              <span className="text-slate-400">Min PHI Score:</span>
-              <span className="text-purple-400 font-bold">{minPhi.toFixed(2)}</span>
+              <span className="text-slate-400">Max Radius:</span>
+              <span className="text-cyan-400 font-bold">{radiusMax >= 20 ? 'All' : `${radiusMax} R⊕`}</span>
             </div>
-            <input type="range" min="0.0" max="1.0" step="0.05" value={minPhi}
-              onChange={(e) => setMinPhi(parseFloat(e.target.value))} className="w-full accent-purple-400 cursor-pointer" />
+            <input 
+              type="range" 
+              min="0.5" 
+              max="20" 
+              step="0.5" 
+              value={radiusMax}
+              onChange={(e) => setRadiusMax(parseFloat(e.target.value))} 
+              className="w-full accent-cyan-400 cursor-pointer" 
+            />
           </div>
 
-          <div className="space-y-4">
+          {/* Max Temperature Slider */}
+          <div className="space-y-2">
+            <div className="flex justify-between text-xs font-mono-data">
+              <span className="text-slate-400">Max Eq. Temperature:</span>
+              <span className="text-indigo-400 font-bold">{tempMax >= 3000 ? 'All' : `${tempMax} K`}</span>
+            </div>
+            <input 
+              type="range" 
+              min="100" 
+              max="3000" 
+              step="50" 
+              value={tempMax}
+              onChange={(e) => setTempMax(parseInt(e.target.value, 10))} 
+              className="w-full accent-indigo-400 cursor-pointer" 
+            />
+          </div>
+
+          {/* Live Count & Sort Controls */}
+          <div className="space-y-4 pt-2 border-t border-slate-800/80">
             <div className="text-xs text-slate-400">
-              Showing <strong className="text-cyan-400">{filteredPlanets.length}</strong> of <strong className="text-cyan-400">{planets.length}</strong> cataloged exoplanets
+              Showing <strong className="text-cyan-400">{filteredPlanets.length}</strong> matching exoplanets of <strong className="text-slate-300">{exoplanetsOnly.length}</strong> total
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-slate-400">Sort:</span>
-              <select value={sortField} onChange={(e) => setSortField(e.target.value)}
-                className="bg-slate-900 border border-slate-800 text-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:border-cyan-400">
-                <option value="habitabilityIndex">Habitability Index</option>
-                <option value="esiScore">ESI Score</option>
-                <option value="phiScore">PHI Score</option>
-                <option value="name">Name</option>
+              <span className="text-xs text-slate-400 font-mono-data">Sort:</span>
+              <select 
+                value={sortField} 
+                onChange={(e) => setSortField(e.target.value)}
+                className="bg-slate-900 border border-slate-800 text-slate-200 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-cyan-400 flex-1"
+              >
+                <option value="esi">ESI Score</option>
+                <option value="name">Planet Name</option>
                 <option value="radiusEarth">Radius</option>
                 <option value="equilibriumTempK">Temperature</option>
-                <option value="massEarth">Mass</option>
-                <option value="densityGCm3">Density</option>
               </select>
-              <button onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-cyan-400 hover:border-cyan-500/40 transition-all">
-                <ArrowUpDown className="w-3.5 h-3.5" />
+              <button 
+                onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-cyan-400 hover:border-cyan-500/40 transition-all"
+                title={`Sort ${sortOrder === 'asc' ? 'Descending' : 'Ascending'}`}
+              >
+                <ArrowUpDown className="w-4 h-4" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* ─── Main Content Area (Cards / Table / Empty state) ─── */}
+        {/* ─── Main Content Area: Simplified Cards / Table (Section 6) ─── */}
         <div className="lg:col-span-8 space-y-6">
           {filteredPlanets.length === 0 ? (
             <div className="glass-panel p-12 rounded-2xl border border-slate-800 text-center space-y-4">
               <p className="text-slate-400 text-sm">No exoplanets match your current parametric filter thresholds.</p>
-              <button onClick={resetFilters}
-                className="px-4 py-2 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-semibold hover:bg-cyan-500/30 transition-all">
+              <button 
+                onClick={resetFilters}
+                className="px-4 py-2 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs font-semibold hover:bg-cyan-500/30 transition-all"
+              >
                 Reset All Filters
               </button>
             </div>
           ) : viewMode === 'card' ? (
+            /* ═══════════════════════════════════════════════════
+               SIMPLIFIED PLANET CARDS (Section 6)
+               Each card reduced to:
+               - Planet name
+               - Host star type badge
+               - HZ Candidate tag (if applicable)
+               - 2 key stats max (Radius, Temperature)
+               - ESI score
+               - "View Details" button
+               ═══════════════════════════════════════════════════ */
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {paginatedPlanets.map((planet) => {
-                const pid = planet.id || planet.name;
-                const isExpanded = expandedCard === pid;
-                const star = classifyStarType(planet.starTempK);
-                const hi = planet.habitabilityIndex ?? 0;
-                const esi = getMetric(planet, 'esiScore', 'esi_score', hi);
-                const phi = getMetric(planet, 'phiScore', 'phi_score', 0);
-                const inHZ = planet.inHabitableZone ?? planet.isInHabitableZone ?? planet.is_in_habitable_zone ?? (esi >= 0.6);
+                const pid = planet.id || slugify(planet.name);
+                const star = classifyStarType(planet.starSpectralType || planet.starType, planet.starTempK || planet.equilibriumTempK);
+                const esi = Number(getMetric(planet, 'esi', 'esiScore', planet.habitabilityIndex ?? 0));
+                const inHZ = planet.zoneStatus === 'Habitable Zone' || 
+                  planet.inHabitableZone || 
+                  (planet.hzd != null && planet.hzd >= -1.0 && planet.hzd <= 1.0) ||
+                  esi >= 0.75;
+
+                const hasRadius = planet.radiusEarth != null && !isNaN(planet.radiusEarth);
+                const hasTemp = (planet.equilibriumTempK ?? planet.eqTempK) != null && !isNaN(planet.equilibriumTempK ?? planet.eqTempK);
 
                 return (
                   <div
                     key={pid}
-                    className="glass-panel glass-panel-hover rounded-2xl border border-slate-800 hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] flex flex-col group transition-all"
+                    className="glass-panel glass-panel-hover rounded-2xl border border-slate-800 hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] flex flex-col justify-between p-5 space-y-4 group transition-all"
                   >
-                    {/* Card Header */}
-                    <div className="p-5 pb-0">
-                      <div className="flex justify-between items-start">
-                        <div className="min-w-0">
-                          <span className="text-[12px] font-mono-data text-slate-500 block">{planet.system || planet.name.split(' ')[0]}</span>
-                          <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors truncate">
-                            {planet.name}
-                          </h3>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <span className={`w-2 h-2 rounded-full ${inHZ ? 'bg-emerald-400' : 'bg-rose-400'}`} title={inHZ ? 'In Habitable Zone' : 'Outside Habitable Zone'} />
-                        </div>
-                      </div>
-
-                      {/* Inline metrics */}
-                      <div className="flex items-center space-x-3 mt-2 text-[12px] font-mono-data text-slate-400">
-                        <span>ESI: <span className="text-cyan-300 font-semibold">{fmt(esi, 4)}</span></span>
-                        <span className="text-slate-600">|</span>
-                        <span>PHI: <span className="text-purple-300 font-semibold">{phi ? fmt(phi, 4) : '—'}</span></span>
-                      </div>
-
-                      {/* Star type pill */}
-                      <div className="flex items-center space-x-2 mt-2">
-                        <span className={`text-[12px] font-mono-data px-2 py-0.5 rounded-full border border-slate-700 bg-slate-900/60 ${star.color}`}>
-                          {star.label} Star
-                        </span>
-                        {planet.starTempK && (
-                          <span className="text-[12px] font-mono-data text-slate-500">
-                            {fmt(planet.starTempK, 0)} K
+                    {/* Top Row: Name and HZ Candidate Tag */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-start gap-2">
+                        <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors truncate">
+                          {planet.name}
+                        </h3>
+                        {inHZ && (
+                          <span className="shrink-0 text-[10px] font-mono-data px-2 py-0.5 rounded-full border border-emerald-500/40 bg-emerald-500/15 text-emerald-300 font-semibold flex items-center space-x-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            <span>HZ Candidate</span>
                           </span>
                         )}
                       </div>
+
+                      {/* Host Star Type Badge */}
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[11px] font-mono-data px-2.5 py-0.5 rounded-full border ${star.bg} ${star.color} font-medium`}>
+                          {star.label}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* ── All JSON Details Rendered Cleanly ── */}
-                    <div className="px-5 pt-3 pb-2">
-                      <PlanetDetails planet={planet} />
-                    </div>
-
-                    {/* Card Footer */}
-                    <div className="px-5 pb-5 pt-2 mt-auto flex items-center justify-between">
-                      <button
-                        onClick={() => setExpandedCard(isExpanded ? null : pid)}
-                        className="text-[12px] font-mono-data text-slate-500 hover:text-cyan-400 transition-colors"
-                      >
-                        {isExpanded ? '− Collapse' : '+ Expand Raw'}
-                      </button>
-                      <Link
-                        to={`/planet/${pid}`}
-                        className="px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-semibold text-cyan-300 hover:text-white flex items-center space-x-1 transition-all"
-                      >
-                        <span>View Details</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-
-                    {/* Expanded raw JSON dump */}
-                    {isExpanded && (
-                      <div className="px-5 pb-5">
-                        <pre className="text-[12px] font-mono-data text-slate-500 bg-slate-950 rounded-xl border border-slate-800 p-3 overflow-x-auto max-h-48 overflow-y-auto">
-                          {JSON.stringify(planet, null, 2)}
-                        </pre>
+                    {/* 2 Key Stats Max: Radius & Temperature (Omit if unavailable, no placeholder dashes) */}
+                    {(hasRadius || hasTemp) && (
+                      <div className="grid grid-cols-2 gap-3 py-3 border-y border-slate-800/60 bg-slate-950/40 rounded-xl px-3 text-xs font-mono-data">
+                        {hasRadius && (
+                          <div className="space-y-0.5">
+                            <span className="text-[10px] text-slate-500 uppercase block">Radius</span>
+                            <div className="flex items-center space-x-1 text-slate-200 font-semibold">
+                              <Ruler className="w-3 h-3 text-cyan-400" />
+                              <span>{Number(planet.radiusEarth).toFixed(2)} R⊕</span>
+                            </div>
+                          </div>
+                        )}
+                        {hasTemp && (
+                          <div className="space-y-0.5">
+                            <span className="text-[10px] text-slate-500 uppercase block">Eq. Temp</span>
+                            <div className="flex items-center space-x-1 text-slate-200 font-semibold">
+                              <Thermometer className="w-3 h-3 text-indigo-400" />
+                              <span>{Number(planet.equilibriumTempK ?? planet.eqTempK).toFixed(0)} K</span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
+
+                    {/* Bottom Row: ESI Score + View Details Button */}
+                    <div className="flex items-center justify-between pt-1">
+                      <div className="text-xs font-mono-data">
+                        <span className="text-slate-400">ESI: </span>
+                        <span className="text-cyan-300 font-bold text-sm">{esi.toFixed(2)}</span>
+                      </div>
+
+                      <Link
+                        to={`/planet/${pid}`}
+                        className="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-semibold text-cyan-300 hover:text-white flex items-center space-x-1.5 transition-all shadow-sm"
+                      >
+                        <span>View Details</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </div>
                 );
               })}
             </div>
           ) : (
-            /* ═════════ TABLE VIEW — all fields ═════════ */
+            /* ═════════ DATA TABLE VIEW ═════════ */
             <div className="glass-panel rounded-2xl overflow-x-auto border border-slate-800">
               <table className="w-full text-left text-xs font-mono-data">
                 <thead className="bg-slate-900/90 text-slate-400 border-b border-slate-800 sticky top-0">
                   <tr>
-                    <th className="p-3 whitespace-nowrap">Planet Name</th>
-                    <th className="p-3 whitespace-nowrap">Radius (R⊕)</th>
-                    <th className="p-3 whitespace-nowrap">Mass (M⊕)</th>
-                    <th className="p-3 whitespace-nowrap">Density (g/cm³)</th>
-                    <th className="p-3 whitespace-nowrap">Eq Temp (K)</th>
-                    <th className="p-3 whitespace-nowrap">Orbit (AU)</th>
-                    <th className="p-3 whitespace-nowrap">Star Temp (K)</th>
-                    <th className="p-3 whitespace-nowrap">Star Type</th>
-                    <th className="p-3 whitespace-nowrap">ESI</th>
-                    <th className="p-3 whitespace-nowrap">PHI</th>
-                    <th className="p-3 whitespace-nowrap">HZ</th>
-                    <th className="p-3 text-right whitespace-nowrap">Action</th>
+                    <th className="p-3.5 whitespace-nowrap">Planet Name</th>
+                    <th className="p-3.5 whitespace-nowrap">Star Type</th>
+                    <th className="p-3.5 whitespace-nowrap">Radius (R⊕)</th>
+                    <th className="p-3.5 whitespace-nowrap">Eq Temp (K)</th>
+                    <th className="p-3.5 whitespace-nowrap">ESI</th>
+                    <th className="p-3.5 whitespace-nowrap">Zone</th>
+                    <th className="p-3.5 text-right whitespace-nowrap">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/60">
                   {paginatedPlanets.map((planet) => {
-                    const pid = planet.id || planet.name;
-                    const hi = planet.habitabilityIndex ?? 0;
-                    const esi = getMetric(planet, 'esiScore', 'esi_score', hi);
-                    const phi = getMetric(planet, 'phiScore', 'phi_score', 0);
-                    const star = classifyStarType(planet.starTempK || planet.equilibriumTempK);
-                    const inHZ = planet.inHabitableZone ?? planet.isInHabitableZone ?? planet.is_in_habitable_zone ?? (esi >= 0.6);
+                    const pid = planet.id || slugify(planet.name);
+                    const esi = Number(getMetric(planet, 'esi', 'esiScore', planet.habitabilityIndex ?? 0));
+                    const star = classifyStarType(planet.starSpectralType || planet.starType, planet.starTempK || planet.equilibriumTempK);
+                    const inHZ = planet.zoneStatus === 'Habitable Zone' || 
+                      planet.inHabitableZone || 
+                      (planet.hzd != null && planet.hzd >= -1.0 && planet.hzd <= 1.0) ||
+                      esi >= 0.75;
 
                     return (
                       <tr key={pid} className="hover:bg-slate-900/40 transition">
-                        <td className="p-3 font-semibold text-slate-200">{planet.name}</td>
-                        <td className="p-3 text-slate-300">{fmt(planet.radiusEarth)} R⊕</td>
-                        <td className="p-3 text-slate-300">{fmt(planet.massEarth)} M⊕</td>
-                        <td className="p-3 text-slate-300">{fmt(planet.densityGCm3)} g/cm³</td>
-                        <td className="p-3 text-slate-300">{fmt(planet.eqTempK ?? planet.equilibriumTempK)} K</td>
-                        <td className="p-3 text-slate-300">{fmt(planet.orbitAU, 4)} AU</td>
-                        <td className="p-3 text-slate-300">{fmt(planet.starTempK, 0)} K</td>
-                        <td className={`p-3 font-medium ${star.color}`}>{star.label}</td>
-                        <td className="p-3 text-cyan-400 font-mono-data">{fmt(esi, 4)}</td>
-                        <td className="p-3 text-purple-400 font-mono-data">{phi ? fmt(phi, 4) : '—'}</td>
-                        <td className="p-3 text-center">
-                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs border font-medium ${
+                        <td className="p-3.5 font-semibold text-slate-200">{planet.name}</td>
+                        <td className={`p-3.5 font-medium ${star.color}`}>{star.label}</td>
+                        <td className="p-3.5 text-slate-300">
+                          {planet.radiusEarth != null ? `${Number(planet.radiusEarth).toFixed(2)} R⊕` : ''}
+                        </td>
+                        <td className="p-3.5 text-slate-300">
+                          {(planet.equilibriumTempK ?? planet.eqTempK) != null ? `${Number(planet.equilibriumTempK ?? planet.eqTempK).toFixed(0)} K` : ''}
+                        </td>
+                        <td className="p-3.5 text-cyan-400 font-bold">{esi.toFixed(2)}</td>
+                        <td className="p-3.5">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] border font-medium ${
                             inHZ 
                               ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' 
                               : 'text-slate-400 bg-slate-500/5 border-slate-500/10'
                           }`}>
-                            {inHZ ? 'Yes' : 'No'}
+                            {inHZ ? 'Habitable' : 'Non-HZ'}
                           </span>
                         </td>
-                        <td className="p-3 text-right">
-                          <Link to={`/planet/${pid}`} className="text-cyan-400 hover:text-cyan-300 font-medium text-xs">
+                        <td className="p-3.5 text-right">
+                          <Link to={`/planet/${pid}`} className="text-cyan-400 hover:text-cyan-300 font-semibold text-xs">
                             View &rarr;
                           </Link>
                         </td>
@@ -581,7 +599,7 @@ export default function SearchExplore() {
                 <button
                   onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
-                  className="px-3 py-2 rounded-xl border border-slate-800 bg-slate-900 text-xs font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition"
+                  className="px-3 py-2 rounded-xl border border-slate-800 bg-slate-900 text-xs font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition text-slate-200"
                 >
                   Prev
                 </button>
@@ -591,7 +609,7 @@ export default function SearchExplore() {
                 <button
                   onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
-                  className="px-3 py-2 rounded-xl border border-slate-800 bg-slate-900 text-xs font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition"
+                  className="px-3 py-2 rounded-xl border border-slate-800 bg-slate-900 text-xs font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition text-slate-200"
                 >
                   Next
                 </button>

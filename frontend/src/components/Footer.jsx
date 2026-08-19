@@ -1,5 +1,5 @@
 import React from 'react';
-import { Orbit, Database, Compass, BarChart3, Info, FileText } from 'lucide-react';
+import { Orbit, Database, Compass, BarChart3, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -18,10 +18,15 @@ export default function Footer() {
             <p className="text-slate-500 text-xs italic leading-relaxed">
               Explore worlds beyond our solar system.
             </p>
-            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-[12px] font-mono-data text-cyan-400/90">
+            <a
+              href="https://exoplanetarchive.ipac.caltech.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-[12px] font-mono-data text-cyan-400/90 hover:border-cyan-500/40 hover:text-cyan-300 transition-colors"
+            >
               <Database className="w-3 h-3" />
               <span>NASA Exoplanet Archive • Public Data</span>
-            </div>
+            </a>
           </div>
 
           {/* Column 2: EXPLORE */}
@@ -35,7 +40,7 @@ export default function Footer() {
               <li><Link to="/search" className="hover:text-cyan-400 transition-colors">Search & Explore</Link></li>
               <li><Link to="/planet/kepler-452b" className="hover:text-cyan-400 transition-colors">Planet Detail</Link></li>
               <li><Link to="/compare" className="hover:text-cyan-400 transition-colors">Compare Worlds</Link></li>
-              <li><Link to="/esi" className="hover:text-cyan-400 transition-colors">Planetary Metrics Calculator</Link></li>
+              <li><Link to="/esi" className="hover:text-cyan-400 transition-colors">ExoCalc</Link></li>
             </ul>
           </div>
 
@@ -71,7 +76,14 @@ export default function Footer() {
                 <span className="font-semibold text-xs uppercase tracking-wider">DATA SOURCE</span>
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">NASA Exoplanet Archive</p>
+                <a
+                  href="https://exoplanetarchive.ipac.caltech.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold text-sm hover:text-cyan-400 transition-colors inline-block"
+                >
+                  NASA Exoplanet Archive ↗
+                </a>
                 <p className="text-slate-400 text-xs mt-1 leading-relaxed">
                   Publicly available exoplanet data used throughout Exora.
                 </p>

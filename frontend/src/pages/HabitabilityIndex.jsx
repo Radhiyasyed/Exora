@@ -1,185 +1,390 @@
 import React, { useState } from 'react';
-import { Gauge, Sparkles, ChevronDown, ChevronUp, Calculator, Info, Orbit, HelpCircle } from 'lucide-react';
+import { Gauge, Calculator, Info, Compass } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
 
 export default function HabitabilityIndex() {
-  // 3 Dynamic Parameter Sliders
-  const [radius, setRadius] = useState(1.63); // Earth radii
-  const [density, setDensity] = useState(1.15); // Earth relative density
-  const [flux, setFlux] = useState(1.10); // Solar irradiance relative to Earth
+  // Inputs for Earth Similarity Index (ESI)
+  const [radius, setRadius] = useState(1.0); // Earth radii (0.1 - 20.0)
+  const [density, setDensity] = useState(1.0); // Bulk density (0.2 - 2.5)
+  const [tempK, setTempK] = useState(288); // Equilibrium Temperature in K (100 - 2000)
 
-  // Compute live ESI scores and complementary habitability metrics
-  const calculateESI = (r, d, f) => {
+  // Inputs for Habitable Zone Distance (HZD)
+  const [stellarLuminosity, setStellarLuminosity] = useState(0.0); // log10(L/Lsun), range -4.0 to +2.0
+  const [orbitalDistanceAU, setOrbitalDistanceAU] = useState(1.0); // AU, range 0.01 to 10.0
+
+  // ═══════════════════════════════════════════════════
+  // CALCULATION LOGIC
+  // ═══════════════════════════════════════════════════
+
+  // Schulze-Makuch ESI (2011) formula
+  const calculateESI = (r, d, t) => {
+    const numR = parseFloat(r);
+    const numD = parseFloat(d);
+    const numT = parseFloat(t);
+
+    if (isNaN(numR) || isNaN(numD) || isNaN(numT) || numR <= 0 || numD <= 0 || numT <= 0) return 0;
+
     const wR = 0.57;
     const wD = 1.07;
-    const wF = 0.62;
-    const esiR = Math.pow(1 - Math.abs(r - 1) / (r + 1), wR);
-    const esiD = Math.pow(1 - Math.abs(d - 1) / (d + 1), wD);
-    const esiF = Math.pow(1 - Math.abs(f - 1) / (f + 1), wF);
-    return Math.max(0, Math.min(1.0, esiR * esiD * esiF));
+    const wV = 0.70;
+    const wT = 5.58;
+
+    // Escape velocity relative to Earth: v_esc = R * sqrt(density)
+    const vEsc = numR * Math.sqrt(numD);
+
+    const termR = Math.pow(Math.max(0, 1 - Math.abs(numR - 1.0) / (numR + 1.0)), wR);
+    const termD = Math.pow(Math.max(0, 1 - Math.abs(numD - 1.0) / (numD + 1.0)), wD);
+    const termV = Math.pow(Math.max(0, 1 - Math.abs(vEsc - 1.0) / (vEsc + 1.0)), wV);
+    const termT = Math.pow(Math.max(0, 1 - Math.abs(numT - 288.0) / (numT + 288.0)), wT);
+
+    const interior = Math.sqrt(termR * termD);
+    const surface = Math.sqrt(termV * termT);
+    const esi = Math.sqrt(interior * surface);
+    return Math.max(0, Math.min(1.0, isNaN(esi) ? 0 : esi));
   };
 
-  const calculatePHI = (r, d, f) => {
-    // PHI uses 4 normalized components based on (1 - |difference ratio|).
-    // Note: Since starTempK and orbitAU are not available in this component's scope,
-    // we use the existing flux input as a proxy for the stellar/orbital similarity component.
-    const simR = Math.max(0, 1 - Math.abs(r - 1) / (r + 1));
-    const simD = Math.max(0, 1 - Math.abs(d - 1) / (d + 1));
-    const simT = Math.max(0, 1 - Math.abs(f - 1) / (f + 1));
-    const simS = Math.max(0, 1 - Math.abs(f - 1) / (f + 1)); // Proxy
-    
-    const phi = Math.pow(simR * simD * simT * simS, 0.25);
-    return Math.max(0, Math.min(1.0, phi));
+  // Habitable Zone Distance (HZD) calculation
+  const calculateHZD = (logLum, distAU) => {
+    const numDist = parseFloat(distAU);
+    if (isNaN(numDist) || numDist <= 0) return 0;
+
+    const parsedLum = parseFloat(logLum);
+    const numLum = isNaN(parsedLum) ? 0 : parsedLum;
+    const l_rel = Math.pow(10, numLum); // archive stores st_lum as log10(L/Lsun)
+
+    const r_inner = Math.sqrt(l_rel / 1.1);
+    const r_outer = Math.sqrt(l_rel / 0.53);
+
+    if (r_outer === r_inner) return 0;
+
+    const hzd = (2 * numDist - r_outer - r_inner) / (r_outer - r_inner);
+    return isNaN(hzd) ? 0 : hzd;
   };
 
-  const computedESI = calculateESI(radius, density, flux);
-  const computedPHI = calculatePHI(radius, density, flux);
-  const esiPercent = Math.round(computedESI * 100);
-  const phiPercent = Math.round(computedPHI * 100);
-
-  const getStatusColor = (score) => {
-    if (score >= 0.8) return 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10';
-    if (score >= 0.6) return 'text-cyan-400 border-cyan-500/40 bg-cyan-500/10';
-    if (score >= 0.4) return 'text-amber-400 border-amber-500/40 bg-amber-500/10';
-    return 'text-rose-400 border-rose-500/40 bg-rose-500/10';
+  const handleReset = () => {
+    setRadius('');
+    setDensity('');
+    setTempK('');
+    setStellarLuminosity(0.0);
+    setOrbitalDistanceAU('');
   };
+
+  const computedESI = calculateESI(radius, density, tempK);
+  const computedHZD = calculateHZD(stellarLuminosity, orbitalDistanceAU);
+
+  // Formatting helper ensuring 100% mathematical parity between decimal and percentage display
+  const formatESIDisplay = (val) => {
+    if (val <= 0 || isNaN(val)) {
+      return { decimal: '0.000', percent: '0.0%' };
+    }
+    if (val >= 0.9999) {
+      return { decimal: '1.000', percent: '100.0%' };
+    }
+    if (val < 0.001) {
+      return { 
+        decimal: val.toFixed(5), 
+        percent: `${(val * 100).toFixed(3)}%` 
+      };
+    }
+    if (val < 0.01) {
+      return { 
+        decimal: val.toFixed(4), 
+        percent: `${(val * 100).toFixed(2)}%` 
+      };
+    }
+    return { 
+      decimal: val.toFixed(3), 
+      percent: `${(val * 100).toFixed(1)}%` 
+    };
+  };
+
+  const { decimal: formattedESI, percent: formattedPercent } = formatESIDisplay(computedESI);
+  const esiGaugePercent = Math.min(100, Math.max(0, computedESI * 100));
+
+  const getHZDStatus = (hzdVal, dist) => {
+    const d = parseFloat(dist);
+    if (isNaN(d) || d <= 0) return { label: 'Awaiting Inputs', inZone: false };
+    if (hzdVal < -1.0) return { label: 'Too Hot (Inner Limit)', inZone: false };
+    if (hzdVal > 1.0) return { label: 'Too Cold (Outer Limit)', inZone: false };
+    return { label: 'Habitable Zone Center', inZone: true };
+  };
+
+  const hzdStatus = getHZDStatus(computedHZD, orbitalDistanceAU);
+  const hasValidHZD = orbitalDistanceAU !== '' && !isNaN(parseFloat(orbitalDistanceAU)) && parseFloat(orbitalDistanceAU) > 0;
+
+  // HZD progress gauge fill percentage normalized (-2 to +2 scale mapped to 0-100%)
+  const hzdClamped = Math.max(-2, Math.min(2, computedHZD));
+  const hzdGaugePercent = Math.round(((hzdClamped + 2) / 4) * 100);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
       
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-extrabold text-white flex items-center space-x-3">
-          <Gauge className="w-7 h-7 text-cyan-400" />
-          <span>Planetary Metrics Calculator</span>
-        </h1>
-        <p className="text-slate-400 text-xs mt-1">
-          Interactively model the Earth Similarity Index using Schulze-Makuch's planetary similarity formulation.
-        </p>
+      {/* ═══════════════════════════════════════════════════
+          HEADER: ExoCalc + Reset Button
+          ═══════════════════════════════════════════════════ */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h1 className="text-3xl font-extrabold text-white flex items-center space-x-3">
+            <Gauge className="w-7 h-7 text-cyan-400" />
+            <span>ExoCalc</span>
+          </h1>
+          <p className="text-slate-400 text-xs mt-1">
+            Interactive calculator for Earth Similarity Index (ESI) and Habitable Zone Distance (HZD) based on astrophysical models.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleReset}
+          className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 text-xs font-mono-data font-semibold transition-all shadow-sm flex items-center space-x-2"
+        >
+          <span>Reset All Inputs</span>
+        </button>
       </div>
 
       {/* Main Interactive Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        {/* Left Parameter Sliders Panel */}
-        <div className="lg:col-span-7 glass-panel p-6 rounded-2xl border border-slate-800 space-y-6">
-          <div className="flex items-center space-x-2 text-white font-bold text-sm border-b border-slate-800/80 pb-4">
-            <Calculator className="w-4 h-4 text-cyan-400" />
-            <span>Interactive Planetary Controls</span>
-          </div>
-
-          {/* Slider 1: Planetary Radius */}
-          <div className="space-y-2">
-            <div className="flex justify-between items-center text-xs font-mono-data">
-              <span className="text-slate-300 font-semibold">1. Planetary Radius ($R_\oplus$)</span>
-              <span className="text-cyan-400 font-bold bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
-                {radius} R⊕
-              </span>
-            </div>
-            <input
-              type="range"
-              min="0.3"
-              max="3.0"
-              step="0.05"
-              value={radius}
-              onChange={(e) => setRadius(parseFloat(e.target.value))}
-              className="w-full accent-cyan-400 cursor-pointer"
-            />
-            <div className="flex justify-between text-[12px] text-slate-500 font-mono-data">
-              <span>0.3 (Sub-Earth)</span>
-              <span>1.0 (Earth)</span>
-              <span>3.0 (Super-Earth / Sub-Neptune)</span>
-            </div>
-          </div>
-
-          {/* Slider 2: Bulk Density */}
-          <div className="space-y-2">
-            <div className="flex justify-between items-center text-xs font-mono-data">
-              <span className="text-slate-300 font-semibold">2. Bulk Density ($\rho_\oplus$)</span>
-              <span className="text-indigo-400 font-bold bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
-                {density} ρ⊕
-              </span>
-            </div>
-            <input
-              type="range"
-              min="0.2"
-              max="2.5"
-              step="0.05"
-              value={density}
-              onChange={(e) => setDensity(parseFloat(e.target.value))}
-              className="w-full accent-indigo-400 cursor-pointer"
-            />
-            <div className="flex justify-between text-[12px] text-slate-500 font-mono-data">
-              <span>0.2 (Gaseous envelope)</span>
-              <span>1.0 (Earth silicate/iron)</span>
-              <span>2.5 (High iron core)</span>
-            </div>
-          </div>
-
-          {/* Slider 3: Stellar Irradiance Flux */}
-          <div className="space-y-2">
-            <div className="flex justify-between items-center text-xs font-mono-data">
-              <span className="text-slate-300 font-semibold">3. Stellar Irradiance ($S_\oplus$)</span>
-              <span className="text-purple-400 font-bold bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
-                {flux} S⊕
-              </span>
-            </div>
-            <input
-              type="range"
-              min="0.1"
-              max="3.0"
-              step="0.05"
-              value={flux}
-              onChange={(e) => setFlux(parseFloat(e.target.value))}
-              className="w-full accent-purple-400 cursor-pointer"
-            />
-            <div className="flex justify-between text-[12px] text-slate-500 font-mono-data">
-              <span>0.1 (Outer fringe)</span>
-              <span>1.0 (Solar constant)</span>
-              <span>3.0 (Runaway greenhouse)</span>
-            </div>
-          </div>
-
-          {/* Preset Buttons */}
-          <div className="pt-2">
-            <span className="text-xs font-mono-data text-slate-400 block mb-2">Preset World Profiles:</span>
-            <div className="flex flex-wrap gap-2">
+        {/* ═══════════════════════════════════════════════════
+            INPUTS PANEL: Grouped under 2 clear headers
+            ═══════════════════════════════════════════════════ */}
+        <div className="lg:col-span-7 glass-panel p-6 rounded-3xl border border-slate-800 space-y-8">
+          
+          {/* Group 1: For Earth Similarity Index (ESI) */}
+          <div className="space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div className="flex items-center space-x-2 text-white font-bold text-sm">
+                <Calculator className="w-4 h-4 text-cyan-400" />
+                <span>For Earth Similarity Index (ESI)</span>
+              </div>
               <button
-                onClick={() => { setRadius(1.0); setDensity(1.0); setFlux(1.0); }}
-                className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono-data text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
+                type="button"
+                onClick={() => {
+                  setRadius(1.0);
+                  setDensity(1.0);
+                  setTempK(288);
+                  setStellarLuminosity(0.0);
+                  setOrbitalDistanceAU(1.0);
+                }}
+                className="text-[11px] text-cyan-400 hover:text-cyan-300 font-mono-data underline"
               >
-                Earth Preset
-              </button>
-              <button
-                onClick={() => { setRadius(1.63); setDensity(1.15); setFlux(1.10); }}
-                className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono-data text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
-              >
-                Kepler-452b Preset
-              </button>
-              <button
-                onClick={() => { setRadius(0.92); setDensity(0.98); setFlux(0.66); }}
-                className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono-data text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
-              >
-                TRAPPIST-1e Preset
+                Set Earth Baseline
               </button>
             </div>
+
+            {/* Input 1: Planetary Radius (0.1 - 20.0 R⊕) */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center text-xs font-mono-data">
+                <span className="text-slate-300 font-semibold">Planetary Radius (R⊕)</span>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="number"
+                    min="0.1"
+                    max="20.0"
+                    step="0.05"
+                    value={radius !== '' && !isNaN(radius) ? radius : ''}
+                    placeholder="0.0"
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setRadius(v === '' ? '' : parseFloat(v));
+                    }}
+                    className="w-20 bg-slate-900 border border-slate-700 rounded-lg px-2 py-0.5 text-right text-cyan-400 font-bold text-xs focus:outline-none focus:border-cyan-400 font-mono-data"
+                  />
+                  <span className="text-slate-400 text-xs">R⊕</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                min="0.1"
+                max="20.0"
+                step="0.05"
+                value={radius !== '' && !isNaN(radius) ? radius : 0.1}
+                onChange={(e) => setRadius(parseFloat(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
+              <div className="flex justify-between text-[11px] text-slate-500 font-mono-data">
+                <span>0.1 R⊕ (Sub-Earth)</span>
+                <span>1.0 R⊕ (Earth)</span>
+                <span>20.0 R⊕ (Gas Giant)</span>
+              </div>
+            </div>
+
+            {/* Input 2: Bulk Density (0.2 - 2.5 ρ⊕) */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center text-xs font-mono-data">
+                <span className="text-slate-300 font-semibold">Bulk Density (ρ⊕)</span>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="number"
+                    min="0.2"
+                    max="2.5"
+                    step="0.05"
+                    value={density !== '' && !isNaN(density) ? density : ''}
+                    placeholder="0.0"
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setDensity(v === '' ? '' : parseFloat(v));
+                    }}
+                    className="w-20 bg-slate-900 border border-slate-700 rounded-lg px-2 py-0.5 text-right text-cyan-400 font-bold text-xs focus:outline-none focus:border-cyan-400 font-mono-data"
+                  />
+                  <span className="text-slate-400 text-xs">ρ⊕</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                min="0.2"
+                max="2.5"
+                step="0.05"
+                value={density !== '' && !isNaN(density) ? density : 0.2}
+                onChange={(e) => setDensity(parseFloat(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
+              <div className="flex justify-between text-[11px] text-slate-500 font-mono-data">
+                <span>0.2 ρ⊕ (Gas / Ice)</span>
+                <span>1.0 ρ⊕ (Earth 5.51 g/cm³)</span>
+                <span>2.5 ρ⊕ (Super-Dense Iron)</span>
+              </div>
+            </div>
+
+            {/* Input 3: Equilibrium Temperature (100 - 2000 K) */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center text-xs font-mono-data">
+                <span className="text-slate-300 font-semibold">Equilibrium Temperature (K)</span>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="number"
+                    min="100"
+                    max="2000"
+                    step="5"
+                    value={tempK !== '' && !isNaN(tempK) ? tempK : ''}
+                    placeholder="0"
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setTempK(v === '' ? '' : parseFloat(v));
+                    }}
+                    className="w-20 bg-slate-900 border border-slate-700 rounded-lg px-2 py-0.5 text-right text-cyan-400 font-bold text-xs focus:outline-none focus:border-cyan-400 font-mono-data"
+                  />
+                  <span className="text-slate-400 text-xs">K</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                min="100"
+                max="2000"
+                step="5"
+                value={tempK !== '' && !isNaN(tempK) ? tempK : 100}
+                onChange={(e) => setTempK(parseFloat(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
+              <div className="flex justify-between text-[11px] text-slate-500 font-mono-data">
+                <span>100 K (Cryogenic)</span>
+                <span>288 K (Earth baseline)</span>
+                <span>2000 K (Hot Jupiter)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Group 2: For Habitable Zone Distance (HZD) */}
+          <div className="space-y-5 pt-4 border-t border-slate-800/80">
+            <div className="flex items-center space-x-2 text-white font-bold text-sm border-b border-slate-800/80 pb-3">
+              <Compass className="w-4 h-4 text-emerald-400" />
+              <span>For Habitable Zone Distance (HZD)</span>
+            </div>
+
+            {/* Input 4: Stellar Luminosity log10(L/Lsun) */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center text-xs font-mono-data">
+                <span className="text-slate-300 font-semibold">Stellar Luminosity (log₁₀ L/L☉)</span>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="number"
+                    min="-4.0"
+                    max="2.0"
+                    step="0.05"
+                    value={stellarLuminosity !== '' && !isNaN(stellarLuminosity) ? stellarLuminosity : ''}
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setStellarLuminosity(v === '' ? '' : parseFloat(v));
+                    }}
+                    className="w-20 bg-slate-900 border border-slate-700 rounded-lg px-2 py-0.5 text-right text-emerald-400 font-bold text-xs focus:outline-none focus:border-emerald-400 font-mono-data"
+                  />
+                  <span className="text-slate-400 text-xs">log₁₀</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                min="-4.0"
+                max="2.0"
+                step="0.05"
+                value={stellarLuminosity !== '' && !isNaN(stellarLuminosity) ? stellarLuminosity : 0}
+                onChange={(e) => setStellarLuminosity(parseFloat(e.target.value))}
+                className="w-full accent-emerald-400 cursor-pointer"
+              />
+              <div className="flex justify-between text-[11px] text-slate-500 font-mono-data">
+                <span>-4.0 (Ultra-cool Dwarf)</span>
+                <span>0.0 (Solar Lsun)</span>
+                <span>+2.0 (Massive Star)</span>
+              </div>
+            </div>
+
+            {/* Input 5: Planetary Orbital Distance (AU) */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center text-xs font-mono-data">
+                <span className="text-slate-300 font-semibold">Planetary Orbital Distance (AU)</span>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="number"
+                    min="0.01"
+                    max="10.0"
+                    step="0.01"
+                    value={orbitalDistanceAU !== '' && !isNaN(orbitalDistanceAU) ? orbitalDistanceAU : ''}
+                    placeholder="0.00"
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setOrbitalDistanceAU(v === '' ? '' : parseFloat(v));
+                    }}
+                    className="w-20 bg-slate-900 border border-slate-700 rounded-lg px-2 py-0.5 text-right text-emerald-400 font-bold text-xs focus:outline-none focus:border-emerald-400 font-mono-data"
+                  />
+                  <span className="text-slate-400 text-xs">AU</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                min="0.01"
+                max="10.0"
+                step="0.01"
+                value={orbitalDistanceAU !== '' && !isNaN(orbitalDistanceAU) ? orbitalDistanceAU : 0.01}
+                onChange={(e) => setOrbitalDistanceAU(parseFloat(e.target.value))}
+                className="w-full accent-emerald-400 cursor-pointer"
+              />
+              <div className="flex justify-between text-[11px] text-slate-500 font-mono-data">
+                <span>0.01 AU (Tight Orbit)</span>
+                <span>1.0 AU (Earth)</span>
+                <span>10.0 AU (Outer System)</span>
+              </div>
+            </div>
+
           </div>
 
         </div>
 
-        {/* Right Animated Dual Score Display Panel */}
-        <div className="lg:col-span-5 glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col space-y-6">
+        {/* ═══════════════════════════════════════════════════
+            OUTPUT PANEL: Dual Ring Live Readout (ESI / HZD)
+            ═══════════════════════════════════════════════════ */}
+        <div className="lg:col-span-5 glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col space-y-6">
           <div className="text-center">
-            <span className="text-xs font-mono-data text-slate-400 uppercase tracking-widest">
-              Computed Planetary Similarity Metrics
+            <span className="text-xs font-mono-data text-slate-400 uppercase tracking-widest font-bold">
+              Computed Planetary Metrics
             </span>
           </div>
 
+          {/* Primary Focal Point: Dual-Ring Gauges (ESI & HZD) */}
           <div className="flex flex-col sm:flex-row gap-6 items-center justify-center w-full">
-            {/* ESI Block */}
-            <div className="flex-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-cyan-500/20 bg-slate-900/40 w-full shadow-inner">
-              <div className="relative w-36 h-36 mb-4">
+            
+            {/* ESI Gauge */}
+            <div className="flex-1 flex flex-col items-center justify-center p-5 rounded-2xl border border-cyan-500/20 bg-slate-950/60 w-full shadow-inner space-y-3">
+              <div className="relative w-36 h-36">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                   <path
                     className="text-slate-800"
@@ -190,7 +395,7 @@ export default function HabitabilityIndex() {
                   />
                   <path
                     className="text-cyan-400 transition-all duration-500 ease-out"
-                    strokeDasharray={`${esiPercent}, 100`}
+                    strokeDasharray={`${esiGaugePercent}, 100`}
                     strokeWidth="3.5"
                     strokeLinecap="round"
                     stroke="currentColor"
@@ -199,19 +404,21 @@ export default function HabitabilityIndex() {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-extrabold font-display text-white leading-none">{computedESI.toFixed(2)}</span>
-                  <span className="text-[12px] text-slate-400 font-bold mt-1">ESI</span>
+                  <span className="text-3xl font-extrabold font-mono-data text-white leading-none">
+                    {formattedESI}
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-mono-data font-bold mt-1">ESI</span>
                 </div>
               </div>
-              <div className="text-center">
+              <div className="text-center space-y-0.5">
                 <div className="font-semibold text-cyan-300 text-xs">Earth Similarity Index</div>
-                <div className="text-white text-lg font-bold">{esiPercent}%</div>
+                <div className="text-white text-base font-bold font-mono-data">{formattedPercent}</div>
               </div>
             </div>
 
-            {/* PHI Block */}
-            <div className="flex-1 flex flex-col items-center justify-center p-4 rounded-2xl border border-emerald-500/20 bg-slate-900/40 w-full shadow-inner">
-              <div className="relative w-36 h-36 mb-4">
+            {/* HZD Gauge */}
+            <div className="flex-1 flex flex-col items-center justify-center p-5 rounded-2xl border border-emerald-500/20 bg-slate-950/60 w-full shadow-inner space-y-3">
+              <div className="relative w-36 h-36">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                   <path
                     className="text-slate-800"
@@ -222,7 +429,7 @@ export default function HabitabilityIndex() {
                   />
                   <path
                     className="text-emerald-400 transition-all duration-500 ease-out"
-                    strokeDasharray={`${phiPercent}, 100`}
+                    strokeDasharray={`${hasValidHZD ? hzdGaugePercent : 0}, 100`}
                     strokeWidth="3.5"
                     strokeLinecap="round"
                     stroke="currentColor"
@@ -231,79 +438,115 @@ export default function HabitabilityIndex() {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-extrabold font-display text-white leading-none">{computedPHI.toFixed(2)}</span>
-                  <span className="text-[12px] text-slate-400 font-bold mt-1">PHI</span>
+                  <span className="text-2xl font-extrabold font-mono-data text-white leading-none">
+                    {hasValidHZD ? (computedHZD >= 0 ? `+${computedHZD.toFixed(2)}` : computedHZD.toFixed(2)) : '0.00'}
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-mono-data font-bold mt-1">HZD</span>
                 </div>
               </div>
-              <div className="text-center">
-                <div className="font-semibold text-emerald-300 text-xs">Planetary Habitability</div>
-                <div className="text-white text-lg font-bold">{phiPercent}%</div>
+              <div className="text-center space-y-0.5">
+                <div className="font-semibold text-emerald-300 text-xs">Habitable Zone Distance</div>
+                <div className="text-white text-base font-bold font-mono-data">
+                  {hasValidHZD ? `${computedHZD >= 0 ? '+' : ''}${computedHZD.toFixed(2)}` : '0.00'}
+                </div>
               </div>
             </div>
+
           </div>
 
-          <div className="flex justify-center pt-2">
-            <div className={`px-4 py-1.5 rounded-full border text-xs font-mono-data font-bold ${getStatusColor(computedESI)}`}>
-              {computedESI >= 0.8
-                ? 'High Terrestrial Parity'
-                : computedESI >= 0.6
-                ? 'Moderate Parity'
-                : 'Low Terrestrial Parity'}
+          {/* Tertiary Status Indicators: Side-by-Side Unified Pill Badges */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-mono-data text-xs">
+            <div className="p-2.5 rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-center flex items-center justify-center space-x-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+              <span className="text-cyan-300 font-semibold text-[11px]">
+                {computedESI >= 0.8
+                  ? 'High Terrestrial Parity'
+                  : computedESI >= 0.6
+                  ? 'Moderate Parity'
+                  : 'Low Terrestrial Parity'}
+              </span>
             </div>
-          </div>
-        </div>
 
-      </div>
-
-      {/* Formula Breakdowns */}
-      <div className="flex flex-col sm:flex-row gap-6 items-stretch w-full mb-6">
-        {/* ESI Formula Block */}
-        <div className="flex-1 glass-panel rounded-2xl border border-slate-800 flex flex-col overflow-hidden shadow-lg">
-          <div className="p-4 border-b border-slate-800/80 bg-slate-900/50 flex items-center justify-center space-x-2">
-            <Info className="w-4 h-4 text-cyan-400" />
-            <span className="text-white font-bold text-sm">Schulze-Makuch ESI</span>
-          </div>
-          <div className="p-6 bg-slate-950/60 flex-1 flex flex-col justify-center items-center space-y-4">
-            <div className="p-4 rounded-xl bg-slate-900 w-full overflow-x-auto text-cyan-300 flex justify-center border border-cyan-500/10">
-              <BlockMath math="ESI = \prod_{i} \left[1 - \left|\frac{x_i - x_{i,0}}{x_i + x_{i,0}}\right|\right]^{w_i}" />
-            </div>
-            <p className="text-xs font-mono-data text-slate-400 leading-relaxed text-center px-2">
-              Where <InlineMath math="x_i" /> represents the planetary parameter value (radius, density, flux), <InlineMath math="x_{i,0}" /> is Earth's baseline reference value (1.0), and <InlineMath math="w_i" /> is the empirical weighting exponent.
-            </p>
-          </div>
-        </div>
-
-        {/* PHI Formula Block */}
-        <div className="flex-1 glass-panel rounded-2xl border border-slate-800 flex flex-col overflow-hidden shadow-lg">
-          <div className="p-4 border-b border-slate-800/80 bg-slate-900/50 flex items-center justify-center space-x-2">
-            <Info className="w-4 h-4 text-emerald-400" />
-            <span className="text-white font-bold text-sm">Planetary Habitability Index</span>
-          </div>
-          <div className="p-6 bg-slate-950/60 flex-1 flex flex-col justify-center items-center space-y-4">
-            <div className="p-4 rounded-xl bg-slate-900 w-full overflow-x-auto text-emerald-300 flex justify-center border border-emerald-500/10">
-              <BlockMath math="PHI = \sqrt[4]{S_r \cdot S_\rho \cdot S_T \cdot S_o}" />
-            </div>
-            <p className="text-xs font-mono-data text-slate-400 leading-relaxed text-center px-2">
-              Where the subscripts represent similarity sub-scores for planetary radius (<InlineMath math="S_r" />), bulk density (<InlineMath math="S_\rho" />), surface temperature proxy (<InlineMath math="S_T" />), and stellar/orbital characteristics (<InlineMath math="S_o" />), combined as a geometric mean.
-            </p>
-            <div className="pt-2 w-full flex justify-center">
-              <span className="px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded text-[12px] text-emerald-400 font-bold uppercase tracking-widest">
-                API: planetaryHabitabilityIndex
+            <div className="p-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-center flex items-center justify-center space-x-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span className="text-emerald-300 font-semibold text-[11px]">
+                {hzdStatus.label}
               </span>
             </div>
           </div>
         </div>
+
       </div>
 
-      {/* Comprehensive Scientific Context Panel */}
-      <div className="glass-panel p-6 rounded-2xl border border-slate-800 space-y-3 text-xs leading-relaxed">
-        <div className="flex items-center space-x-2 text-cyan-400 font-mono-data font-bold">
-          <Sparkles className="w-4 h-4" />
-          <span>Scientific Context & Astrobiological Utility</span>
+      {/* ═══════════════════════════════════════════════════
+          SCIENTIFIC CONTEXT SECTIONS
+          ═══════════════════════════════════════════════════ */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch w-full mb-6">
+        
+        {/* ESI Formula Block */}
+        <div className="glass-panel rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-lg">
+          <div className="p-4 border-b border-slate-800/80 bg-slate-900/50 flex items-center justify-center space-x-2">
+            <Info className="w-4 h-4 text-cyan-400" />
+            <span className="text-white font-bold text-sm">Schulze-Makuch ESI Formulation</span>
+          </div>
+          <div className="p-6 bg-slate-950/60 flex-1 flex flex-col justify-between space-y-4">
+            <div className="p-4 rounded-2xl bg-slate-900 w-full overflow-x-auto text-cyan-300 flex justify-center border border-cyan-500/10 shadow-inner">
+              <BlockMath math="ESI = \prod_{i} \left[1 - \left|\frac{x_i - x_{i,0}}{x_i + x_{i,0}}\right|\right]^{w_i}" />
+            </div>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              The Earth Similarity Index calculates a weighted geometric mean across planetary radius, bulk density, escape velocity, and surface equilibrium temperature relative to Earth standards.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[11px] font-mono-data pt-2 border-t border-slate-800">
+              <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 block text-[10px]">Radius (w)</span>
+                <span className="text-cyan-400 font-bold">0.57</span>
+              </div>
+              <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 block text-[10px]">Density (w)</span>
+                <span className="text-cyan-400 font-bold">1.07</span>
+              </div>
+              <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 block text-[10px]">v_esc (w)</span>
+                <span className="text-cyan-400 font-bold">0.70</span>
+              </div>
+              <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 block text-[10px]">Temp (w)</span>
+                <span className="text-cyan-400 font-bold">5.58</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="text-slate-300">
-          The Earth Similarity Index (ESI) is a standardized scale ranging from 0 (no similarity) to 1 (identical to Earth) designed by planetary scientists to quickly screen cataloged exoplanets. While an ESI &gt; 0.8 indicates a promising candidate for terrestrial surface conditions, direct spectroscopic observation of biosignatures (such as oxygen-methane atmospheric disequilibrium) remains essential for confirming biological habitability.
-        </p>
+
+        {/* HZD Formula Block */}
+        <div className="glass-panel rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-lg">
+          <div className="p-4 border-b border-slate-800/80 bg-slate-900/50 flex items-center justify-center space-x-2">
+            <Compass className="w-4 h-4 text-emerald-400" />
+            <span className="text-white font-bold text-sm">Habitable Zone Distance (HZD) Formulation</span>
+          </div>
+          <div className="p-6 bg-slate-950/60 flex-1 flex flex-col justify-between space-y-4">
+            <div className="p-4 rounded-2xl bg-slate-900 w-full overflow-x-auto text-emerald-300 flex justify-center border border-emerald-500/10 shadow-inner">
+              <BlockMath math="HZD = \frac{2 \cdot d - r_{\text{out}} - r_{\text{in}}}{r_{\text{out}} - r_{\text{in}}}" />
+            </div>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              HZD determines relative position inside the circumstellar habitable zone. An HZD between <InlineMath math="[-1, +1]" /> represents the habitable zone, with negative values indicating warmer orbits and positive values indicating cooler orbits.
+            </p>
+            <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-mono-data pt-2 border-t border-slate-800">
+              <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 block text-[10px]">Inner Boundary</span>
+                <span className="text-emerald-400 font-bold">-1.0 (Runaway)</span>
+              </div>
+              <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 block text-[10px]">Center</span>
+                <span className="text-emerald-400 font-bold">0.0 (Optimal)</span>
+              </div>
+              <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800">
+                <span className="text-slate-400 block text-[10px]">Outer Boundary</span>
+                <span className="text-emerald-400 font-bold">+1.0 (Snowball)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>

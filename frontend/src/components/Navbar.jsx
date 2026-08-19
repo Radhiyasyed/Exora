@@ -5,11 +5,10 @@ import { Orbit, Globe, Search, Scale, Gauge, Activity, BookOpen, ChevronDown } f
 const NAV_ITEMS = [
   { path: '/', label: 'Home', icon: Globe },
   { path: '/search', label: 'Search & Explore', icon: Search },
-  { path: '/planet/kepler-452b', label: 'Planet Detail', icon: Orbit },
   { path: '/compare', label: 'Compare Worlds', icon: Scale },
-  { path: '/esi', label: 'Planetary Metrics Calculator', icon: Gauge }, // Section 1 & 6: Path mapped cleanly to /esi
+  { path: '/esi', label: 'ExoCalc', icon: Gauge },
   { path: '/lightcurve', label: 'Light Curve Lab', icon: Activity },
-  { path: '/learn', label: 'Learn', icon: BookOpen }, // Isolated left neighbor of the More dropdown
+  { path: '/learn', label: 'Learn', icon: BookOpen },
 ];
 
 export default function Navbar() {

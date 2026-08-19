@@ -11,7 +11,7 @@ export default function Resources() {
         </div>
         <h1 className="text-4xl font-extrabold text-white">Resources & Acknowledgements</h1>
         <p className="text-slate-400 text-sm leading-relaxed">
-          The information below is curated to document the sources, formulas, and scientific teams behind Exora’s mission to make NASA exoplanet data accessible and educational.
+          The information below is curated to document the sources, formulas, and scientific teams behind Exora's mission to make NASA exoplanet data accessible and educational.
         </p>
       </div>
 
@@ -37,12 +37,15 @@ export default function Resources() {
         </div>
       </div>
 
+      {/* ═══════════════════════════════════════════════════
+          RESEARCH & DATA RESOURCES
+          ═══════════════════════════════════════════════════ */}
       <div className="glass-panel p-8 rounded-3xl border border-slate-800 space-y-6">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold text-white">Research & Data Resources</h2>
             <p className="text-slate-400 text-sm mt-2">
-              Explore the public archives, mission data, and educational resources behind Exora.
+              Explore the public archives, mission data, and foundation research papers behind Exora.
             </p>
           </div>
           <div className="inline-flex items-center px-3 py-2 rounded-full bg-slate-900 border border-slate-800 text-xs text-cyan-300 font-mono-data">
@@ -51,34 +54,129 @@ export default function Resources() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3">
-            <h3 className="text-white font-semibold">NASA Exoplanet Archive</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              The primary public archive of confirmed exoplanet observations, transit events, and derived planetary parameters used throughout Exora.
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Public Data Archives */}
+          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono-data text-cyan-400 uppercase tracking-wider font-semibold">Public Archive</span>
+              <h3 className="text-white font-semibold text-base">NASA Exoplanet Archive</h3>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                The primary public archive of confirmed exoplanet observations, transit events, and derived planetary parameters used throughout Exora.
+              </p>
+            </div>
             <a
               href="https://exoplanetarchive.ipac.caltech.edu/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold"
+              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold hover:text-cyan-200 transition-colors pt-2"
             >
               Visit Archive →
             </a>
           </div>
 
-          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3">
-            <h3 className="text-white font-semibold">Kepler & TESS Mission Files</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Source telemetry, transit catalogs, and follow-up validation records from NASA's flagship exoplanet photometry missions.
-            </p>
+          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono-data text-indigo-400 uppercase tracking-wider font-semibold">Photometry Telemetry</span>
+              <h3 className="text-white font-semibold text-base">Kepler & TESS Mission Files</h3>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Source telemetry, transit catalogs, and follow-up validation records from NASA's flagship exoplanet photometry missions.
+              </p>
+            </div>
             <a
               href="https://exoplanetarchive.ipac.caltech.edu/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold"
+              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold hover:text-cyan-200 transition-colors pt-2"
             >
               Browse Mission Data →
+            </a>
+          </div>
+
+          {/* Paper 1: Schulze-Makuch et al. (2011) */}
+          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono-data text-emerald-400 uppercase tracking-wider font-semibold">Research Paper</span>
+              <h3 className="text-white font-semibold text-base">A Two-Tiered Approach to Assessing the Habitability of Exoplanets</h3>
+              <p className="text-slate-400 text-[11px] font-mono-data text-slate-500">
+                Schulze-Makuch et al. (2011), Astrobiology Journal
+              </p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                The pioneer paper that formally introduced the Earth Similarity Index (ESI) framework used throughout Exora.
+              </p>
+            </div>
+            <a
+              href="https://doi.org/10.1089/ast.2010.0592"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold hover:text-cyan-200 transition-colors pt-2"
+            >
+              Read via Astrobiology (DOI) →
+            </a>
+          </div>
+
+          {/* Paper 2: Kopparapu et al. (2013) */}
+          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono-data text-emerald-400 uppercase tracking-wider font-semibold">Research Paper</span>
+              <h3 className="text-white font-semibold text-base">Habitable Zones around Main-Sequence Stars: New Estimates</h3>
+              <p className="text-slate-400 text-[11px] font-mono-data text-slate-500">
+                Kopparapu et al. (2013), The Astrophysical Journal
+              </p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Reference paper defining habitable zone boundary calculations used in Exora's HZD model.
+              </p>
+            </div>
+            <a
+              href="https://doi.org/10.1088/0004-637X/765/2/131"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold hover:text-cyan-200 transition-colors pt-2"
+            >
+              Read via ApJ (DOI) →
+            </a>
+          </div>
+
+          {/* Resource 3: NASA Exoplanet Watch Tutorial Series */}
+          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono-data text-purple-400 uppercase tracking-wider font-semibold">Tutorial Series</span>
+              <h3 className="text-white font-semibold text-base">Understanding Exoplanet Transit Light Curves</h3>
+              <p className="text-slate-400 text-[11px] font-mono-data text-slate-500">
+                NASA Exoplanet Watch Tutorial Series
+              </p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Beginner-friendly guide to reading transit light curves, referenced in Exora's Light Curve Lab.
+              </p>
+            </div>
+            <a
+              href="https://exoplanets.nasa.gov/exoplanet-watch/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold hover:text-cyan-200 transition-colors pt-2"
+            >
+              Explore NASA Tutorial →
+            </a>
+          </div>
+
+          {/* Reference 4: Transiting Exoplanets Textbook */}
+          <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono-data text-amber-400 uppercase tracking-wider font-semibold">Academic Textbook</span>
+              <h3 className="text-white font-semibold text-base">Transiting Exoplanets</h3>
+              <p className="text-slate-400 text-[11px] font-mono-data text-slate-500">
+                Carole A. Haswell, Cambridge University Press, ISBN 978-0521139380
+              </p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Undergraduate-level textbook covering transit geometry and light-curve analysis in detail.
+              </p>
+            </div>
+            <a
+              href="https://doi.org/10.1017/CBO9780511777486"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold hover:text-cyan-200 transition-colors pt-2"
+            >
+              View Publisher Record (DOI) →
             </a>
           </div>
         </div>
@@ -92,7 +190,7 @@ export default function Resources() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3">
-            <span className="text-xs font-mono-data text-cyan-300 uppercase">01 — TRANSIT PHOTOMETRY</span>
+            <span className="text-xs font-mono-data text-cyan-300 uppercase">01. TRANSIT PHOTOMETRY</span>
             <h4 className="text-white font-semibold text-sm mt-2">Detecting Worlds Through Starlight</h4>
             <p className="text-slate-400 text-xs mt-2 leading-relaxed">
               When a planet passes in front of its host star, it blocks a tiny fraction of the star's light. This produces a measurable dip in brightness known as a transit. Exora uses transit light-curve data to help users explore these signals and understand how exoplanets can be detected.
@@ -100,26 +198,26 @@ export default function Resources() {
           </div>
 
           <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3">
-            <span className="text-xs font-mono-data text-cyan-300 uppercase">02 — PLANETARY PARAMETERS</span>
-            <h4 className="text-white font-semibold text-sm mt-2">Understanding Each World</h4>
+            <span className="text-xs font-mono-data text-cyan-300 uppercase">02. HABITABILITY MODELING</span>
+            <h4 className="text-white font-semibold text-sm mt-2">Earth Similarity Index (ESI)</h4>
             <p className="text-slate-400 text-xs mt-2 leading-relaxed">
-              Exora brings together key planetary and stellar properties—including radius, mass, orbital period, equilibrium temperature, and stellar characteristics—to provide a broader picture of each exoplanet.
+              The Earth Similarity Index compares planetary parameters such as radius, density, and equilibrium temperature to Earth reference values. This provides an exploratory score ranging from 0 to 1, indicating physical resemblance to our home planet.
             </p>
           </div>
 
           <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3">
-            <span className="text-xs font-mono-data text-cyan-300 uppercase">03 — EARTH SIMILARITY INDEX</span>
-            <h4 className="text-white font-semibold text-sm mt-2">Comparing Worlds With Earth</h4>
+            <span className="text-xs font-mono-data text-cyan-300 uppercase">03. STELLAR ENVIRONMENT</span>
+            <h4 className="text-white font-semibold text-sm mt-2">Host Star Influences</h4>
             <p className="text-slate-400 text-xs mt-2 leading-relaxed">
-              The Earth Similarity Index (ESI) provides a comparative measure of how closely selected physical properties of an exoplanet resemble Earth. Exora presents ESI as a comparative indicator, not as proof that a planet is habitable.
+              A planet's conditions depend heavily on the type, temperature, and activity of its host star. Red dwarfs, for instance, have closer habitable zones and can produce intense flares, affecting potential planetary atmospheres.
             </p>
           </div>
 
           <div className="rounded-3xl bg-slate-950/80 border border-slate-800 p-5 space-y-3">
-            <span className="text-xs font-mono-data text-cyan-300 uppercase">04 — HABITABILITY ASSESSMENT</span>
-            <h4 className="text-white font-semibold text-sm mt-2">Exploring Potentially Favorable Conditions</h4>
+            <span className="text-xs font-mono-data text-cyan-300 uppercase">04. PUBLIC DATA ACCESSIBILITY</span>
+            <h4 className="text-white font-semibold text-sm mt-2">Connecting People to Science</h4>
             <p className="text-slate-400 text-xs mt-2 leading-relaxed">
-              Habitability is influenced by many factors, and no single number can determine whether a planet supports life. Exora uses available planetary and stellar parameters to help users explore conditions that may be relevant to potential habitability, including temperature and other environmental indicators.
+              Exora makes observational data from NASA missions accessible through interactive exploration tools. Users can examine real measurements, compare systems, and understand the science of discovery beyond our solar system.
             </p>
           </div>
         </div>
