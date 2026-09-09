@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useState, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Search, ArrowRight, Sparkles, Globe, Orbit, Database, Compass, BarChart3, Eye, Rocket, X, Thermometer, ShieldCheck } from 'lucide-react';
 import { usePlanets } from '../context/PlanetContext';
@@ -10,7 +9,6 @@ export default function Home() {
   const { planets, getPlanetById } = usePlanets();
   const [searchQuery, setSearchQuery] = useState('');
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
-  const [isWelcomeOpen, setIsWelcomeOpen] = useState(true);
 
   // Default featured planet for hero
   const heroPlanet = getPlanetById('kepler-452b') || getPlanetById('kepler-452-b') || (planets && planets[0]) || {
@@ -74,16 +72,6 @@ export default function Home() {
     ];
   }, []);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && isWelcomeOpen) {
-        setIsWelcomeOpen(false);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isWelcomeOpen]);
-
   // Autocomplete suggestions
   const filteredSuggestions = planets && searchQuery.trim() !== ''
     ? planets.filter(p =>
@@ -94,146 +82,6 @@ export default function Home() {
 
   return (
     <div className="space-y-24 pb-20 relative">
-      
-      {/* ═══════════════════════════════════════════════════
-          1. WELCOME POPUP MODAL (Rendered via React Portal)
-          ═══════════════════════════════════════════════════ */}
-      {isWelcomeOpen && typeof document !== 'undefined' && createPortal(
-        <div 
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
-          onClick={() => setIsWelcomeOpen(false)}
-        >
-          <div 
-            className="bg-slate-950 border border-slate-800 rounded-3xl w-full max-w-3xl max-h-[88vh] my-auto flex flex-col shadow-[0_0_60px_rgba(0,0,0,0.9)] relative overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Top Close Button */}
-            <button 
-              onClick={() => setIsWelcomeOpen(false)} 
-              className="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-cyan-400/50 z-30 w-9 h-9 flex items-center justify-center rounded-full shadow-lg transition-all"
-              aria-label="Close modal"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            {/* Scrollable Modal Body */}
-            <div className="overflow-y-auto min-h-0 flex-1 p-6 sm:p-8 space-y-6">
-              
-              {/* Header with Title, Subtitle, Tagline and Sourced Data Box */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-slate-800/80 pr-8">
-                <div className="space-y-1.5 max-w-md">
-                  <span className="text-[10px] sm:text-[11px] font-mono-data font-bold text-cyan-400 tracking-widest uppercase block">
-                    OPEN DATA EXPLORER • DIGITAL OBSERVATORY
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                    Welcome to Exora
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pt-1">
-                    Your gateway to discovering and understanding worlds beyond our solar system.
-                  </p>
-                </div>
-
-                {/* Sourced from NASA Exoplanet Archive Data visual box */}
-                <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-slate-900/80 border border-cyan-500/30 shrink-0 text-center space-y-1.5 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
-                  <div className="w-14 h-14 rounded-xl overflow-hidden flex items-center justify-center">
-                    <Planet3DViewer planet={heroPlanet} isHero={true} compact={true} className="w-full h-full" />
-                  </div>
-                  <span className="text-[9px] font-mono-data font-bold text-cyan-300 tracking-wider max-w-[130px] uppercase leading-tight">
-                    SOURCED FROM NASA EXOPLANET ARCHIVE DATA
-                  </span>
-                </div>
-              </div>
-
-              {/* Middle Section: Did You Know & Refined Targets Stat Card */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Left Card: Did you know */}
-                <div className="bg-slate-900/70 border border-slate-800/80 p-4 sm:p-5 rounded-2xl flex items-start space-x-3.5">
-                  <span className="text-2xl pt-0.5" role="img" aria-label="lightbulb">💡</span>
-                  <div className="space-y-1">
-                    <h4 className="text-xs font-bold tracking-wider text-amber-300 uppercase">Did you know?</h4>
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      As you read this, light that left a distant star hundreds of years ago might be reaching us right now. Every data point you explore here is a real signal from a real world.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Right Card: Refined Targets Stat Card */}
-                <div className="bg-slate-900/70 border border-slate-800/80 p-4 sm:p-5 rounded-2xl flex items-start space-x-3.5">
-                  <span className="text-2xl pt-0.5 text-cyan-400" role="img" aria-label="telescope">🔭</span>
-                  <div className="space-y-1">
-                    <h4 className="text-xs font-bold tracking-wider text-cyan-300 uppercase">
-                      100+ Refined Targets Synced
-                    </h4>
-                    <p className="text-xs text-slate-400 leading-relaxed">
-                      Kepler • TESS • NASA Archive
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* "How to use Exora?" Section: 3 items */}
-              <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  How to use Exora?
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                  <div className="p-4 bg-slate-900/40 border border-slate-800/80 rounded-2xl space-y-2 hover:border-cyan-500/30 transition-colors">
-                    <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 flex items-center justify-center text-xs font-bold font-mono">
-                      <Compass className="w-4 h-4" />
-                    </div>
-                    <h5 className="text-xs font-bold text-white">Search & Explore</h5>
-                    <p className="text-[11px] text-slate-400 leading-relaxed">
-                      Filter and query cataloged worlds by physical, thermal, and orbital parameters.
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-slate-900/40 border border-slate-800/80 rounded-2xl space-y-2 hover:border-indigo-500/30 transition-colors">
-                    <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 flex items-center justify-center text-xs font-bold font-mono">
-                      <BarChart3 className="w-4 h-4" />
-                    </div>
-                    <h5 className="text-xs font-bold text-white">Analyze & Compare</h5>
-                    <p className="text-[11px] text-slate-400 leading-relaxed">
-                      Evaluate Earth Similarity Index (ESI), habitability zones, and planetary metrics.
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-slate-900/40 border border-slate-800/80 rounded-2xl space-y-2 hover:border-purple-500/30 transition-colors">
-                    <div className="w-8 h-8 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-300 flex items-center justify-center text-xs font-bold font-mono">
-                      <Eye className="w-4 h-4" />
-                    </div>
-                    <h5 className="text-xs font-bold text-white">Validate & Visualize</h5>
-                    <p className="text-[11px] text-slate-400 leading-relaxed">
-                      Inspect transit light curves, examine 3D planetary models, and verify signals.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom CTA Banner */}
-              <div className="pt-4 border-t border-slate-800/80 text-center space-y-3">
-                <p className="text-xs sm:text-sm font-semibold text-slate-200">
-                  Ready to begin your cosmic mission?
-                </p>
-                <div>
-                  <button 
-                    onClick={() => setIsWelcomeOpen(false)} 
-                    className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-bold text-xs sm:text-sm py-3 px-8 rounded-2xl shadow-[0_0_25px_rgba(34,211,238,0.3)] transition transform active:scale-95 duration-150"
-                  >
-                    <Rocket className="w-4 h-4 text-slate-950" />
-                    <span>Initialize Digital Observatory</span>
-                    <ArrowRight className="w-4 h-4 text-slate-950" />
-                  </button>
-                </div>
-                <p className="text-[11px] text-slate-500 pt-1">
-                  Let's explore the universe, one planet at a time.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
 
       {/* ═══════════════════════════════════════════════════
           2. HOME PAGE: HERO SECTION

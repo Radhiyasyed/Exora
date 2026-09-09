@@ -10,100 +10,69 @@ import { BlockMath, InlineMath } from 'react-katex';
 import { usePlanets } from '../context/PlanetContext';
 
 // Master Physics Telemetry Block
-export const computeStellarFlux = (phaseValue, planetConfig) => {
-  // Normalize phase to sit cleanly between -0.5 and +0.5
-  let normalizedPhase = phaseValue;
-  while (normalizedPhase > 0.5) normalizedPhase -= 1.0;
-  while (normalizedPhase < -0.5) normalizedPhase += 1.0;
+export const computeStellarFlux = (phaseValue) => {
+  // Center primary transits at integer phases (0.0, 1.0, 2.0...)
+  const distToPrimary = Math.abs(phaseValue - Math.round(phaseValue));
+  // Center secondary eclipses at half-integer phases (-0.5, 0.5, 1.5...)
+  const distToSecondary = Math.abs((phaseValue - 0.5) - Math.round(phaseValue - 0.5));
 
-  const { Rp_Rs_ratio, transitDurationFraction } = planetConfig;
-  const primaryDepth = Math.pow(Rp_Rs_ratio, 2); // (Rp / Rs)^2
-  const secondaryDepth = primaryDepth * 0.08;   // Distinct, scaled 8% visual dip
-  const halfWindow = transitDurationFraction / 2;
-  const rampZone = halfWindow * 0.2;             // Smooth physical limb-darkening ingress
+  const primaryHalfWindow = 0.045;   // Deep, narrow transit dip
+  const secondaryHalfWindow = 0.065; // Visibly shallower and slightly wider eclipse dip
 
-  // A. Primary Transit Zone (Centered at phase = 0.0)
-  if (Math.abs(normalizedPhase) <= halfWindow) {
-    if (Math.abs(normalizedPhase) < halfWindow - rampZone) {
-      return 1.00000 - primaryDepth;
-    }
-    const factor = (halfWindow - Math.abs(normalizedPhase)) / rampZone;
-    return 1.00000 - (primaryDepth * Math.sin((factor * Math.PI) / 2));
+  // A. Primary Transit Dip (Baseline ~1.00 -> 0.40)
+  if (distToPrimary <= primaryHalfWindow) {
+    const factor = distToPrimary / primaryHalfWindow;
+    const uFactor = Math.pow(Math.cos((factor * Math.PI) / 2), 1.5);
+    return 1.00000 - (0.60000 * uFactor);
   }
 
-  // B. Secondary Eclipse Zone (Centered tightly at phase = ±0.5)
-  const distToSecondary = Math.abs(Math.abs(normalizedPhase) - 0.5);
-  if (distToSecondary <= halfWindow) {
-    if (distToSecondary < halfWindow - rampZone) {
-      return 1.00000 - secondaryDepth;
-    }
-    const factor = (halfWindow - distToSecondary) / rampZone;
-    return 1.00000 - (secondaryDepth * Math.sin((factor * Math.PI) / 2));
+  // B. Secondary Eclipse Dip (Baseline ~1.00 -> 0.93)
+  if (distToSecondary <= secondaryHalfWindow) {
+    const sFactor = distToSecondary / secondaryHalfWindow;
+    const secU = Math.pow(Math.cos((sFactor * Math.PI) / 2), 1.2);
+    return 1.00000 - (0.07000 * secU);
   }
 
-  // C. Unoccluded Baseline Star Starlight
+  // C. Unoccluded Out-of-Transit Baseline Flux
   return 1.00000;
 };
 
-// Unified Data Generation Engine (Transit Window, Phased Orbit, and Raw Photometric Stream)
-export function generateTransitData(planet, viewMode = 'transitWindow') {
+// Unified Data Generation Engine (Phased Orbit [2 cycles: -0.5 to +1.5] and Raw Photometric Stream)
+export function generateTransitData(planet, viewMode = 'phased') {
   const points = [];
-  const rStar = Number(planet.starRadius || planet.st_rad || planet.stellarRadiusSolar || 1.0);
-  const rPlanetEarth = Number(planet.radius || planet.radiusEarth || planet.pl_rade || 1.0);
-  const rPlanetSolar = rPlanetEarth * 0.009168; // Earth radii to Solar radii
-  const Rp_Rs_ratio = rPlanetSolar / rStar;
-  const durationHours = Number(planet.transitDuration || planet.pl_trandur || 10.0);
-  const periodHours = Number(planet.orbitalPeriod || planet.orbitalPeriodDays || planet.pl_orbper || 384.8) * 24;
 
-  if (viewMode === 'transitWindow') {
-    // Window coordinates: t in [-16, 16] hours
-    const halfWindow = 16;
-    const windowSpan = 32;
-    const transitDurationFraction = durationHours / windowSpan;
-    const config = { Rp_Rs_ratio, transitDurationFraction };
-    const step = 0.25; // 128 evenly spaced numeric samples
-
-    for (let t = -halfWindow; t <= halfWindow; t += step) {
-      const phase = t / windowSpan;
-      const flux = computeStellarFlux(phase, config);
+  if (viewMode === 'phased') {
+    // Full Orbit (Phased): phase in [-0.5, 1.5] covering 2 full orbital cycles
+    const step = 0.005; // 401 evenly spaced numeric samples
+    for (let p = -0.5; p <= 1.50001; p += step) {
+      const currentP = parseFloat(p.toFixed(3));
+      const flux = computeStellarFlux(currentP);
       points.push({
-        time: parseFloat(t.toFixed(2)),
-        flux: parseFloat(flux.toFixed(6)),
-      });
-    }
-  } else if (viewMode === 'phased') {
-    // Full Orbit (Phased): phase in [-0.5, 0.5]
-    const transitDurationFraction = Math.max(0.08, durationHours / periodHours);
-    const config = { Rp_Rs_ratio, transitDurationFraction };
-    const step = 1.0 / 200; // 200 evenly spaced numeric samples
-
-    for (let p = -0.5; p <= 0.500001; p += step) {
-      const currentP = Math.max(-0.5, Math.min(0.5, p));
-      const flux = computeStellarFlux(currentP, config);
-      points.push({
-        phase: parseFloat(currentP.toFixed(3)),
-        flux: parseFloat(flux.toFixed(6)),
+        phase: currentP,
+        flux: parseFloat(flux.toFixed(5)),
       });
     }
   } else {
-    // Raw Flux: 0 to 100 continuous observation timeline with Kepler/TESS photometric scatter
+    // Raw Flux: 0 to 100 continuous observation timeline with periodic primary and secondary dips
     const totalHours = 100;
-    const step = 0.5; // 200 observation points
-    const transitPeriod = Math.min(40, periodHours);
-    const transitDurationFraction = durationHours / transitPeriod;
-    const config = { Rp_Rs_ratio, transitDurationFraction };
+    const step = 0.5; // 201 observation points
+    const transitPeriod = 40; // Simulated orbital period in hours
+    const t0 = 20; // First primary transit centered at t = 20h
 
-    for (let t = 0; t <= totalHours; t += step) {
-      const phase = (((t - 30) % transitPeriod) + transitPeriod) % transitPeriod / transitPeriod - 0.5;
-      const baseFlux = computeStellarFlux(phase, config);
+    for (let t = 0; t <= totalHours + 0.001; t += step) {
+      // Primary transits at 20h, 60h, 100h; secondary eclipses at 0h, 40h, 80h (half-period offset)
+      const phase = (t - t0) / transitPeriod;
+      const baseFlux = computeStellarFlux(phase);
+      
       const i = Math.round(t / step);
-      const pseudoNoise = (Math.sin(i * 14.3) * 0.35 + Math.cos(i * 9.1) * 0.35 + (((i * 73) % 100) - 50) / 100 * 0.4) * 0.00008;
-      const noisyFlux = Math.min(1.00000, baseFlux + pseudoNoise);
+      // Realistic high-cadence photometric jitter
+      const pseudoNoise = (Math.sin(i * 14.3) * 0.4 + Math.cos(i * 9.1) * 0.4 + (((i * 73) % 100) - 50) / 100 * 0.4) * 0.015;
+      const noisyFlux = baseFlux + pseudoNoise;
 
       points.push({
-        time: parseFloat(t.toFixed(2)),
-        flux: parseFloat(noisyFlux.toFixed(6)),
-        baseFlux: parseFloat(baseFlux.toFixed(6)),
+        time: parseFloat(t.toFixed(1)),
+        flux: parseFloat(noisyFlux.toFixed(4)),
+        baseFlux: parseFloat(baseFlux.toFixed(4)),
       });
     }
   }
@@ -111,29 +80,30 @@ export function generateTransitData(planet, viewMode = 'transitWindow') {
 }
 
 // High-Tech Tooltip
-const CustomTooltip = ({ active, payload, label, viewMode, durationHours }) => {
+const CustomTooltip = ({ active, payload, label, viewMode }) => {
   if (active && payload && payload.length) {
     const fluxVal = Number(payload[0].value);
-    const dropPct = ((1.000 - fluxVal) * 100).toFixed(4);
-    const brightPct = (fluxVal * 100).toFixed(4);
+    const dropPct = ((1.000 - fluxVal) * 100).toFixed(2);
+    const brightPct = (fluxVal * 100).toFixed(2);
     const val = typeof label === 'number' ? label : parseFloat(label);
 
     let phase = "Out-of-Transit Baseline";
     let phaseColor = "text-slate-400 border-slate-700 bg-slate-800/80";
 
     const isPhasedView = viewMode === 'phased';
-    const isPrimaryTransit = isPhasedView ? Math.abs(val) <= 0.04 : (viewMode === 'transitWindow' ? Math.abs(val) <= (0.5 * (durationHours || 5.0)) : (Math.abs((val - 30) % 40) <= (0.5 * (durationHours || 5.0))));
-    const isSecondaryEclipse = isPhasedView && (Math.abs(val - 0.5) <= 0.06 || Math.abs(val + 0.5) <= 0.06);
+    const phaseVal = isPhasedView ? val : ((val - 20) / 40);
+    const distToPrimary = Math.abs(phaseVal - Math.round(phaseVal));
+    const distToSecondary = Math.abs((phaseVal - 0.5) - Math.round(phaseVal - 0.5));
 
-    if (isPrimaryTransit) {
-      if (Math.abs(val) <= 0.15 || (viewMode === 'raw' && Math.abs((val - 30) % 40) <= 0.5)) {
+    if (distToPrimary <= 0.045) {
+      if (distToPrimary <= 0.015) {
         phase = "Primary Mid-Transit Minimum";
         phaseColor = "text-cyan-300 border-cyan-500/50 bg-cyan-500/20";
       } else {
-        phase = val < 0 ? "Primary Transit Ingress" : "Primary Transit Egress";
+        phase = "Primary Transit Ingress / Egress";
         phaseColor = "text-indigo-300 border-indigo-500/50 bg-indigo-500/20";
       }
-    } else if (isSecondaryEclipse) {
+    } else if (distToSecondary <= 0.065) {
       phase = "Secondary Eclipse (Occultation)";
       phaseColor = "text-purple-300 border-purple-500/50 bg-purple-500/20";
     }
@@ -147,7 +117,7 @@ const CustomTooltip = ({ active, payload, label, viewMode, durationHours }) => {
           <span className="text-cyan-300 font-bold">
             {isPhasedView 
               ? (val === 0 ? "0φ" : (val > 0 ? `+${val.toFixed(2)}φ` : `${val.toFixed(2)}φ`)) 
-              : (val === 0 ? "0h" : (val > 0 ? `+${val.toFixed(2)}h` : `${val.toFixed(2)}h`))}
+              : `${val.toFixed(1)}h`}
           </span>
         </div>
 
@@ -161,8 +131,8 @@ const CustomTooltip = ({ active, payload, label, viewMode, durationHours }) => {
             <span className="text-rose-400 font-bold">-{dropPct}%</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-400">Normalized Flux:</span>
-            <span className="text-cyan-400 font-bold">{fluxVal.toFixed(5)}</span>
+            <span className="text-slate-400">Flux:</span>
+            <span className="text-cyan-400 font-bold">{fluxVal.toFixed(3)}</span>
           </div>
         </div>
 
@@ -191,7 +161,7 @@ export default function LightCurveLab() {
   }, [planets]);
 
   const [selectedPlanetId, setSelectedPlanetId] = useState('kepler-452b');
-  const [viewMode, setViewMode] = useState('transitWindow'); // 'transitWindow' | 'phased' | 'raw'
+  const [viewMode, setViewMode] = useState('phased'); // 'phased' | 'raw'
   const [isPlaying, setIsPlaying] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
 
@@ -219,18 +189,15 @@ export default function LightCurveLab() {
     const durationHours = Number(planet.transitDuration || planet.pl_trandur || 10.0);
     const rPlanetSolar = rEarth * 0.009168;
     const Rp_Rs_ratio = rPlanetSolar / sRadSolar;
-    const primaryDepth = Math.pow(Rp_Rs_ratio, 2);
-    const secondaryDepth = primaryDepth * 0.08;
 
     return {
       rEarth,
       sRadSolar,
       Rp_Rs_ratio,
       rRatio: rEarth / (sRadSolar * 109.076),
-      transitDepth: primaryDepth,
-      secondaryDepth,
+      transitDepth: 0.60,
+      secondaryDepth: 0.07,
       durationHours,
-      halfWindow: 16,
       periodDays,
       periodHours,
     };
@@ -241,68 +208,57 @@ export default function LightCurveLab() {
     return generateTransitData(planet, viewMode);
   }, [planet, viewMode]);
 
-  // Master Synchronized Clock
-  const [currentTimeHours, setCurrentTimeHours] = useState(0);
+  // Master Synchronized Clock (In phased mode: phase φ in [-0.5, 1.5]; in raw mode: time t in [0, 100])
+  const [currentTimeHours, setCurrentTimeHours] = useState(-0.5);
 
   // Initialize clock on view switch
   useEffect(() => {
-    if (viewMode === 'transitWindow') {
-      setCurrentTimeHours(-16);
-    } else if (viewMode === 'phased') {
-      setCurrentTimeHours(-planetMetrics.periodHours / 2);
+    if (viewMode === 'phased') {
+      setCurrentTimeHours(-0.5);
     } else {
       setCurrentTimeHours(0);
     }
-  }, [viewMode, planetMetrics.periodHours]);
+  }, [viewMode]);
 
   // Live simulation loop
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
       setCurrentTimeHours((prev) => {
-        const minVal = viewMode === 'transitWindow' ? -16 : (viewMode === 'phased' ? -planetMetrics.periodHours / 2 : 0);
-        const maxVal = viewMode === 'transitWindow' ? 16 : (viewMode === 'phased' ? planetMetrics.periodHours / 2 : 100);
-        const step = (maxVal - minVal) / 280;
+        const minVal = viewMode === 'phased' ? -0.5 : 0;
+        const maxVal = viewMode === 'phased' ? 1.5 : 100;
+        const step = viewMode === 'phased' ? 0.005 : 0.25;
         const next = prev + step;
         if (next > maxVal) {
           return minVal;
         }
-        return next;
+        return parseFloat(next.toFixed(4));
       });
-    }, 35);
+    }, 40);
     return () => clearInterval(interval);
-  }, [isPlaying, viewMode, planetMetrics]);
+  }, [isPlaying, viewMode]);
 
-  // Master Phase (-0.5 to +0.5)
+  // Master Phase (-0.5 to +1.5 for phased; periodic [0, 1) for raw)
   const currentPhase = useMemo(() => {
     if (viewMode === 'raw') {
-      const transitPeriod = Math.min(40, planetMetrics.periodHours);
-      return (((currentTimeHours - 30) % transitPeriod) + transitPeriod) % transitPeriod / transitPeriod - 0.5;
+      return (((currentTimeHours - 20) % 40) + 40) % 40 / 40;
     }
-    const raw = currentTimeHours / (planetMetrics.periodHours || 1);
-    return parseFloat(raw.toFixed(4));
-  }, [currentTimeHours, planetMetrics.periodHours, viewMode]);
+    return parseFloat(currentTimeHours.toFixed(3));
+  }, [currentTimeHours, viewMode]);
 
   // Live calculated flux reading directly from computeStellarFlux
   const currentDerivedFlux = useMemo(() => {
-    const { Rp_Rs_ratio, durationHours, periodHours } = planetMetrics;
-    if (viewMode === 'transitWindow') {
-      const transitDurationFraction = durationHours / 32;
-      return computeStellarFlux(currentTimeHours / 32, { Rp_Rs_ratio, transitDurationFraction });
-    } else if (viewMode === 'phased') {
-      const transitDurationFraction = Math.max(0.08, durationHours / periodHours);
-      return computeStellarFlux(currentPhase, { Rp_Rs_ratio, transitDurationFraction });
+    if (viewMode === 'phased') {
+      return computeStellarFlux(currentPhase);
     } else {
-      const transitPeriod = Math.min(40, periodHours);
-      const transitDurationFraction = durationHours / transitPeriod;
-      return computeStellarFlux(currentPhase, { Rp_Rs_ratio, transitDurationFraction });
+      const phase = (currentTimeHours - 20) / 40;
+      return computeStellarFlux(phase);
     }
-  }, [currentTimeHours, currentPhase, viewMode, planetMetrics]);
+  }, [currentPhase, currentTimeHours, viewMode]);
 
-  // Synchronized Orbital Miniature Coordinates
+  // Synchronized Orbital Miniature Coordinates (Spans 2 orbits: -0.5 to +0.5 and +0.5 to +1.5)
   const miniatureCoords = useMemo(() => {
-    const { periodHours, durationHours } = planetMetrics;
-    const angle = 2 * Math.PI * (viewMode === 'raw' ? currentPhase : currentTimeHours / (periodHours || 1));
+    const angle = 2 * Math.PI * (viewMode === 'raw' ? (currentTimeHours - 20) / 40 : currentPhase);
 
     const cx = 100;
     const cy = 50;
@@ -313,13 +269,13 @@ export default function LightCurveLab() {
     const y = cy + ry * Math.cos(angle);
 
     const isForeground = Math.cos(angle) >= 0;
-    const isPrimaryTransit = viewMode === 'raw' 
-      ? Math.abs(currentPhase * Math.min(40, periodHours)) <= (durationHours / 2)
-      : Math.abs(currentTimeHours) <= (durationHours / 2);
-    const isSecondaryOccultation = Math.min(
-      Math.abs(currentTimeHours - periodHours / 2),
-      Math.abs(currentTimeHours + periodHours / 2)
-    ) <= (durationHours / 2);
+
+    const phaseVal = viewMode === 'raw' ? (currentTimeHours - 20) / 40 : currentPhase;
+    const distToPrimary = Math.abs(phaseVal - Math.round(phaseVal));
+    const distToSecondary = Math.abs((phaseVal - 0.5) - Math.round(phaseVal - 0.5));
+
+    const isPrimaryTransit = distToPrimary <= 0.045;
+    const isSecondaryOccultation = distToSecondary <= 0.065;
 
     return {
       x,
@@ -329,7 +285,7 @@ export default function LightCurveLab() {
       isSecondaryOccultation,
       angle,
     };
-  }, [currentTimeHours, currentPhase, viewMode, planetMetrics]);
+  }, [currentTimeHours, currentPhase, viewMode]);
 
   // Telemetry status badge
   const telemetryStatus = useMemo(() => {
@@ -358,41 +314,41 @@ export default function LightCurveLab() {
   const walkthroughSteps = [
     { 
       title: "1. Out-of-Transit Baseline", 
-      time: -16,
-      desc: "Before ingress, the telescope receives 100% (1.00000 flux) of the host star's unoccluded light." 
+      time: -0.25,
+      desc: "Between transit events, the telescope receives 100% (1.00 Flux) of the host star's unoccluded light." 
     },
     { 
       title: "2. Primary Ingress Phase", 
-      time: -0.38 * planetMetrics.durationHours,
+      time: -0.035,
       desc: "The exoplanet begins crossing the stellar limb, smoothly reducing observed light flux." 
     },
     { 
-      title: "3. Mid-Transit Minimum", 
-      time: 0,
-      desc: "The planet is centered directly in front of the star. The flux drop reaches maximum depth: (Rp/R★)²." 
+      title: "3. Mid-Transit Minimum (Orbit 1)", 
+      time: 0.0,
+      desc: "The planet is centered directly in front of the star at φ = 0.0. The flux drop reaches maximum depth at 0.40 Flux." 
     },
     { 
       title: "4. Primary Egress Phase", 
-      time: 0.38 * planetMetrics.durationHours,
-      desc: "The planet exits the stellar disk, and measured brightness curves smoothly back to 1.00000 baseline." 
+      time: 0.035,
+      desc: "The planet exits the stellar disk, and measured brightness curves smoothly back to 1.00 baseline." 
     },
     { 
-      title: "5. Secondary Eclipse Occultation", 
-      time: planetMetrics.periodHours / 2,
-      desc: "Half an orbit later, the planet passes behind the host star, producing a shallow secondary dip." 
+      title: "5. Secondary Eclipse Occultation (Orbit 1)", 
+      time: 0.5,
+      desc: "At φ = 0.5, the planet passes behind the host star, producing a shallow secondary occultation dip at ~0.93 Flux." 
+    },
+    { 
+      title: "6. Primary Transit (Orbit 2)", 
+      time: 1.0,
+      desc: "One full orbital period later at φ = 1.0, the second primary transit occurs with identical depth." 
     }
   ];
 
   const handleStepJump = (idx) => {
     setActiveStep(idx);
     setIsPlaying(false);
-    if (idx === 4) {
-      setViewMode('phased');
-      setCurrentTimeHours(planetMetrics.periodHours / 2);
-    } else {
-      setViewMode('transitWindow');
-      setCurrentTimeHours(walkthroughSteps[idx].time);
-    }
+    setViewMode('phased');
+    setCurrentTimeHours(walkthroughSteps[idx].time);
   };
 
   return (
@@ -413,14 +369,6 @@ export default function LightCurveLab() {
         {/* Controls: View Mode + Planet Dropdown */}
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center space-x-1 glass-panel p-1 rounded-xl border border-slate-800">
-            <button
-              onClick={() => setViewMode('transitWindow')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono-data transition-all ${
-                viewMode === 'transitWindow' ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-[0_0_10px_rgba(34,211,238,0.2)]' : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              Transit Window
-            </button>
             <button
               onClick={() => setViewMode('phased')}
               className={`px-3 py-1.5 rounded-lg text-xs font-mono-data transition-all ${
@@ -459,11 +407,9 @@ export default function LightCurveLab() {
           <div className="flex items-center space-x-2 text-slate-300 font-semibold pl-2">
             <span className={`w-2 h-2 rounded-full animate-ping ${viewMode === 'raw' ? 'bg-rose-400' : 'bg-cyan-400'}`}></span>
             <span>
-              {viewMode === 'transitWindow' 
-                ? 'Normalized Stellar Flux vs. Time (Hours relative to mid-transit)' 
-                : viewMode === 'phased'
-                ? 'Full Orbit Phased Light Curve (Primary Transit centered at Phase φ = 0.0)'
-                : 'Raw Telescopic Photometry Data Stream (Continuous Un-binned Flux)'}
+              {viewMode === 'phased'
+                ? 'Full Orbit Phased Light Curve (Primary Transits at φ = 0.0 & 1.0, Secondary Eclipses at φ = 0.5 & 1.5)'
+                : 'Raw Telescopic Photometry Data Stream (Continuous Un-binned Flux with Alternating Dips)'}
             </span>
           </div>
 
@@ -477,7 +423,7 @@ export default function LightCurveLab() {
             </button>
             <button
               onClick={() => {
-                setCurrentTimeHours(viewMode === 'transitWindow' ? -16 : (viewMode === 'phased' ? -planetMetrics.periodHours / 2 : 0));
+                setCurrentTimeHours(viewMode === 'phased' ? -0.5 : 0);
                 setIsPlaying(true);
               }}
               className="p-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
@@ -516,35 +462,25 @@ export default function LightCurveLab() {
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" opacity={0.6} />
               
-              {/* Y Axis with safe margin, precision, and locked 1.00000 upper bound */}
+              {/* Y Axis with clean 0.30 to 1.05 range and 'Flux' label */}
               <YAxis 
-                domain={[dataMin => dataMin - 0.00005, 1.00000]} 
-                tickFormatter={(v) => Number(v).toFixed(5)}
+                domain={[0.3, 1.05]} 
+                ticks={[0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]}
+                tickFormatter={(v) => Number(v).toFixed(2)}
                 stroke="#64748b"
                 tick={{ fontSize: 11, fontFamily: 'JetBrains Mono' }}
-                label={{ value: 'Normalized Flux', angle: -90, position: 'insideLeft', offset: -60, fill: '#94a3b8', fontSize: 11 }}
+                label={{ value: 'Flux', angle: -90, position: 'insideLeft', offset: -60, fill: '#94a3b8', fontSize: 11 }}
               />
 
               {/* X Axis with explicit numeric arrays and formatters */}
-              {viewMode === 'transitWindow' ? (
-                <XAxis 
-                  type="number"
-                  dataKey="time" 
-                  domain={[-16, 16]}
-                  stroke="#64748b" 
-                  ticks={[-16, -12, -8, -4, 0, 4, 8, 12]}
-                  tickFormatter={(v) => v === 0 ? "0h" : (v > 0 ? `+${v}h` : `${v}h`)}
-                  tick={{ fontSize: 11, fontFamily: 'JetBrains Mono' }}
-                  label={{ value: 'Time (Hours from mid-transit)', position: 'bottom', offset: 15, fill: '#94a3b8', fontSize: 11 }}
-                />
-              ) : viewMode === 'phased' ? (
+              {viewMode === 'phased' ? (
                 <XAxis 
                   type="number"
                   dataKey="phase" 
-                  domain={[-0.5, 0.5]}
+                  domain={[-0.5, 1.5]}
                   stroke="#64748b" 
-                  ticks={[-0.5, -0.25, 0, 0.25, 0.5]} 
-                  tickFormatter={(v) => v === 0 ? "0φ" : (v > 0 ? `+${v}φ` : `${v}φ`)}
+                  ticks={[-0.5, 0, 0.5, 1.0, 1.5]} 
+                  tickFormatter={(v) => v === 0 ? "0φ" : (v > 0 ? `+${v.toFixed(1)}φ` : `${v.toFixed(1)}φ`)}
                   tick={{ fontSize: 11, fontFamily: 'JetBrains Mono' }}
                   label={{ value: 'Orbital Phase (φ)', position: 'bottom', offset: 15, fill: '#94a3b8', fontSize: 11 }}
                 />
@@ -561,24 +497,18 @@ export default function LightCurveLab() {
                 />
               )}
               
-              <Tooltip content={<CustomTooltip viewMode={viewMode} durationHours={planetMetrics.durationHours} />} />
+              <Tooltip content={<CustomTooltip viewMode={viewMode} />} />
 
-              {/* Subtle background highlight for Primary Transit */}
-              {viewMode === 'transitWindow' ? (
-                <ReferenceArea 
-                  x1={-0.5 * planetMetrics.durationHours} 
-                  x2={0.5 * planetMetrics.durationHours} 
-                  fill="#22d3ee" 
-                  fillOpacity={0.06} 
-                />
-              ) : viewMode === 'phased' ? (
-                <ReferenceArea 
-                  x1={-(planetMetrics.durationHours / planetMetrics.periodHours) / 2} 
-                  x2={(planetMetrics.durationHours / planetMetrics.periodHours) / 2} 
-                  fill="#22d3ee" 
-                  fillOpacity={0.06} 
-                />
-              ) : null}
+              {/* Shaded Reference Areas for Primary Transits & Secondary Eclipses */}
+              {viewMode === 'phased' && (
+                <>
+                  <ReferenceArea x1={-0.5} x2={-0.435} fill="#818cf8" fillOpacity={0.12} />
+                  <ReferenceArea x1={-0.045} x2={0.045} fill="#22d3ee" fillOpacity={0.12} />
+                  <ReferenceArea x1={0.435} x2={0.565} fill="#818cf8" fillOpacity={0.12} />
+                  <ReferenceArea x1={0.955} x2={1.045} fill="#22d3ee" fillOpacity={0.12} />
+                  <ReferenceArea x1={1.435} x2={1.5} fill="#818cf8" fillOpacity={0.12} />
+                </>
+              )}
 
               <ReferenceLine y={1.00000} stroke="#475569" strokeDasharray="3 3" />
 
@@ -619,7 +549,17 @@ export default function LightCurveLab() {
 
           <div className="flex items-center space-x-4 self-end sm:self-auto">
             <div className="text-slate-400">
-              Timeline Clock: <span className="text-cyan-300 font-bold">{currentTimeHours >= 0 ? `+${currentTimeHours.toFixed(2)}` : currentTimeHours.toFixed(2)} hrs</span>
+              {viewMode === 'phased' ? 'Orbital Phase: ' : 'Timeline Clock: '}
+              <span className="text-cyan-300 font-bold">
+                {viewMode === 'phased' 
+                  ? (currentPhase >= 0 ? `+${currentPhase.toFixed(2)}φ` : `${currentPhase.toFixed(2)}φ`)
+                  : (currentTimeHours >= 0 ? `+${currentTimeHours.toFixed(2)} hrs` : `${currentTimeHours.toFixed(2)} hrs`)}
+              </span>
+              {viewMode === 'phased' && (
+                <span className="text-xs text-slate-500 ml-1">
+                  ({currentPhase <= 0.5 ? 'Orbit 1' : 'Orbit 2'})
+                </span>
+              )}
             </div>
             <div className="text-slate-400">
               Live Derived Flux: <span className="text-emerald-300 font-bold">{currentDerivedFlux.toFixed(5)}</span>
@@ -674,18 +614,18 @@ export default function LightCurveLab() {
         <div className="pt-2">
           <div className="flex justify-between items-center text-[11px] font-mono-data text-slate-500 pb-1">
             <span>
-              {viewMode === 'transitWindow' ? `-16.0 hrs` : (viewMode === 'phased' ? `-${(planetMetrics.periodHours / 2).toFixed(1)} hrs` : `0.0 hrs`)}
+              {viewMode === 'phased' ? `-0.50φ (Start Orbit 1)` : `0.0 hrs`}
             </span>
             <span className="text-cyan-400 font-bold">Interactive Timeline Scrub (Angle & Flux Synced)</span>
             <span>
-              {viewMode === 'transitWindow' ? `+16.0 hrs` : (viewMode === 'phased' ? `+${(planetMetrics.periodHours / 2).toFixed(1)} hrs` : `100.0 hrs`)}
+              {viewMode === 'phased' ? `+1.50φ (End Orbit 2)` : `100.0 hrs`}
             </span>
           </div>
           <input
             type="range"
-            min={viewMode === 'transitWindow' ? -16 : (viewMode === 'phased' ? -planetMetrics.periodHours / 2 : 0)}
-            max={viewMode === 'transitWindow' ? 16 : (viewMode === 'phased' ? planetMetrics.periodHours / 2 : 100)}
-            step="0.05"
+            min={viewMode === 'phased' ? -0.5 : 0}
+            max={viewMode === 'phased' ? 1.5 : 100}
+            step={viewMode === 'phased' ? 0.005 : 0.25}
             value={currentTimeHours}
             onChange={(e) => {
               setIsPlaying(false);

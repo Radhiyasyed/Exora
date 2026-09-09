@@ -1,5 +1,5 @@
 import React from 'react';
-import { Orbit, Database, Compass, BarChart3, Info } from 'lucide-react';
+import { Orbit, Database, Compass, BarChart3, Info, Telescope } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -68,8 +68,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 5: DATA SOURCE Card */}
-          <div>
+          {/* Column 5: DATA SOURCE & Partner Cards */}
+          <div className="space-y-4">
+            <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
+              <div className="flex items-center space-x-2 text-cyan-400">
+                <Telescope className="w-4 h-4" />
+                <span className="font-semibold text-xs uppercase tracking-wider">NCGSA VAO</span>
+              </div>
+              <div>
+                <a
+                  href="https://virtual-astronomy-observatory.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold text-sm hover:text-cyan-400 transition-colors inline-block"
+                >
+                  NCGSA VAO ↗
+                </a>
+              </div>
+            </div>
+
             <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
               <div className="flex items-center space-x-2 text-cyan-400">
                 <Database className="w-4 h-4" />
