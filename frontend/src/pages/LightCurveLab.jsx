@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
-  Activity, Play, Pause, RotateCcw, Sparkles, ChevronRight, Compass, ShieldCheck
+  Activity, Play, Pause, RotateCcw, Sparkles, ChevronRight
 } from 'lucide-react';
 import { 
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine, ReferenceArea 
@@ -9,28 +9,118 @@ import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
 import { usePlanets } from '../context/PlanetContext';
 
+// Master Physics Parameter Derivation
+function getPlanetLightCurveParams(planet) {
+  if (!planet) {
+    return {
+      primaryDepth: 0.404,
+      secondaryDepth: 0.034,
+      primaryHalfWindow: 0.045,
+      secondaryHalfWindow: 0.065,
+      rRatio: 0.0708,
+      rawTransitDepth: 0.005,
+      rEarth: 0.92,
+      sRadSolar: 0.1192,
+      periodDays: 6.10,
+      teq: 250,
+    };
+  }
+
+  const rEarth = Number(planet.radiusEarth || planet.radius || 1.0);
+  
+  // Host star radius in Solar units
+  let sRadSolar = Number(planet.stellarRadiusSolar || planet.starRadius || planet.st_rad || 0);
+  if (!sRadSolar || isNaN(sRadSolar) || sRadSolar <= 0) {
+    // If not directly present, approximate from spectral type or effective temp
+    const sType = String(planet.starSpectralType || planet.starType || '').toUpperCase();
+    const sTemp = Number(planet.stellarTempK || planet.starTempK || 0);
+    if (sType.startsWith('M') || (sTemp > 0 && sTemp < 3700)) sRadSolar = 0.25;
+    else if (sType.startsWith('K') || (sTemp >= 3700 && sTemp < 5200)) sRadSolar = 0.70;
+    else if (sType.startsWith('F') || (sTemp >= 6000 && sTemp < 7500)) sRadSolar = 1.30;
+    else if (sType.startsWith('A') || (sTemp >= 7500)) sRadSolar = 1.70;
+    else sRadSolar = 1.0; // G-type / solar default
+  }
+
+  const periodDays = Number(planet.orbitalPeriodDays || planet.orbitalPeriod || planet.period || 384.84);
+  const teq = Number(planet.equilibriumTempK ?? planet.eqTempK ?? 280);
+
+  // Radius ratio: Rp (in Solar radii) / Rs (in Solar radii)
+  // 1 Solar Radius = 109.076 Earth Radii
+  const rRatio = rEarth / (sRadSolar * 109.076);
+
+  // Geometric transit depth (Rp / Rs)^2
+  const rawTransitDepth = (planet.transitDepth != null && !isNaN(Number(planet.transitDepth)) && Number(planet.transitDepth) > 0)
+    ? Number(planet.transitDepth)
+    : Math.pow(rRatio, 2);
+
+  // Primary Transit Dip Depth:
+  // Scales with the ratio of planet radius to host star radius (transit depth ~ (Rp/Rs)^2).
+  // Dynamic range calibrated for the [0.30, 1.05] chart domain:
+  // - Large planets relative to star (e.g. Hot Jupiters with rRatio ~ 0.12) yield deep dips (~0.55 - 0.65).
+  // - Smaller planets relative to star (e.g. Terrestrials with rRatio ~ 0.01 - 0.02) yield shallower dips (~0.08 - 0.18).
+  const kRef = 0.12;
+  const depthScale = Math.pow(Math.max(0.005, rRatio) / kRef, 0.75) * 0.60;
+  const primaryDepth = Math.min(0.65, Math.max(0.06, depthScale));
+
+  // Secondary Eclipse Depth:
+  // Noticeably shallower than primary depth.
+  // Modulated by planet equilibrium temperature: hotter worlds emit more thermal radiation,
+  // producing deeper secondary occultation dips (~18% - 24% of primary depth),
+  // whereas temperate/colder worlds have faint thermal emission (~8% - 12% of primary depth).
+  const tempFactor = Math.min(1.0, Math.max(0.0, (teq - 200) / 1800));
+  const secFraction = 0.08 + 0.16 * tempFactor;
+  const secondaryDepth = Math.min(primaryDepth * 0.35, Math.max(0.01, primaryDepth * secFraction));
+
+  // Transit Duration / Width on Phase Axis:
+  // Scales loosely with orbital period (shorter periods take slightly wider phase fraction,
+  // longer periods take narrower phase fraction), clamped within [0.032, 0.058] to keep dips clean and visible.
+  const periodClamped = Math.max(1, Math.min(500, periodDays));
+  const durationFactor = 1.0 - 0.25 * (Math.log10(periodClamped) / Math.log10(500));
+  const primaryHalfWindow = Math.min(0.058, Math.max(0.032, 0.045 * durationFactor));
+  const secondaryHalfWindow = primaryHalfWindow * 1.4;
+
+  return {
+    primaryDepth,
+    secondaryDepth,
+    primaryHalfWindow,
+    secondaryHalfWindow,
+    rRatio,
+    rawTransitDepth,
+    rEarth,
+    sRadSolar,
+    periodDays,
+    teq,
+  };
+}
+
 // Master Physics Telemetry Block
-export const computeStellarFlux = (phaseValue) => {
+const computeStellarFlux = (phaseValue, planetOrParams) => {
   // Center primary transits at integer phases (0.0, 1.0, 2.0...)
   const distToPrimary = Math.abs(phaseValue - Math.round(phaseValue));
   // Center secondary eclipses at half-integer phases (-0.5, 0.5, 1.5...)
   const distToSecondary = Math.abs((phaseValue - 0.5) - Math.round(phaseValue - 0.5));
 
-  const primaryHalfWindow = 0.045;   // Deep, narrow transit dip
-  const secondaryHalfWindow = 0.065; // Visibly shallower and slightly wider eclipse dip
+  const params = (planetOrParams && planetOrParams.primaryDepth !== undefined)
+    ? planetOrParams
+    : getPlanetLightCurveParams(planetOrParams);
 
-  // A. Primary Transit Dip (Baseline ~1.00 -> 0.40)
+  const primaryHalfWindow = params.primaryHalfWindow;
+  const secondaryHalfWindow = params.secondaryHalfWindow;
+  const primaryDepth = params.primaryDepth;
+  const secondaryDepth = params.secondaryDepth;
+
+  // A. Primary Transit Dip (Baseline ~1.00 -> 1.00 - primaryDepth)
   if (distToPrimary <= primaryHalfWindow) {
     const factor = distToPrimary / primaryHalfWindow;
     const uFactor = Math.pow(Math.cos((factor * Math.PI) / 2), 1.5);
-    return 1.00000 - (0.60000 * uFactor);
+    return 1.00000 - (primaryDepth * uFactor);
   }
 
-  // B. Secondary Eclipse Dip (Baseline ~1.00 -> 0.93)
+  // B. Secondary Eclipse Dip (Baseline ~1.00 -> 1.00 - secondaryDepth)
   if (distToSecondary <= secondaryHalfWindow) {
     const sFactor = distToSecondary / secondaryHalfWindow;
     const secU = Math.pow(Math.cos((sFactor * Math.PI) / 2), 1.2);
-    return 1.00000 - (0.07000 * secU);
+    return 1.00000 - (secondaryDepth * secU);
   }
 
   // C. Unoccluded Out-of-Transit Baseline Flux
@@ -38,15 +128,16 @@ export const computeStellarFlux = (phaseValue) => {
 };
 
 // Unified Data Generation Engine (Phased Orbit [2 cycles: -0.5 to +1.5] and Raw Photometric Stream)
-export function generateTransitData(planet, viewMode = 'phased') {
+function generateTransitData(planet, viewMode = 'phased') {
   const points = [];
+  const params = getPlanetLightCurveParams(planet);
 
   if (viewMode === 'phased') {
     // Full Orbit (Phased): phase in [-0.5, 1.5] covering 2 full orbital cycles
     const step = 0.005; // 401 evenly spaced numeric samples
     for (let p = -0.5; p <= 1.50001; p += step) {
       const currentP = parseFloat(p.toFixed(3));
-      const flux = computeStellarFlux(currentP);
+      const flux = computeStellarFlux(currentP, params);
       points.push({
         phase: currentP,
         flux: parseFloat(flux.toFixed(5)),
@@ -62,7 +153,7 @@ export function generateTransitData(planet, viewMode = 'phased') {
     for (let t = 0; t <= totalHours + 0.001; t += step) {
       // Primary transits at 20h, 60h, 100h; secondary eclipses at 0h, 40h, 80h (half-period offset)
       const phase = (t - t0) / transitPeriod;
-      const baseFlux = computeStellarFlux(phase);
+      const baseFlux = computeStellarFlux(phase, params);
       
       const i = Math.round(t / step);
       // Realistic high-cadence photometric jitter
@@ -80,7 +171,7 @@ export function generateTransitData(planet, viewMode = 'phased') {
 }
 
 // High-Tech Tooltip
-const CustomTooltip = ({ active, payload, label, viewMode }) => {
+const CustomTooltip = ({ active, payload, label, viewMode, params }) => {
   if (active && payload && payload.length) {
     const fluxVal = Number(payload[0].value);
     const dropPct = ((1.000 - fluxVal) * 100).toFixed(2);
@@ -95,15 +186,18 @@ const CustomTooltip = ({ active, payload, label, viewMode }) => {
     const distToPrimary = Math.abs(phaseVal - Math.round(phaseVal));
     const distToSecondary = Math.abs((phaseVal - 0.5) - Math.round(phaseVal - 0.5));
 
-    if (distToPrimary <= 0.045) {
-      if (distToPrimary <= 0.015) {
+    const primaryHalfWindow = params?.primaryHalfWindow || 0.045;
+    const secondaryHalfWindow = params?.secondaryHalfWindow || 0.065;
+
+    if (distToPrimary <= primaryHalfWindow) {
+      if (distToPrimary <= primaryHalfWindow * 0.35) {
         phase = "Primary Mid-Transit Minimum";
         phaseColor = "text-cyan-300 border-cyan-500/50 bg-cyan-500/20";
       } else {
         phase = "Primary Transit Ingress / Egress";
         phaseColor = "text-indigo-300 border-indigo-500/50 bg-indigo-500/20";
       }
-    } else if (distToSecondary <= 0.065) {
+    } else if (distToSecondary <= secondaryHalfWindow) {
       phase = "Secondary Eclipse (Occultation)";
       phaseColor = "text-purple-300 border-purple-500/50 bg-purple-500/20";
     }
@@ -160,33 +254,39 @@ export default function LightCurveLab() {
     });
   }, [planets]);
 
-  const [selectedPlanetId, setSelectedPlanetId] = useState('kepler-452b');
+  const [selectedPlanetId, setSelectedPlanetId] = useState('trappist-1-e');
   const [viewMode, setViewMode] = useState('phased'); // 'phased' | 'raw'
   const [isPlaying, setIsPlaying] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
 
-  // Active Selected Planet
+  // Active Selected Planet (Defaults to TRAPPIST-1 e for a dramatic, deep transit dip)
   const planet = useMemo(() => {
-    return transitingPlanets.find(p => p.id === selectedPlanetId) || transitingPlanets[0] || {
-      id: 'kepler-452b',
-      name: 'Kepler-452 b',
-      radiusEarth: 1.63,
-      starRadius: 1.11,
-      orbitalPeriodDays: 384.84,
-      transitDuration: 5.2,
-      transitDepth: 0.000181,
-      starType: 'G-Type (G2V)',
+    return transitingPlanets.find(p => 
+      p.id === selectedPlanetId || 
+      p.name?.toLowerCase() === selectedPlanetId?.toLowerCase() ||
+      p.id?.replace(/-/g, '') === String(selectedPlanetId || '').replace(/-/g, '')
+    ) || transitingPlanets[0] || {
+      id: 'trappist-1-e',
+      name: 'TRAPPIST-1 e',
+      radiusEarth: 0.92,
+      starRadius: 0.1192,
+      stellarRadiusSolar: 0.1192,
+      orbitalPeriodDays: 6.10,
+      transitDuration: 0.93,
+      transitDepth: 0.005,
+      starType: 'M-Type (M8V)',
       discoveryMethod: 'Transit'
     };
   }, [transitingPlanets, selectedPlanetId]);
 
   // Derived Physical Parameters
   const planetMetrics = useMemo(() => {
-    const rEarth = Number(planet.radiusEarth || planet.radius || 1.0);
-    const sRadSolar = Number(planet.starRadius || planet.st_rad || planet.stellarRadiusSolar || 1.0);
-    const periodDays = Number(planet.orbitalPeriodDays || planet.orbitalPeriod || 384.84);
+    const params = getPlanetLightCurveParams(planet);
+    const rEarth = params.rEarth;
+    const sRadSolar = params.sRadSolar;
+    const periodDays = params.periodDays;
     const periodHours = periodDays * 24;
-    const durationHours = Number(planet.transitDuration || planet.pl_trandur || 10.0);
+    const durationHours = Number(planet.transitDuration || planet.pl_trandur || (params.primaryHalfWindow * periodDays * 24));
     const rPlanetSolar = rEarth * 0.009168;
     const Rp_Rs_ratio = rPlanetSolar / sRadSolar;
 
@@ -194,9 +294,12 @@ export default function LightCurveLab() {
       rEarth,
       sRadSolar,
       Rp_Rs_ratio,
-      rRatio: rEarth / (sRadSolar * 109.076),
-      transitDepth: 0.60,
-      secondaryDepth: 0.07,
+      rRatio: params.rRatio,
+      transitDepth: params.primaryDepth,
+      secondaryDepth: params.secondaryDepth,
+      primaryHalfWindow: params.primaryHalfWindow,
+      secondaryHalfWindow: params.secondaryHalfWindow,
+      rawTransitDepth: params.rawTransitDepth,
       durationHours,
       periodDays,
       periodHours,
@@ -249,12 +352,12 @@ export default function LightCurveLab() {
   // Live calculated flux reading directly from computeStellarFlux
   const currentDerivedFlux = useMemo(() => {
     if (viewMode === 'phased') {
-      return computeStellarFlux(currentPhase);
+      return computeStellarFlux(currentPhase, planetMetrics);
     } else {
       const phase = (currentTimeHours - 20) / 40;
-      return computeStellarFlux(phase);
+      return computeStellarFlux(phase, planetMetrics);
     }
-  }, [currentPhase, currentTimeHours, viewMode]);
+  }, [currentPhase, currentTimeHours, viewMode, planetMetrics]);
 
   // Synchronized Orbital Miniature Coordinates (Spans 2 orbits: -0.5 to +0.5 and +0.5 to +1.5)
   const miniatureCoords = useMemo(() => {
@@ -274,8 +377,8 @@ export default function LightCurveLab() {
     const distToPrimary = Math.abs(phaseVal - Math.round(phaseVal));
     const distToSecondary = Math.abs((phaseVal - 0.5) - Math.round(phaseVal - 0.5));
 
-    const isPrimaryTransit = distToPrimary <= 0.045;
-    const isSecondaryOccultation = distToSecondary <= 0.065;
+    const isPrimaryTransit = distToPrimary <= (planetMetrics.primaryHalfWindow || 0.045);
+    const isSecondaryOccultation = distToSecondary <= (planetMetrics.secondaryHalfWindow || 0.065);
 
     return {
       x,
@@ -285,7 +388,7 @@ export default function LightCurveLab() {
       isSecondaryOccultation,
       angle,
     };
-  }, [currentTimeHours, currentPhase, viewMode]);
+  }, [currentTimeHours, currentPhase, viewMode, planetMetrics]);
 
   // Telemetry status badge
   const telemetryStatus = useMemo(() => {
@@ -311,38 +414,46 @@ export default function LightCurveLab() {
   }, [miniatureCoords]);
 
   // Walkthrough Guide Steps
-  const walkthroughSteps = [
-    { 
-      title: "1. Out-of-Transit Baseline", 
-      time: -0.25,
-      desc: "Between transit events, the telescope receives 100% (1.00 Flux) of the host star's unoccluded light." 
-    },
-    { 
-      title: "2. Primary Ingress Phase", 
-      time: -0.035,
-      desc: "The exoplanet begins crossing the stellar limb, smoothly reducing observed light flux." 
-    },
-    { 
-      title: "3. Mid-Transit Minimum (Orbit 1)", 
-      time: 0.0,
-      desc: "The planet is centered directly in front of the star at φ = 0.0. The flux drop reaches maximum depth at 0.40 Flux." 
-    },
-    { 
-      title: "4. Primary Egress Phase", 
-      time: 0.035,
-      desc: "The planet exits the stellar disk, and measured brightness curves smoothly back to 1.00 baseline." 
-    },
-    { 
-      title: "5. Secondary Eclipse Occultation (Orbit 1)", 
-      time: 0.5,
-      desc: "At φ = 0.5, the planet passes behind the host star, producing a shallow secondary occultation dip at ~0.93 Flux." 
-    },
-    { 
-      title: "6. Primary Transit (Orbit 2)", 
-      time: 1.0,
-      desc: "One full orbital period later at φ = 1.0, the second primary transit occurs with identical depth." 
-    }
-  ];
+  const walkthroughSteps = useMemo(() => {
+    const pWindow = planetMetrics.primaryHalfWindow || 0.045;
+    const minPriFlux = (1.0 - planetMetrics.transitDepth).toFixed(2);
+    const minSecFlux = (1.0 - planetMetrics.secondaryDepth).toFixed(2);
+    const ingressTime = -Number((pWindow * 0.78).toFixed(3));
+    const egressTime = Number((pWindow * 0.78).toFixed(3));
+
+    return [
+      { 
+        title: "1. Out-of-Transit Baseline", 
+        time: -0.25,
+        desc: "Between transit events, the telescope receives 100% (1.00 Flux) of the host star's unoccluded light." 
+      },
+      { 
+        title: "2. Primary Ingress Phase", 
+        time: ingressTime,
+        desc: "The exoplanet begins crossing the stellar limb, smoothly reducing observed light flux." 
+      },
+      { 
+        title: "3. Mid-Transit Minimum (Orbit 1)", 
+        time: 0.0,
+        desc: `The planet is centered directly in front of the star at φ = 0.0. The flux drop reaches maximum depth at ${minPriFlux} Flux.` 
+      },
+      { 
+        title: "4. Primary Egress Phase", 
+        time: egressTime,
+        desc: "The planet exits the stellar disk, and measured brightness curves smoothly back to 1.00 baseline." 
+      },
+      { 
+        title: "5. Secondary Eclipse Occultation (Orbit 1)", 
+        time: 0.5,
+        desc: `At φ = 0.5, the planet passes behind the host star, producing a shallow secondary occultation dip at ~${minSecFlux} Flux.` 
+      },
+      { 
+        title: "6. Primary Transit (Orbit 2)", 
+        time: 1.0,
+        desc: "One full orbital period later at φ = 1.0, the second primary transit occurs with identical depth." 
+      }
+    ];
+  }, [planetMetrics]);
 
   const handleStepJump = (idx) => {
     setActiveStep(idx);
@@ -388,7 +499,7 @@ export default function LightCurveLab() {
           </div>
 
           <select
-            value={selectedPlanetId}
+            value={planet.id || selectedPlanetId}
             onChange={(e) => setSelectedPlanetId(e.target.value)}
             className="bg-slate-900 border border-slate-800 text-xs font-mono-data text-cyan-300 rounded-xl px-3 py-2 focus:outline-none focus:border-cyan-400"
           >
@@ -497,16 +608,16 @@ export default function LightCurveLab() {
                 />
               )}
               
-              <Tooltip content={<CustomTooltip viewMode={viewMode} />} />
+              <Tooltip content={<CustomTooltip viewMode={viewMode} params={planetMetrics} />} />
 
               {/* Shaded Reference Areas for Primary Transits & Secondary Eclipses */}
               {viewMode === 'phased' && (
                 <>
-                  <ReferenceArea x1={-0.5} x2={-0.435} fill="#818cf8" fillOpacity={0.12} />
-                  <ReferenceArea x1={-0.045} x2={0.045} fill="#22d3ee" fillOpacity={0.12} />
-                  <ReferenceArea x1={0.435} x2={0.565} fill="#818cf8" fillOpacity={0.12} />
-                  <ReferenceArea x1={0.955} x2={1.045} fill="#22d3ee" fillOpacity={0.12} />
-                  <ReferenceArea x1={1.435} x2={1.5} fill="#818cf8" fillOpacity={0.12} />
+                  <ReferenceArea x1={-0.5} x2={-0.5 + (planetMetrics.secondaryHalfWindow || 0.065)} fill="#818cf8" fillOpacity={0.12} />
+                  <ReferenceArea x1={-(planetMetrics.primaryHalfWindow || 0.045)} x2={planetMetrics.primaryHalfWindow || 0.045} fill="#22d3ee" fillOpacity={0.12} />
+                  <ReferenceArea x1={0.5 - (planetMetrics.secondaryHalfWindow || 0.065)} x2={0.5 + (planetMetrics.secondaryHalfWindow || 0.065)} fill="#818cf8" fillOpacity={0.12} />
+                  <ReferenceArea x1={1.0 - (planetMetrics.primaryHalfWindow || 0.045)} x2={1.0 + (planetMetrics.primaryHalfWindow || 0.045)} fill="#22d3ee" fillOpacity={0.12} />
+                  <ReferenceArea x1={1.5 - (planetMetrics.secondaryHalfWindow || 0.065)} x2={1.5} fill="#818cf8" fillOpacity={0.12} />
                 </>
               )}
 

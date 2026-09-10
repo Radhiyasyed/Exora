@@ -32,6 +32,56 @@ function getMetric(planet, camelKey, snakeKey, fallback = null) {
   return planet[camelKey] ?? planet[snakeKey] ?? fallback;
 }
 
+/**
+ * Helper: determine if a planet is an HZ Candidate / Habitable.
+ * This is the exact logic used to render the "HZ Candidate" tag in Card View
+ * and the "Habitable" tag in Data Table view.
+ */
+function isHzCandidate(planet) {
+  if (!planet) return false;
+  const esi = Number(getMetric(planet, 'esi', 'esiScore', planet.habitabilityIndex ?? 0));
+  return (
+    planet.zoneStatus === 'Habitable Zone' ||
+    Boolean(planet.inHabitableZone) ||
+    Boolean(planet.isInHabitableZone) ||
+    (planet.hzd != null && !isNaN(Number(planet.hzd)) && Number(planet.hzd) >= -1.0 && Number(planet.hzd) <= 1.0) ||
+    esi >= 0.75
+  );
+}
+
+/**
+ * Helper: compute the habitability status category for a planet.
+ * - 'hz_candidate': Circumstellar Habitable Zone candidate (matches HZ Candidate badge)
+ * - 'not_habitable': Confirmed non-habitable (Too Hot / Too Cold or outside habitable boundaries)
+ * - 'unknown': Unspecified or unknown habitability status
+ */
+function getPlanetHabitabilityStatus(planet) {
+  if (!planet) return 'unknown';
+
+  if (isHzCandidate(planet)) {
+    return 'hz_candidate';
+  }
+
+  const isTooHotOrCold =
+    planet.zoneStatus === 'Too Hot' ||
+    planet.zoneStatus === 'Too Cold' ||
+    (planet.zoneStatus != null && String(planet.zoneStatus).trim() !== '' && planet.zoneStatus !== 'Habitable Zone');
+
+  const isOutsideHzd =
+    planet.hzd != null &&
+    !isNaN(Number(planet.hzd)) &&
+    (Number(planet.hzd) < -1.0 || Number(planet.hzd) > 1.0);
+
+  const isExplicitlyNonHz =
+    planet.inHabitableZone === false || planet.isInHabitableZone === false;
+
+  if (isTooHotOrCold || isOutsideHzd || isExplicitlyNonHz) {
+    return 'not_habitable';
+  }
+
+  return 'unknown';
+}
+
 export default function SearchExplore() {
   const { planets, isLoading, isLiveBackend, forceRefresh, getExoplanetsOnly } = usePlanets();
   const [searchTerm, setSearchTerm] = useState('');
@@ -93,31 +143,12 @@ export default function SearchExplore() {
 
     // HZD / Habitable Zone Only Toggle
     if (hzOnly) {
-      filtered = filtered.filter(p => {
-        const isHz = p.zoneStatus === 'Habitable Zone' || 
-          p.inHabitableZone || 
-          (p.hzd != null && p.hzd >= -1.0 && p.hzd <= 1.0) ||
-          Number(getMetric(p, 'esi', 'esiScore', 0)) >= 0.7;
-        return isHz;
-      });
+      filtered = filtered.filter(p => isHzCandidate(p));
     }
 
     // Habitability Status Filter
     if (habitabilityStatus !== 'all') {
-      filtered = filtered.filter(p => {
-        const isHz = p.zoneStatus === 'Habitable Zone' || 
-          p.inHabitableZone || 
-          (p.hzd != null && p.hzd >= -1.0 && p.hzd <= 1.0);
-        
-        if (habitabilityStatus === 'hz_candidate') {
-          return isHz;
-        } else if (habitabilityStatus === 'not_habitable') {
-          return (p.zoneStatus === 'Too Hot' || p.zoneStatus === 'Too Cold') || (!isHz && p.zoneStatus);
-        } else if (habitabilityStatus === 'unknown') {
-          return p.zoneStatus == null && !p.inHabitableZone && p.hzd == null;
-        }
-        return true;
-      });
+      filtered = filtered.filter(p => getPlanetHabitabilityStatus(p) === habitabilityStatus);
     }
 
     // Star Type Chips Filter
@@ -453,10 +484,7 @@ export default function SearchExplore() {
                 const pid = planet.id || slugify(planet.name);
                 const star = classifyStarType(planet.starSpectralType || planet.starType, planet.starTempK || planet.equilibriumTempK);
                 const esi = Number(getMetric(planet, 'esi', 'esiScore', planet.habitabilityIndex ?? 0));
-                const inHZ = planet.zoneStatus === 'Habitable Zone' || 
-                  planet.inHabitableZone || 
-                  (planet.hzd != null && planet.hzd >= -1.0 && planet.hzd <= 1.0) ||
-                  esi >= 0.75;
+                const inHZ = isHzCandidate(planet);
 
                 const hasRadius = planet.radiusEarth != null && !isNaN(planet.radiusEarth);
                 const hasTemp = (planet.equilibriumTempK ?? planet.eqTempK) != null && !isNaN(planet.equilibriumTempK ?? planet.eqTempK);
@@ -551,10 +579,7 @@ export default function SearchExplore() {
                     const pid = planet.id || slugify(planet.name);
                     const esi = Number(getMetric(planet, 'esi', 'esiScore', planet.habitabilityIndex ?? 0));
                     const star = classifyStarType(planet.starSpectralType || planet.starType, planet.starTempK || planet.equilibriumTempK);
-                    const inHZ = planet.zoneStatus === 'Habitable Zone' || 
-                      planet.inHabitableZone || 
-                      (planet.hzd != null && planet.hzd >= -1.0 && planet.hzd <= 1.0) ||
-                      esi >= 0.75;
+                    const inHZ = isHzCandidate(planet);
 
                     return (
                       <tr key={pid} className="hover:bg-slate-900/40 transition">
